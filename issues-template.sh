@@ -136,4 +136,38 @@ contact_links:
     about: Untuk diskusi umum
 EOF
 
+
 echo "✅ Done! Template berhasil dibuat di .github/ISSUE_TEMPLATE"
+
+echo "=============================================================="
+
+echo  "🚀 Setting up folder workflows..."
+
+# ========================
+# FOR TELEGRAM NOTIFY
+# ========================
+cat << 'EOF' > .github/workflows/notify.yml
+name: Notify
+
+on:
+  push:
+
+jobs:
+  notify:
+    uses: fridfn/workflow-development/.github/workflows/telegram.yml@main
+    with:
+      private_message: |
+        💜 Repo: ${{ github.repository }}
+        👤 Author: ${{ github.actor }}
+        📝 Commit: ${{ github.event.head_commit.message }}
+
+      channel_message: |
+        🚀 Update baru di ${{ github.repository }}
+
+    secrets:
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+EOF
+
+echo "✅ Done! Folder workflow berhasil dibuat di .github/workflows"
