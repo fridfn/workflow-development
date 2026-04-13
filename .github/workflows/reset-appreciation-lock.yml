@@ -1,5 +1,8 @@
 name: Reset Appreciation Lock
-
+  
+permissions:
+  issues: write
+  
 on:
   schedule:
     - cron: '0 0 * * *'
