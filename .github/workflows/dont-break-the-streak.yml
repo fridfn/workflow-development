@@ -181,6 +181,26 @@ jobs:
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: |
           # =========================
+          # VALIDATION IF ALREADY APPRECIATED
+          # =========================
+          
+          ISSUE_NUMBER=1
+          LABEL="appreciated-today"
+          
+          set -e
+          
+          lock_response=$(curl -s -X POST \
+            -H "Authorization: token ${{ secrets.ACTIVITY_GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/issues/$ISSUE_NUMBER/labels \
+            -d "{\"labels\":[\"$LABEL\"]}")
+          
+          # cek kalau label sudah ada
+          if echo "$lock_response" | grep -q "already_exists"; then
+            echo "Already locked → STOP"
+            exit 0
+          fi
+          
+          # =========================
           # MODE N TIMEZONE
           # =========================
           
