@@ -89,9 +89,9 @@ jobs:
           if [ "$hour" -ge 17 ] && [ "$hour" -lt 19 ]; then
             mode="warning"
           elif [ "$hour" -ge 20 ] && [ "$hour" -lt 23 ]; then
-            mode="final"
-          elif [ "$hour" -ge 23 ] || [ "$hour" -lt 7 ]; then
             mode="last_warning"
+          elif [ "$hour" -ge 23 ] || [ "$hour" -lt 7 ]; then
+            mode="final_warning"
           fi
           
           if [ -z "$mode" ]; then
