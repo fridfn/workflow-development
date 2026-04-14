@@ -23,6 +23,34 @@ jobs:
     needs: lock-check
     
     steps:
+      - name: Ensure appreciated-today label exists
+        env:
+          TOKEN: ${{ secrets.ACTIVITY_GITHUB_TOKEN }}
+        run: |
+          REPO="fridfn/workflow-development"
+          LABEL_NAME="appreciated-today"
+          
+          # cek label
+          status=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: token $TOKEN" \
+            https://api.github.com/repos/$REPO/labels/$LABEL_NAME)
+      
+          if [ "$status" -eq 200 ]; then
+            echo "Label exists ✅"
+          else
+            echo "Label not found → creating..."
+            
+            curl -s -X POST \
+              -H "Authorization: token $TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              https://api.github.com/repos/$REPO/labels \
+              -d '{
+                "name": "appreciated-today",
+                "color": "6b00c6",
+                "description": "Marks that today's activity has already been appreciated to prevent duplicate messages."
+              }'
+          fi
+          
       - name: Check GitHub activity
         id: activity
         run: |
@@ -31,9 +59,10 @@ jobs:
           response=$(curl -s \
             -H "Authorization: token ${{ secrets.ACTIVITY_GITHUB_TOKEN }}" \
             https://api.github.com/users/$username/events)
-
-          today=$(date -u +%Y-%m-%d)
-
+            
+          export TZ=Asia/Jakarta
+          hour=$(date +%H)
+          
           has_push=$(echo "$response" | jq "[.[] | select(.type==\"PushEvent\" and (.created_at | startswith(\"$today\")))] | length")
 
           if [ "$has_push" -gt 0 ]; then
@@ -146,9 +175,9 @@ jobs:
           curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
           -d chat_id="$TELEGRAM_CHANNEL_ID" \
           --data-urlencode "text=$final_message"
-          
+      
       - name: Set Appreciation Lock
-        if: steps.activity.outputs.no_commit == 'false'
+        if: steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true'
         env:
           TOKEN: ${{ secrets.ACTIVITY_GITHUB_TOKEN }}
         run: |
@@ -159,8 +188,4 @@ jobs:
            -H "Authorization: token $TOKEN" \
            -H "Accept: application/vnd.github+json" \
            https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/labels \
-           -d '{
-              "name": "appreciated-today",
-              "color": "6b00c600",
-              "description": "Indicates that today's commit activity has been acknowledged and appreciation has been sent."
-            }' || true
+           -d '{"labels": ["appreciated-today"]}'
