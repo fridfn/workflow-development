@@ -137,7 +137,7 @@ jobs:
             exit 0
           fi
           
-          final_message="$greeting $message
+          final_message="$greeting $message"
           
           # =========================
           # SEND TO TELEGRAM CHAT N CHANNEL
@@ -161,6 +161,6 @@ jobs:
            https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/labels \
            -d '{
               "name": "appreciated-today",
-              "color": "rgba(107,0,198,0)",
+              "color": "6b00c600",
               "description": "Indicates that today's commit activity has been acknowledged and appreciation has been sent."
             }' || true
