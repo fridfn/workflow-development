@@ -23,6 +23,9 @@ jobs:
     needs: lock-check
     
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
       - name: Ensure appreciated-today label exists
         env:
           TOKEN: ${{ secrets.ACTIVITY_GITHUB_TOKEN }}
