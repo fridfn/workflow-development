@@ -61,7 +61,7 @@ jobs:
             https://api.github.com/users/$username/events)
             
           export TZ=Asia/Jakarta
-          today=$(date +%H)
+          today=$(date +%Y-%m-%d)
           
           has_push=$(echo "$response" | jq "[.[] | select(.type==\"PushEvent\" and (.created_at | startswith(\"$today\")))] | length")
 
