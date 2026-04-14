@@ -1,0 +1,112 @@
+{
+  "warning": {
+    "greetings": [
+      "Farid… sore ini kamu lagi capek atau lagi sibuk ya ✨ tapi santai aja, balik bentar ke kode kamu juga gapapa 😌",
+      
+      "aku tau kamu mungkin lagi banyak pikiran atau lelah 🤔 tapi satu langkah kecil aja udah cukup buat jaga konsisten kamu ✨",
+      
+      "sore ini belum ada commit ya… mungkin kamu lagi fokus hal lain 😏 tapi jangan lupa balik lagi ke perjalanan kamu sendiri",
+      
+      "Farid, kalau lagi capek itu wajar banget 🫠 tapi jangan sampai hari ini kosong ya… pelan-pelan aja ✨",
+      
+      "lagi sibuk ya kamu 🤔 gapapa, tapi coba sempetin bentar aja buat kode kamu… biar ritmenya tetep jalan 😌",
+      
+      "sore ini santai aja Farid ✨ gak perlu banyak, satu commit kecil juga udah keren banget",
+      
+      "aku tau kamu lagi nggak full energy 🫠 tapi kamu masih bisa jaga konsisten kamu pelan-pelan kok",
+      
+      "Farid… jangan terlalu keras ke diri sendiri ya 😌 tapi juga jangan hilang dari perjalanan kamu sendiri ✨"
+    ],
+    "messages": [
+      "Farid... hari ini belum ada commit ya 🤔 gapapa kok kalau lagi capek atau sibuk, tapi jangan sampai benar-benar berhenti ya ✨ konsisten itu bukan soal kuat terus, tapi soal balik lagi pelan-pelan.",
+      
+      "aku lihat kamu lagi pelan hari ini 🫠 belum ada jejak di kode, tapi aku tau kamu bukan orang yang gampang nyerah. balik bentar aja udah cukup ✨",
+      
+      "hari ini belum ada commit ya Farid 😏 mungkin kamu lagi fokus hal lain, tapi jangan lupa kamu juga lagi bangun sesuatu yang penting",
+      
+      "Farid… hari ini belum ada cerita dari kode kamu 🤔 tapi itu bukan akhir, cuma jeda kecil aja. nanti kamu bisa lanjut lagi ✨",
+
+      "kadang mulai itu berat ya 🫠 tapi kamu gak harus langsung banyak, satu baris aja juga udah bagus banget buat hari ini",
+      
+      "belum ada commit hari ini 😌 tapi aku tau kamu masih di jalur kamu. pelan aja, yang penting gak hilang arah ✨",
+      
+      "Farid, hari ini kamu belum ninggalin jejak 🤔 tapi gapapa, kamu masih punya waktu buat balik lagi ke kode kamu 🫂",
+      
+      "aku tau kamu lagi naik turun hari ini 🫠 tapi jangan lupa, kamu masih punya perjalanan yang kamu bangun sendiri ✨"
+    ]
+  },
+
+  "last_warning": {
+    "greetings": [
+      "Farid… udah malam ya 😌 kamu lagi ngapain sekarang? sebelum tidur, mau sempetin satu commit kecil gak ✨",
+      
+      "udah mulai ngantuk belum 🤔 kalau iya gapapa… tapi kalau masih bisa, satu langkah kecil dulu sebelum istirahat 🫠",
+      
+      "Farid, malam ini kamu lagi santai atau lagi capek banget 😏 jangan lupa sama kode kamu juga ya",
+      
+      "sebelum tidur ini momen kecil buat kamu ✨ mau lanjut dikit atau cukup sampai sini hari ini?",
+      
+      "aku cuma mau nanya 🤔 hari ini kamu udah cukup puas belum sama perjalanan kamu?",
+      
+      "kalau capek banget juga gapapa 🫠 tapi kalau masih ada tenaga, satu commit kecil sebelum tidur juga oke banget",
+      
+      "malam ini pelan aja Farid 😌 gak perlu dipaksa, tapi jangan hilang dari ritme kamu juga",
+      
+      "lagi mikirin apa sekarang 🤔 sebelum tidur, coba deh balik bentar ke kode kamu ✨"
+    ],
+    "messages": [
+      "Farid… ini udah malam 🫠 kamu pasti capek banget ya. kalau belum commit, gapapa, tapi kalau masih bisa, satu langkah kecil aja sebelum tidur ✨",
+      
+      "hari ini udah panjang ya 😌 gak harus maksimal kok, tapi kalau bisa jangan sampai benar-benar kosong juga",
+      
+      "aku tau kamu mungkin udah ngantuk 🤔 tapi sebelum tidur, coba inget lagi perjalanan kamu sendiri ✨",
+      
+      "Farid… gak apa-apa kalau hari ini berat 🫠 istirahat juga penting, tapi jangan lupa balik lagi besok ya",
+      
+      "kalau udah capek banget ya udah 😌 kamu boleh berhenti dulu, tapi jangan hilang dari ritme kamu sendiri",
+      
+      "malam ini cukup jadi jeda aja 🤔 kamu gak harus maksa, tapi kamu masih punya besok buat lanjut ✨",
+      
+      "Farid… sebelum tidur aku cuma mau bilang 🫂 kamu udah jalan sejauh ini, jangan lupa itu ya",
+      
+      "kalau hari ini belum selesai 🫠 gapapa, besok kamu bisa mulai lagi dengan versi kamu yang baru ✨"
+    ]
+  },
+  
+  "final_warning": {
+   "greetings": [
+     "Farid… ini udah hampir tengah malam 😴 kalau kamu ngantuk atau capek itu wajar kok 🫂 tapi kalau masih kuat, satu commit kecil aja 💜",
+     
+     "hari ini hampir selesai 🫠 kalau kamu lelah, gapapa banget… tapi kalau masih bisa, jaga konsisten kamu pelan-pelan 💜",
+     
+     "Farid… mungkin kamu udah pengen tidur 😴 tapi sebelum itu, mau ninggalin satu jejak kecil dulu gak? 🫂💜",
+     
+     "ngantuk ya? aku ngerti kok 😔 tapi kalau masih sempat, satu commit kecil aja sebelum kamu istirahat 💜",
+     
+     "kalau hari ini berat banget 🫠 kita lanjut besok juga gapapa… tapi kalau masih ada tenaga, tutup hari ini pelan-pelan 💜",
+     
+     "Farid… kamu udah jalan sejauh ini 😔 jangan biarin hari ini kosong tanpa jejak, walaupun kecil banget 💜",
+     
+     "aku ngerti kamu capek 🫂 serius ya… tapi satu commit kecil sekarang bisa bikin kamu lebih tenang pas tidur 😴💜",
+     
+     "kalau udah gak kuat, istirahat aja ya Farid 😴 tapi kalau masih ada sedikit tenaga… ayo tutup hari ini dengan satu commit 🫠💜"
+   ],
+   "messages": [
+     "Farid… ini udah malam banget 😴 kamu pasti capek ya 🫂 gak apa-apa kok kalau hari ini kamu cuma mau istirahat. tapi kalau masih ada sedikit tenaga, satu commit kecil aja bisa jadi penutup hari yang bagus 💜",
+     
+     "hari ini mungkin berat ya 🫠 gak semua hari harus maksimal kok. kalau kamu mau tidur, tidur aja 😔 tapi jangan lupa, kamu masih punya perjalanan yang bisa kamu lanjut besok 💜",
+     
+     "Farid… aku tau kamu udah ngeluarin banyak energi hari ini 😴 kalau belum sempat commit, itu gak bikin kamu gagal kok 🫂 tapi kalau masih bisa, satu langkah kecil aja sebelum tidur 💜",
+     
+     "kalau kamu udah ngantuk banget 😴 istirahat itu pilihan yang paling bener sekarang 🫠 tapi kalau masih kebangun sedikit, tutup hari ini dengan satu commit kecil juga gak apa-apa 💜",
+     
+     "Farid… gak harus dipaksa ya 🫂 kalau hari ini cukup sampai di sini, itu juga oke banget 😔 tapi jangan lupa balik lagi besok pelan-pelan 💜",
+     
+     "aku tau kamu mungkin lagi di titik capek banget 😴 tapi kamu udah jalan sejauh ini 🫠 jangan lupa itu ya… kamu gak mulai dari nol 💜",
+     
+     "kalau hari ini kamu cuma bisa istirahat, itu bukan kegagalan 😔 itu cuma jeda kecil aja 🫂 besok kamu bisa lanjut lagi pelan-pelan 💜",
+     
+     "Farid… sebelum kamu tidur 😴 aku cuma mau bilang kamu udah berusaha hari ini 🫠 apapun hasilnya, itu tetap berarti 💜"
+   ]
+ }
+}

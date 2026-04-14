@@ -73,105 +73,18 @@ jobs:
           # MESSAGES (CASE)
           # =========================
           
-          case "$mode" in
+          data=$(cat .github/messages/reminder.json)
+
+          greeting=$(echo "$data" | jq -r --arg mode "$mode" '.[$mode].greetings[]' | shuf -n 1)
           
-            warning)
-                greetings=(
-                 "Farid… sore ini kamu pasti lagi capek atau sibuk ya 🌆 tapi kalau sempat, balik bentar ke kode kamu… jaga konsisten pelan-pelan 💜"
-                 
-                 "aku tau hari kamu mungkin lelah, Farid 🍃 tapi kamu juga lagi bangun sesuatu… satu commit kecil cukup buat jaga konsisten 💜"
-                 
-                 "sore ini belum ada commit… mungkin kamu lagi sibuk 🌙 tapi jangan lupa, kamu juga punya perjalanan sebagai developer 💜"
-                 
-                 "Farid… capek itu wajar 🌆 tapi jangan sampai berhenti ya… konsisten itu dibangun dari hal kecil kayak sekarang 💜"
-                 
-                 "hari ini mungkin berat dan lelah 🍃 tapi kamu masih punya waktu buat ninggalin satu jejak di kode kamu 💜"
-                 
-                 "aku tau kamu lagi sibuk, Farid 🌙 tapi coba sempetin sedikit… biar konsisten kamu tetap hidup 💜"
-                 
-                 "sore ini pelan aja Farid 🌆 gak harus banyak… cukup satu langkah kecil biar kamu tetap semangat dan konsisten 💜"
-                 
-                 "Farid… mungkin kamu lagi capek sekarang 🍃 tapi inget, kamu udah sejauh ini… jangan biarin hari ini kosong 💜"
-               )
-                ;;
+          message=$(echo "$data" | jq -r --arg mode "$mode" '.[$mode].messages[]' | shuf -n 1)
           
-            final)
-                greetings=(
-                 "Farid… ini udah malam 🌙 kamu lagi ngapain sekarang? kalau belum commit, masih ada waktu buat jaga konsisten kamu 💜"
-                 
-                 "udah mulai ngantuk atau capek ya? 🍃 tapi sebelum kamu tidur… kamu mau ninggalin satu commit dulu gak hari ini? 💜"
-                 
-                 "Farid… kamu lagi fokus ke apa malam ini? 🌙 jangan lupa sama kode kamu juga ya… jaga konsisten pelan-pelan 💜"
-                 
-                 "malam ini jadi momen nentuin, Farid 🌆 kamu mau lanjut sebentar atau langsung istirahat tanpa commit? 💜"
-                 
-                 "aku cuma mau nanya… hari ini kamu udah ngapain aja? 🌙 masih ada ruang buat satu commit kecil kok 💜"
-                 
-                 "Farid… kalau kamu capek, aku ngerti 🍃 tapi satu commit kecil sebelum tidur bisa jaga konsisten kamu tetap hidup 💜"
-                 
-                 "malam ini pelan ya Farid 🌙 tapi jangan lupa tujuan kamu… balik sebentar ke kode kamu sebelum kamu tidur 💜"
-                 
-                 "kamu lagi santai atau lagi mikir sesuatu ya 🌆 tapi kalau bisa… sempetin satu commit buat nutup hari ini 💜"
-               )
-                ;;
-          
-            last_warning)
-              greetings=(
-               "Farid… ini udah hampir tengah malam 🌙 kalau kamu ngantuk atau capek, itu wajar kok… tapi kalau masih kuat, satu commit kecil aja 💜"
-               
-               "hari ini hampir selesai 🍃 kalau kamu lelah, gapapa… tapi kamu masih punya kesempatan terakhir buat jaga konsisten 💜"
-               
-               "Farid… mungkin kamu udah pengen tidur 🌙 tapi sebelum itu, kamu mau ninggalin satu jejak kecil dulu gak? 💜"
-               
-               "ngantuk ya? aku tau… 🌙 tapi kalau bisa, satu commit kecil aja sebelum kamu istirahat 💜"
-               
-               "kalau hari ini berat, kita lanjut besok juga gapapa 🍃 tapi kalau masih sempat, ayo kasih satu baris kode malam ini 💜"
-               
-               "Farid… kamu udah jalan sejauh ini 🌙 jangan biarin hari ini hilang tanpa jejak, walaupun cuma sedikit 💜"
-               
-               "aku ngerti kamu capek 🌙 serius… tapi satu commit kecil sekarang bisa bikin kamu lebih tenang pas tidur 💜"
-               
-               "kalau udah gak kuat, istirahat ya Farid 🍃 tapi kalau masih ada tenaga… ayo tutup hari ini dengan satu commit 💜"
-             )
-              ;;
-          
-          esac
-          
-          if [ ${#greetings[@]} -eq 0 ]; then
+          if [ -z "$greeting" ] || [ -z "$message" ]; then
+            echo "No message found → exit"
             exit 0
           fi
           
-          index_greetings=$(( (RANDOM % ${#greetings[@]}) ))
-          random_greeting="${greetings[$index_greetings]}"
-          
-          # =========================
-          # UNFINISHED MESSAGES
-          # =========================
-          
-          messages_unfinished=(
-           "Farid... hari ini belum ada commit ya. gapapa kalau kamu lagi capek, tapi jangan sampai berhenti ya 💜 konsisten itu bukan soal selalu kuat, tapi soal tetap kembali ke kode yang kamu bangun."
-           
-           "aku lihat kamu lagi pelan hari ini… belum ada commit, belum ada jejak. tapi aku tau kamu bukan tipe yang menyerah. sedikit aja… buka kode kamu, itu udah cukup buat jaga konsisten 🌙"
-           
-           "hari ini belum ada commit, dan mungkin rasanya biasa aja. tapi sebagai developer, kamu tau kan… yang bikin beda itu konsisten kecil tiap hari. aku masih nunggu kamu ninggalin satu baris kode aja 💜"
-           
-           "Farid… belum ada commit hari ini. bukan berarti kamu gagal, tapi jangan biarin hari ini kosong tanpa cerita dari kamu. makasih ya udah sejauh ini bertahan jadi developer yang terus belajar 🌙"
-           
-           "kadang yang berat itu bukan coding… tapi mulai. hari ini belum ada commit, tapi aku percaya kamu bisa balik lagi. pelan aja, yang penting konsisten sama jalan kamu 💜"
-           
-           "belum ada commit hari ini… tapi aku tau perjalanan kamu nggak berhenti di sini. kamu udah sejauh ini jadi developer, jangan biarin satu hari bikin kamu kehilangan ritme. ayo balik ke kode kamu 🌙"
-           
-           "Farid, hari ini kamu belum ninggalin commit. tapi makasih ya… kamu masih di sini, masih berusaha. sekarang tinggal satu langkah kecil lagi—buka kode kamu, dan lanjutkan 💜"
-           )
-          
-          # =========================
-          # FINAL MESSAGE FORMAT
-          # =========================
-          
-          index_messages_unfinished=$(( (RANDOM % ${#messages_unfinished[@]})))
-          random_message=${messages_unfinished[$index_messages_unfinished]}
-          
-          final_message="$random_greeting $random_message"
+          final_message="$greeting $message"
           
           # =========================
           # SEND TO TELEGRAM CHAT N CHANNEL
@@ -213,105 +126,18 @@ jobs:
           # MESSAGES (CASE)
           # =========================
           
-          case "$mode" in
+          data=$(cat .github/messages/application.json)
+
+          greeting=$(echo "$data" | jq -r --arg mode "$mode" '.[$mode].greetings[]' | shuf -n 1)
           
-            ambitious)
-             greetings=(
-               "Farid… jam segini kamu keliatan keren banget 😏🔥 ada commit lagi? rajin juga kamu hari ini 💜"
-               
-               "tumben banget kamu aktif jam 12 🥳 ada apa nih? semangat atau lagi mood coding? ✨"
-               
-               "keren sih Farid… konsisten kamu mulai keliatan 😌🔥 ini idaman developer banget"
-               
-               "wah kamu coding jam segini 🤔 semangat banget ya hari ini 💜 lanjut terus jangan setengah-setengah"
-               
-               "hebat sih kamu 🥳 gak semua orang bisa rajin kayak kamu hari ini ✨"
-               
-               "Farid… ini kamu lagi serius atau lagi ke-distract tapi tetap coding? 😏🔥"
-               
-               "siang produktif ya kamu 💜 konsisten gini bikin kamu keliatan beda"
-               
-               "ada apa nih Farid 🤨 tiba-tiba rajin banget hari ini 😌🔥 tapi bagus sih, lanjutkan"
-             )
-             ;;
+          message=$(echo "$data" | jq -r --arg mode "$mode" '.[$mode].messages[]' | shuf -n 1)
           
-            productive)
-             greetings=(
-               "Farid… cape ya? 😌💜 tapi kamu masih sempet coding, itu keren banget"
-               
-               "sibuk sekolah / belajar ya 🤔 tapi kamu tetap sempet commit… makasih ya ✨"
-               
-               "udah capek tapi masih jalan 😏🔥 itu baru konsisten namanya"
-               
-               "Farid… istirahat juga ya 😌 jangan dipaksa terus, tapi kamu keren hari ini"
-               
-               "kamu lagi full aktivitas kayaknya 🤨 tapi tetap sempet coding 💜 respect"
-               
-               "belajar, tugas, sibuk… tapi kamu gak ninggalin mimpi kamu jadi developer 😏🔥"
-               
-               "makasih ya udah tetap sempetin commit di tengah capek kamu 🥳💜"
-               
-               "Farid… ini kamu lagi nahan capek tapi tetap produktif ya 🤔✨"
-             )
-             ;;
-          
-            consistent)
-             greetings=(
-               "Farid… kamu masih di sini ya 😌 walaupun ngantuk, kamu tetep nyentuh kode. aku liat itu 💜"
-           
-               "lagi capek ya? 🤔 gak apa-apa… kamu gak harus kuat terus, tapi kamu tetap konsisten hari ini 🔥"
-           
-               "Farid… aku gak tau hari kamu seberat apa 😏 tapi kamu tetep balik ke sini, itu udah cukup banget"
-           
-               "kalau lagi gak tenang, aku ngerti 😌 tapi kamu gak ninggalin hari ini gitu aja… makasih ya 💜"
-           
-               "tugas sekolah numpuk ya 🤨 tapi kamu masih nyempetin buka kode… pelan-pelan aja, aku liat usaha kamu 🔥"
-           
-               "Farid… hari ini rasanya kosong ya 😏 tapi kamu tetap datang. itu hal kecil yang gak semua orang bisa 💜"
-           
-               "sedih, gelisah, atau cuma ngerasa gak jelas 😌 gak apa-apa… kamu tetap jalan, walau pelan"
-           
-               "skill kamu gak tiba-tiba naik 🔥 tapi kamu gak berhenti, dan itu yang bikin kamu berkembang pelan-pelan 💜"
-             )
-             ;;
-          
-          esac
-          
-          if [ ${#greetings[@]} -eq 0 ]; then
+          if [ -z "$greeting" ] || [ -z "$message" ]; then
+            echo "No message found → exit"
             exit 0
           fi
           
-          index_greetings=$(( (RANDOM % ${#greetings[@]}) ))
-          random_greeting="${greetings[$index_greetings]}"
-          
-          # =========================
-          # SUCCESS MESSAGE
-          # =========================
-          
-          messages_success=(
-           "Farid… aku lihat kamu udah commit hari ini 💜 makasih ya udah tetap konsisten. mungkin kecil, tapi itu yang bikin kamu terus tumbuh sebagai developer."
-           
-           "hari ini ada commit… dan itu berarti kamu datang lagi 🌙 aku bangga sama kamu yang tetap balik ke kode, walaupun mungkin nggak selalu mudah."
-           
-           "good job, Farid 💜 kamu udah ninggalin jejak hari ini. konsisten kayak gini yang pelan-pelan ngebentuk kamu jadi developer yang kamu mau."
-           
-           "aku lihat commit kamu hari ini… sederhana, tapi berarti. makasih ya udah nggak ninggalin perjalanan kamu. tetap jaga ritme ini 🌙"
-           
-           "Farid, hari ini kamu nggak kosong. ada commit, ada usaha, ada cerita kecil di kode kamu. dan itu cukup 💜 tetap konsisten ya."
-           
-           "commit hari ini mungkin cuma sedikit… tapi aku tau effort di baliknya nggak kecil. makasih ya udah tetap jalan sebagai developer 🌙"
-           
-           "kamu datang lagi hari ini, dan itu keliatan dari commit kamu 💜 konsisten itu pelan, tapi pasti. terusin ya, aku di sini ngeliat perjalanan kamu."
-          )
-          
-          # =========================
-          # FINALL MESSAGE FORMAT
-          # =========================
-          
-          index_messages_success=$(( (RANDOM % ${#messages_success[@]}) ))
-          random_message="${messages_success[$index_messages_success]}"
-          
-          final_message="$random_greeting $random_message"
+          final_message="$greeting $message
           
           # =========================
           # SEND TO TELEGRAM CHAT N CHANNEL

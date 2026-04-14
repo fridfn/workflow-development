@@ -1,0 +1,112 @@
+{
+  "ambitious": {
+    "greetings": [
+       "Farid… jam segini kamu keliatan keren banget 😏🔥 ada commit lagi? rajin juga kamu hari ini 💜",
+       
+       "tumben banget kamu aktif jam 12 🥳 ada apa nih? semangat atau lagi mood coding? ✨",
+       
+       "keren sih Farid… konsisten kamu mulai keliatan 😌🔥 ini idaman developer banget",
+       
+       "wah kamu coding jam segini 🤔 semangat banget ya hari ini 💜 lanjut terus jangan setengah-setengah",
+       
+       "hebat sih kamu 🥳 gak semua orang bisa rajin kayak kamu hari ini ✨",
+       
+       "Farid… ini kamu lagi serius atau lagi ke-distract tapi tetap coding? 😏🔥",
+       
+       "siang produktif ya kamu 💜 konsisten gini bikin kamu keliatan beda",
+       
+       "ada apa nih Farid 🤨 tiba-tiba rajin banget hari ini 😌🔥 tapi bagus sih, lanjutkan"
+    ],
+    "messages": [
+     "Farid… siang gini kamu udah ninggalin jejak 😏🔥 itu bukan hal biasa loh. kebanyakan orang masih nunda, tapi kamu udah jalan duluan 💜",
+     
+     "aku lihat kamu lagi on fire hari ini 🥳✨ ini momen bagus banget buat push lebih jauh… jangan berhenti di satu commit aja",
+     
+     "Farid… konsisten kamu mulai kebentuk 😌🔥 pelan-pelan tapi pasti. ini yang nanti bikin kamu beda dari yang lain 💜",
+     
+     "jam segini kamu udah gerak 🤨 itu artinya kamu serius sama perjalanan kamu. lanjut aja, jangan diturunin momentumnya ✨",
+     
+     "keren sih kamu hari ini 😏🔥 bukan soal banyaknya, tapi kamu mau mulai duluan. itu yang susah buat kebanyakan orang 💜",
+     
+     "Farid… ini lagi fase kamu naik 🥳 jangan disia-siain ya. manfaatin mood kamu sekarang buat dorong diri kamu lebih jauh ✨",
+     
+     "aku suka cara kamu jalan hari ini 😌🔥 santai tapi tetap ada progress. itu tanda kamu mulai ngerti ritme kamu sendiri 💜",
+     
+     "Farid… satu commit di jam segini itu kecil kelihatannya 🤔 tapi ini fondasi buat sesuatu yang besar nanti ✨"
+   ]
+  },
+  
+  "productive": {
+    "greetings": [
+      "Farid… cape ya? 😌💜 tapi kamu masih sempet coding, itu keren banget",
+      
+      "sibuk sekolah / belajar ya 🤔 tapi kamu tetap sempet commit… makasih ya ✨",
+      
+      "udah capek tapi masih jalan 😏🔥 itu baru konsisten namanya",
+      
+      "Farid… istirahat juga ya 😌 jangan dipaksa terus, tapi kamu keren hari ini",
+      
+      "kamu lagi full aktivitas kayaknya 🤨 tapi tetap sempet coding 💜 respect",
+      
+      "belajar, tugas, sibuk… tapi kamu gak ninggalin mimpi kamu jadi developer 😏🔥",
+      
+      "makasih ya udah tetap sempetin commit di tengah capek kamu 🥳💜",
+      
+      "Farid… ini kamu lagi nahan capek tapi tetap produktif ya 🤔✨"
+    ],
+    "messages": [
+     "Farid… aku tau kamu lagi capek 😌💜 tapi kamu tetap sempet commit. itu bukan hal kecil loh… itu disiplin",
+     
+     "di tengah sibuk kamu 🤔 kamu masih balik ke kode kamu. itu artinya kamu gak ninggalin mimpi kamu ✨",
+     
+     "Farid… ini fase paling berat 😏🔥 capek + tetap jalan. tapi justru di sini konsisten kamu kebentuk 💜",
+     
+     "aku lihat kamu gak berhenti walaupun lelah 😌 itu keren banget. gak harus banyak, yang penting kamu tetap ada progress ✨",
+     
+     "hari kamu pasti padat 🤨 tapi kamu masih nyempetin coding. itu yang bikin kamu beda dari yang lain 💜",
+     
+     "Farid… capek itu wajar 😌 tapi kamu gak pakai itu sebagai alasan buat berhenti. itu yang bikin kamu kuat 🔥",
+     
+     "aku tau kamu lagi bagi fokus 🫠 tapi kamu tetap nyentuh kode kamu. itu udah cukup buat jaga ritme kamu 💜",
+     
+     "Farid… mungkin ini cuma satu commit 🤔 tapi ini bukti kalau kamu tetap jalan di tengah capek kamu ✨"
+   ]
+  },
+  
+  "consistent": {
+    "greetings": [
+      "Farid… kamu masih di sini ya 😌 walaupun ngantuk, kamu tetep nyentuh kode. aku liat itu 💜",
+  
+      "lagi capek ya? 🤔 gak apa-apa… kamu gak harus kuat terus, tapi kamu tetap konsisten hari ini 🔥",
+  
+      "Farid… aku gak tau hari kamu seberat apa 😏 tapi kamu tetep balik ke sini, itu udah cukup banget",
+  
+      "kalau lagi gak tenang, aku ngerti 😌 tapi kamu gak ninggalin hari ini gitu aja… makasih ya 💜",
+  
+      "tugas sekolah numpuk ya 🤨 tapi kamu masih nyempetin buka kode… pelan-pelan aja, aku liat usaha kamu 🔥",
+  
+      "Farid… hari ini rasanya kosong ya 😏 tapi kamu tetap datang. itu hal kecil yang gak semua orang bisa 💜",
+  
+      "sedih, gelisah, atau cuma ngerasa gak jelas 😌 gak apa-apa… kamu tetap jalan, walau pelan",
+  
+      "skill kamu gak tiba-tiba naik 🔥 tapi kamu gak berhenti, dan itu yang bikin kamu berkembang pelan-pelan 💜"
+    ],
+    "messages": [
+      "Farid… ini udah malam 😌 kamu mungkin capek atau ngantuk 💤 tapi kamu tetap datang. itu arti konsisten yang sebenarnya 💜",
+      
+      "aku gak tau hari kamu seberat apa 😔 tapi kamu masih balik ke kode kamu 🫂 itu udah lebih dari cukup buat hari ini",
+      
+      "Farid… gak semua orang bisa jalan di saat kayak gini 😏 kamu mungkin pelan, tapi kamu gak berhenti 💜",
+      
+      "kalau hari ini terasa kosong 😌 tapi kamu tetap ninggalin jejak kecil… itu tetap berarti ✨",
+      
+      "Farid… kamu gak harus sempurna 😔 cukup tetap muncul walaupun pelan. itu yang bikin kamu berkembang 💜",
+      
+      "malam kayak gini kadang bikin ragu 🤔 tapi kamu tetap lanjut dikit demi dikit. itu yang penting ✨",
+      
+      "Farid… ini bukan soal seberapa banyak kamu kerjain 🫠 tapi soal kamu gak ninggalin hari ini begitu aja 💜",
+      
+      "kalau kamu lagi lelah atau gak baik-baik aja 😔 gak apa-apa… tapi kamu tetap jalan, dan itu cukup banget 🫂💜"
+    ]
+  }
+}
