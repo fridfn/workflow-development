@@ -37,7 +37,7 @@ jobs:
           status=$(curl -s -o /dev/null -w "%{http_code}" \
             -H "Authorization: token $TOKEN" \
             https://api.github.com/repos/$REPO/labels/$LABEL_NAME)
-      
+           
           if [ "$status" -eq 200 ]; then
             echo "Label exists ✅"
           else
@@ -142,9 +142,9 @@ jobs:
           
           mode=""
           
-          if [ "$hour" -ge 12 ] && [ "$hour" -lt 18 ]; then
+          if [ "$hour" -ge 12 ] && [ "$hour" -lt 16 ]; then
             mode="ambitious"
-          elif [ "$hour" -ge 18 ] && [ "$hour" -lt 21 ]; then
+          elif [ "$hour" -ge 16 ] && [ "$hour" -lt 21 ]; then
             mode="productive"
           elif [ "$hour" -ge 21 ] || [ "$hour" -lt 7 ]; then
             mode="consistent"
