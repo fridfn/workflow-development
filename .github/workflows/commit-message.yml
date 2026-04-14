@@ -19,12 +19,12 @@ jobs:
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: |
           text=$(cat <<EOF
-           🚀 Workflow repo update!
-           
-           📦 Repo: ${{ github.repository }}
-           👤 Author: ${{ github.actor }}
-           📝 Commit: ${{ github.event.head_commit.message }}
-           EOF
+             🚀 Workflow repo update!
+             
+             📦 Repo: ${{ github.repository }}
+             👤 Author: ${{ github.actor }}
+             📝 Commit: ${{ github.event.head_commit.message }}
+            EOF
            )
            
           curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
