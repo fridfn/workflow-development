@@ -155,7 +155,7 @@ jobs:
           # MESSAGES (CASE)
           # =========================
           
-          data=$(cat .github/messages/application.json)
+          data=$(cat .github/messages/appreciation.json)
 
           greeting=$(echo "$data" | jq -r --arg mode "$mode" '.[$mode].greetings[]' | shuf -n 1)
           
