@@ -47,7 +47,7 @@ jobs:
               -d '{
                 "name": "appreciated-today",
                 "color": "6b00c6",
-                "description": "Marks that today's activity has already been appreciated to prevent duplicate messages."
+                "description": "Marks that today activity has already been appreciated to prevent duplicate messages."
               }'
           fi
           
