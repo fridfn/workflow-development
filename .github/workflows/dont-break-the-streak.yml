@@ -153,9 +153,14 @@ jobs:
           TOKEN: ${{ secrets.ACTIVITY_GITHUB_TOKEN }}
         run: |
           ISSUE_NUMBER=1
-
+          REPO="fridfn/workflow-development"
+          
           curl -s -X POST \
            -H "Authorization: token $TOKEN" \
            -H "Accept: application/vnd.github+json" \
-           https://api.github.com/repos/${{ github.repository }}/issues/$ISSUE_NUMBER/labels \
-           -d '{"labels":["appreciated-today"]}'
+           https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/labels \
+           -d '{
+              "name": "appreciated-today",
+              "color": "rgba(107,0,198,0)",
+              "description": "Indicates that today's commit activity has been acknowledged and appreciation has been sent."
+            }' || true
