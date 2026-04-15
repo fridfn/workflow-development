@@ -10,13 +10,46 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Check Yesterday Activity
+        run: |
+          username="fridfn"
+      
+          yesterday=$(date -u -d "yesterday" +%Y-%m-%d)
+      
+          response=$(curl -s \
+            -H "Authorization: token ${{ secrets.ACTIVITY_GITHUB_TOKEN }}" \
+            https://api.github.com/users/$username/events)
+      
+          yesterday_commit=$(echo "$response" | jq -r --arg y "$yesterday" '
+            [.[] 
+              | select(.type=="PushEvent") 
+              | select(.created_at | startswith($y))
+            ] | length')
+      
+          if [ "$yesterday_commit" -gt 0 ]; then
+            echo "yesterday_commit=true" >> $GITHUB_ENV
+          else
+            echo "yesterday_commit=false" >> $GITHUB_ENV
+          fi
+            
+      - name: Generate Morning Message
+        run: |
+          data=$(cat .github/messages/daily-start.json)
+      
+          if [ "$yesterday_commit" = "false" ]; then
+            message=$(echo "$data" | jq -r '.no_commit_yesterday[]' | shuf -n 1)
+          else
+            message=$(echo "$data" | jq -r '.committed_yesterday[]' | shuf -n 1)
+          fi
+      
+          echo "message=$message" >> $GITHUB_ENV
+          
       - name: Send New Day Message
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          
         run: |
-          message="🌅 A new GitHub day has started. Let's build something today."
-
           curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
             -d chat_id="$TELEGRAM_CHANNEL_ID" \
             --data-urlencode "text=$message"
