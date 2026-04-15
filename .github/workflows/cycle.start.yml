@@ -1,0 +1,22 @@
+name: Daily Cycle Start
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 00:00 UTC
+  workflow_dispatch:
+  
+jobs:
+  start-day:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Send New Day Message
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+        run: |
+          message="🌅 A new GitHub day has started. Let's build something today."
+
+          curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
+            -d chat_id="$TELEGRAM_CHANNEL_ID" \
+            --data-urlencode "text=$message"

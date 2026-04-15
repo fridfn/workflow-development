@@ -11,7 +11,7 @@ on:
 jobs:
   reset:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Remove label appreciated-today
         run: |
