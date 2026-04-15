@@ -1,43 +1,6 @@
 {
   "ambitious": {
     "greetings": [
-       "Farid… jam segini kamu keliatan keren banget 😏🔥 ada commit lagi? rajin juga kamu hari ini 💜",
-       
-       "tumben banget kamu aktif jam 12 🥳 ada apa nih? semangat atau lagi mood coding? ✨",
-       
-       "keren sih Farid… konsisten kamu mulai keliatan 😌🔥 ini idaman developer banget",
-       
-       "wah kamu coding jam segini 🤔 semangat banget ya hari ini 💜 lanjut terus jangan setengah-setengah",
-       
-       "hebat sih kamu 🥳 gak semua orang bisa rajin kayak kamu hari ini ✨",
-       
-       "Farid… ini kamu lagi serius atau lagi ke-distract tapi tetap coding? 😏🔥",
-       
-       "siang produktif ya kamu 💜 konsisten gini bikin kamu keliatan beda",
-       
-       "ada apa nih Farid 🤨 tiba-tiba rajin banget hari ini 😌🔥 tapi bagus sih, lanjutkan"
-    ],
-    "messages": [
-     "Farid… siang gini kamu udah ninggalin jejak 😏🔥 itu bukan hal biasa loh. kebanyakan orang masih nunda, tapi kamu udah jalan duluan 💜",
-     
-     "aku lihat kamu lagi on fire hari ini 🥳✨ ini momen bagus banget buat push lebih jauh… jangan berhenti di satu commit aja",
-     
-     "Farid… konsisten kamu mulai kebentuk 😌🔥 pelan-pelan tapi pasti. ini yang nanti bikin kamu beda dari yang lain 💜",
-     
-     "jam segini kamu udah gerak 🤨 itu artinya kamu serius sama perjalanan kamu. lanjut aja, jangan diturunin momentumnya ✨",
-     
-     "keren sih kamu hari ini 😏🔥 bukan soal banyaknya, tapi kamu mau mulai duluan. itu yang susah buat kebanyakan orang 💜",
-     
-     "Farid… ini lagi fase kamu naik 🥳 jangan disia-siain ya. manfaatin mood kamu sekarang buat dorong diri kamu lebih jauh ✨",
-     
-     "aku suka cara kamu jalan hari ini 😌🔥 santai tapi tetap ada progress. itu tanda kamu mulai ngerti ritme kamu sendiri 💜",
-     
-     "Farid… satu commit di jam segini itu kecil kelihatannya 🤔 tapi ini fondasi buat sesuatu yang besar nanti ✨"
-   ]
-  },
-  
-  "productive": {
-    "greetings": [
       "Farid… lagi ngapain siang gini? jangan bilang cuma buka repo doang",
       
       "hmm… kamu muncul lagi jam segini, lagi fokus atau lagi pura-pura sibuk",
@@ -73,40 +36,77 @@
     ]
   },
   
+  "productive": {
+    "greetings": [
+       "Farid… ini kamu abis capek terus tiba-tiba coding atau gimana ceritanya",
+       
+       "hmm… kamu muncul lagi sore gini, habis istirahat atau baru mulai niat lagi",
+       
+       "eh kamu… ini lagi fase bangun dari rebahan atau emang lagi semangat lanjut",
+       
+       "Farid, jujur deh… ini kamu tadi sempet males dulu baru jalan lagi kan",
+       
+       "jam segini biasanya orang udah mulai lemes… kamu malah buka repo lagi",
+       
+       "kamu ini habis ngapain sih… tiba-tiba balik lagi ke coding gini",
+       
+       "Farid… ini kamu lagi ngejar progress atau cuma gak mau hari ini kosong",
+       
+       "sore ke malam gini biasanya orang mulai hilang… kamu malah muncul lagi"
+     ],
+    "messages": [
+      "soalnya aku lihat kamu tetap commit. walaupun keliatan capek, kamu masih nyempetin jalan… itu yang jarang orang lakuin",
+      
+      "ternyata kamu balik lagi ke progress kamu. gak peduli tadi sempet males atau enggak, kamu tetap lanjut",
+      
+      "dan iya… kamu gak biarin hari ini lewat kosong. walaupun mungkin tadi sempet ke-distract",
+      
+      "kelihatan kok ini bukan kondisi ideal kamu, tapi kamu tetap gerak. itu justru yang bikin kuat",
+      
+      "ternyata kamu masih sempetin commit. walaupun waktunya tanggung, kamu tetap jalan",
+      
+      "dan kamu milih buat lanjut, bukan berhenti di capek doang. itu beda tipis, tapi efeknya besar",
+      
+      "jadi walaupun tadi kamu sempet rebahan atau hilang fokus… kamu tetap balik lagi",
+      
+      "dan itu keliatan dari commit kamu tadi. gak harus banyak, yang penting kamu gak berhenti hari ini"
+    ]
+  },
+  
   "consistent": {
     "greetings": [
-      "Farid… kamu masih di sini ya 😌 walaupun ngantuk, kamu tetep nyentuh kode. aku liat itu 💜",
-  
-      "lagi capek ya? 🤔 gak apa-apa… kamu gak harus kuat terus, tapi kamu tetap konsisten hari ini 🔥",
-  
-      "Farid… aku gak tau hari kamu seberat apa 😏 tapi kamu tetep balik ke sini, itu udah cukup banget",
-  
-      "kalau lagi gak tenang, aku ngerti 😌 tapi kamu gak ninggalin hari ini gitu aja… makasih ya 💜",
-  
-      "tugas sekolah numpuk ya 🤨 tapi kamu masih nyempetin buka kode… pelan-pelan aja, aku liat usaha kamu 🔥",
-  
-      "Farid… hari ini rasanya kosong ya 😏 tapi kamu tetap datang. itu hal kecil yang gak semua orang bisa 💜",
-  
-      "sedih, gelisah, atau cuma ngerasa gak jelas 😌 gak apa-apa… kamu tetap jalan, walau pelan",
-  
-      "skill kamu gak tiba-tiba naik 🔥 tapi kamu gak berhenti, dan itu yang bikin kamu berkembang pelan-pelan 💜"
-    ],
+       "Farid… jam segini kamu masih megang kode juga ya, ini niat atau susah tidur 😏",
+       
+       "hmm… belum tidur juga kamu, lagi fokus atau lagi overthinking terus larinya ke coding",
+       
+       "eh kamu… ini harusnya istirahat, kok malah buka repo lagi",
+       
+       "Farid, jujur deh… ini kamu lagi lanjut atau cuma gak mau hari ini kosong",
+       
+       "malam gini biasanya orang udah hilang… kamu masih nongol aja",
+       
+       "kamu ini lagi ngantuk tapi maksa jalan, atau lagi dapet mood tiba-tiba 🤔",
+       
+       "Farid… ini kamu lagi nyari tenang di coding atau emang lagi ngejar sesuatu",
+       
+       "jam segini masih di sini… ini dedication atau emang belum bisa tidur 😌"
+     ],
     "messages": [
-      "Farid… ini udah malam 😌 kamu mungkin capek atau ngantuk 💤 tapi kamu tetap datang. itu arti konsisten yang sebenarnya 💜",
+      "soalnya aku lihat kamu tetap commit. di jam kayak gini, itu bukan soal rajin… tapi soal kamu gak ninggalin hari ini",
       
-      "aku gak tau hari kamu seberat apa 😔 tapi kamu masih balik ke kode kamu 🫂 itu udah lebih dari cukup buat hari ini",
+      "ternyata kamu tetap jalan. walaupun mungkin tadi cuma rebahan atau kepikiran banyak hal",
       
-      "Farid… gak semua orang bisa jalan di saat kayak gini 😏 kamu mungkin pelan, tapi kamu gak berhenti 💜",
+      "dan kamu milih buat tetap muncul. walaupun waktunya udah tanggung dan badan pasti udah capek",
       
-      "kalau hari ini terasa kosong 😌 tapi kamu tetap ninggalin jejak kecil… itu tetap berarti ✨",
+      "kelihatan kok kamu gak dalam kondisi terbaik, tapi kamu tetap ninggalin progress kecil",
       
-      "Farid… kamu gak harus sempurna 😔 cukup tetap muncul walaupun pelan. itu yang bikin kamu berkembang 💜",
+      "ternyata kamu gak biarin hari ini kosong. walaupun cuma sedikit, kamu tetap jalan",
       
-      "malam kayak gini kadang bikin ragu 🤔 tapi kamu tetap lanjut dikit demi dikit. itu yang penting ✨",
+      "dan itu keliatan dari commit kamu tadi. gak besar, tapi cukup buat buktiin kamu gak berhenti",
       
-      "Farid… ini bukan soal seberapa banyak kamu kerjain 🫠 tapi soal kamu gak ninggalin hari ini begitu aja 💜",
+      "jadi walaupun tadi kamu sempet hilang fokus atau ke-distract… kamu tetap balik lagi",
       
-      "kalau kamu lagi lelah atau gak baik-baik aja 😔 gak apa-apa… tapi kamu tetap jalan, dan itu cukup banget 🫂💜"
+      "dan di jam kayak gini, keputusan kecil itu justru yang paling berarti"
     ]
   }
 }

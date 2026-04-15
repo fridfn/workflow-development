@@ -17,15 +17,15 @@ jobs:
   lock-check:
     uses: ./.github/workflows/streak.lock.yml
     secrets: inherit
-
+    
   check-activity:
     runs-on: ubuntu-latest
     needs: lock-check
-
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+        
       # =========================
       # ENSURE LABEL
       # =========================
@@ -75,16 +75,54 @@ jobs:
           fi
 
       # =========================
+      # SET MODE (NO COMMITTED)
+      # =========================
+      - name: Send Reminder (No Commit)  
+        if: steps.activity.outputs.no_commit == 'true'  
+        env:  
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}  
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}  
+        run: |  
+          export TZ=Asia/Jakarta  
+          hour=$(date +%H)  
+            
+          mode=""
+          send=false
+          
+          if [ "$hour" -ge 14 ] && [ "$hour" -lt 19 ]; then
+            # sore → santai (jarang)
+            [ $((RANDOM % 4)) -eq 0 ] && send=true
+            mode="warning"  
+            
+          elif [ "$hour" -ge 19 ] && [ "$hour" -lt 23 ]; then
+            # malam → lebih sering
+            [ $((RANDOM % 3)) -eq 0 ] && send=true
+            mode="last_warning"  
+            
+          elif [ "$hour" -ge 23 ] || [ "$hour" -lt 7 ]; then
+            # larut → hampir selalu
+            [ $((RANDOM % 2)) -eq 0 ] && send=true
+            mode="final_warning"  
+          fi
+          
+          if [ "$send" = false ]; then
+            echo "Skip (smart interval)"
+            exit 0
+          fi
+          
+          echo "mode=$mode" >> $GITHUB_ENV
+          
+      # =========================
       # SET MODE (COMMITTED)
       # =========================
       - name: Set Mode (Committed)
-        if: steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true'
+        if: (steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true') || steps.activity.outputs.no_commit == 'true'
         run: |
           export TZ=Asia/Jakarta
           hour=$(date +%H)
-
+          
           mode=""
-
+          
           if [ "$hour" -ge 12 ] && [ "$hour" -lt 16 ]; then
             mode="ambitious"
           elif [ "$hour" -ge 16 ] && [ "$hour" -lt 21 ]; then
@@ -92,19 +130,19 @@ jobs:
           elif [ "$hour" -ge 21 ] || [ "$hour" -lt 7 ]; then
             mode="consistent"
           fi
-
+          
           if [ -z "$mode" ]; then
-            echo "No mode → exit"
+            echo "No mode committed → exit"
             exit 0
           fi
-
+          
           echo "mode=$mode" >> $GITHUB_ENV
-
+          
       # =========================
       # GET MESSAGE
       # =========================
       - name: Get Message
-        if: steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true'
+        if: (steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true') || steps.activity.outputs.no_commit == 'true'
         run: |
           chmod +x .github/scripts/get.message.sh
           OUTPUT=$(mode="$mode" bash .github/scripts/get.message.sh)
@@ -116,7 +154,7 @@ jobs:
       # SEND TELEGRAM
       # =========================
       - name: Send Telegram
-        if: steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true'
+        if: (steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true') || steps.activity.outputs.no_commit == 'true'
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -128,7 +166,7 @@ jobs:
       # SET LOCK
       # =========================
       - name: Set Appreciation Lock
-        if: steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true'
+        if: (steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true') || steps.activity.outputs.no_commit == 'true'
         env:
           TOKEN: ${{ secrets.ACTIVITY_GITHUB_TOKEN }}
         run: |

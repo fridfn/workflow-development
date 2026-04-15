@@ -12,7 +12,7 @@ else
     -d chat_id="$TELEGRAM_CHANNEL_ID" \
     --data-urlencode "text=$GREETING"
 
-  sleep 2
+  sleep $((RANDOM % 260 + 50))
 
   curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
     -d chat_id="$TELEGRAM_CHANNEL_ID" \
