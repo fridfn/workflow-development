@@ -15,7 +15,7 @@ on:
 
 jobs:
   lock-check:
-    uses: ./.github/workflows/appreciation-lock.yml
+    uses: ./.github/workflows/streak.lock.yml
     secrets: inherit
     
   check-activity:
