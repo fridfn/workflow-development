@@ -34,7 +34,7 @@ jobs:
             
       - name: Generate Morning Message
         run: |
-          data=$(cat .github/messages/daily-start.json)
+          data=$(cat .github/messages/daily.start.json)
       
           if [ "$yesterday_commit" = "false" ]; then
             message=$(echo "$data" | jq -r '.no_commit_yesterday[]' | shuf -n 1)
