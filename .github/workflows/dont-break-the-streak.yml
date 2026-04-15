@@ -24,6 +24,8 @@ jobs:
     
     steps:
       - name: Checkout repository
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         uses: actions/checkout@v4
         
       - name: Ensure appreciated-today label exists
@@ -63,8 +65,7 @@ jobs:
             -H "Authorization: token ${{ secrets.ACTIVITY_GITHUB_TOKEN }}" \
             https://api.github.com/users/$username/events)
             
-          export TZ=Asia/Jakarta
-          today=$(date +%Y-%m-%d)
+          today=$(date -u +%Y-%m-%d)
           
           has_push=$(echo "$response" | jq "[.[] | select(.type==\"PushEvent\" and (.created_at | startswith(\"$today\")))] | length")
 
