@@ -106,8 +106,8 @@ jobs:
       - name: Get Message
         if: steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true'
         run: |
-          chmod +x .github/scripts/get-message.sh
-          OUTPUT=$(mode="$mode" bash .github/scripts/get-message.sh)
+          chmod +x .github/scripts/get.message.sh
+          OUTPUT=$(mode="$mode" bash .github/scripts/get.message.sh)
 
           echo "$OUTPUT"
           echo "$OUTPUT" >> $GITHUB_ENV
@@ -121,8 +121,8 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: |
-          chmod +x .github/scripts/send-telegram.sh
-          bash .github/scripts/send-telegram.sh
+          chmod +x .github/scripts/send.telegram.sh
+          bash .github/scripts/send.telegram.sh
 
       # =========================
       # SET LOCK
