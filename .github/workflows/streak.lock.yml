@@ -8,14 +8,14 @@ on:
     outputs:
       allowed:
         value: ${{ jobs.lock.outputs.allowed }}
-
+        
 jobs:
   lock:
     runs-on: ubuntu-latest
-
+    
     outputs:
       allowed: ${{ steps.check.outputs.allowed }}
-
+      
     steps:
       - name: Check label
         id: check
@@ -23,13 +23,13 @@ jobs:
           ISSUE_NUMBER=1
           LABEL="appreciated-today"
           REPO="fridfn/workflow-development"
-
+          
           labels=$(curl -s \
             -H "Authorization: token ${{ secrets.ACTIVITY_GITHUB_TOKEN }}" \
             https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/labels)
-
+            
           already=$(echo "$labels" | jq -r --arg LABEL "$LABEL" '.[] | select(.name == $LABEL) | .name' | wc -l)
-
+          
           if [ "$already" -gt 0 ]; then
             echo "allowed=false" >> $GITHUB_OUTPUT
           else
