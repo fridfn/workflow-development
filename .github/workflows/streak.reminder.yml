@@ -3,16 +3,16 @@ name: Daily Commit Reminder (All Repo)
 concurrency:
   group: daily-appreciation
   cancel-in-progress: true
-
+  
 permissions:
   issues: write
   contents: read
-
+  
 on:
   schedule:
     - cron: '0 * * * *' # tiap jam
   workflow_dispatch:
-
+  
 jobs:
   lock-check:
     uses: ./.github/workflows/streak.lock.yml
@@ -116,7 +116,7 @@ jobs:
       # SET MODE (COMMITTED)
       # =========================
       - name: Set Mode (Committed)
-        if: (steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true') || steps.activity.outputs.no_commit == 'true'
+        if: steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true'
         run: |
           export TZ=Asia/Jakarta
           hour=$(date +%H)
@@ -166,7 +166,7 @@ jobs:
       # SET LOCK
       # =========================
       - name: Set Appreciation Lock
-        if: (steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true') || steps.activity.outputs.no_commit == 'true'
+        if: steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true'
         env:
           TOKEN: ${{ secrets.ACTIVITY_GITHUB_TOKEN }}
         run: |
