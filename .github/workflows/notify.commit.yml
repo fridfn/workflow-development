@@ -11,9 +11,10 @@ jobs:
         💜 Repo: ${{ github.repository }}
         👤 Author: ${{ github.actor }}
         📝 Commit: ${{ github.event.head_commit.message }}
-
+        
       channel_message: |
-        🚀 Update baru di ${{ github.repository }}
+        💜 Repo: ${{ github.repository }}
+        👤 Author: ${{ github.actor }}
         📝 Commit: ${{ github.event.head_commit.message }}
         
     secrets:

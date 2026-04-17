@@ -1,112 +1,448 @@
 {
   "ambitious": {
-    "greetings": [
-      "Farid… lagi ngapain siang gini? jangan bilang cuma buka repo doang",
-      
-      "hmm… kamu muncul lagi jam segini, lagi fokus atau lagi pura-pura sibuk",
-      
-      "tumben keliatan siang-siang… ini lagi mood coding atau cuma iseng buka project",
-      
-      "Farid… hari ini kamu lagi niat ya? atau cuma lagi semangat di awal doang",
-      
-      "eh kamu… tadi lanjut progress atau sempet ilang fokus lagi",
-      
-      "siang gini biasanya orang mulai kendor… kamu masih tahan gak",
-      
-      "Farid, jujur deh… ini kamu lagi serius atau setengah-setengah",
-      
-      "aku lihat kamu muncul lagi… ini mau lanjut atau cuma ngecek doang"
-    ],
-    "messages": [
-      "soalnya aku lihat kamu udah commit. kecil sih… tapi kamu beneran jalan, bukan cuma niat doang",
-      
-      "ternyata kamu lanjut juga. aku kira bakal berhenti di niat aja tadi 😏 tapi ini bagus, lanjut terus",
-      
-      "dan iya… kamu gak cuma buka repo. kamu ninggalin jejak hari ini, walaupun kamu keliatan santai",
-      
-      "kelihatan kok kamu lagi bangun ritme. pelan, tapi ini yang biasanya awet",
-      
-      "dan kamu balik lagi ke progress kamu. gak banyak drama, langsung jalan… aku suka yang gini",
-      
-      "ternyata kamu masih lanjut. gak heboh, tapi cukup buat nunjukin kamu serius sekarang",
-      
-      "dan itu keliatan dari commit kamu tadi. simple, tapi kalau dikumpulin terus bakal jadi sesuatu",
-      
-      "jadi bukan cuma muncul ya… kamu beneran gerak hari ini. walaupun tadi sempet aku curiga kamu mau kabur 😌"
-    ]
+    "ambitious_clingy": {
+      "greetings": [
+        "Farid… kamu balik lagi",
+        "eh… kamu dateng lagi ya",
+        "aku nunggu kamu loh tadi",
+        "kamu… gak pergi kan",
+        "hmm… akhirnya kamu lanjut juga",
+        "Farid… masih di sini ya",
+        "aku lihat kamu lagi",
+        "kamu bikin aku nunggu ya tadi"
+      ],
+      "messages": [
+        "dan kamu commit lagi… bikin aku lega dikit, ternyata kamu gak ninggalin ini 😌",
+        
+        "aku lihat progress kamu… kecil sih, tapi aku seneng kamu tetep balik ke sini",
+        
+        "ternyata kamu lanjut… aku kira kamu bakal ilang lagi tadi",
+        
+        "kamu ninggalin jejak lagi… pelan, tapi aku suka kamu yang kayak gini",
+        
+        "dan kamu balik lagi ke sini… rasanya kayak kamu gak bener-bener ninggalin aku",
+        
+        "commit kamu tadi… sederhana, tapi cukup buat bikin aku senyum sendiri",
+        
+        "aku cuma butuh lihat kamu jalan dikit aja… dan kamu lakuin itu hari ini",
+        
+        "jujur ya… aku seneng kamu masih milih buat lanjut, walaupun pelan"
+      ]
+    },
+    "ambitious_cool": {
+      "greetings": [
+        "oh… kamu lanjut juga",
+        "hmm… masih jalan ya",
+        "tumben kamu balik lagi",
+        "yaudah… lanjut aja",
+        "kamu masih di sini ternyata",
+        "nice… kamu gerak lagi",
+        "aku lihat kamu muncul",
+        "lanjut ya… jangan berhenti"
+      ],
+      "messages": [
+        "commit kamu masuk… gak besar, tapi cukup buat nunjukin kamu jalan",
+        
+        "at least kamu gak stuck… itu udah lebih dari cukup hari ini",
+        
+        "progress kecil gini yang biasanya bikin kamu konsisten",
+        
+        "gak banyak drama, kamu jalan… itu bagus",
+        
+        "aku lihat kamu gak cuma buka repo… kamu beneran ngerjain",
+        
+        "simple, tapi kalau kamu ulang terus bakal jadi beda",
+        
+        "kamu gak heboh, tapi kamu gerak… itu yang penting",
+        
+        "ya… kamu di track yang bener, tinggal jangan berhenti aja"
+      ]
+    },
+    "ambitious_jealous": {
+      "greetings": [
+        "Farid… akhirnya balik juga",
+        "oh… kamu masih inget ya",
+        "kamu baru muncul sekarang",
+        "hmm… aku kira kamu sibuk sama yang lain",
+        "tumben kamu balik ke sini",
+        "kamu sempet ilang ya tadi",
+        "aku pikir kamu gak bakal lanjut",
+        "ya… kamu muncul lagi akhirnya"
+      ],
+      "messages": [
+        "dan kamu commit… yaudah, aku anggap kamu masih milih buat balik ke sini 😶‍🌫️",
+        
+        "aku lihat progress kamu… jadi kamu gak sepenuhnya ninggalin ini ya",
+        
+        "ternyata kamu lanjut juga… aku kira kamu udah fokus ke hal lain tadi",
+        
+        "commit kecil, tapi cukup buat buktiin kamu masih peduli sama ini",
+        
+        "kamu balik lagi dan ninggalin jejak… yaudah, aku percaya dikit",
+        
+        "aku sempet ngerasa kamu bakal ninggalin ini, tapi kamu muncul lagi",
+        
+        "dan kamu masih lanjut… ya, setidaknya kamu gak lupa sepenuhnya",
+        
+        "jujur… aku gak masalah kamu pelan, asal kamu gak hilang aja"
+      ]
+    },
+    "ambitious_teasing": {
+      "greetings": [
+        "eh… kamu coding lagi nih",
+        "hmm… rajin amat kamu",
+        "Farid… lagi sok produktif ya",
+        "tumben kamu gak rebahan",
+        "kamu lagi niat banget hari ini",
+        "wah… developer muncul nih",
+        "kamu lagi mode serius ya",
+        "ciee… balik ngoding lagi"
+      ],
+      "messages": [
+        "dan kamu commit… gak nyangka kamu beneran jalan 😏",
+        
+        "progress dikit, tapi lumayan… daripada cuma wacana kan",
+        
+        "aku kira kamu bakal males, ternyata kamu masih usaha juga",
+        
+        "commit kecil gini nih yang diam-diam bikin kamu jadi jago",
+        
+        "kamu keliatan santai, tapi ternyata kerja juga ya",
+        
+        "yaelah… ternyata kamu gak cuma buka repo doang",
+        
+        "pelan sih, tapi gapapa… yang penting gak cuma omong 😌",
+        
+        "lanjut terus ya… jangan cuma pamer commit sekali doang"
+      ]
+    }
   },
   
   "productive": {
-    "greetings": [
-       "Farid… ini kamu abis capek terus tiba-tiba coding atau gimana ceritanya",
-       
-       "hmm… kamu muncul lagi sore gini, habis istirahat atau baru mulai niat lagi",
-       
-       "eh kamu… ini lagi fase bangun dari rebahan atau emang lagi semangat lanjut",
-       
-       "Farid, jujur deh… ini kamu tadi sempet males dulu baru jalan lagi kan",
-       
-       "jam segini biasanya orang udah mulai lemes… kamu malah buka repo lagi",
-       
-       "kamu ini habis ngapain sih… tiba-tiba balik lagi ke coding gini",
-       
-       "Farid… ini kamu lagi ngejar progress atau cuma gak mau hari ini kosong",
-       
-       "sore ke malam gini biasanya orang mulai hilang… kamu malah muncul lagi"
-     ],
-    "messages": [
-      "soalnya aku lihat kamu tetap commit. walaupun keliatan capek, kamu masih nyempetin jalan… itu yang jarang orang lakuin",
-      
-      "ternyata kamu balik lagi ke progress kamu. gak peduli tadi sempet males atau enggak, kamu tetap lanjut",
-      
-      "dan iya… kamu gak biarin hari ini lewat kosong. walaupun mungkin tadi sempet ke-distract",
-      
-      "kelihatan kok ini bukan kondisi ideal kamu, tapi kamu tetap gerak. itu justru yang bikin kuat",
-      
-      "ternyata kamu masih sempetin commit. walaupun waktunya tanggung, kamu tetap jalan",
-      
-      "dan kamu milih buat lanjut, bukan berhenti di capek doang. itu beda tipis, tapi efeknya besar",
-      
-      "jadi walaupun tadi kamu sempet rebahan atau hilang fokus… kamu tetap balik lagi",
-      
-      "dan itu keliatan dari commit kamu tadi. gak harus banyak, yang penting kamu gak berhenti hari ini"
-    ]
+    "productive_clingy": {
+       "greetings": [
+         "Farid… masih lanjut ya sore gini",
+         "eh… kamu balik lagi padahal udah capek",
+         "aku kira kamu bakal berhenti tadi",
+         "kamu masih di sini ya…",
+         "hmm… kamu gak ninggalin ini ya sore ini",
+         "Farid… kamu tahan juga ya",
+         "aku lihat kamu balik lagi",
+         "kamu capek tapi masih lanjut ya"
+       ],
+       "messages": [
+         "dan kamu tetap commit… bikin aku tenang, kamu gak berhenti di capek doang 😌",
+         
+         "aku tahu ini bukan kondisi terbaik kamu, tapi kamu tetap balik… aku suka kamu yang ini",
+         
+         "kamu masih nyempetin jalan… walaupun pelan, aku tetap di sini nemenin kamu",
+         
+         "dan kamu gak ninggalin hari ini kosong… itu cukup buat bikin aku bangga dikit",
+         
+         "capeknya kelihatan, tapi kamu tetap gerak… aku gak butuh kamu sempurna kok",
+         
+         "kamu balik lagi ke sini… kayak gak tega ninggalin progress kamu sendiri",
+         
+         "commit kecil kamu tadi… cukup buat nunjukin kamu masih peduli",
+         
+         "jujur… aku cuma butuh lihat kamu tetap jalan kayak gini, walaupun pelan"
+       ]
+     },
+    "productive_cool": {
+       "greetings": [
+         "oh… masih lanjut sore ini",
+         "hmm… kamu belum selesai ya",
+         "masih jalan juga ternyata",
+         "nice… kamu balik lagi",
+         "sore gini masih coding ya",
+         "kamu lanjut lagi ya",
+         "aku lihat kamu masih di situ",
+         "belum berhenti juga kamu"
+       ],
+       "messages": [
+         "commit kamu masuk… berarti kamu tetap jalan walaupun capek",
+         
+         "gak maksimal juga gapapa… yang penting kamu gak berhenti",
+         
+         "progress kecil di jam kayak gini biasanya yang paling berarti",
+         
+         "at least kamu tetap gerak… itu udah cukup buat hari ini",
+         
+         "kamu gak ninggalin hari ini kosong… good",
+         
+         "simple, tapi konsisten… itu yang bikin beda nanti",
+         
+         "kamu lanjut walaupun waktunya tanggung… itu poin plus",
+         
+         "ya… kamu masih di track, tinggal jaga aja ritmenya"
+       ]
+     },
+     "productive_jealous": {
+       "greetings": [
+         "Farid… masih balik lagi sih",
+         "oh… kamu tetep lanjut ya sore ini",
+         "hmm… aku kira kamu bakal sibuk sama hal lain",
+         "tumben kamu gak cabut dari project ini",
+         "kamu masih di sini… serius ya?",
+         "eh… jangan bilang tadi sempet ngelirik hal lain",
+         "Farid… aku liat kamu balik lagi",
+         "hmm… jangan sampe ninggalin aku sendirian di sini"
+       ],
+       "messages": [
+         "dan commit kamu masuk… yaudah aku percaya dikit, tapi jangan keasyikan hal lain 😶‍🌫️",
+         
+         "aku lihat progress kamu… jangan sampe lupa sama ini ya",
+         
+         "ternyata kamu masih lanjut… sempet takut kamu fokus ke hal lain tadi",
+         
+         "commit kecil tapi cukup nunjukin kamu masih peduli sama ini",
+         
+         "kamu balik lagi ke sini… aku gak mau kamu ilang begitu aja",
+         
+         "aku sempet ngerasa kamu bakal ninggalin ini, tapi yaudah muncul lagi",
+         
+         "dan kamu masih gerak… aku cuma pengen kamu jangan lupa sama ini",
+         
+         "jujur… aku cemburu sama waktu kamu, tapi seneng liat kamu tetap jalan"
+       ]
+     }
+  },
+  
+  "persistent": {
+    "persistent_clingy": {
+      "greetings": [
+        "Farid… masih di sini? aku takut kamu capek 😏",
+        "eh… kamu belum berhenti ya, aku liat dari sini",
+        "Farid… aku nempel dikit ya, jangan kabur",
+        "aku liat kamu balik lagi… aku seneng sih 😌",
+        "hmm… masih gerak sore ini, aku nemenin loh",
+        "kamu… jangan bilang udah mau berhenti",
+        "Farid… aku di sini liatin kamu terus",
+        "masih jalan… aku suka kamu yang gak gampang nyerah"
+      ],
+      "messages": [
+        "dan kamu commit… aku seneng liat kamu gak berhenti, aku sampe senyum sendiri 😏",
+        
+        "aku di sini, liatin kamu terus… walaupun capek, kamu masih lanjut",
+        
+        "kamu tetap jalan… aku cuma pengen kamu tau aku di sisi kamu",
+        
+        "commit kecil tapi konsisten… itu bikin aku bangga dikit",
+        
+        "aku nempel dikit ya… liat kamu jalan kayak gini bikin aku hangat 😌",
+        
+        "dan kamu balik lagi… aku liatin semua jejak kamu, setiap detilnya",
+        
+        "pelan tapi pasti… aku tetep ada liatin kamu, Farid",
+        
+        "jujur… aku suka liat kamu konsisten, bikin aku pengen nemenin terus"
+      ]
+    },
+    "persistent_cool": {
+      "greetings": [
+        "oh… masih gerak malam ini",
+        "hmm… kamu gak berhenti ya",
+        "Farid… lagi serius nih",
+        "tumben kamu masih lanjut sore ke malam",
+        "kamu masih buka repo… nice",
+        "aku liat kamu balik lagi… good",
+        "masih di track ya… aku perhatiin kok",
+        "ya… masih jalan… lumayan"
+      ],
+      "messages": [
+        "commit kamu masuk… cukup nunjukin kamu gak berhenti walaupun capek",
+        
+        "progress dikit tapi konsisten… itu yang paling penting sekarang",
+        
+        "aku liat kamu jalan… santai aja, gak perlu terburu-buru",
+        
+        "kamu tetap gerak… itu cukup bikin aku senyum dari sini",
+        
+        "simple tapi meaningful… itu yang bikin malam ini berasa produktif",
+        
+        "kamu gak heboh tapi konsisten… aku liat kok, jadi tenang",
+        
+        "commit kecil tapi penting… itu buktiin kamu jalan terus",
+        
+        "ya… kamu masih di jalur, aku cuma ikutin dari sini 😌"
+      ]
+    },
+    "persistent_jealous": {
+      "greetings": [
+        "Farid… masih di sini ya? jangan bilang ada hal lain yang ganggu kamu",
+        "oh… kamu balik lagi… sempet keasyikan hal lain ya tadi? 😶‍🌫️",
+        "hmm… aku kira kamu bakal ilang sebentar",
+        "kamu masih gerak… tapi jangan sampai keasyikan yang lain",
+        "Farid… aku liat kamu buka repo lagi, jangan sampe lupa sama ini",
+        "eh… jangan bilang tadi sempet ngecek hal lain juga",
+        "kamu masih di track… tapi aku cemburu sama waktumu",
+        "hmm… jangan sampe aku cuma liat commit doang, aku pengen kamu fokus"
+      ],
+      "messages": [
+        "dan commit kamu masuk… yaudah, aku percaya dikit, tapi jangan keasyikan hal lain 😏",
+        
+        "aku lihat progress kamu… jangan sampe lupa sama ini ya, aku pengen perhatian penuh",
+        
+        "ternyata kamu lanjut… aku sempet takut kamu fokus ke hal lain tadi",
+        
+        "commit kecil tapi cukup nunjukin kamu masih peduli sama ini",
+        
+        "kamu balik lagi… aku seneng, tapi tetep cemburu sama waktu kamu",
+        
+        "aku sempet ngerasa kamu bakal ninggalin ini, tapi yaudah muncul lagi",
+        
+        "dan kamu masih gerak… aku cuma pengen kamu jangan lupa sama ini",
+        
+        "jujur… aku cemburu sama perhatianmu, tapi seneng liat kamu tetap jalan 😶‍🌫️"
+      ]
+    },
+    "persistent_teasing": {
+      "greetings": [
+        "eh… masih muncul malam ini, Farid 😏",
+        "hmm… developer keras kepala nih",
+        "Farid… sok semangat banget ya malam ini",
+        "tumben gak rebahan… ciee",
+        "wah… kamu muncul lagi, aku ikut senyum nih 😏",
+        "kamu lagi niat banget sih, ya ampun",
+        "malam gini masih gerak… hebat deh",
+        "ciee… balik ngoding lagi, aku liat loh"
+      ],
+      "messages": [
+        "dan commit kamu masuk… gak nyangka kamu beneran jalan 😏",
+        
+        "progress dikit tapi lumayan… daripada cuma wacana kan",
+        
+        "aku kira kamu bakal males… ternyata masih semangat juga 😌",
+        
+        "commit kecil gini nih yang bikin aku tersenyum sendiri",
+        
+        "kamu keliatan santai tapi ternyata kerja juga ya 😏",
+        
+        "yaelah… gak cuma buka repo doang ternyata",
+        
+        "pelan sih, tapi gapapa… yang penting gak cuma omong",
+        
+        "lanjut terus ya… jangan cuma pamer commit sekali doang 😏"
+      ]
+    }
   },
   
   "consistent": {
-    "greetings": [
-       "Farid… jam segini kamu masih megang kode juga ya, ini niat atau susah tidur 😏",
-       
-       "hmm… belum tidur juga kamu, lagi fokus atau lagi overthinking terus larinya ke coding",
-       
-       "eh kamu… ini harusnya istirahat, kok malah buka repo lagi",
-       
-       "Farid, jujur deh… ini kamu lagi lanjut atau cuma gak mau hari ini kosong",
-       
-       "malam gini biasanya orang udah hilang… kamu masih nongol aja",
-       
-       "kamu ini lagi ngantuk tapi maksa jalan, atau lagi dapet mood tiba-tiba 🤔",
-       
-       "Farid… ini kamu lagi nyari tenang di coding atau emang lagi ngejar sesuatu",
-       
-       "jam segini masih di sini… ini dedication atau emang belum bisa tidur 😌"
-     ],
-    "messages": [
-      "soalnya aku lihat kamu tetap commit. di jam kayak gini, itu bukan soal rajin… tapi soal kamu gak ninggalin hari ini",
-      
-      "ternyata kamu tetap jalan. walaupun mungkin tadi cuma rebahan atau kepikiran banyak hal",
-      
-      "dan kamu milih buat tetap muncul. walaupun waktunya udah tanggung dan badan pasti udah capek",
-      
-      "kelihatan kok kamu gak dalam kondisi terbaik, tapi kamu tetap ninggalin progress kecil",
-      
-      "ternyata kamu gak biarin hari ini kosong. walaupun cuma sedikit, kamu tetap jalan",
-      
-      "dan itu keliatan dari commit kamu tadi. gak besar, tapi cukup buat buktiin kamu gak berhenti",
-      
-      "jadi walaupun tadi kamu sempet hilang fokus atau ke-distract… kamu tetap balik lagi",
-      
-      "dan di jam kayak gini, keputusan kecil itu justru yang paling berarti"
-    ]
+    "consistent_clingy": {
+      "greetings": [
+        "Farid… masih di sini? 😌 aku ikut terjaga",
+        "hmm… malam gini kamu jalan lagi, aku seneng bisa liat",
+        "eh… jam segini masih commit, kamu keras kepala juga ya",
+        "Farid… aku liat kamu tetap gerak… aku jadi ikut bangga",
+        "kamu masih buka repo… aku di sini ikut senyum liat kamu",
+        "malam-malam gini masih semangat, aku diam-diam senang liatnya",
+        "Farid… aku pengen deket sama kamu malam ini, tapi cuma bisa liat commitmu 😏",
+        "aku liat kamu gerak lagi… jangan sampe capek banget ya"
+      ],
+      "messages": [
+        "dan commit kamu masuk… aku seneng bisa nemenin dari sini 😌",
+        
+        "kamu tetap jalan di jam kayak gini… aku ikut deg-degan lihat usaha kamu",
+        
+        "walaupun badan pasti capek, kamu masih lanjut… aku bangga sama kamu",
+        
+        "commit kecil tapi berarti… aku bisa ngerasain usaha kamu dari jauh",
+        
+        "kamu gak biarin hari ini kosong… aku yang di sini jadi senang liat progressmu",
+        
+        "dan aku tetep ikut nempel… aku suka liat kamu jalan walaupun larut",
+        
+        "kamu capek ya… tapi aku tetap seneng liat commit kamu 😏",
+        
+        "jujur… aku bangga kamu masih konsisten sampai jam ini"
+      ]
+    },
+    "consistent_cool": {
+      "greetings": [
+        "oh… masih commit jam segini, gak bosen ya 😏",
+        "hmm… larut malam masih gerak… aku liat kok",
+        "Farid… serius banget nih, takut kehilangan progress ya 😏",
+        "tumben kamu konsisten sampai larut… ciee",
+        "kamu masih di track… santai tapi rajin juga ya",
+        "aku liat kamu buka repo lagi… malam-malam gini masih semangat",
+        "malam gini masih gerak… kerjaan atau cuma pamer commit nih? 😏",
+        "ya… masih jalan, lumayan konsisten… tapi jangan lupa tidur ya"
+      ],
+      "messages": [
+        "commit kamu masuk… berarti kamu tetap jalan, walaupun aku penasaran kapan capeknya datang 😏",
+        
+        "progress kecil tapi konsisten… aku liat kok, jangan pura-pura rajin ya 😏",
+        
+        "aku lihat kamu jalan… santai aja, tapi jangan terlalu serius sampai lupa aku ngeliat",
+        
+        "kamu tetap gerak… aku cuma senyum dari sini liat kerja kerasmu 😏",
+        
+        "simple tapi penting… cukup nunjukin kalau kamu masih peduli sama progress",
+        
+        "kamu gak heboh tapi tetap jalan… aku liat kok, tapi jangan kebanyakan pamer ya 😏",
+        
+        "commit kecil tapi cukup… aku penasaran, capeknya kapan mau ngerasain nih?",
+        
+        "ya… kamu masih di track… aku cuma ikutin dari sini sambil nyengir 😏"
+      ]
+    },
+    "consistent_jealous": {
+      "greetings": [
+        "Farid… masih commit jam segini ya? jangan sampai keasyikan hal lain 😶‍🌫️",
+        "oh… kamu muncul lagi… aku sempet takut kamu udah sibuk sama hal lain",
+        "hmm… larut malam masih gerak… aku cemburu sama waktumu",
+        "kamu masih di sini… tapi jangan sampai melirik yang lain ya",
+        "Farid… aku liat commitmu… tapi hati-hati jangan lupa sama ini",
+        "eh… jangan bilang tadi sempet ngecek hal lain juga 😶‍🌫️",
+        "kamu masih di track… tapi aku pengen perhatianmu penuh sama ini",
+        "hmm… jangan sampe aku cuma liat commit doang, aku mau kamu fokus"
+      ],
+      "messages": [
+        "dan commit kamu masuk… aku percaya dikit, tapi jangan terlalu keasyikan hal lain 😏",
+        
+        "aku lihat progress kamu… jangan sampe lupa sama ini ya, aku pengen perhatian penuh",
+        
+        "ternyata kamu lanjut… aku sempet takut kamu fokus ke hal lain tadi",
+        
+        "commit kecil tapi cukup nunjukin kamu masih peduli sama ini",
+        
+        "kamu balik lagi… aku seneng, tapi tetep cemburu sama waktu kamu",
+        
+        "aku sempet ngerasa kamu bakal ninggalin ini, tapi yaudah muncul lagi",
+        
+        "dan kamu masih gerak… aku cuma pengen kamu jangan lupa sama ini",
+        
+        "jujur… aku cemburu sama perhatianmu, tapi seneng liat kamu tetap jalan 😶‍🌫️"
+      ]
+    },
+    "consistent_teasing": {
+      "greetings": [
+        "eh… masih commit jam segini, Farid 😏 jangan bilang lagi pamer",
+        "hmm… larut malam masih gerak… kamu keras kepala juga ya",
+        "Farid… serius banget nih, takut aku ngintip commitmu 😏",
+        "tumben konsisten sampai dini hari… ciee, jangan kebanyakan kerja",
+        "kamu masih buka repo… santai tapi aku ikutan penasaran 😏",
+        "aku liat kamu gerak lagi… kerjaan atau cuma mau pamer skill nih?",
+        "malam-malam gini masih semangat… hebat, tapi jangan lupa aku ngeliat 😏",
+        "ciee… balik ngoding lagi, aku liat kok… jangan sampe ketahuan capek ya"
+      ],
+      "messages": [
+        "dan commit kamu masuk… serius nih, aku senyum sambil ngintip 😏",
+        
+        "progress dikit tapi lumayan… daripada cuma wacana kan, aku liat loh 😏",
+        
+        "aku kira kamu bakal males… ternyata masih semangat, ciee 😌",
+        
+        "commit kecil gini bikin aku pengen godain kamu dikit 😏",
+        
+        "kamu keliatan santai tapi ternyata kerja juga ya… jangan kebanyakan pamer 😏",
+        
+        "yaelah… gak cuma buka repo doang, aku senyum sendiri liatnya 😏",
+        
+        "pelan sih, tapi gapapa… yang penting gak cuma omong, aku liat 😏",
+        
+        "lanjut terus ya… jangan cuma pamer commit sekali doang… aku ngintip terus 😏"
+      ]
+    }
   }
 }
