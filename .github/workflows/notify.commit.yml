@@ -13,11 +13,9 @@ jobs:
     
     steps:
       - name: Parse Commit Message
+        id: parse
         run: |
           msg="${{ github.event.head_commit.message }}"
-          
-          type=$(echo "$msg" | cut -d':' -f1)
-          detail=$(echo "$msg" | cut -d':' -f2-)
           
           if [[ "$msg" == *":"* ]]; then
             type=$(echo "$msg" | cut -d':' -f1)
@@ -28,61 +26,61 @@ jobs:
           fi
           
           if [[ "$type" == feat* ]]; then
-            REACTION="feat"
+            reaction="feat"
           elif [[ "$type" == fix* ]]; then
-            REACTION="fix"
+            reaction="fix"
           elif [[ "$type" == refactor* ]]; then
-            REACTION="refactor"
+            reaction="refactor"
           elif [[ "$type" == chore* ]]; then
-            REACTION="chore"
+            reaction="chore"
           elif [[ "$type" == docs* ]]; then
-            REACTION="docs"
+            reaction="docs"
           elif [[ "$type" == style* ]]; then
-            REACTION="style"
+            reaction="style"
           elif [[ "$type" == test* ]]; then
-            REACTION="test"
+            reaction="test"
           else
-            REACTION="✨ kamu tetap jalan hari ini... semangat ya farid"
+            reaction="✨ kamu tetap jalan hari ini... semangat ya farid"
           fi
           
-          echo "TYPE=$type" >> $GITHUB_ENV
-          echo "DETAIL=$detail" >> $GITHUB_ENV
-          echo "REACTION=$REACTION" >> $GITHUB_ENV
+          echo "type=$type" >> $GITHUB_OUTPUT
+          echo "detail=$detail" >> $GITHUB_OUTPUT
+          echo "reaction=$reaction" >> $GITHUB_OUTPUT
           
-    notify:
-     needs: prepare
-     uses: fridfn/workflow-development/.github/workflows/git.commit.message.yml@main
- 
-     with:
-       private_message: |
-         📦 Repo: ${{ github.repository }}
-         👤 Author: ${{ github.actor }}
-         📝 Commit: ${{ github.event.head_commit.message }}
- 
-       channel_message: |
-         # Commit Update
-         
-         Farid ninggalin jejak lagi di repo…
-         
-         👤 Author  : ${{ github.actor }}
-         📦 Repo    : ${{ github.repository }}
-         🌿 Branch  : ${{ github.ref_name }}
-         
-         📝 ${{ needs.prepare.outputs.type }}
-         → ${{ needs.prepare.outputs.detail }}
-         
-         ${{ needs.prepare.outputs.reaction }}
-         
-         🔢 ${{ github.sha }}
-         
-         🔗 Lihat Repo  
-         https://github.com/${{ github.repository }}
-         
-         🔗 Detail Commit  
-         https://github.com/${{ github.repository }}/commit/${{ github.sha }}
-         ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-         
-     secrets:
-       TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-       TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+  notify:
+   needs: prepare
+   uses: fridfn/workflow-development/.github/workflows/git.commit.message.yml@main
+
+   with:
+     private_message: |
+       📦 Repo: ${{ github.repository }}
+       👤 Author: ${{ github.actor }}
+       📝 Commit: ${{ github.event.head_commit.message }}
+
+     channel_message: |
+       # Commit Update
+       
+       Farid ninggalin jejak lagi di repo…
+       
+       👤 Author  : ${{ github.actor }}
+       📦 Repo    : ${{ github.repository }}
+       🌿 Branch  : ${{ github.ref_name }}
+       
+       📝 ${{ needs.prepare.outputs.type }}
+       → ${{ needs.prepare.outputs.detail }}
+       
+       ${{ needs.prepare.outputs.reaction }}
+       
+       🔢 ${{ github.sha }}
+       
+       🔗 Lihat Repo  
+       https://github.com/${{ github.repository }}
+       
+       🔗 Detail Commit  
+       https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+       ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+       
+   secrets:
+     TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+     TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+     TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
