@@ -50,5 +50,7 @@ jobs:
           if [ ! -z "$CHANNEL_MESSAGE" ]; then
             curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
             -d chat_id=$TELEGRAM_CHANNEL_ID \
+            -d "parse_mode=Markdown" \
+            -d "disable_web_page_preview=true" \
             --data-urlencode "text=$CHANNEL_MESSAGE"
           fi
