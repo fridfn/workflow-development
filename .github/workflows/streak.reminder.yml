@@ -92,7 +92,7 @@ jobs:
           if [ "$hour" -ge 14 ] && [ "$hour" -lt 19 ]; then
             # sore → santai (jarang)
             [ $((RANDOM % 4)) -eq 0 ] && send=true
-            mode="warning"  
+            mode="warning" 
             
           elif [ "$hour" -ge 19 ] && [ "$hour" -lt 23 ]; then
             # malam → lebih sering
@@ -111,6 +111,7 @@ jobs:
           fi
           
           echo "mode=$mode" >> $GITHUB_ENV
+          echo "mode_message=reminder" >> $GITHUB_ENV
           
       # =========================
       # SET MODE (COMMITTED)
@@ -139,6 +140,7 @@ jobs:
           fi
           
           echo "mode=$mode" >> $GITHUB_ENV
+          echo "mode_message=appreciation" >> $GITHUB_ENV
           
       # =========================
       # GET MESSAGE
