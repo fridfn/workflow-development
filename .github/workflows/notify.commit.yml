@@ -9,9 +9,12 @@ jobs:
     outputs:
       type: ${{ steps.parse.outputs.type }}
       detail: ${{ steps.parse.outputs.detail }}
-      reaction: ${{ steps.parse.outputs.reaction }}
+      reaction: ${{ steps.reaction.outputs.REACTION }}
     
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+         
       - name: Parse Commit Message
         id: parse
         run: |
@@ -40,13 +43,39 @@ jobs:
           elif [[ "$type" == test* ]]; then
             reaction="test"
           else
-            reaction="✨ kamu tetap jalan hari ini... semangat ya farid"
+            reaction="update"
+          fi
+          
+          hour=$(date +%H)
+          
+          if [ "$hour" -ge 12 ] && [ "$hour" -lt 16 ]; then
+            mode="ambitious"
+          elif [ "$hour" -ge 16 ] && [ "$hour" -lt 18 ]; then
+            mode="productive"
+          elif [ "$hour" -ge 18 ] && [ "$hour" -lt 21 ]; then
+            mode="persistent"
+          elif [ "$hour" -ge 21 ] || [ "$hour" -lt 7 ]; then
+            mode="consistent"
+          else
+            mode="ambitious"
           fi
           
           echo "type=$type" >> $GITHUB_OUTPUT
           echo "detail=$detail" >> $GITHUB_OUTPUT
           echo "reaction=$reaction" >> $GITHUB_OUTPUT
+          echo "mode=$mode" >> $GITHUB_OUTPUT
           
+      - name: Get reaction
+        id: reaction
+        run: |
+          chmod +x .github/scripts/get.reaction.sh
+          OUTPUT=$(type="${{ steps.parse.outputs.reaction }}" \
+          mode="${{ steps.parse.outputs.mode }}" \
+          bash .github/scripts/get.reaction.sh)
+
+          echo "$OUTPUT"
+          echo "$OUTPUT" >> $GITHUB_OUTPUT
+
   notify:
    needs: prepare
    uses: fridfn/workflow-development/.github/workflows/git.commit.message.yml@main

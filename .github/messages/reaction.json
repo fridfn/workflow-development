@@ -298,5 +298,48 @@
       "kamu gak buru-buru, tapi kamu pasti",
       "kamu tetap konsisten walaupun sepi"
     ]
+  },
+  
+  "update": {
+    "ambitious": [
+      "kamu mulai gerak lagi siang ini… keliatan kamu lagi bangun momentum",
+      "siang gini udah mulai update sesuatu… ini awal yang bagus",
+      "kamu gak diam… ada perubahan kecil yang kamu jalanin",
+      "kamu mulai lagi pelan-pelan… dan itu yang penting",
+      "kamu lagi nyentuh project kamu lagi… bagus",
+      "kamu gak cuma buka… kamu bikin perubahan",
+      "pelan tapi kamu mulai jalan lagi",
+      "kamu lagi bangun ritme kamu dari sini"
+    ],
+    "productive": [
+      "masih sempet update ya… walaupun capek",
+      "kamu tetep jalan walaupun energi udah turun",
+      "di kondisi kayak gini kamu masih gerak sedikit",
+      "kamu gak biarin hari ini kosong",
+      "pelan tapi kamu tetap lanjut",
+      "kamu tetep jaga progress walaupun gak maksimal",
+      "ini kecil tapi berarti banget",
+      "kamu gak berhenti walaupun lagi lelah"
+    ],
+    "persistent": [
+      "kamu lagi nahan diri buat tetap lanjut ya",
+      "di titik ini kamu masih nyempetin update… itu effort",
+      "kamu gak berhenti walaupun udah mulai berat",
+      "ini bukan soal besar… tapi kamu tetap jalan",
+      "kamu masih bertahan di sini… itu cukup berarti",
+      "kamu maksa dikit… tapi tetap ada hasil",
+      "kamu lagi buktiin kalau kamu gak gampang berhenti",
+      "di fase ini kamu tetap lanjut… dan itu penting"
+    ],
+    "consistent": [
+      "malam gini kamu masih update… itu bukan kebiasaan biasa",
+      "kamu gak ninggalin hari ini kosong walaupun udah larut",
+      "di jam kayak gini kamu tetap muncul",
+      "ini kecil tapi nunjukin kamu konsisten",
+      "kamu masih di sini… dan itu cukup berarti",
+      "kamu tetap jalan walaupun suasana udah sepi",
+      "kamu jaga ritme kamu sampai malam",
+      "kamu tetap lanjut walaupun pelan"
+    ]
   }
 }
