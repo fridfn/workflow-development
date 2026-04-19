@@ -60,18 +60,14 @@ jobs:
      channel_message: |
        # Commit Update
        
-       Farid ninggalin jejak lagi di repo…
-       
-       👤 Author  : ${{ github.actor }}
-       📦 Repo    : ${{ github.repository }}
-       🌿 Branch  : ${{ github.ref_name }}
-       
-       📝 ${{ needs.prepare.outputs.type }}
-       → ${{ needs.prepare.outputs.detail }}
-       
        ${{ needs.prepare.outputs.reaction }}
        
-       🔢 ${{ github.sha }}
+       👤 Author  : ${{ github.actor }}
+       🌿 Branch  : ${{ github.ref_name }}
+       📦 Repo     : ${{ github.repository }}
+       
+       📝 Type    : ${{ needs.prepare.outputs.type }}
+       📑 Info     : ${{ needs.prepare.outputs.detail }}
        
        🔗 Lihat Repo  
        https://github.com/${{ github.repository }}
