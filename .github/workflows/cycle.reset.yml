@@ -20,4 +20,10 @@ jobs:
 
           curl -s -X DELETE \
             -H "Authorization: token ${{ secrets.ACTIVITY_GITHUB_TOKEN }}" \
-            https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/labels/appreciated-today
+            https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/labels/commit-today
+            
+          if [ "$response" = "200" ] || [ "$response" = "204" ]; then
+            echo "Label removed"
+          else
+            echo "Label not found, skip"
+          fi

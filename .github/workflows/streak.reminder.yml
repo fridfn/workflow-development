@@ -29,12 +29,12 @@ jobs:
       # =========================
       # ENSURE LABEL
       # =========================
-      - name: Ensure appreciated-today label exists
+      - name: Ensure commit-today label exists
         env:
           TOKEN: ${{ secrets.ACTIVITY_GITHUB_TOKEN }}
         run: |
           REPO="fridfn/workflow-development"
-          LABEL_NAME="appreciated-today"
+          LABEL_NAME="commit-today"
 
           status=$(curl -s -o /dev/null -w "%{http_code}" \
             -H "Authorization: token $TOKEN" \
@@ -46,7 +46,7 @@ jobs:
               -H "Accept: application/vnd.github+json" \
               https://api.github.com/repos/$REPO/labels \
               -d '{
-                "name": "appreciated-today",
+                "name": "commit-today",
                 "color": "6b00c6",
                 "description": "Prevent duplicate appreciation message"
               }'
@@ -181,4 +181,4 @@ jobs:
             -H "Authorization: token $TOKEN" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/labels \
-            -d '{"labels": ["appreciated-today"]}'
+            -d '{"labels": ["commit-today"]}'
