@@ -66,8 +66,8 @@ jobs:
        🌿 Branch  : ${{ github.ref_name }}
        📦 Repo     : ${{ github.repository }}
        
-       📝 Type    : ${{ needs.prepare.outputs.type }}
-       📑 Info     : ${{ needs.prepare.outputs.detail }}
+       📝 Type     : ${{ needs.prepare.outputs.type }}
+       📑 Info      : ${{ needs.prepare.outputs.detail }}
        
        🔗 Lihat Repo  
        https://github.com/${{ github.repository }}
