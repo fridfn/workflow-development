@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Remove label appreciated-today
+      - name: Remove label commit-today
         run: |
           ISSUE_NUMBER=1
           REPO="fridfn/workflow-development"

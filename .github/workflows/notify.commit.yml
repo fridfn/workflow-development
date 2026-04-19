@@ -6,6 +6,45 @@ on:
 jobs:
   notify:
     uses: fridfn/workflow-development/.github/workflows/git.commit.message.yml@main
+    
+    steps:
+      - name: Parse Commit Message
+        run: |
+          msg="${{ github.event.head_commit.message }}"
+          
+          type=$(echo "$msg" | cut -d':' -f1)
+          detail=$(echo "$msg" | cut -d':' -f2-)
+          
+          if [[ "$msg" == *":"* ]]; then
+            type=$(echo "$msg" | cut -d':' -f1)
+            detail=$(echo "$msg" | cut -d':' -f2-)
+          else
+            type="update"
+            detail="$msg"
+          fi
+          
+          if [[ "$TYPE" == feat* ]]; then
+            REACTION="feat"
+          elif [[ "$TYPE" == fix* ]]; then
+            REACTION="fix"
+          elif [[ "$TYPE" == refactor* ]]; then
+            REACTION="refactor"
+          elif [[ "$TYPE" == chore* ]]; then
+            REACTION="chore"
+          elif [[ "$TYPE" == docs* ]]; then
+            REACTION="docs"
+          elif [[ "$TYPE" == style* ]]; then
+            REACTION="style"
+          elif [[ "$TYPE" == test* ]]; then
+            REACTION="test"
+          else
+            REACTION="✨ kamu tetap jalan hari ini... semangat ya farid"
+          fi
+          
+          echo "TYPE=$type" >> $GITHUB_ENV
+          echo "DETAIL=$detail" >> $GITHUB_ENV
+          echo "REACTION=$REACTION" >> $GITHUB_ENV
+          
     with:
       private_message: |
         💜 Repo: ${{ github.repository }}
@@ -13,10 +52,25 @@ jobs:
         📝 Commit: ${{ github.event.head_commit.message }}
         
       channel_message: |
-        💜 Repo: ${{ github.repository }}
-        👤 Author: ${{ github.actor }}
-        📝 Commit: ${{ github.event.head_commit.message }}
+        channel_message: |
+        # Commit Update
         
+        Farid ninggalin jejak lagi di repo…
+        
+        👤 Author  : ${{ github.actor }}
+        📦 Repo    : ${{ github.repository }}
+        🌿 Branch  : ${{ github.ref_name }}
+        📝 Commit  : ${{ env.TYPE }}
+        
+        🔢 SHA     : ${{ github.sha }}
+        📌 Detail  : ${{ env.DETAIL }}
+        
+        🔗 Lihat Repo  
+        https://github.com/${{ github.repository }}
+        
+        🔗 Detail Commit  
+        https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+        ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
     secrets:
       TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
