@@ -10,7 +10,9 @@ reaction=$(echo "$data" | jq -r \
 
 # validasi
 if [ -z "$reaction" ] || [ "$reaction" = "null" ]; then
-  reaction="kamu tetap jalan hari ini… itu udah cukup"
+  reaction="kamu tetap jalan hari ini… itu udah cukup
+  ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+  "
 fi
 
 if [ -z "$reaction" ] || [ "$reaction" = "null" ]; then

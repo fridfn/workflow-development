@@ -149,7 +149,7 @@ jobs:
         if: (steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true') || steps.activity.outputs.no_commit == 'true'
         run: |
           chmod +x .github/scripts/get.message.sh
-          OUTPUT=$(mode="$mode" bash .github/scripts/get.message.sh)
+          OUTPUT=$(mode="$mode" mode_message="$mode_message" bash .github/scripts/get.message.sh)
 
           echo "$OUTPUT"
           echo "$OUTPUT" >> $GITHUB_ENV
