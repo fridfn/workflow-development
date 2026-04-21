@@ -50,7 +50,6 @@ if [ "$TYPE" = "combined" ]; then
   curl -s -X POST "$API_URL" \
     -d chat_id="$CHAT_ID" \
     --data-urlencode "text=$TEXT
-
 ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
 "
 
@@ -66,7 +65,6 @@ else
   curl -s -X POST "$API_URL" \
     -d chat_id="$CHAT_ID" \
     --data-urlencode "text=$GREETING
-
 ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
 "
 
@@ -80,7 +78,6 @@ else
   curl -s -X POST "$API_URL" \
     -d chat_id="$CHAT_ID" \
     --data-urlencode "text=$MESSAGE
-
 ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
 "
 
