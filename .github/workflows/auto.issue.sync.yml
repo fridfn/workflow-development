@@ -106,7 +106,7 @@ jobs:
           ITEM_ID="${{ steps.project.outputs.item_id }}"
            FIELD_STATUS_ID="PVTSSF_lAHOBwNpjM4BFN0Lzg2nkaU"
            TODO_OPTION_ID="f75ad846"
-           FIELD_DATE_ID="PVTF_lAHOBwNpjM4BFN0LzhQvCqc""
+           FIELD_DATE_ID="PVTF_lAHOBwNpjM4BFN0LzhQvCqc"
 
           # SET STATUS → TODO
           curl -s -X POST https://api.github.com/graphql \
