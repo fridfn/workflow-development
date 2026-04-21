@@ -1,3 +1,22 @@
+# ==========================================
+# 🔔 Daily Commit Reminder (All Repo)
+# ------------------------------------------
+# Tujuan:
+# - Monitor activity commit setiap jam
+# - Kirim reminder jika belum commit
+# - Kirim appreciation jika sudah commit
+# - Gunakan lock system untuk mencegah duplicate
+#
+# Flow:
+# 1. Check lock (apakah sudah ada commit hari ini)
+# 2. Ensure label tersedia
+# 3. Check activity hari ini
+# 4. Tentukan mode (reminder / appreciation)
+# 5. Generate message (tone + random)
+# 6. Kirim ke Telegram
+# 7. Set lock jika sudah commit
+# ==========================================
+
 name: Daily Commit Reminder (All Repo)
 
 concurrency:
@@ -23,16 +42,20 @@ jobs:
     needs: lock-check
     
     steps:
-      - name: Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
         
       # =========================
-      # ENSURE LABEL
+      # 🏷️ ENSURE LABEL
       # =========================
       - name: Ensure commit-today label exists
         env:
           TOKEN: ${{ secrets.ACTIVITY_GITHUB_TOKEN }}
         run: |
+          echo "=============================="
+          echo "🏷️ Ensure Label"
+          echo "=============================="
+
           REPO="fridfn/workflow-development"
           LABEL_NAME="commit-today"
 
@@ -40,7 +63,11 @@ jobs:
             -H "Authorization: token $TOKEN" \
             https://api.github.com/repos/$REPO/labels/$LABEL_NAME)
 
+          echo "🔍 Label status: $status"
+
           if [ "$status" -ne 200 ]; then
+            echo "➕ Creating label..."
+
             curl -s -X POST \
               -H "Authorization: token $TOKEN" \
               -H "Accept: application/vnd.github+json" \
@@ -50,78 +77,105 @@ jobs:
                 "color": "6b00c6",
                 "description": "Prevent duplicate appreciation message"
               }'
+
+            echo "✅ Label created"
+          else
+            echo "✔️ Label already exists"
           fi
 
       # =========================
-      # CHECK ACTIVITY
+      # 🔍 CHECK ACTIVITY
       # =========================
       - name: Check GitHub activity
         id: activity
         run: |
+          echo "=============================="
+          echo "🔍 Checking Activity"
+          echo "=============================="
+
           username="fridfn"
+          today=$(date -u +%Y-%m-%d)
+
+          echo "👤 User  : $username"
+          echo "📅 Today : $today"
 
           response=$(curl -s \
             -H "Authorization: token ${{ secrets.ACTIVITY_GITHUB_TOKEN }}" \
             https://api.github.com/users/$username/events)
 
-          today=$(date -u +%Y-%m-%d)
-
           has_push=$(echo "$response" | jq "[.[] | select(.type==\"PushEvent\" and (.created_at | startswith(\"$today\")))] | length")
+
+          echo "📊 Push count: $has_push"
 
           if [ "$has_push" -gt 0 ]; then
             echo "no_commit=false" >> $GITHUB_OUTPUT
+            echo "💜 Status: Active (sudah commit)"
           else
             echo "no_commit=true" >> $GITHUB_OUTPUT
+            echo "🌙 Status: Idle (belum commit)"
           fi
 
       # =========================
-      # SET MODE (NO COMMITTED)
+      # ⚠️ REMINDER MODE
       # =========================
-      - name: Send Reminder (No Commit)  
-        if: steps.activity.outputs.no_commit == 'true'  
-        env:  
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}  
-          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}  
-        run: |  
+      - name: Send Reminder (No Commit)
+        if: steps.activity.outputs.no_commit == 'true'
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+        run: |
+          echo "=============================="
+          echo "⚠️ Reminder Mode"
+          echo "=============================="
+
           export TZ=Asia/Jakarta  
-          hour=$(date +%H)  
-            
+          hour=$(date +%H)
+
+          echo "⏳ Hour: $hour"
+
           mode=""
           send=false
           
           if [ "$hour" -ge 14 ] && [ "$hour" -lt 19 ]; then
-            # sore → santai (jarang)
             [ $((RANDOM % 4)) -eq 0 ] && send=true
             mode="warning" 
+            echo "🌤️ Phase: Sore (low frequency)"
             
           elif [ "$hour" -ge 19 ] && [ "$hour" -lt 23 ]; then
-            # malam → lebih sering
             [ $((RANDOM % 3)) -eq 0 ] && send=true
             mode="last_warning"  
+            echo "🌙 Phase: Malam (medium)"
             
           elif [ "$hour" -ge 23 ] || [ "$hour" -lt 7 ]; then
-            # larut → hampir selalu
             [ $((RANDOM % 2)) -eq 0 ] && send=true
             mode="final_warning"  
+            echo "🌌 Phase: Late (high)"
           fi
           
           if [ "$send" = false ]; then
-            echo "Skip (smart interval)"
+            echo "⏭️ Skip (smart interval)"
             exit 0
           fi
           
+          echo "🎯 Mode: $mode"
           echo "mode=$mode" >> $GITHUB_ENV
           echo "mode_message=reminder" >> $GITHUB_ENV
           
       # =========================
-      # SET MODE (COMMITTED)
+      # 💜 APPRECIATION MODE
       # =========================
       - name: Set Mode (Committed)
         if: steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true'
         run: |
+          echo "=============================="
+          echo "💜 Appreciation Mode"
+          echo "=============================="
+
           export TZ=Asia/Jakarta
           hour=$(date +%H)
-          
+
+          echo "⏳ Hour: $hour"
+
           mode=""
           
           if [ "$hour" -ge 12 ] && [ "$hour" -lt 16 ]; then
@@ -135,19 +189,24 @@ jobs:
           fi
           
           if [ -z "$mode" ]; then
-            echo "No mode committed → exit"
+            echo "⏭️ No mode → exit"
             exit 0
           fi
           
+          echo "🎯 Mode: $mode"
           echo "mode=$mode" >> $GITHUB_ENV
           echo "mode_message=appreciation" >> $GITHUB_ENV
           
       # =========================
-      # GET MESSAGE
+      # 🎲 GET MESSAGE
       # =========================
       - name: Get Message
         if: (steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true') || steps.activity.outputs.no_commit == 'true'
         run: |
+          echo "=============================="
+          echo "🎲 Generate Message"
+          echo "=============================="
+
           chmod +x .github/scripts/get.message.sh
           OUTPUT=$(mode="$mode" mode_message="$mode_message" bash .github/scripts/get.message.sh)
 
@@ -155,7 +214,7 @@ jobs:
           echo "$OUTPUT" >> $GITHUB_ENV
 
       # =========================
-      # SEND TELEGRAM
+      # 📤 SEND TELEGRAM
       # =========================
       - name: Send Telegram
         if: (steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true') || steps.activity.outputs.no_commit == 'true'
@@ -163,17 +222,25 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: |
+          echo "=============================="
+          echo "📤 Sending Message"
+          echo "=============================="
+
           chmod +x .github/scripts/send.telegram.sh
           bash .github/scripts/send.telegram.sh
 
       # =========================
-      # SET LOCK
+      # 🔒 SET LOCK
       # =========================
       - name: Set Appreciation Lock
         if: steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true'
         env:
           TOKEN: ${{ secrets.ACTIVITY_GITHUB_TOKEN }}
         run: |
+          echo "=============================="
+          echo "🔒 Setting Lock"
+          echo "=============================="
+
           ISSUE_NUMBER=1
           REPO="fridfn/workflow-development"
 
@@ -182,3 +249,5 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/labels \
             -d '{"labels": ["commit-today"]}'
+
+          echo "✅ Lock set (commit-today)"

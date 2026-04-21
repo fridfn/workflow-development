@@ -1,29 +1,70 @@
+# ==========================================
+# 💜 Reset Appreciation Lock
+# ------------------------------------------
+# Tujuan:
+# - Reset label "commit-today" setiap hari
+# - Digunakan untuk membuka kembali sistem streak
+#
+# Trigger:
+# - Schedule: tiap hari jam 00:00 UTC
+# - Manual: workflow_dispatch
+#
+# Flow:
+# 1. Call GitHub API
+# 2. Remove label dari issue tracker
+# 3. Log hasil (success / skip)
+# ==========================================
+
 name: Reset Appreciation Lock
-  
+
 permissions:
   issues: write
-  
+
 on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
-    
+
 jobs:
   reset:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Remove label commit-today
+      - name: 🔄 Reset commit-today label
         run: |
+          echo "=============================="
+          echo "💜 Reset Appreciation Lock"
+          echo "=============================="
+
           ISSUE_NUMBER=1
           REPO="fridfn/workflow-development"
 
-          curl -s -X DELETE \
+          echo "📦 Repo   : $REPO"
+          echo "📌 Issue  : #$ISSUE_NUMBER"
+          echo "🏷️ Label  : commit-today"
+          echo "⏳ Start  : $(date)"
+
+          # =========================
+          # 🔥 CALL API
+          # =========================
+          response=$(curl -s -o /dev/null -w "%{http_code}" -X DELETE \
             -H "Authorization: token ${{ secrets.ACTIVITY_GITHUB_TOKEN }}" \
-            https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/labels/commit-today
-            
+            https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/labels/commit-today)
+
+          # =========================
+          # 📊 RESULT LOG
+          # =========================
+          echo "🔍 HTTP Status: $response"
+
           if [ "$response" = "200" ] || [ "$response" = "204" ]; then
-            echo "Label removed"
+            echo "✅ Label successfully removed"
+          elif [ "$response" = "404" ]; then
+            echo "⚠️ Label not found (already clean)"
           else
-            echo "Label not found, skip"
+            echo "❌ Failed to remove label"
+            echo "🚨 Unexpected response code: $response"
+            exit 1
           fi
+
+          echo "⏹️ End     : $(date)"
+          echo "=============================="

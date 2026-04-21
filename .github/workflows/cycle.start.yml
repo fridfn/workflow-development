@@ -1,3 +1,19 @@
+# ==========================================
+# 🌅 Daily Cycle Start
+# ------------------------------------------
+# Tujuan:
+# - Mulai siklus harian
+# - Cek apakah kemarin ada commit
+# - Kirim pesan pembuka hari ke Telegram
+#
+# Flow:
+# 1. Checkout repo
+# 2. Ambil aktivitas GitHub (yesterday)
+# 3. Tentukan status commit (true / false)
+# 4. Generate message (based on status)
+# 5. Kirim ke Telegram
+# ==========================================
+
 name: Daily Cycle Start
 
 on:
@@ -10,49 +26,89 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout repo
+      - name: 📥 Checkout repo
         uses: actions/checkout@v4
         
-      - name: Check Yesterday Activity
+      - name: 🔍 Check Yesterday Activity
         run: |
+          echo "=============================="
+          echo "🌙 Checking Yesterday Activity"
+          echo "=============================="
+
           username="fridfn"
-      
           yesterday=$(date -u -d "yesterday" +%Y-%m-%d)
-      
+
+          echo "👤 User       : $username"
+          echo "📅 Yesterday  : $yesterday"
+
+          # =========================
+          # 📡 Fetch GitHub Events
+          # =========================
           response=$(curl -s \
             -H "Authorization: token ${{ secrets.ACTIVITY_GITHUB_TOKEN }}" \
             https://api.github.com/users/$username/events)
-      
+
+          # =========================
+          # 🧠 Count PushEvent
+          # =========================
           yesterday_commit=$(echo "$response" | jq -r --arg y "$yesterday" '
             [.[] 
               | select(.type=="PushEvent") 
               | select(.created_at | startswith($y))
             ] | length')
-      
+
+          echo "📊 Commit Count: $yesterday_commit"
+
+          # =========================
+          # ✅ Set Status
+          # =========================
           if [ "$yesterday_commit" -gt 0 ]; then
             echo "yesterday_commit=true" >> $GITHUB_ENV
+            echo "💜 Status: Active (ada commit)"
           else
             echo "yesterday_commit=false" >> $GITHUB_ENV
+            echo "🌙 Status: Idle (tidak ada commit)"
           fi
-            
-      - name: Generate Morning Message
+
+      - name: 🎲 Generate Morning Message
         run: |
+          echo "=============================="
+          echo "💬 Generate Morning Message"
+          echo "=============================="
+
           data=$(cat .github/messages/daily.start.json)
-      
+
+          echo "📦 Load message data..."
+
+          # =========================
+          # 🎯 Pick Message
+          # =========================
           if [ "$yesterday_commit" = "false" ]; then
+            echo "⚠️ No commit yesterday → pilih no_commit_yesterday"
             message=$(echo "$data" | jq -r '.no_commit_yesterday[]' | shuf -n 1)
           else
+            echo "✅ Commit detected → pilih committed_yesterday"
             message=$(echo "$data" | jq -r '.committed_yesterday[]' | shuf -n 1)
           fi
-      
+
+          echo "📝 Selected Message:"
+          echo "$message"
+
           echo "message=$message" >> $GITHUB_ENV
           
-      - name: Send New Day Message
+      - name: 📤 Send New Day Message
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           
         run: |
+          echo "=============================="
+          echo "🚀 Sending Message to Telegram"
+          echo "=============================="
+
           curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
             -d chat_id="$TELEGRAM_CHANNEL_ID" \
-            --data-urlencode "text=$message"
+            --data-urlencode "text=$message" \
+            -d "disable_web_page_preview=true"
+
+          echo "✅ Message sent"

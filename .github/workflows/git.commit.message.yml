@@ -1,13 +1,32 @@
+# ==========================================
+# 📢 Notify Workflow Dev Push
+# ------------------------------------------
+# Tujuan:
+# - Kirim notifikasi ke Telegram saat ada push
+# - Bisa dipanggil ulang (reusable workflow)
+#
+# Trigger:
+# - push ke branch main
+# - manual (workflow_dispatch)
+# - reusable (workflow_call)
+#
+# Flow:
+# 1. Terima input message (private / channel)
+# 2. Cek apakah message tersedia
+# 3. Kirim ke Telegram (private / channel)
+# ==========================================
+
 name: Notify Workflow Dev Push
 
 on:
   workflow_dispatch:
+
   push:
-    branches: [main]   # atau branch kamu
+    branches: [main]
     paths-ignore:
-     - README.md
-     - .github/*.md
-     
+      - README.md
+      - .github/*.md
+
   workflow_call:
     inputs:
       private_message:
@@ -16,7 +35,7 @@ on:
       channel_message:
         required: false
         type: string
-        
+
     secrets:
       TELEGRAM_TOKEN:
         required: true
@@ -24,33 +43,62 @@ on:
         required: false
       TELEGRAM_CHANNEL_ID:
         required: false
-        
+
 jobs:
   notify:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Send Telegram Message
+      - name: 📤 Send Telegram Message
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           PRIVATE_MESSAGE: ${{ inputs.private_message }}
           CHANNEL_MESSAGE: ${{ inputs.channel_message }}
-          
+
         run: |
-          # 💜 Kirim ke pribadi (kalau ada)
+          echo "=============================="
+          echo "📢 Telegram Notification Start"
+          echo "=============================="
+
+          echo "📦 Repo   : $GITHUB_REPOSITORY"
+          echo "🌿 Branch : $GITHUB_REF_NAME"
+          echo "👤 Actor  : $GITHUB_ACTOR"
+
+          # =========================
+          # 💜 PRIVATE MESSAGE
+          # =========================
           if [ ! -z "$PRIVATE_MESSAGE" ]; then
+            echo "💬 Sending private message..."
+
             curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
-            -d chat_id=$TELEGRAM_CHAT_ID \
-            --data-urlencode "text=$PRIVATE_MESSAGE"
+              -d chat_id=$TELEGRAM_CHAT_ID \
+              -d "disable_web_page_preview=true" \
+              --data-urlencode "text=$PRIVATE_MESSAGE"
+
+            echo "✅ Private message sent"
+          else
+            echo "⚠️ No private message"
           fi
 
-          # 📢 Kirim ke channel (kalau ada)
+          # =========================
+          # 📢 CHANNEL MESSAGE
+          # =========================
           if [ ! -z "$CHANNEL_MESSAGE" ]; then
+            echo "📣 Sending channel message..."
+
             curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
-            -d chat_id=$TELEGRAM_CHANNEL_ID \
-            -d "parse_mode=Markdown" \
-            -d "disable_web_page_preview=true" \
-            --data-urlencode "text=$CHANNEL_MESSAGE"
+              -d chat_id=$TELEGRAM_CHANNEL_ID \
+              -d "parse_mode=Markdown" \
+              -d "disable_web_page_preview=true" \
+              --data-urlencode "text=$CHANNEL_MESSAGE"
+
+            echo "✅ Channel message sent"
+          else
+            echo "⚠️ No channel message"
           fi
+
+          echo "=============================="
+          echo "⏹️ Notification Finished"
+          echo "=============================="

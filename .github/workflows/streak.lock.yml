@@ -1,3 +1,18 @@
+# ==========================================
+# 🔒 Appreciation Lock
+# ------------------------------------------
+# Tujuan:
+# - Cek apakah hari ini sudah ada commit
+# - Gunakan label "commit-today" sebagai lock
+# - Mencegah duplicate message (1 hari = 1 event)
+#
+# Flow:
+# 1. Ambil label dari issue tracker
+# 2. Cek apakah label "commit-today" ada
+# 3. Jika ada → allowed=false (lock aktif)
+# 4. Jika tidak → allowed=true (boleh lanjut)
+# ==========================================
+
 name: Appreciation Lock
   
 permissions:
@@ -17,22 +32,49 @@ jobs:
       allowed: ${{ steps.check.outputs.allowed }}
       
     steps:
-      - name: Check label
+      - name: 🔍 Check commit-today label
         id: check
         run: |
+          echo "=============================="
+          echo "🔒 Appreciation Lock Check"
+          echo "=============================="
+
           ISSUE_NUMBER=1
           LABEL="commit-today"
           REPO="fridfn/workflow-development"
-          
+
+          echo "📦 Repo   : $REPO"
+          echo "📌 Issue  : #$ISSUE_NUMBER"
+          echo "🏷️ Label  : $LABEL"
+
+          # =========================
+          # 📡 FETCH LABELS
+          # =========================
           labels=$(curl -s \
             -H "Authorization: token ${{ secrets.ACTIVITY_GITHUB_TOKEN }}" \
             https://api.github.com/repos/$REPO/issues/$ISSUE_NUMBER/labels)
-            
-          already=$(echo "$labels" | jq -r --arg LABEL "$LABEL" '.[] | select(.name == $LABEL) | .name' | wc -l)
-          
+
+          echo "📥 Labels fetched"
+
+          # =========================
+          # 🧠 CHECK EXISTENCE
+          # =========================
+          already=$(echo "$labels" | jq -r --arg LABEL "$LABEL" '
+            [.[] | select(.name == $LABEL)] | length')
+
+          echo "🔎 Found count: $already"
+
+          # =========================
+          # ✅ SET RESULT
+          # =========================
           if [ "$already" -gt 0 ]; then
             echo "allowed=false" >> $GITHUB_OUTPUT
+            echo "⛔ Lock active → skip process"
           else
             echo "allowed=true" >> $GITHUB_OUTPUT
+            echo "✅ No lock → process allowed"
           fi
-          
+
+          echo "=============================="
+          echo "⏹️ Check Finished"
+          echo "=============================="
