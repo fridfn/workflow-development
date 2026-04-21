@@ -1,0 +1,147 @@
+name: Auto Project Issue Sync
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  auto-project:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Get Commit Message
+        id: commit
+        run: |
+          echo "message=$(git log -1 --pretty=%B)" >> $GITHUB_OUTPUT
+
+      - name: Parse Commit Type & Title
+        id: parse
+        run: |
+          MSG="${{ steps.commit.outputs.message }}"
+          
+          TYPE=$(echo "$MSG" | cut -d':' -f1 | tr '[:upper:]' '[:lower:]')
+          TITLE=$(echo "$MSG" | cut -d':' -f2- | sed 's/^ //')
+
+          echo "type=$TYPE" >> $GITHUB_OUTPUT
+          echo "title=$TITLE" >> $GITHUB_OUTPUT
+
+      - name: Set Labels & Schedule
+        id: logic
+        run: |
+          TYPE="${{ steps.parse.outputs.type }}"
+
+          if [[ "$TYPE" == feat* ]]; then
+            LABEL="feat"
+            DAYS=2
+          elif [[ "$TYPE" == fix* ]]; then
+            LABEL="fix"
+            DAYS=0
+          elif [[ "$TYPE" == refactor* ]]; then
+            LABEL="refactor"
+            DAYS=1
+          elif [[ "$TYPE" == chore* ]]; then
+            LABEL="chore"
+            DAYS=3
+          else
+            LABEL="other"
+            DAYS=2
+          fi
+
+          DATE=$(date -u -d "+$DAYS day" +"%Y-%m-%d")
+
+          echo "label=$LABEL" >> $GITHUB_OUTPUT
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+
+      - name: Create Issue
+        id: issue
+        run: |
+          TITLE="[${{ steps.logic.outputs.label }}] ${{ steps.parse.outputs.title }}"
+
+          RESPONSE=$(curl -s -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/issues \
+            -d "{
+              \"title\": \"$TITLE\",
+              \"body\": \"Auto-created from commit\n\nType: ${{ steps.logic.outputs.label }}\nSchedule: ${{ steps.logic.outputs.date }}\"
+            }")
+
+          echo "issue_node_id=$(echo $RESPONSE | jq -r '.node_id')" >> $GITHUB_OUTPUT
+
+      - name: Add Issue to Project
+        id: project
+        run: |
+          PROJECT_ID="PVT_kwHOBwNpjM4BFN0L"
+
+          RESPONSE=$(curl -s -X POST https://api.github.com/graphql \
+            -H "Authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"query\": \"mutation {
+                addProjectV2ItemById(input: {
+                  projectId: \\\"$PROJECT_ID\\\",
+                  contentId: \\\"${{ steps.issue.outputs.issue_node_id }}\\\"
+                }) {
+                  item {
+                    id
+                  }
+                }
+              }\"
+            }")
+
+          echo "item_id=$(echo $RESPONSE | jq -r '.data.addProjectV2ItemById.item.id')" >> $GITHUB_OUTPUT
+
+      - name: Set Project Fields
+        run: |
+          PROJECT_ID="PVT_kwHOBwNpjM4BFN0L"
+          ITEM_ID="${{ steps.project.outputs.item_id }}"
+           FIELD_STATUS_ID="PVTSSF_lAHOBwNpjM4BFN0Lzg2nkaU"
+           TODO_OPTION_ID="f75ad846"
+           FIELD_DATE_ID="PVTF_lAHOBwNpjM4BFN0LzhQvCqc""
+
+          # SET STATUS → TODO
+          curl -s -X POST https://api.github.com/graphql \
+            -H "Authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"query\": \"mutation {
+                updateProjectV2ItemFieldValue(input: {
+                  projectId: \\\"$PROJECT_ID\\\",
+                  itemId: \\\"$ITEM_ID\\\",
+                  fieldId: \\\"$FIELD_STATUS_ID\\\",
+                  value: { singleSelectOptionId: \\\"$TODO_OPTION_ID\\\" }
+                }) {
+                  projectV2Item {
+                    id
+                  }
+                }
+              }\"
+            }"
+
+          # SET DATE (Calendar View)
+          curl -s -X POST https://api.github.com/graphql \
+            -H "Authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"query\": \"mutation {
+                updateProjectV2ItemFieldValue(input: {
+                  projectId: \\\"$PROJECT_ID\\\",
+                  itemId: \\\"$ITEM_ID\\\",
+                  fieldId: \\\"$FIELD_DATE_ID\\\",
+                  value: { date: \\\"${{ steps.logic.outputs.date }}\\\" }
+                }) {
+                  projectV2Item {
+                    id
+                  }
+                }
+              }\"
+            }"
