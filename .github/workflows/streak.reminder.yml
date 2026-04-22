@@ -127,35 +127,11 @@ jobs:
           echo "=============================="
           echo "⚠️ Reminder Mode"
           echo "=============================="
-
-          export TZ=Asia/Jakarta  
-          hour=$(date +%H)
-
-          echo "⏳ Hour: $hour"
-
-          mode=""
-          send=false
           
-          if [ "$hour" -ge 14 ] && [ "$hour" -lt 19 ]; then
-            [ $((RANDOM % 4)) -eq 0 ] && send=true
-            mode="warning" 
-            echo "🌤️ Phase: Sore (low frequency)"
-            
-          elif [ "$hour" -ge 19 ] && [ "$hour" -lt 23 ]; then
-            [ $((RANDOM % 3)) -eq 0 ] && send=true
-            mode="last_warning"  
-            echo "🌙 Phase: Malam (medium)"
-            
-          elif [ "$hour" -ge 23 ] || [ "$hour" -lt 7 ]; then
-            [ $((RANDOM % 2)) -eq 0 ] && send=true
-            mode="final_warning"  
-            echo "🌌 Phase: Late (high)"
-          fi
+          chmod +x .github/scripts/core/mode.time.sh
+          source .github/scripts/core/mode.time.sh
           
-          if [ "$send" = false ]; then
-            echo "⏭️ Skip (smart interval)"
-            exit 0
-          fi
+          mode=$(get_mode_by_no_commit)
           
           echo "🎯 Mode: $mode"
           echo "mode=$mode" >> $GITHUB_ENV
@@ -170,28 +146,11 @@ jobs:
           echo "=============================="
           echo "💜 Appreciation Mode"
           echo "=============================="
-
-          export TZ=Asia/Jakarta
-          hour=$(date +%H)
-
-          echo "⏳ Hour: $hour"
-
-          mode=""
           
-          if [ "$hour" -ge 12 ] && [ "$hour" -lt 16 ]; then
-            mode="ambitious"
-          elif [ "$hour" -ge 16 ] && [ "$hour" -lt 18 ]; then
-            mode="productive"
-          elif [ "$hour" -ge 18 ] && [ "$hour" -lt 21 ]; then
-            mode="persistent"
-          elif [ "$hour" -ge 21 ] || [ "$hour" -lt 7 ]; then
-            mode="consistent"
-          fi
+          chmod +x .github/scripts/core/mode.time.sh
+          source .github/scripts/core/mode.time.sh
           
-          if [ -z "$mode" ]; then
-            echo "⏭️ No mode → exit"
-            exit 0
-          fi
+          mode=$(get_mode_by_commit)
           
           echo "🎯 Mode: $mode"
           echo "mode=$mode" >> $GITHUB_ENV

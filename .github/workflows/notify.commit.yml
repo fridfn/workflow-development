@@ -2,7 +2,7 @@ name: Notify Commit
 
 on:
   push:
-  
+
 jobs:
   prepare:
     runs-on: ubuntu-latest
@@ -10,16 +10,25 @@ jobs:
       type: ${{ steps.parse.outputs.type }}
       detail: ${{ steps.parse.outputs.detail }}
       reaction: ${{ steps.reaction.outputs.REACTION }}
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-         
+
+      # =========================
+      # 🔹 PARSE COMMIT
+      # =========================
       - name: Parse Commit Message
         id: parse
         run: |
+          chmod +x .github/scripts/core/multiline.sh
+          chmod +x .github/scripts/core/mode.time.sh
+      
+          source .github/scripts/core/multiline.sh
+          source .github/scripts/core/mode.time.sh
+      
           msg="${{ github.event.head_commit.message }}"
-          
+      
           if [[ "$msg" == *":"* ]]; then
             type=$(echo "$msg" | cut -d':' -f1)
             detail=$(echo "$msg" | cut -d':' -f2-)
@@ -27,86 +36,81 @@ jobs:
             type="update"
             detail="$msg"
           fi
-          
-          if [[ "$type" == feat* ]]; then
-            reaction="feat"
-          elif [[ "$type" == fix* ]]; then
-            reaction="fix"
-          elif [[ "$type" == refactor* ]]; then
-            reaction="refactor"
-          elif [[ "$type" == chore* ]]; then
-            reaction="chore"
-          elif [[ "$type" == docs* ]]; then
-            reaction="docs"
-          elif [[ "$type" == style* ]]; then
-            reaction="style"
-          elif [[ "$type" == test* ]]; then
-            reaction="test"
-          else
-            reaction="update"
-          fi
-          
-          hour=$(date +%H)
-          
-          if [ "$hour" -ge 12 ] && [ "$hour" -lt 16 ]; then
-            mode="ambitious"
-          elif [ "$hour" -ge 16 ] && [ "$hour" -lt 18 ]; then
-            mode="productive"
-          elif [ "$hour" -ge 18 ] && [ "$hour" -lt 21 ]; then
-            mode="persistent"
-          elif [ "$hour" -ge 21 ] || [ "$hour" -lt 7 ]; then
-            mode="consistent"
-          else
-            mode="ambitious"
-          fi
-          
+      
+          case "$type" in
+            feat*) reaction="feat" ;;
+            fix*) reaction="fix" ;;
+            refactor*) reaction="refactor" ;;
+            chore*) reaction="chore" ;;
+            docs*) reaction="docs" ;;
+            style*) reaction="style" ;;
+            test*) reaction="test" ;;
+            *) reaction="update" ;;
+          esac
+      
+          mode=$(get_mode_by_commit)
+      
           echo "type=$type" >> $GITHUB_OUTPUT
-          echo "detail=$detail" >> $GITHUB_OUTPUT
           echo "reaction=$reaction" >> $GITHUB_OUTPUT
           echo "mode=$mode" >> $GITHUB_OUTPUT
-          
+      
+          set_multiline "detail" "$detail"
+
+
+      # =========================
+      # 🔹 GET REACTION MESSAGE
+      # =========================
       - name: Get reaction
         id: reaction
         run: |
           chmod +x .github/scripts/get.reaction.sh
+          chmod +x .github/scripts/core/multiline.sh
+          source .github/scripts/core/multiline.sh
+
           OUTPUT=$(type="${{ steps.parse.outputs.reaction }}" \
           mode="${{ steps.parse.outputs.mode }}" \
           bash .github/scripts/get.reaction.sh)
 
           echo "$OUTPUT"
-          echo "$OUTPUT" >> $GITHUB_OUTPUT
 
+          # 🔥 multiline safe output
+          set_multiline "REACTION" "$OUTPUT"
+
+
+  # =========================
+  # 🔹 NOTIFY (REUSABLE WORKFLOW)
+  # =========================
   notify:
-   needs: prepare
-   uses: fridfn/workflow-development/.github/workflows/git.commit.message.yml@main
+    needs: prepare
+    uses: fridfn/workflow-development/.github/workflows/git.commit.message.yml@main
 
-   with:
-     private_message: |
-       📦 Repo: ${{ github.repository }}
-       👤 Author: ${{ github.actor }}
-       📝 Commit: ${{ github.event.head_commit.message }}
-       ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-     
-     channel_message: |
-       # Commit Update
-       
-       ${{ needs.prepare.outputs.reaction }}
-       
-       👤 Author  : ${{ github.actor }}
-       🌿 Branch  : ${{ github.ref_name }}
-       📦 Repo     : ${{ github.repository }}
-       
-       📝 Type     : ${{ needs.prepare.outputs.type }}
-       📑 Info      :${{ needs.prepare.outputs.detail }}
-       
-       🔗 Lihat Repo  
-       https://github.com/${{ github.repository }}
-       
-       🔗 Detail Commit  
-       https://github.com/${{ github.repository }}/commit/${{ github.sha }}
-       ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-       
-   secrets:
-     TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-     TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-     TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+    with:
+      private_message: |
+        📦 Repo: ${{ github.repository }}
+        👤 Author: ${{ github.actor }}
+        📝 Commit: ${{ github.event.head_commit.message }}
+        ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+      
+      channel_message: |
+        # Commit Update
+        
+        ${{ needs.prepare.outputs.reaction }}
+        
+        👤 Author  : ${{ github.actor }}
+        🌿 Branch  : ${{ github.ref_name }}
+        📦 Repo     : ${{ github.repository }}
+        
+        📝 Type     : ${{ needs.prepare.outputs.type }}
+        📑 Info     : ${{ needs.prepare.outputs.detail }}
+        
+        🔗 Lihat Repo  
+        https://github.com/${{ github.repository }}
+        
+        🔗 Detail Commit  
+        https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+        ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
+
+    secrets:
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
