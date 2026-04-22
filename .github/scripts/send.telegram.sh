@@ -87,8 +87,7 @@ fi
 # 📤 CHECK STATUS MESSAGE
 # =========================
 response=$(curl -s -o /dev/null -w "%{http_code}" "$API_URL" \
-  -d chat_id="$CHAT_ID" \
-  --data-urlencode "text=ping")
+  -d chat_id="$CHAT_ID")
 
 if [ "$response" != "200" ]; then
   echo "[ERROR] Failed to send message (HTTP $response)" >&2
