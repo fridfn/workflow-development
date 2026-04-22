@@ -24,56 +24,72 @@
 # 6. Kirim ke Telegram sender
 # ==========================================
 
-set -e
-
+#!/bin/bash
 
 # =========================
 # 🔗 CONFIG & DATE
 # =========================
 USERNAME="$GITHUB_USERNAME"
-TODAY=$(date -u +"%Y-%m-%d")
 
-echo "[LOG] Generate daily report for $USERNAME ($TODAY)" >&2
+# Pakai LOCAL TIME (bukan UTC)
+TODAY=$(date +"%Y-%m-%d")
+YESTERDAY=$(date -d "yesterday" +"%Y-%m-%d")
+
+echo "[LOG] User        : $USERNAME"
+echo "[LOG] Today       : $TODAY"
+echo "[LOG] Yesterday   : $YESTERDAY"
 
 
 # =========================
 # 🌐 FETCH GITHUB EVENTS
 # =========================
+echo "[LOG] Fetching GitHub events..."
 events=$(curl -s "https://api.github.com/users/$USERNAME/events")
 
+echo "[LOG] Sample events (first 3):"
+echo "$events" | jq '.[0:3]'
+
 
 # =========================
-# 🔍 FILTER TODAY PUSH EVENT
+# 🔍 FILTER PUSH EVENT
 # =========================
-today_events=$(echo "$events" | jq --arg today "$TODAY" '
-  [.[] | select(.type=="PushEvent" and (.created_at | startswith($today)))]
+echo "[LOG] Filtering PushEvent for today & yesterday..."
+
+today_events=$(echo "$events" | jq --arg today "$TODAY" --arg yesterday "$YESTERDAY" '
+  [.[] | select(.type=="PushEvent" and 
+    ((.created_at | startswith($today)) or (.created_at | startswith($yesterday)))
+  )]
 ')
+
+echo "[LOG] Filtered events:"
+echo "$today_events" | jq '.'
 
 
 # =========================
 # 📊 CALCULATE DATA
 # =========================
 
-# Total commit hari ini
 commit_count=$(echo "$today_events" | jq '[.[].payload.commits | length] | add // 0')
 
-# List repo unik
 repos=$(echo "$today_events" | jq -r '[.[].repo.name] | unique | join(", ")')
+
+echo "[LOG] Commit count : $commit_count"
+echo "[LOG] Repos        : $repos"
 
 
 # =========================
 # ⏱️ TIME ANALYSIS
 # =========================
 
-# Waktu commit pertama
 first_time=$(echo "$today_events" | jq -r '.[0].created_at // empty' | cut -d'T' -f2 | cut -c1-5)
-
-# Waktu commit terakhir
 last_time=$(echo "$today_events" | jq -r '.[-1].created_at // empty' | cut -d'T' -f2 | cut -c1-5)
+
+echo "[LOG] First commit : $first_time"
+echo "[LOG] Last commit  : $last_time"
 
 
 # =========================
-# 🛡️ FALLBACK HANDLING
+# 🛡️ FALLBACK
 # =========================
 [ -z "$repos" ] && repos="-"
 [ -z "$first_time" ] && first_time="-"
@@ -83,11 +99,6 @@ last_time=$(echo "$today_events" | jq -r '.[-1].created_at // empty' | cut -d'T'
 # =========================
 # 🧠 MESSAGE GENERATOR
 # =========================
-# Mode:
-# 0 commit  → empty
-# 1–2 commit → low
-# >2 commit → active
-
 if [ "$commit_count" -eq 0 ]; then
 
   message="📊 Daily Report — Hari Ini
@@ -124,9 +135,8 @@ fi
 
 
 # =========================
-# 📤 TELEGRAM PAYLOAD SETUP
+# 📤 TELEGRAM SETUP
 # =========================
-# Mode: combined (1 message)
 export TYPE="combined"
 export TEXT="$message"
 
@@ -134,5 +144,7 @@ export TEXT="$message"
 # =========================
 # 🚀 SEND MESSAGE
 # =========================
-echo "[LOG] Sending report to Telegram..." >&2
+echo "[LOG] Sending report to Telegram..."
 bash .github/scripts/send.telegram.sh
+
+echo "[LOG] DONE ✅"
