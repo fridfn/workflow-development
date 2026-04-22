@@ -101,7 +101,7 @@ jobs:
         📦 Repo     : ${{ github.repository }}
         
         📝 Type     : ${{ needs.prepare.outputs.type }}
-        📑 Info     : ${{ needs.prepare.outputs.detail }}
+        📑 Info      :${{ needs.prepare.outputs.detail }}
         
         🔗 Lihat Repo  
         https://github.com/${{ github.repository }}
