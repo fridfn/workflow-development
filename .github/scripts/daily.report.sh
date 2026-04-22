@@ -56,20 +56,19 @@ echo "$events" | jq '.[0:3]'
 echo "[LOG] Filtering PushEvent for today & yesterday..."
 
 today_events=$(echo "$events" | jq --arg today "$TODAY" --arg yesterday "$YESTERDAY" '
-  [.[] | select(.type=="PushEvent" and 
-    ((.created_at | startswith($today)) or (.created_at | startswith($yesterday)))
-  )]
+  map(select(.type == "PushEvent")) 
+  | map(select(.created_at[0:10] == $today or .created_at[0:10] == $yesterday))
 ')
 
-echo "[LOG] Filtered events:"
-echo "$today_events" | jq '.'
+echo "[LOG] Filtered count:"
+echo "$today_events" | jq 'length'
 
 
 # =========================
 # 📊 CALCULATE DATA
 # =========================
 
-commit_count=$(echo "$today_events" | jq '[.[].payload.commits | length] | add // 0')
+commit_count=$(echo "$today_events" | jq '[.[].payload.size] | add // 0')
 
 repos=$(echo "$today_events" | jq -r '[.[].repo.name] | unique | join(", ")')
 
