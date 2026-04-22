@@ -70,4 +70,4 @@ fi
 # 📤 OUTPUT
 # =========================
 echo "[LOG] Final reaction ready" >&2
-echo "REACTION=$reaction"
+echo "$reaction"
