@@ -20,7 +20,9 @@ set_output() {
 set_multiline() {
   local key="$1"
   local value="$2"
-
+  
+  value=$(printf "%s" "$value" | sed 's/^-/•/g')
+  
   echo "$key<<EOF" >> "$GITHUB_OUTPUT"
   echo "$value" >> "$GITHUB_OUTPUT"
   echo "EOF" >> "$GITHUB_OUTPUT"

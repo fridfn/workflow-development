@@ -30,8 +30,8 @@ jobs:
           msg="${{ github.event.head_commit.message }}"
       
           if [[ "$msg" == *":"* ]]; then
-            type=$(echo "$msg" | cut -d':' -f1)
-            detail=$(echo "$msg" | cut -d':' -f2-)
+            type=$(echo "$msg" | head -n1 | cut -d':' -f1)
+            detail=$(echo "$msg" | tail -n +1 | cut -d':' -f2-)
           else
             type="update"
             detail="$msg"
