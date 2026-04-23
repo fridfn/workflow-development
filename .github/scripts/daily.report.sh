@@ -1,76 +1,84 @@
 #!/bin/bash
 
 # ==========================================
-# 💜 Daily Report Script
+# 💜 Daily Report Script (Commit-Based)
 # ------------------------------------------
 # Fungsi:
-# Mengambil aktivitas commit GitHub hari ini
-# lalu mengirimkan laporan ke Telegram
+# Mengambil data commit GitHub berdasarkan hari (UTC)
+# menggunakan GitHub Search API, lalu mengirim laporan ke Telegram
 #
 # Input (ENV):
-# GITHUB_USERNAME   → username GitHub
-# TELEGRAM_TOKEN    → token bot
-# TELEGRAM_CHANNEL_ID → chat/channel ID
+# GITHUB_USERNAME      → username GitHub
+# GITHUB_TOKEN         → personal access token (required)
+# TELEGRAM_TOKEN       → token bot Telegram
+# TELEGRAM_CHANNEL_ID  → chat/channel ID
 #
 # Output:
 # Message laporan harian ke Telegram
 #
 # Flow:
-# 1. Ambil event GitHub
-# 2. Filter commit hari ini
-# 3. Hitung total commit & repo
-# 4. Ambil waktu pertama & terakhir
-# 5. Generate message (dynamic tone)
-# 6. Kirim ke Telegram sender
+# 1. Set UTC date range
+# 2. Fetch commit via Search API
+# 3. Extract commit count & repo
+# 4. Analyze first & last commit time
+# 5. Generate dynamic message
+# 6. Send to Telegram
+#
+# Notes:
+# - Tidak tergantung Events API (no limit 30)
+# - Lebih akurat & stabil
+# - Semua waktu berbasis UTC
 # ==========================================
 
-#!/bin/bash
 
 # =========================
-# 🔗 CONFIG & DATE
+# 🔗 CONFIG & DATE (UTC)
 # =========================
 USERNAME="$GITHUB_USERNAME"
 
-# Pakai LOCAL TIME (bukan UTC)
-TODAY=$(date +"%Y-%m-%d")
-YESTERDAY=$(date -d "yesterday" +"%Y-%m-%d")
+TODAY=$(date -u +"%Y-%m-%d")
+START="${TODAY}T00:00:00Z"
+END="${TODAY}T23:59:59Z"
 
 echo "[LOG] User        : $USERNAME"
-echo "[LOG] Today       : $TODAY"
-echo "[LOG] Yesterday   : $YESTERDAY"
+echo "[LOG] Date (UTC)  : $TODAY"
+echo "[LOG] Range       : $START → $END"
 
 
 # =========================
-# 🌐 FETCH GITHUB EVENTS
+# 🌐 FETCH COMMITS (API)
 # =========================
-echo "[LOG] Fetching GitHub events..."
-events=$(curl -s "https://api.github.com/users/$USERNAME/events")
+echo "[LOG] Fetching commits via GitHub Search API..."
 
-echo "[LOG] Sample events (first 3):"
-echo "$events" | jq '.[0:3]'
+response=$(curl -s \
+  -H "Accept: application/vnd.github.cloak-preview" \
+  -H "Authorization: Bearer $GITHUB_TOKEN" \
+  "https://api.github.com/search/commits?q=author:$USERNAME+committer-date:$START..$END&per_page=100")
+
+echo "[LOG] Raw response (short):"
+echo "$response" | jq '{total_count, incomplete_results}'
 
 
 # =========================
-# 🔍 FILTER PUSH EVENT
+# 🛡️ ERROR HANDLING
 # =========================
-echo "[LOG] Filtering PushEvent for today & yesterday..."
-
-today_events=$(echo "$events" | jq --arg today "$TODAY" --arg yesterday "$YESTERDAY" '
-  map(select(.type == "PushEvent")) 
-  | map(select(.created_at[0:10] == $today or .created_at[0:10] == $yesterday))
-')
-
-echo "[LOG] Filtered count:"
-echo "$today_events" | jq 'length'
+if echo "$response" | jq -e '.message' > /dev/null; then
+  echo "[ERROR] GitHub API failed:"
+  echo "$response"
+  exit 1
+fi
 
 
 # =========================
 # 📊 CALCULATE DATA
 # =========================
+commit_count=$(echo "$response" | jq '.total_count // 0')
 
-commit_count=$(echo "$today_events" | jq '[.[].payload.size] | add // 0')
-
-repos=$(echo "$today_events" | jq -r '[.[].repo.name] | unique | join(", ")')
+repos=$(echo "$response" | jq -r '
+  [.items[].repository.full_name] 
+  | unique 
+  | join(", ")
+')
 
 echo "[LOG] Commit count : $commit_count"
 echo "[LOG] Repos        : $repos"
@@ -79,9 +87,13 @@ echo "[LOG] Repos        : $repos"
 # =========================
 # ⏱️ TIME ANALYSIS
 # =========================
+times=$(echo "$response" | jq -r '
+  [.items[].commit.committer.date] 
+  | sort
+')
 
-first_time=$(echo "$today_events" | jq -r '.[0].created_at // empty' | cut -d'T' -f2 | cut -c1-5)
-last_time=$(echo "$today_events" | jq -r '.[-1].created_at // empty' | cut -d'T' -f2 | cut -c1-5)
+first_time=$(echo "$times" | jq -r '.[0] // empty' | cut -d'T' -f2 | cut -c1-5)
+last_time=$(echo "$times" | jq -r '.[-1] // empty' | cut -d'T' -f2 | cut -c1-5)
 
 echo "[LOG] First commit : $first_time"
 echo "[LOG] Last commit  : $last_time"
@@ -100,7 +112,7 @@ echo "[LOG] Last commit  : $last_time"
 # =========================
 if [ "$commit_count" -eq 0 ]; then
 
-  message="📊 Daily Report — Hari Ini
+  message="📊 Daily Report — Hari Ini (UTC)
 
 commit: 0
 
@@ -110,7 +122,7 @@ tapi kamu masih punya besok 😌"
 
 elif [ "$commit_count" -le 2 ]; then
 
-  message="📊 Daily Report — Hari Ini
+  message="📊 Daily Report — Hari Ini (UTC)
 
 commit: $commit_count
 repo: $repos
@@ -120,7 +132,7 @@ tapi kamu tetap gak nol hari ini 😏"
 
 else
 
-  message="📊 Daily Report — Hari Ini
+  message="📊 Daily Report — Hari Ini (UTC)
 
 commit: $commit_count
 repo: $repos

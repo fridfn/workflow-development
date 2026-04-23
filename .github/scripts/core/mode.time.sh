@@ -37,7 +37,7 @@ get_mode_by_no_commit() {
   local mode=""
   local send=false
   
-  if [ "$hour" -ge 14 ] && [ "$hour" -lt 19 ]; then
+  if [ "$hour" -ge 12 ] && [ "$hour" -lt 19 ]; then
     [ $((RANDOM % 4)) -eq 0 ] && send=true
     mode="warning" 
     echo "🌤️ Phase: Sore (low frequency)" >&2
