@@ -138,6 +138,11 @@ jobs:
           echo "mode=$mode" >> $GITHUB_ENV
           echo "mode_message=reminder" >> $GITHUB_ENV
           
+      - name: Next Step
+        if: env.skip != 'true'
+        run: |
+          echo "Lanjut eksekusi steps selanjutnya..."
+          
       # =========================
       # 💜 APPRECIATION MODE
       # =========================

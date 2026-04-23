@@ -53,9 +53,10 @@ get_mode_by_no_commit() {
     echo "🌌 Phase: Late (high)" >&2
   fi
   
-  if [ "$send" = false ]; then
-    echo "⏭️ Skip (smart interval)" >&2
-    return 1
+  if [ "$hour" -lt 12 ]; then
+    echo "⏭️ Skip (smart interval)"
+    echo "skip=true" >> $GITHUB_ENV
+    return 0
   fi
 
   echo "$mode"
