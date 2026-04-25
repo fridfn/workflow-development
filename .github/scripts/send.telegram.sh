@@ -66,7 +66,7 @@ send_message () {
   log_debug "Sending payload..."
   
   response=$(curl -s -w "%{http_code}" -o /dev/null -X POST \
-    "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
+    "https://api.telegram.org/bot$TELEGRAM_TOKEN_AURIELLE/sendMessage" \
     -d chat_id="$TELEGRAM_CHANNEL_ID" \
     --data-urlencode "text=$text")
 
@@ -87,7 +87,7 @@ log_info "Smart delivery started"
 # =========================
 # 🔹 VALIDATION BASE
 # =========================
-if [ -z "$TELEGRAM_TOKEN" ] || [ -z "$TELEGRAM_CHANNEL_ID" ]; then
+if [ -z "$TELEGRAM_TOKEN_AURIELLE" ] || [ -z "$TELEGRAM_CHANNEL_ID" ]; then
   safe_exit "Missing Telegram credentials → skip"
 fi
 

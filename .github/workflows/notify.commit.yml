@@ -2,7 +2,8 @@ name: Notify Commit
 
 on:
   push:
-
+  workflow_dispatch:
+  
 jobs:
   prepare:
     runs-on: ubuntu-latest
@@ -37,10 +38,10 @@ jobs:
           # 🔹 Get mode
           mode=$(get_mode_by_commit)
       
-          echo "type=$type" >> $GITHUB_OUTPUT
-          echo "reaction=$reaction" >> $GITHUB_OUTPUT
+          echo "type=$TYPE" >> $GITHUB_OUTPUT
+          echo "reaction=$REACTION" >> $GITHUB_OUTPUT
           echo "mode=$mode" >> $GITHUB_OUTPUT
-          set_multiline "detail" "$detail"
+          set_multiline "detail" "$DETAIL"
           
       # =========================
       # 🔹 GET REACTION MESSAGE
@@ -48,11 +49,10 @@ jobs:
       - name: Get reaction
         id: reaction
         run: |
-          chmod +x .github/scripts/get.reaction.sh
-          chmod +x .github/scripts/core/multiline.sh
+          chmod +x .github/scripts/*.sh
           source .github/scripts/core/multiline.sh
 
-          OUTPUT=$(type="${{ steps.parse.outputs.reaction }}" \
+          OUTPUT=$(type="${{ steps.parse.outputs.type }}" \
           mode="${{ steps.parse.outputs.mode }}" \
           bash .github/scripts/get.reaction.sh)
 
