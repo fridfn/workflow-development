@@ -93,7 +93,7 @@ jobs:
         ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
 
     secrets:
-      TELEGRAM_TOKEN_OWNER: ${{ secrets.TELEGRAM_TOKEN_OWNER }}
+      TELEGRAM_TOKEN_AURIELLE: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
   

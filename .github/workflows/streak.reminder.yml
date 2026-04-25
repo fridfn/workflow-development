@@ -122,15 +122,15 @@ jobs:
         if: steps.activity.outputs.no_commit == 'true'
         
         env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_TOKEN_AURIELLE: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: |
           echo "=============================="
           echo "⚠️ Reminder Mode"
           echo "=============================="
           
-          chmod +x .github/scripts/core/mode.time.sh
-          source .github/scripts/core/mode.time.sh
+          chmod +x .github/scripts/core/*.sh
+          source .github/scripts/core/mindset.sh
           
           mode=$(get_mode_by_no_commit)
           
@@ -153,8 +153,8 @@ jobs:
           echo "💜 Appreciation Mode"
           echo "=============================="
           
-          chmod +x .github/scripts/core/mode.time.sh
-          source .github/scripts/core/mode.time.sh
+          chmod +x .github/scripts/core/*.sh
+          source .github/scripts/core/mindset.sh
           
           mode=$(get_mode_by_commit)
           
@@ -184,7 +184,7 @@ jobs:
       - name: Send Telegram
         if: (steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true') || steps.activity.outputs.no_commit == 'true'
         env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_TOKEN_AURIELLE: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: |
           echo "=============================="

@@ -37,8 +37,10 @@ on:
         type: string
 
     secrets:
-      TELEGRAM_TOKEN:
+      TELEGRAM_TOKEN_AURIELLE:
         required: true
+      TELEGRAM_TOKEN_OWNER:
+        required: false
       TELEGRAM_CHAT_ID:
         required: false
       TELEGRAM_CHANNEL_ID:
@@ -73,7 +75,7 @@ jobs:
           if [ ! -z "$PRIVATE_MESSAGE" ]; then
             echo "💬 Sending private message..."
 
-            curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
+            curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN_AURIELLE/sendMessage \
               -d chat_id=$TELEGRAM_CHAT_ID \
               -d "disable_web_page_preview=true" \
               --data-urlencode "text=$PRIVATE_MESSAGE"
@@ -89,7 +91,7 @@ jobs:
           if [ ! -z "$CHANNEL_MESSAGE" ]; then
             echo "📣 Sending channel message..."
 
-            curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
+            curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN_AURIELLE/sendMessage \
               -d chat_id=$TELEGRAM_CHANNEL_ID \
               -d "parse_mode=Markdown" \
               -d "disable_web_page_preview=true" \

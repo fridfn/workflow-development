@@ -98,7 +98,7 @@ jobs:
           
       - name: 📤 Send New Day Message
         env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_TOKEN_AURIELLE: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           
         run: |
@@ -106,7 +106,7 @@ jobs:
           echo "🚀 Sending Message to Telegram"
           echo "=============================="
 
-          curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage \
+          curl -s -X POST https://api.telegram.org/bot$TELEGRAM_TOKEN_AURIELLE/sendMessage \
             -d chat_id="$TELEGRAM_CHANNEL_ID" \
             --data-urlencode "text=$message" \
             -d "disable_web_page_preview=true"
