@@ -23,6 +23,6 @@ jobs:
           GITHUB_USERNAME: ${{ github.repository_owner }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTIVITY_GITHUB_TOKEN: ${{ secrets.ACTIVITY_GITHUB_TOKEN }}
         run: |
           bash .github/scripts/daily.report.sh

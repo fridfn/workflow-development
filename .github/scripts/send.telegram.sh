@@ -1,96 +1,164 @@
 #!/bin/bash
 
 # ==========================================
-# 💜 Telegram Sender Script
+# 💜 Telegram Smart Sender (Safe Mode)
 # ------------------------------------------
-# Input  :
-# TYPE      → combined / split
-# TEXT      → (if combined)
-# GREETING  → (if split)
-# MESSAGE   → (if split)
+# Fungsi:
+# Mengirim pesan ke Telegram dengan mode:
+# - combined → 1 pesan
+# - split    → greeting + message
+# - auto     → random (gacha)
 #
-# Output : send message to Telegram channel
+# Behavior:
+# - Tidak akan fail workflow (safe exit)
+# - Skip jika data tidak valid
+# - Mendukung fallback combine
 #
-# Flow:
-# check type → send message
-#           → (optional delay)
-#           → send second message
+# ENV:
+#   DELIVERY_MODE → combined / split / auto
+#   TEXT
+#   GREETING
+#   MESSAGE
+#   TELEGRAM_TOKEN
+#   TELEGRAM_CHANNEL_ID
+#
+# Output:
+#   Log terstruktur + status pengiriman
+#
 # ==========================================
 
 
 # =========================
-# 🔗 TELEGRAM CREDENTIALS
+# 🔹 LOG SYSTEM
 # =========================
+log_info() {
+  echo "[INFO] $1" >&2
+}
 
+log_warn() {
+  echo "[WARN] $1" >&2
+}
+
+log_error() {
+  echo "[ERROR] $1" >&2
+}
+
+log_debug() {
+  echo "[DEBUG] $1" >&2
+}
+
+
+# =========================
+# 🔹 SAFE EXIT (NO FAIL)
+# =========================
+safe_exit () {
+  log_warn "$1"
+  return 0 2>/dev/null || exit 0
+}
+
+
+# =========================
+# 🔹 SEND FUNCTION
+# =========================
+send_message () {
+  local text="$1"
+
+  log_debug "Sending payload..."
+  
+  response=$(curl -s -w "%{http_code}" -o /dev/null -X POST \
+    "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
+    -d chat_id="$TELEGRAM_CHANNEL_ID" \
+    --data-urlencode "text=$text")
+
+  if [ "$response" != "200" ]; then
+    log_warn "Telegram API responded with HTTP $response"
+  else
+    log_info "Message sent successfully"
+  fi
+}
+
+
+# =========================
+# 🚀 START
+# =========================
+log_info "Smart delivery started"
+
+
+# =========================
+# 🔹 VALIDATION BASE
+# =========================
 if [ -z "$TELEGRAM_TOKEN" ] || [ -z "$TELEGRAM_CHANNEL_ID" ]; then
-  echo "[ERROR] Missing Telegram config" >&2
-  exit 1
+  safe_exit "Missing Telegram credentials → skip"
 fi
 
-# =========================
-# 🔗 TELEGRAM CONFIG
-# =========================
-API_URL="https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage"
-CHAT_ID="$TELEGRAM_CHANNEL_ID"
+[ -z "$DELIVERY_MODE" ] && DELIVERY_MODE="combined"
+
+log_info "Delivery mode: $DELIVERY_MODE"
 
 
 # =========================
-# 🧠 INPUT INFO
+# 🔹 AUTO MODE (GACHA)
 # =========================
-echo "[LOG] Sending message → TYPE=$TYPE" >&2
+if [ "$DELIVERY_MODE" = "auto" ]; then
+  rand=$((RANDOM % 100))
 
+  if [ "$rand" -lt 50 ]; then
+    MODE="combined"
+  else
+    MODE="split"
+  fi
 
-# =========================
-# 📤 SEND COMBINED MESSAGE
-# =========================
-if [ "$TYPE" = "combined" ]; then
-  
-  echo "[LOG] Mode: combined" >&2
-  
-  curl -s -X POST "$API_URL" \
-    -d chat_id="$CHAT_ID" \
-    --data-urlencode "text=$TEXT
-ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-"
+  log_info "Auto selected mode → $MODE (roll=$rand)"
 
-# =========================
-# 📤 SEND SPLIT MESSAGE
-# =========================
 else
-  
-  echo "[LOG] Mode: split (2 messages)" >&2
+  MODE="$DELIVERY_MODE"
+  log_info "Fixed mode → $MODE"
+fi
 
-  # --- Greeting ---
-  echo "[LOG] Sending greeting..." >&2
-  curl -s -X POST "$API_URL" \
-    -d chat_id="$CHAT_ID" \
-    --data-urlencode "text=$GREETING
-ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-"
 
-  # --- Random Delay ---
-  delay=$((RANDOM % 260 + 50))
-  echo "[LOG] Delay before message: ${delay}s" >&2
+# =========================
+# 📤 SEND LOGIC
+# =========================
+if [ "$MODE" = "combined" ]; then
+
+  log_info "Executing combined mode"
+
+  if [ -z "$TEXT" ]; then
+    if [ -n "$GREETING" ] && [ -n "$MESSAGE" ]; then
+      TEXT="$GREETING
+
+$MESSAGE"
+      log_debug "Fallback: combine greeting + message"
+    else
+      safe_exit "No valid content for combined → skip"
+    fi
+  fi
+
+  send_message "$TEXT"
+
+
+else
+
+  log_info "Executing split mode"
+
+  if [ -z "$GREETING" ] || [ -z "$MESSAGE" ]; then
+    safe_exit "Missing GREETING or MESSAGE → skip"
+  fi
+
+  log_debug "Sending greeting"
+  send_message "$GREETING"
+
+  delay=$((RANDOM % 5 + 2))
+  log_info "Delay before main message: ${delay}s"
   sleep $delay
 
-  # --- Message ---
-  echo "[LOG] Sending main message..." >&2
-  curl -s -X POST "$API_URL" \
-    -d chat_id="$CHAT_ID" \
-    --data-urlencode "text=$MESSAGE
-ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-"
+  log_debug "Sending main message"
+  send_message "$MESSAGE"
 
 fi
 
-# =========================
-# 📤 CHECK STATUS MESSAGE
-# =========================
-response=$(curl -s -o /dev/null -w "%{http_code}" "$API_URL" \
-  -d chat_id="$CHAT_ID")
 
-if [ "$response" != "200" ]; then
-  echo "[ERROR] Failed to send message (HTTP $response)" >&2
-else
-  echo "[LOG] Message sent successfully" >&2
-fi
+# =========================
+# ✅ DONE
+# =========================
+log_info "Smart delivery finished 💜"

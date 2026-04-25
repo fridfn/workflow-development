@@ -51,7 +51,8 @@ jobs:
     steps:
       - name: 📤 Send Telegram Message
         env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_TOKEN_OWNER: ${{ secrets.TELEGRAM_TOKEN_OWNER }}
+          TELEGRAM_TOKEN_AURIELLE: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           PRIVATE_MESSAGE: ${{ inputs.private_message }}

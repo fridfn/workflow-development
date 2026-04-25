@@ -52,7 +52,7 @@ echo "[LOG] Fetching commits via GitHub Search API..."
 
 response=$(curl -s \
   -H "Accept: application/vnd.github.cloak-preview" \
-  -H "Authorization: Bearer $GITHUB_TOKEN" \
+  -H "Authorization: Bearer $ACTIVITY_GITHUB_TOKEN" \
   "https://api.github.com/search/commits?q=author:$USERNAME+committer-date:$START..$END&per_page=100")
 
 echo "[LOG] Raw response (short):"

@@ -9,7 +9,9 @@ jobs:
     outputs:
       type: ${{ steps.parse.outputs.type }}
       detail: ${{ steps.parse.outputs.detail }}
-      reaction: ${{ steps.reaction.outputs.REACTION }}
+      tag: ${{ steps.parse.outputs.reaction }}
+      reaction_message: ${{ steps.reaction.outputs.REACTION }}
+      mode: ${{ steps.parse.outputs.mode }}
 
     steps:
       - name: Checkout repository
@@ -21,42 +23,25 @@ jobs:
       - name: Parse Commit Message
         id: parse
         run: |
-          chmod +x .github/scripts/core/multiline.sh
-          chmod +x .github/scripts/core/mode.time.sh
+          chmod +x .github/scripts/core/*.sh
       
           source .github/scripts/core/multiline.sh
-          source .github/scripts/core/mode.time.sh
+          source .github/scripts/core/commit.sh
+          source .github/scripts/core/mindset.sh
       
           msg="${{ github.event.head_commit.message }}"
+          
+          # 🔹 Call parser
+          parse_commit "$msg"
       
-          if [[ "$msg" == *":"* ]]; then
-            type=$(echo "$msg" | head -n1 | cut -d':' -f1)
-            detail=$(echo "$msg" | tail -n +1 | cut -d':' -f2-)
-          else
-            type="update"
-            detail="$msg"
-          fi
-      
-          case "$type" in
-            feat*) reaction="feat" ;;
-            fix*) reaction="fix" ;;
-            refactor*) reaction="refactor" ;;
-            chore*) reaction="chore" ;;
-            docs*) reaction="docs" ;;
-            style*) reaction="style" ;;
-            test*) reaction="test" ;;
-            *) reaction="update" ;;
-          esac
-      
+          # 🔹 Get mode
           mode=$(get_mode_by_commit)
       
           echo "type=$type" >> $GITHUB_OUTPUT
           echo "reaction=$reaction" >> $GITHUB_OUTPUT
           echo "mode=$mode" >> $GITHUB_OUTPUT
-      
           set_multiline "detail" "$detail"
-
-
+          
       # =========================
       # 🔹 GET REACTION MESSAGE
       # =========================
@@ -73,9 +58,8 @@ jobs:
 
           echo "$OUTPUT"
 
-          # 🔥 multiline safe output
+          # multiline safe output
           set_multiline "REACTION" "$OUTPUT"
-
 
   # =========================
   # 🔹 NOTIFY (REUSABLE WORKFLOW)
@@ -94,8 +78,6 @@ jobs:
       channel_message: |
         # Commit Update
         
-        ${{ needs.prepare.outputs.reaction }}
-        
         👤 Author  : ${{ github.actor }}
         🌿 Branch  : ${{ github.ref_name }}
         📦 Repo     : ${{ github.repository }}
@@ -111,6 +93,33 @@ jobs:
         ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
 
     secrets:
-      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      TELEGRAM_TOKEN_OWNER: ${{ secrets.TELEGRAM_TOKEN_OWNER }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+  
+  # =========================
+  # 🔹 AURIELLE AUTO REPLY
+  # =========================
+  aurielle_reply:
+    needs: notify
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+  
+      - name: Run Aurielle Bot
+        run: |
+          echo "[FLOW] Triggering Aurielle reply..."
+  
+          MODE="${{ needs.prepare.outputs.mode }}"
+          TAG="${{ needs.prepare.outputs.tag }}"
+          
+          echo "[FLOW] MODE=$MODE"
+          echo "[FLOW] TAG=$TAG"
+  
+          bash .github/scripts/run.bot.sh "$MODE" "$TAG"
+  
+        env:
+          TELEGRAM_TOKEN_AURIELLE: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
