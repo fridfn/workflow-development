@@ -1,54 +1,130 @@
 #!/bin/bash
 
 # ==========================================
-# 💜 Bot Engine Core
+# 💜 BOT ENGINE CORE (WITH FULL LOGS)
 # ------------------------------------------
-# Fungsi:
-# Engine utama untuk generate & kirim pesan
-# berdasarkan MODE + optional TAG
+# Version : 2.0 (Debug Enhanced)
+# Mode    : Parallel Execution
 #
-# Input (ENV):
-# MODE  → ambitious / productive / warning dll
-# TAG   → feat / fix / docs dll (optional)
+# Features:
+# - Structured logging per step
+# - Safe debug jq pipeline
+# - Delay tracking per bot
+# - Output visibility (reply preview)
 #
-# Output:
-# Kirim pesan dari bot config
-#
-# Flow:
-# 1. Load config JSON
-# 2. Loop semua bot
-# 3. Cari message sesuai MODE
-# 4. Optional: inject TAG context
-# 5. Random greeting + message
-# 6. Delay per bot
-# 7. Kirim ke Telegram
 # ==========================================
+
 
 CONFIG=".github/scripts/agent/agent.config.json"
 
-send_message () {
-  curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
-    -d chat_id="$TELEGRAM_CHANNEL_ID" \
-    --data-urlencode "text=$1"
+
+# =========================
+# 🔹 LOG SYSTEM
+# =========================
+log() {
+  local level="$1"
+  local msg="$2"
+  echo "[$level][ENGINE] $msg" >&2
 }
 
-# Validasi Dasar
-if [ -z "$MODE" ] || [ ! -f "$CONFIG" ]; then
-  echo "[ERROR] MODE or Config missing" >&2
+log_info()  { log "INFO" "$1"; }
+log_warn()  { log "WARN" "$1"; }
+log_error() { log "ERROR" "$1"; }
+log_debug() { log "DEBUG" "$1"; }
+
+
+# =========================
+# 🔹 SEND FUNCTION
+# =========================
+send_message () {
+  local bot="$1"
+  local text="$2"
+
+  log_debug "[$bot] Preparing request..."
+
+  local response
+  response=$(curl -s -w "%{http_code}" -o /dev/null -X POST \
+    "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
+    -d chat_id="$TELEGRAM_CHANNEL_ID" \
+    --data-urlencode "text=$text")
+
+  if [ "$response" != "200" ]; then
+    log_warn "[$bot] Telegram API HTTP $response"
+  else
+    log_info "[$bot] Message sent (HTTP 200)"
+  fi
+}
+
+
+# =========================
+# 🚀 START ENGINE
+# =========================
+log_info "Engine started"
+log_info "Config file → $CONFIG"
+log_info "MODE → ${MODE:-<empty>}"
+log_info "TAG  → ${TAG:-<none>}"
+
+
+# =========================
+# 🔹 VALIDATION
+# =========================
+if [ -z "$MODE" ]; then
+  log_error "MODE is missing → exit"
   exit 1
 fi
 
-# Menggunakan seed random yang lebih kuat untuk variasi
+if [ ! -f "$CONFIG" ]; then
+  log_error "Config file not found → $CONFIG"
+  exit 1
+fi
+
+log_info "Validation passed"
+
+
+# =========================
+# 🔹 RANDOM SEED
+# =========================
 SEED_GREET=$RANDOM
 SEED_MSG=$RANDOM
 
+log_debug "Seed greet → $SEED_GREET"
+log_debug "Seed msg   → $SEED_MSG"
+
+
+# =========================
+# 🔹 LOAD BOTS
+# =========================
 bots=$(jq -r 'keys[]' "$CONFIG")
 
-for bot in $bots; do
-  # Ambil delay dengan fallback 0
-  delay=$(jq -r --arg bot "$bot" '.[$bot].delay // 0' "$CONFIG")
+if [ -z "$bots" ]; then
+  log_warn "No bots found in config → exit"
+  exit 0
+fi
 
-  # Logika pengambilan pesan disesuaikan dengan struktur agent.config.json
+log_info "Bots detected:"
+for b in $bots; do
+  log_info " - $b"
+done
+
+
+# =========================
+# 🔁 LOOP BOTS
+# =========================
+for bot in $bots; do
+
+  log_info "------------------------------------------"
+  log_info "Processing bot → $bot"
+
+  # 🔹 Delay
+  delay=$(jq -r --arg bot "$bot" '.[$bot].delay // 0' "$CONFIG")
+  log_debug "[$bot] Delay → ${delay}s"
+
+
+  # =========================
+  # 🧠 GENERATE MESSAGE
+  # =========================
+  log_debug "[$bot] Generating reply..."
+
   reply=$(jq -r \
     --arg bot "$bot" \
     --arg mode "$MODE" \
@@ -61,24 +137,64 @@ for bot in $bots; do
     | if $category == null then empty else
         ($category.value[$mode]) as $group
         | ($group | keys) as $toneKeys
-        | $toneKeys[$sg % ($toneKeys | length)] as $tone
-        | ($group[$tone]) as $data
-        | ($data.greetings[$sg % ($data.greetings | length)]) as $greet
-        | ($data.messages[$sm % ($data.messages | length)]) as $msg
-        | if ($tag != "" and $root.reaction[$tag][$mode] != null) then
-            ($root.reaction[$tag][$mode]) as $tagData
-            | $greet + "\n\n" + $msg + "\n\n" + $tagData[$sm % ($tagData | length)]
-          else
-            $greet + "\n\n" + $msg
+        | if ($toneKeys | length) == 0 then empty else
+            $toneKeys[$sg % ($toneKeys | length)] as $tone
+            | ($group[$tone]) as $data
+            | if ($data.greetings | length) == 0 or ($data.messages | length) == 0 then empty else
+                ($data.greetings[$sg % ($data.greetings | length)]) as $greet
+                | ($data.messages[$sm % ($data.messages | length)]) as $msg
+                | if ($tag != "" and $root.reaction[$tag][$mode] != null) then
+                    ($root.reaction[$tag][$mode]) as $tagData
+                    | if ($tagData | length) == 0 then
+                        $greet + "\n\n" + $msg
+                      else
+                        $greet + "\n\n" + $msg + "\n\n" + $tagData[$sm % ($tagData | length)]
+                      end
+                  else
+                    $greet + "\n\n" + $msg
+                  end
+              end
           end
       end
     ' "$CONFIG")
 
-  if [ -n "$reply" ] && [ "$reply" != "null" ]; then
-    echo "[BOT] $bot sending in ${delay}s"
-    ( sleep "$delay"; send_message "$reply" ) &
+
+  # =========================
+  # 🔍 VALIDASI OUTPUT
+  # =========================
+  if [ -z "$reply" ] || [ "$reply" = "null" ]; then
+    log_warn "[$bot] No valid reply generated → skip"
+    continue
   fi
+
+  log_debug "[$bot] Reply generated:"
+  log_debug "--------------------------------"
+  log_debug "$reply"
+  log_debug "--------------------------------"
+
+
+  # =========================
+  # 📤 SEND (PARALLEL)
+  # =========================
+  log_info "[$bot] Scheduling send in ${delay}s"
+
+  (
+    sleep "$delay"
+    log_info "[$bot] Sending now..."
+    send_message "$bot" "$reply"
+  ) &
+
 done
 
+
+# =========================
+# ⏳ WAIT ALL
+# =========================
+log_info "Waiting all bots to finish..."
 wait
-echo "[BOT] DONE 💜"
+
+
+# =========================
+# ✅ DONE
+# =========================
+log_info "All bots completed 💜"
