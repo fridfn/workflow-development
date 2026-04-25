@@ -101,7 +101,7 @@ jobs:
   # 🔹 AURIELLE AUTO REPLY
   # =========================
   aurielle_reply:
-    needs: notify
+    needs: [prepare, notify]
     runs-on: ubuntu-latest
   
     steps:
