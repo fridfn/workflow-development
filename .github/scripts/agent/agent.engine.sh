@@ -16,7 +16,6 @@
 #
 # ==========================================
 
-
 CONFIG=".github/scripts/agent/agent.config.json"
 
 # =========================
@@ -123,98 +122,94 @@ for bot in $bots; do
 
   log_debug "[$bot] Generating reply..."
 
-  reply=$(jq -r \
-     --arg bot "$bot" \
-     --arg mode "$MODE" \
-     --arg tag "${TAG:-}" \
-     --arg override "$COMPOSE_OVERRIDE" \
-     --argjson sg "$SEED_GREET" \
-     --argjson sm "$SEED_MSG" \
-   '
-   .[$bot] as $cfg
-   | $cfg.message as $root
-   
-   # =========================
-   # 🔹 COMPOSE RULE
-   # =========================
-   | ($override
-       | if . != "" then split(",") else empty end
-     ) as $overrideCompose
-   
-   | ($overrideCompose
-       // $cfg.compose[$tag]
-       // $cfg.compose.default
-       // ["greeting","message"]
-     ) as $compose
-   
-   | trace("Compose → " + ($compose|tostring)) | .
-   
-   # =========================
-   # 🔹 SELECT CATEGORY
-   # =========================
-   | ($root | to_entries | map(select(.value[$mode])) | .[0]) as $category
-   
-   | trace("Category → " + ($category.key // "null")) | .
-   
-   | if $category == null then empty else
-   
-       ($category.value[$mode]) as $group
-       | ($group | keys) as $toneKeys
-   
-       | trace("ToneKeys → " + ($toneKeys|tostring)) | .
-   
-       | if ($toneKeys | length) == 0 then empty else
-   
-           ($sg % ($toneKeys | length)) as $toneIndex
-           | $toneKeys[$toneIndex] as $tone
-   
-           | trace("Tone index → " + ($toneIndex|tostring)) | .
-           | trace("Tone → " + $tone) | .
-           | trace("Path → message." + $category.key + "." + $mode + "." + $tone) | .
-   
-           | ($group[$tone]) as $data
-   
-           # =========================
-           # 🔹 PICK DATA
-           # =========================
-           | ($data.greetings[$sg % ($data.greetings | length)]) as $greet
-           | ($data.messages[$sm % ($data.messages | length)]) as $msg
-   
-           | trace("Greeting picked") | .
-           | trace("Message picked") | .
-   
-           | (
-               if ($tag != "" and $root.reaction[$tag][$mode] != null) then
-                 ($sm % ($root.reaction[$tag][$mode] | length)) as $reactIndex
-                 | trace("Reaction index → " + ($reactIndex|tostring)) | .
-                 | $root.reaction[$tag][$mode][$reactIndex]
-               else null
-               end
-             ) as $react
-   
-           # =========================
-           # 🔥 COMPOSER
-           # =========================
-           | [
-               if ($compose | index("greeting")) then $greet else empty end,
-               if ($compose | index("message")) then $msg else empty end,
-               if ($compose | index("reaction") and $react != null) then $react else empty end
-             ]
-           | map(select(. != null and . != ""))
-           | join("\n\n")
-   
-       end
-     end
-   ' "$CONFIG")
+  result=$(jq -c \
+    --arg bot "$bot" \
+    --arg mode "$MODE" \
+    --arg tag "${TAG:-}" \
+    --arg override "$COMPOSE_OVERRIDE" \
+    --argjson sg "$SEED_GREET" \
+    --argjson sm "$SEED_MSG" \
+'
+def log($msg): {trace:$msg};
+
+.[$bot] as $cfg
+| $cfg.message as $root
+| [] as $logs
+
+# COMPOSE
+| ($override | if . != "" then split(",") else empty end) as $overrideCompose
+| ($overrideCompose // $cfg.compose[$tag] // $cfg.compose.default // ["greeting","message"]) as $compose
+| $logs + [log("Compose → " + ($compose|tostring))] as $logs
+
+# CATEGORY
+| ($root | to_entries | map(select(.value[$mode])) | .[0]) as $category
+| $logs + [log("Category → " + ($category.key // "null"))] as $logs
+
+| if $category == null then
+    {trace:$logs, reply:null}
+  else
+
+    ($category.value[$mode]) as $group
+    | ($group | keys) as $toneKeys
+    | $logs + [log("ToneKeys → " + ($toneKeys|tostring))] as $logs
+
+    | if ($toneKeys | length) == 0 then
+        {trace:$logs, reply:null}
+      else
+
+        ($sg % ($toneKeys | length)) as $toneIndex
+        | $toneKeys[$toneIndex] as $tone
+
+        | $logs
+          + [log("Tone index → " + ($toneIndex|tostring))]
+          + [log("Tone → " + $tone)]
+          + [log("Path → message." + $category.key + "." + $mode + "." + $tone)]
+          as $logs
+
+        | ($group[$tone]) as $data
+
+        | ($data.greetings[$sg % ($data.greetings | length)]) as $greet
+        | ($data.messages[$sm % ($data.messages | length)]) as $msg
+
+        | $logs
+          + [log("Greeting picked")]
+          + [log("Message picked")]
+          as $logs
+
+        | (
+            if ($tag != "" and $root.reaction[$tag][$mode] != null) then
+              ($sm % ($root.reaction[$tag][$mode] | length)) as $reactIndex
+              | $logs + [log("Reaction index → " + ($reactIndex|tostring))] as $logs
+              | $root.reaction[$tag][$mode][$reactIndex]
+            else null
+            end
+          ) as $react
+
+        | [
+            if ($compose | index("greeting")) then $greet else empty end,
+            if ($compose | index("message")) then $msg else empty end,
+            if ($compose | index("reaction") and $react != null) then $react else empty end
+          ]
+        | map(select(. != null and . != ""))
+        | join("\n\n") as $final
+
+        | {
+            trace: $logs,
+            reply: $final
+          }
+
+      end
+  end
+' "$CONFIG")
 
   # =========================
-  # 🔍 TRACE LOG OUTPUT
+  # 🔍 TRACE LOG
   # =========================
-  echo "$result" | jq -r 'select(.trace) | .trace' | while read -r line; do
+  echo "$result" | jq -r '.trace[]?.trace' | while read -r line; do
     log_debug "[$bot][TRACE] $line"
   done
 
-  reply=$(echo "$result" | jq -r 'select(.reply) | .reply')
+  reply=$(echo "$result" | jq -r '.reply')
 
   # =========================
   # 🔍 VALIDATION
