@@ -172,13 +172,19 @@ jobs:
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           MODE: ${{ env.MODE }}
           TAG: ${{ env.TAG }}
+          TYPE: ${{ env.MODE_MESSAGE }}
+          MODE_MESSAGE: ${{ env.MODE_MESSAGE }}
         run: |
           echo "=============================="
           echo "🤖 Running Bot Engine"
           echo "=============================="
       
+          echo "📦 MODE: $MODE"
+          echo "🏷️ TAG : $TAG"
+          echo "🧠 TYPE: $TYPE"
+      
           chmod +x .github/scripts/agent/run.agent.sh
-          bash .github/scripts/agent/run.agent.sh "$MODE" "$TAG"
+          bash .github/scripts/agent/run.agent.sh "$MODE" "$TAG" "$TYPE"
           
       # =========================
       # 🔒 SET LOCK
