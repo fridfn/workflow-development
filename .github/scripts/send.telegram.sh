@@ -87,7 +87,7 @@ send_message () {
   response=$(curl -s -w "%{http_code}" -o /dev/null -X POST \
     "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
     -d chat_id="$TELEGRAM_CHANNEL_ID" \
-    --data-urlencode "text=$text")
+    --data-urlencode "text=$textㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ")
 
   if [ "$response" != "200" ]; then
     log_warn "Telegram API responded with HTTP $response"
