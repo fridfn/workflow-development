@@ -3,7 +3,8 @@
 # ==========================================
 # 💜 BOT ENGINE CORE (DYNAMIC COMPOSER)
 # ------------------------------------------
-# Version : 4.0
+# Version : 4.1 (Trace Enhanced)
+# ==========================================
 #
 # Features:
 # - Dynamic message composition (JSON driven)
@@ -19,14 +20,11 @@
 CONFIG=".github/scripts/agent/agent.config.json"
 
 # =========================
-# 🔹 INPUT (ARG + ENV SAFE)
+# 🔹 INPUT
 # =========================
 MODE="${1:-$MODE}"
 TAG="${2:-$TAG}"
-
-# Optional override dari workflow
 COMPOSE_OVERRIDE="${COMPOSE_MODE:-}"
-
 
 # =========================
 # 🔹 LOG SYSTEM
@@ -41,7 +39,6 @@ log_info()  { log "INFO" "$1"; }
 log_warn()  { log "WARN" "$1"; }
 log_error() { log "ERROR" "$1"; }
 log_debug() { log "DEBUG" "$1"; }
-
 
 # =========================
 # 🔹 SEND FUNCTION
@@ -65,16 +62,14 @@ send_message () {
   fi
 }
 
-
 # =========================
-# 🚀 START ENGINE
+# 🚀 START
 # =========================
 log_info "Engine started"
 log_info "Config → $CONFIG"
 log_info "MODE → ${MODE:-<empty>}"
 log_info "TAG  → ${TAG:-<none>}"
 log_info "COMPOSE_OVERRIDE → ${COMPOSE_OVERRIDE:-<none>}"
-
 
 # =========================
 # 🔹 VALIDATION
@@ -91,7 +86,6 @@ fi
 
 log_info "Validation passed"
 
-
 # =========================
 # 🔹 RANDOM SEED
 # =========================
@@ -100,7 +94,6 @@ SEED_MSG=$RANDOM
 
 log_debug "Seed greet → $SEED_GREET"
 log_debug "Seed msg   → $SEED_MSG"
-
 
 # =========================
 # 🔹 LOAD BOTS
@@ -117,7 +110,6 @@ for b in $bots; do
   log_info " - $b"
 done
 
-
 # =========================
 # 🔁 LOOP
 # =========================
@@ -131,7 +123,7 @@ for bot in $bots; do
 
   log_debug "[$bot] Generating reply..."
 
-  reply=$(jq -r \
+  result=$(jq -c \
     --arg bot "$bot" \
     --arg mode "$MODE" \
     --arg tag "${TAG:-}" \
@@ -139,6 +131,8 @@ for bot in $bots; do
     --argjson sg "$SEED_GREET" \
     --argjson sm "$SEED_MSG" \
     '
+    def trace($msg): {trace: $msg};
+
     .[$bot] as $cfg
     | $cfg.message as $root
 
@@ -155,49 +149,84 @@ for bot in $bots; do
         // ["greeting","message"]
       ) as $compose
 
-    # =========================
-    # 🔹 SELECT CATEGORY
-    # =========================
-    | ($root | to_entries | map(select(.value[$mode])) | .[0]) as $category
+    | trace("Compose → " + ($compose | tostring)),
 
-    | if $category == null then empty else
+    # =========================
+    # 🔹 CATEGORY
+    # =========================
+    ($root | to_entries | map(select(.value[$mode])) | .[0]) as $category
+
+    | if $category == null then
+        trace("No category found for mode: " + $mode)
+      else
+
+        trace("Category → " + $category.key),
 
         ($category.value[$mode]) as $group
         | ($group | keys) as $toneKeys
 
-        | if ($toneKeys | length) == 0 then empty else
+        | trace("Available tones → " + ($toneKeys | tostring)),
 
-            $toneKeys[$sg % ($toneKeys | length)] as $tone
-            | ($group[$tone]) as $data
+        | if ($toneKeys | length) == 0 then
+            trace("No tone keys found")
+          else
 
-            # =========================
-            # 🔹 PICK DATA
-            # =========================
-            | ($data.greetings[$sg % ($data.greetings | length)]) as $greet
-            | ($data.messages[$sm % ($data.messages | length)]) as $msg
+            ($sg % ($toneKeys | length)) as $toneIndex
+            | $toneKeys[$toneIndex] as $tone
 
-            | (
-                if ($tag != "" and $root.reaction[$tag][$mode] != null) then
-                  $root.reaction[$tag][$mode][$sm % ($root.reaction[$tag][$mode] | length)]
-                else null
-                end
-              ) as $react
+            | trace("Selected tone → " + $tone),
+            | trace("Tone index → " + ($toneIndex | tostring)),
+            | trace("Path → message." + $category.key + "." + $mode + "." + $tone),
 
-            # =========================
-            # 🔥 COMPOSER
-            # =========================
-            | [
+            ($group[$tone]) as $data
+
+            | ($sg % ($data.greetings | length)) as $greetIndex
+            | ($sm % ($data.messages | length)) as $msgIndex
+
+            | ($data.greetings[$greetIndex]) as $greet
+            | ($data.messages[$msgIndex]) as $msg
+
+            | trace("Greeting index → " + ($greetIndex | tostring)),
+            | trace("Message index → " + ($msgIndex | tostring)),
+
+            (
+              if ($tag != "" and $root.reaction[$tag][$mode] != null) then
+                ($sm % ($root.reaction[$tag][$mode] | length)) as $reactIndex
+                | trace("Reaction path → reaction." + $tag + "." + $mode),
+                trace("Reaction index → " + ($reactIndex | tostring)),
+                $root.reaction[$tag][$mode][$reactIndex]
+              else
+                trace("Reaction skipped ✖"),
+                null
+              end
+            ) as $react
+
+            (
+              [
                 if ($compose | index("greeting")) then $greet else empty end,
                 if ($compose | index("message")) then $msg else empty end,
                 if ($compose | index("reaction") and $react != null) then $react else empty end
               ]
-            | map(select(. != null and . != ""))
-            | join("\n\n")
+              | map(select(. != null and . != ""))
+              | join("\n\n")
+            ) as $final
 
-        end
+            | trace("Final composed ✔"),
+
+            { reply: $final }
+
+          end
       end
     ' "$CONFIG")
 
+  # =========================
+  # 🔍 TRACE LOG OUTPUT
+  # =========================
+  echo "$result" | jq -r 'select(.trace) | .trace' | while read -r line; do
+    log_debug "[$bot][TRACE] $line"
+  done
+
+  reply=$(echo "$result" | jq -r 'select(.reply) | .reply')
 
   # =========================
   # 🔍 VALIDATION
@@ -212,9 +241,8 @@ for bot in $bots; do
   log_debug "$reply"
   log_debug "--------------------"
 
-
   # =========================
-  # 📤 SEND PARALLEL
+  # 📤 SEND
   # =========================
   log_info "[$bot] Schedule send in ${delay}s"
 
@@ -226,13 +254,11 @@ for bot in $bots; do
 
 done
 
-
 # =========================
 # ⏳ WAIT
 # =========================
 log_info "Waiting all bots..."
 wait
-
 
 # =========================
 # ✅ DONE
