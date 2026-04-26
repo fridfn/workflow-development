@@ -22,9 +22,9 @@ echo "[INPUT] TYPE=$TYPE_INPUT"
 # =========================
 # 🧠 VALIDATION + FALLBACK
 # =========================
-MODE="${MODE_INPUT:-neutral}"
-TAG="${TAG_INPUT:-general}"
-TYPE="${TYPE_INPUT:-unknown}"
+MODE="${MODE_INPUT:-}"
+TAG="${TAG_INPUT:-}"
+TYPE="${TYPE_INPUT:-}"
 
 # =========================
 # 🌍 EXPORT ENV
