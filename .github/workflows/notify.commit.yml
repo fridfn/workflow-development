@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      
       # =========================
       # 🔹 PARSE COMMIT
       # =========================
@@ -42,23 +42,6 @@ jobs:
           echo "mode=$mode" >> $GITHUB_OUTPUT
           set_multiline "detail" "$DETAIL"
           
-      # =========================
-      # 🔹 GET REACTION MESSAGE
-      # =========================
-      - name: Get reaction
-        id: reaction
-        run: |
-          chmod +x .github/scripts/*.sh
-          source .github/scripts/core/multiline.sh
-
-          OUTPUT=$(type="${{ steps.parse.outputs.type }}" \
-          mode="${{ steps.parse.outputs.mode }}" \
-          bash .github/scripts/get.reaction.sh)
-
-          echo "$OUTPUT"
-
-          # multiline safe output
-          set_multiline "REACTION" "$OUTPUT"
 
   # =========================
   # 🔹 NOTIFY (REUSABLE WORKFLOW)
@@ -116,7 +99,7 @@ jobs:
           
           echo "[FLOW] MODE=$MODE"
           echo "[FLOW] TAG=$TAG"
-  
+          
           bash .github/scripts/agent/run.agent.sh "$MODE" "$TAG"
         
         env:

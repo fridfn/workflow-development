@@ -19,10 +19,10 @@
 CONFIG=".github/scripts/agent/agent.config.json"
 
 # =========================
-# 🔹 INPUT ARGUMENT
+# 🔹 INPUT (ARG + ENV SAFE)
 # =========================
-MODE="$1"
-TAG="$2"
+MODE="${1:-$MODE}"
+TAG="${2:-$TAG}"
 
 # Optional override dari workflow
 COMPOSE_OVERRIDE="${COMPOSE_MODE:-}"
