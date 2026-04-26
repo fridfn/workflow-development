@@ -44,21 +44,21 @@ log_debug() { log "DEBUG" "$1"; }
 # 🔹 SEND FUNCTION
 # =========================
 send_message () {
-  local bot="$1"
+  local agent="$1"
   local text="$2"
 
-  log_debug "[$bot] Sending request..."
+  log_debug "[$agent] Sending request..."
 
   local response
   response=$(curl -s -w "%{http_code}" -o /dev/null -X POST \
-    "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
+    "https://api.telegram.org/agent$TELEGRAM_TOKEN/sendMessage" \
     -d chat_id="$TELEGRAM_CHANNEL_ID" \
     --data-urlencode "text=$text")
 
   if [ "$response" != "200" ]; then
-    log_warn "[$bot] Telegram API HTTP $response"
+    log_warn "[$agent] Telegram API HTTP $response"
   else
-    log_info "[$bot] Message sent ✔"
+    log_info "[$agent] Message sent ✔"
   fi
 }
 
@@ -92,35 +92,43 @@ SEED_MSG=$RANDOM
 # =========================
 # 🔹 LOAD BOTS
 # =========================
-bots=$(jq -r 'keys[]' "$CONFIG")
+agents=$(jq -r 'keys[]' "$CONFIG")
 
-[ -z "$bots" ] && exit 0
+[ -z "$agents" ] && exit 0
 
 # =========================
 # 🔁 LOOP
 # =========================
-for bot in $bots; do
+for agent in $agents; do
 
-  log_info "Processing → $bot"
+  start_time=$(date +%s)
 
-  delay=$(jq -r --arg bot "$bot" '.[$bot].delay // 0' "$CONFIG")
+  log_info "================================"
+  log_info "[BOT] $agent → START"
+
+  # =========================
+  # 🔹 LOAD CONFIG
+  # =========================
+  delay=$(jq -r --arg agent "$agent" '.[$agent].delay // 0' "$CONFIG")
+  log_debug "[$agent][CONFIG] Delay=${delay}s"
+
+  # =========================
+  # 🔹 PARSE ENGINE
+  # =========================
+  log_info "[$agent][STEP] Parsing engine..."
 
   result=$(jq -c \
-    --arg bot "$bot" \
+    --arg agent "$agent" \
     --arg mode "$MODE" \
     --arg tag "${TAG:-}" \
     --arg override "$COMPOSE_OVERRIDE" \
     --argjson sg "$SEED_GREET" \
     --argjson sm "$SEED_MSG" \
   '
-  def trace($msg): {"trace": $msg};
-
-  .[$bot] as $cfg
+  .[$agent] as $cfg
   | $cfg.message as $root
 
-  # =========================
-  # 🔹 COMPOSE
-  # =========================
+  # COMPOSE
   | (
       if $override != "" then
         ($override | split(","))
@@ -129,9 +137,7 @@ for bot in $bots; do
       end
     ) as $compose
 
-  # =========================
-  # 🔹 CATEGORY
-  # =========================
+  # CATEGORY
   | ($root | to_entries | map(select(.value[$mode])) | .[0]) as $category
 
   | if $category == null then
@@ -169,11 +175,15 @@ for bot in $bots; do
 
           | {
               reply: $final,
-              trace: [
-                "Compose=" + ($compose|tostring),
-                "Category=" + $category.key,
-                "Tone=" + $tone
-              ]
+              debug: {
+                compose: $compose,
+                category: $category.key,
+                total_tones: ($tones|length),
+                picked_tone_index: $ti,
+                picked_tone: $tone,
+                seed_greet: $sg,
+                seed_msg: $sm
+              }
             }
 
         end
@@ -181,10 +191,21 @@ for bot in $bots; do
   ' "$CONFIG")
 
   # =========================
-  # 🔍 TRACE
+  # 🔍 DEBUG BREAKDOWN
   # =========================
-  echo "$result" | jq -r '.trace[]?' | while read -r t; do
-    log_debug "[$bot] $t"
+  debug=$(echo "$result" | jq -c '.debug')
+
+  log_info "[$agent][STEP] Debug breakdown:"
+  echo "$debug" | jq -r '
+    "  • Compose        : " + (.compose|tostring),
+    "  • Category       : " + .category,
+    "  • Total tones    : " + (.total_tones|tostring),
+    "  • Tone index     : " + (.picked_tone_index|tostring),
+    "  • Tone selected  : " + .picked_tone,
+    "  • Seed greet     : " + (.seed_greet|tostring),
+    "  • Seed msg       : " + (.seed_msg|tostring)
+  ' | while read -r line; do
+    log_debug "[$agent] $line"
   done
 
   reply=$(echo "$result" | jq -r '.reply')
@@ -193,22 +214,36 @@ for bot in $bots; do
   # 🔍 VALIDATION
   # =========================
   if [ -z "$reply" ] || [ "$reply" = "null" ]; then
-    log_warn "[$bot] Empty reply"
+    log_warn "[$agent][STEP] Reply empty → skip"
     continue
   fi
 
-  log_debug "[$bot] Reply:"
+  log_info "[$agent][STEP] Reply generated ✔"
+
+  log_debug "[$agent][OUTPUT]"
+  log_debug "--------------------"
   log_debug "$reply"
+  log_debug "--------------------"
 
   # =========================
   # 📤 SEND
   # =========================
+  log_info "[$agent][STEP] Schedule send (${delay}s)"
+
   (
     sleep "$delay"
-    send_message "$bot" "$reply"
+    log_info "[$agent][STEP] Sending..."
+    send_message "$agent" "$reply"
   ) &
+
+  # =========================
+  # ⏱️ TIME TRACK
+  # =========================
+  end_time=$(date +%s)
+  duration=$((end_time - start_time))
+  log_info "[$agent][DONE] Completed in ${duration}s"
 
 done
 
 wait
-log_info "All bots done 💜"
+log_info "All agents done 💜"
