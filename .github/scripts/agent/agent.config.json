@@ -1,9 +1,9 @@
 {
   "aurielle_nara_elowen": {
-    "delay": 60,
+    "delay": 120,
     "compose": {
       "default": ["greeting", "message"],
-      "feat": ["greeting", "reaction"],
+      "feat": ["greeting"],
       "fix": ["reaction"],
       "docs": ["message"],
       "chore": ["reaction"],

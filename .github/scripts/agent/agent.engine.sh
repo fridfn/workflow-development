@@ -16,7 +16,7 @@
 #
 # ==========================================
 
-
+source ".github/scripts/lib/weighted.delay.sh"
 CONFIG=".github/scripts/agent/agent.config.json"
 
 # =========================
@@ -110,8 +110,12 @@ for agent in $agents; do
   # 🔹 LOAD CONFIG
   # =========================
   delay=$(jq -r --arg agent "$agent" '.[$agent].delay // 0' "$CONFIG")
-  log_debug "[$agent][CONFIG] Delay=${delay}s"
-
+  
+  RANDOM_DELAY=$(weighted_delay "$agent" 20 "$delay")
+  
+  log_debug "[$agent] Config delay → $delay"
+  log_debug "[$agent] Active delay → $RANDOM_DELAY"
+  
   # =========================
   # 🔹 PARSE ENGINE
   # =========================
@@ -228,10 +232,10 @@ for agent in $agents; do
   # =========================
   # 📤 SEND
   # =========================
-  log_info "[$agent][STEP] Schedule send (${delay}s)"
+  log_info "[$agent][STEP] Schedule send (${RANDOM_DELAY}s)"
 
   (
-    sleep "$delay"
+    sleep "$RANDOM_DELAY"
     log_info "[$agent][STEP] Sending..."
     send_message "$agent" "$reply"
   ) &
