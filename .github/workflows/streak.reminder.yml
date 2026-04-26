@@ -135,8 +135,8 @@ jobs:
           mode=$(get_mode_by_no_commit)
           
           echo "🎯 Mode: $mode"
-          echo "mode=$mode" >> $GITHUB_ENV
-          echo "mode_message=reminder" >> $GITHUB_ENV
+          echo "MODE=$mode" >> $GITHUB_ENV
+          echo "MODE_MESSAGE=reminder" >> $GITHUB_ENV
           
       - name: Next Step
         if: env.skip != 'true'
@@ -159,41 +159,27 @@ jobs:
           mode=$(get_mode_by_commit)
           
           echo "🎯 Mode: $mode"
-          echo "mode=$mode" >> $GITHUB_ENV
-          echo "mode_message=appreciation" >> $GITHUB_ENV
+          echo "MODE=$mode" >> $GITHUB_ENV
+          echo "MODE_MESSAGE=appreciation" >> $GITHUB_ENV
           
       # =========================
-      # 🎲 GET MESSAGE
+      # 🤖 RUN ENGINE
       # =========================
-      - name: Get Message
-        if: (steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true') || steps.activity.outputs.no_commit == 'true'
-        run: |
-          echo "=============================="
-          echo "🎲 Generate Message"
-          echo "=============================="
-
-          chmod +x .github/scripts/get.message.sh
-          OUTPUT=$(mode="$mode" mode_message="$mode_message" bash .github/scripts/get.message.sh)
-
-          echo "$OUTPUT"
-          echo "$OUTPUT" >> $GITHUB_ENV
-
-      # =========================
-      # 📤 SEND TELEGRAM
-      # =========================
-      - name: Send Telegram
+      - name: Run Engine
         if: (steps.activity.outputs.no_commit == 'false' && needs.lock-check.outputs.allowed == 'true') || steps.activity.outputs.no_commit == 'true'
         env:
-          TELEGRAM_TOKEN_AURIELLE: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          MODE: ${{ env.MODE }}
+          TAG: ${{ env.TAG }}
         run: |
           echo "=============================="
-          echo "📤 Sending Message"
+          echo "🤖 Running Bot Engine"
           echo "=============================="
-
-          chmod +x .github/scripts/send.telegram.sh
-          bash .github/scripts/send.telegram.sh
-
+      
+          chmod +x .github/scripts/agent/run.agent.sh
+          bash .github/scripts/agent/run.agent.sh "$MODE" "$TAG"
+          
       # =========================
       # 🔒 SET LOCK
       # =========================
