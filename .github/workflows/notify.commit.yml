@@ -11,7 +11,6 @@ jobs:
       type: ${{ steps.parse.outputs.type }}
       detail: ${{ steps.parse.outputs.detail }}
       tag: ${{ steps.parse.outputs.reaction }}
-      reaction_message: ${{ steps.reaction.outputs.REACTION }}
       mode: ${{ steps.parse.outputs.mode }}
 
     steps:
@@ -103,7 +102,7 @@ jobs:
   aurielle_reply:
     needs: [prepare, notify]
     runs-on: ubuntu-latest
-  
+    
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -111,7 +110,7 @@ jobs:
       - name: Run Aurielle Bot
         run: |
           echo "[FLOW] Triggering Aurielle reply..."
-  
+          
           MODE="${{ needs.prepare.outputs.mode }}"
           TAG="${{ needs.prepare.outputs.tag }}"
           
@@ -119,7 +118,7 @@ jobs:
           echo "[FLOW] TAG=$TAG"
   
           bash .github/scripts/agent/run.agent.sh "$MODE" "$TAG"
-  
+        
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}

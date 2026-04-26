@@ -70,7 +70,7 @@ get_mode_by_commit() {
   if [ -z "$mode" ]; then
     log_warn "Mode detection failed"
     echo "No mode detected" >&2
-    return 1
+    return 0
   fi
 
   log_info "Selected mode → $mode"
