@@ -1,6 +1,17 @@
 {
   "aurielle_nara_elowen": {
     "delay": 60,
+    "compose": {
+      "default": ["greeting", "message"],
+      "feat": ["greeting", "reaction"],
+      "fix": ["reaction"],
+      "docs": ["message"],
+      "chore": ["reaction"],
+      "style": ["reaction"],
+      "refactor": ["reaction"],
+      "test": ["reaction"],
+      "update": ["reaction"]
+    },
     "message": {
       "support": {
         "ambitious": {
@@ -880,7 +891,7 @@
             "kamu jaga ritme kamu… walaupun pelan"
           ]
         },
-      
+        
         "fix": {
           "ambitious": [
             "kamu langsung beresin sesuatu… keliatan kamu lagi fokus",

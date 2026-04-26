@@ -1,21 +1,31 @@
 #!/bin/bash
 
 # ==========================================
-# 💜 BOT ENGINE CORE (WITH FULL LOGS)
+# 💜 BOT ENGINE CORE (DYNAMIC COMPOSER)
 # ------------------------------------------
-# Version : 2.0 (Debug Enhanced)
-# Mode    : Parallel Execution
+# Version : 4.0
 #
 # Features:
-# - Structured logging per step
-# - Safe debug jq pipeline
-# - Delay tracking per bot
-# - Output visibility (reply preview)
+# - Dynamic message composition (JSON driven)
+# - Flexible: greeting / message / reaction
+# - Tag-based behavior
+# - Runtime override (COMPOSE_MODE)
+# - Parallel sending
+# - Full debug logging
 #
 # ==========================================
 
 
 CONFIG=".github/scripts/agent/agent.config.json"
+
+# =========================
+# 🔹 INPUT ARGUMENT
+# =========================
+MODE="$1"
+TAG="$2"
+
+# Optional override dari workflow
+COMPOSE_OVERRIDE="${COMPOSE_MODE:-}"
 
 
 # =========================
@@ -60,9 +70,10 @@ send_message () {
 # 🚀 START ENGINE
 # =========================
 log_info "Engine started"
-log_info "Config file → $CONFIG"
+log_info "Config → $CONFIG"
 log_info "MODE → ${MODE:-<empty>}"
 log_info "TAG  → ${TAG:-<none>}"
+log_info "COMPOSE_OVERRIDE → ${COMPOSE_OVERRIDE:-<none>}"
 
 
 # =========================
@@ -74,7 +85,7 @@ if [ -z "$MODE" ]; then
 fi
 
 if [ ! -f "$CONFIG" ]; then
-  log_error "Config file not found → $CONFIG"
+  log_error "Config file not found"
   exit 1
 fi
 
@@ -97,90 +108,119 @@ log_debug "Seed msg   → $SEED_MSG"
 bots=$(jq -r 'keys[]' "$CONFIG")
 
 if [ -z "$bots" ]; then
-  log_warn "No bots found in config → exit"
+  log_warn "No bots found → exit"
   exit 0
 fi
 
-log_info "Bots detected:"
+log_info "Bots:"
 for b in $bots; do
   log_info " - $b"
 done
 
 
 # =========================
-# 🔁 LOOP BOTS
+# 🔁 LOOP
 # =========================
 for bot in $bots; do
 
-  log_info "------------------------------------------"
-  log_info "Processing bot → $bot"
+  log_info "--------------------------------"
+  log_info "Processing → $bot"
 
-  # 🔹 Delay
   delay=$(jq -r --arg bot "$bot" '.[$bot].delay // 0' "$CONFIG")
   log_debug "[$bot] Delay → ${delay}s"
 
-
-  # =========================
-  # 🧠 GENERATE MESSAGE
-  # =========================
   log_debug "[$bot] Generating reply..."
 
   reply=$(jq -r \
     --arg bot "$bot" \
     --arg mode "$MODE" \
     --arg tag "${TAG:-}" \
+    --arg override "$COMPOSE_OVERRIDE" \
     --argjson sg "$SEED_GREET" \
     --argjson sm "$SEED_MSG" \
     '
-    .[$bot].message as $root
+    .[$bot] as $cfg
+    | $cfg.message as $root
+
+    # =========================
+    # 🔹 COMPOSE RULE
+    # =========================
+    | ($override
+        | if . != "" then split(",") else empty end
+      ) as $overrideCompose
+
+    | ($overrideCompose
+        // $cfg.compose[$tag]
+        // $cfg.compose.default
+        // ["greeting","message"]
+      ) as $compose
+
+    # =========================
+    # 🔹 SELECT CATEGORY
+    # =========================
     | ($root | to_entries | map(select(.value[$mode])) | .[0]) as $category
+
     | if $category == null then empty else
+
         ($category.value[$mode]) as $group
         | ($group | keys) as $toneKeys
+
         | if ($toneKeys | length) == 0 then empty else
+
             $toneKeys[$sg % ($toneKeys | length)] as $tone
             | ($group[$tone]) as $data
-            | if ($data.greetings | length) == 0 or ($data.messages | length) == 0 then empty else
-                ($data.greetings[$sg % ($data.greetings | length)]) as $greet
-                | ($data.messages[$sm % ($data.messages | length)]) as $msg
-                | if ($tag != "" and $root.reaction[$tag][$mode] != null) then
-                    ($root.reaction[$tag][$mode]) as $tagData
-                    | if ($tagData | length) == 0 then
-                        $greet + "\n\n" + $msg
-                      else
-                        $greet + "\n\n" + $msg + "\n\n" + $tagData[$sm % ($tagData | length)]
-                      end
-                  else
-                    $greet + "\n\n" + $msg
-                  end
-              end
-          end
+
+            # =========================
+            # 🔹 PICK DATA
+            # =========================
+            | ($data.greetings[$sg % ($data.greetings | length)]) as $greet
+            | ($data.messages[$sm % ($data.messages | length)]) as $msg
+
+            | (
+                if ($tag != "" and $root.reaction[$tag][$mode] != null) then
+                  $root.reaction[$tag][$mode][$sm % ($root.reaction[$tag][$mode] | length)]
+                else null
+                end
+              ) as $react
+
+            # =========================
+            # 🔥 COMPOSER
+            # =========================
+            | [
+                if ($compose | index("greeting")) then $greet else empty end,
+                if ($compose | index("message")) then $msg else empty end,
+                if ($compose | index("reaction") and $react != null) then $react else empty end
+              ]
+            | map(select(. != null and . != ""))
+            | join("\n\n")
+
+        end
       end
     ' "$CONFIG")
 
 
   # =========================
-  # 🔍 VALIDASI OUTPUT
+  # 🔍 VALIDATION
   # =========================
   if [ -z "$reply" ] || [ "$reply" = "null" ]; then
-    log_warn "[$bot] No valid reply generated → skip"
+    log_warn "[$bot] Empty reply → skip"
     continue
   fi
 
-  log_debug "[$bot] Reply generated:"
-  log_debug "--------------------------------"
+  log_debug "[$bot] Reply:"
+  log_debug "--------------------"
   log_debug "$reply"
-  log_debug "--------------------------------"
+  log_debug "--------------------"
 
 
   # =========================
-  # 📤 SEND (PARALLEL)
+  # 📤 SEND PARALLEL
   # =========================
-  log_info "[$bot] Scheduling send in ${delay}s"
+  log_info "[$bot] Schedule send in ${delay}s"
 
   (
     sleep "$delay"
-    log_info "[$bot] Sending now..."
+    log_info "[$bot] Sending..."
     send_message "$bot" "$reply"
   ) &
 
@@ -188,13 +228,13 @@ done
 
 
 # =========================
-# ⏳ WAIT ALL
+# ⏳ WAIT
 # =========================
-log_info "Waiting all bots to finish..."
+log_info "Waiting all bots..."
 wait
 
 
 # =========================
 # ✅ DONE
 # =========================
-log_info "All bots completed 💜"
+log_info "All bots done 💜"
