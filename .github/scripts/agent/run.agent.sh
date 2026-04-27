@@ -9,6 +9,32 @@ echo "🚀 BOT RUNNER START"
 echo "=============================="
 
 # =========================
+# 🎲 COMPOSE WEIGHTS (NEW FEATURE)
+# =========================
+echo "=============================="
+echo "🎲 COMPOSE WEIGHTS SETUP"
+echo "=============================="
+
+# Ambil dari ENV (workflow)
+COMPOSE_WEIGHTS_INPUT="${COMPOSE_WEIGHTS:-}"
+
+if [ -z "$COMPOSE_WEIGHTS_INPUT" ]; then
+  echo "[WARN] COMPOSE_WEIGHTS not found in ENV"
+
+  # fallback aman (biar gak crash)
+  COMPOSE_WEIGHTS_INPUT='{"default":100}'
+
+  echo "[FALLBACK] Using default weights → $COMPOSE_WEIGHTS_INPUT"
+else
+  echo "[OK] COMPOSE_WEIGHTS from ENV → $COMPOSE_WEIGHTS_INPUT"
+fi
+
+# export biar bisa dipake downstream
+export COMPOSE_WEIGHTS="$COMPOSE_WEIGHTS_INPUT"
+
+echo "[ENV] COMPOSE_WEIGHTS=$COMPOSE_WEIGHTS"
+
+# =========================
 # 📥 INPUT
 # =========================
 MODE_INPUT="$1"
@@ -50,7 +76,7 @@ echo "=============================="
 echo "🤖 ENGINE START"
 echo "=============================="
 
-bash .github/scripts/agent/agent.engine.sh
+bash .github/scripts/agent/agent.engine.sh "$COMPOSE_WEIGHTS"
 
 echo "=============================="
 echo "✅ ENGINE DONE"
