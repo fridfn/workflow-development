@@ -120,10 +120,6 @@ jobs:
       # =========================
       - name: Send Reminder (No Commit)
         if: steps.activity.outputs.no_commit == 'true'
-        
-        env:
-          TELEGRAM_TOKEN_AURIELLE: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
-          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
         run: |
           echo "=============================="
           echo "⚠️ Reminder Mode"
@@ -137,11 +133,7 @@ jobs:
           echo "🎯 Mode: $mode"
           echo "MODE=$mode" >> $GITHUB_ENV
           echo "MODE_MESSAGE=reminder" >> $GITHUB_ENV
-          
-      - name: Next Step
-        if: env.skip != 'true'
-        run: |
-          echo "Lanjut eksekusi steps selanjutnya..."
+          echo "COMPOSE_WEIGHTS={\"message,greeting\":10,\"greeting\":40,\"message\":50}" >> $GITHUB_ENV
           
       # =========================
       # 💜 APPRECIATION MODE
@@ -161,6 +153,7 @@ jobs:
           echo "🎯 Mode: $mode"
           echo "MODE=$mode" >> $GITHUB_ENV
           echo "MODE_MESSAGE=appreciation" >> $GITHUB_ENV
+          echo "COMPOSE_WEIGHTS={\"message,greeting\":10,\"greeting\":40,\"message\":50}" >> $GITHUB_ENV
           
       # =========================
       # 🤖 RUN ENGINE
@@ -174,6 +167,7 @@ jobs:
           TAG: ${{ env.TAG }}
           TYPE: ${{ env.MODE_MESSAGE }}
           MODE_MESSAGE: ${{ env.MODE_MESSAGE }}
+          COMPOSE_WEIGHTS: ${{ env.COMPOSE_WEIGHTS }}
         run: |
           echo "=============================="
           echo "🤖 Running Bot Engine"

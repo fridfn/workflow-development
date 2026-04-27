@@ -16,6 +16,7 @@
 #
 # ==========================================
 
+source ".github/scripts/agent/lib/compose.weighted.sh"
 source ".github/scripts/agent/lib/memory.store.sh"
 source ".github/scripts/agent/lib/anti.repeat.sh"
 source ".github/scripts/agent/lib/weighted.tone.sh"
@@ -77,6 +78,15 @@ log_info "OVERRIDE → ${COMPOSE_OVERRIDE:-<none>}"
 
 TIME_CTX=$(get_time_context)
 log_info "Context Time → $TIME_CTX"
+
+# =========================
+# 🎯 WEIGHTED COMPOSE (V9.3)
+# =========================
+log_info "Checking weighted compose..."
+
+apply_weighted_compose
+
+log_info "COMPOSE_MODE after weighted → ${COMPOSE_MODE:-<none>}"
 
 # =========================
 # 🔹 VALIDATION

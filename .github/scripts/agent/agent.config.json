@@ -3,6 +3,8 @@
     "delay": 120,
     "compose": {
       "default": ["greeting", "message"],
+      "greeting": ["greeting"],
+      "message": ["message"],
       "feat": ["greeting"],
       "fix": ["reaction"],
       "docs": ["message"],
