@@ -1,0 +1,36 @@
+{
+  "user": "fridfn",
+
+  "repos": [
+    "fridfn/project-1",
+    "fridfn/project-2",
+    "fridfn/project-3"
+  ],
+
+  "weights": {
+    "PushEvent": 2,
+    "PullRequestEvent": 3,
+    "IssuesEvent": 1
+  },
+
+  "thresholds": {
+    "active": 1,
+    "high": 5,
+    "very_active": 10
+  },
+
+  "modes": {
+    "very_active": {
+      "tags": ["🔥 blazing", "💜 ultra productive", "⚡ unstoppable"]
+    },
+    "high": {
+      "tags": ["🔥 active", "💜 productive", "🌟 focused"]
+    },
+    "active": {
+      "tags": ["💜 consistent", "🌱 steady", "⚡ on track"]
+    },
+    "idle": {
+      "tags": ["🌙 quiet", "🍃 calm", "😴 resting"]
+    }
+  }
+}

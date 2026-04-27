@@ -16,6 +16,10 @@
 #
 # ==========================================
 
+source ".github/scripts/agent/lib/memory.store.sh"
+source ".github/scripts/agent/lib/anti.repeat.sh"
+source ".github/scripts/agent/lib/weighted.tone.sh"
+source ".github/scripts/agent/lib/context.aware.sh"
 source ".github/scripts/lib/weighted.delay.sh"
 CONFIG=".github/scripts/agent/agent.config.json"
 
@@ -70,6 +74,9 @@ log_info "Engine started"
 log_info "MODE → ${MODE:-<empty>}"
 log_info "TAG  → ${TAG:-<none>}"
 log_info "OVERRIDE → ${COMPOSE_OVERRIDE:-<none>}"
+
+TIME_CTX=$(get_time_context)
+log_info "Context Time → $TIME_CTX"
 
 # =========================
 # 🔹 VALIDATION
@@ -214,12 +221,25 @@ for agent in $agents; do
   done
 
   reply=$(echo "$result" | jq -r '.reply')
+  
+  # =========================
+  # 🔍 MEMORY SAVE EXTRA (OPTIONAL)
+  # =========================
+  set_memory "${agent}_last_mode" "$MODE"
+  set_memory "${agent}_last_tag" "$TAG"
 
   # =========================
   # 🔍 VALIDATION
   # =========================
   if [ -z "$reply" ] || [ "$reply" = "null" ]; then
     log_warn "[$agent][STEP] Reply empty → skip"
+    continue
+  fi
+  
+  log_info "[$agent][V9] Running Anti-Repeat Check..."
+  
+  if ! filter_repeat "$agent" "$reply"; then
+    log_warn "[$agent] Skipped due to duplicate message"
     continue
   fi
 
