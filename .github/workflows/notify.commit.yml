@@ -41,7 +41,7 @@ jobs:
           # 🔹 Get mode
           mode=$(get_mode_by_commit)
           
-          weights='{"message,greeting":20,"greeting":40,"message":40}'
+          weights="{\"message,greeting\":20,\"greeting\":40,\"message\":40}"
       
           echo "type=$TYPE" >> $GITHUB_OUTPUT
           echo "reaction=$REACTION" >> $GITHUB_OUTPUT
