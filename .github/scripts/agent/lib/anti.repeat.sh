@@ -4,7 +4,7 @@
 # 💜 ANTI REPEAT FILTER
 # ==========================================
 
-source ".github/scripts/lib/memory.store.sh"
+source ".github/scripts/agent/lib/memory.store.sh"
 
 filter_repeat() {
   local agent="$1"

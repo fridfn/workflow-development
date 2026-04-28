@@ -28,7 +28,7 @@ apply_weighted_compose() {
 
   log_weight "Weights → $weights"
 
-  result=$(bash .github/scripts/lib/weighted.gacha.sh "$weights")
+  result=$(bash .github/scripts/agent/lib/weighted.gacha.sh "$weights")
 
   if [ -z "$result" ]; then
     log_weight "Result empty → skip"

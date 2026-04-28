@@ -5,6 +5,8 @@ on:
   workflow_dispatch:
   
 jobs:
+  env:
+    FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true
   prepare:
     runs-on: ubuntu-latest
     outputs:

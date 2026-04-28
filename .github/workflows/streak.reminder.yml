@@ -33,6 +33,8 @@ on:
   workflow_dispatch:
   
 jobs:
+  env:
+    FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true
   lock-check:
     uses: ./.github/workflows/streak.lock.yml
     secrets: inherit
