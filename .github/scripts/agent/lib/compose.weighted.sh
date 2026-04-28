@@ -11,7 +11,7 @@ log_weight() {
 }
 
 apply_weighted_compose() {
-  local weights="$COMPOSE_WEIGHTS"
+  local weights="${COMPOSE_WEIGHTS:-}"
 
   log_weight "=============================="
   log_weight "STEP 1 → INIT"

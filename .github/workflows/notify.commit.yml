@@ -110,5 +110,5 @@ jobs:
           echo "[FLOW] TAG=$TAG"
           echo "[FLOW] COMPOSE_WEIGHTS=$COMPOSE_WEIGHTS"
           
-          bash .github/scripts/agent/run.agent.sh "$MODE" "$TAG"
+          bash .github/scripts/agent/run.agent.sh
         
