@@ -14,7 +14,8 @@ jobs:
       detail: ${{ steps.parse.outputs.detail }}
       tag: ${{ steps.parse.outputs.reaction }}
       mode: ${{ steps.parse.outputs.mode }}
-
+      compose_weights: ${{ steps.parse.outputs.compose_weights }}
+      
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -39,12 +40,14 @@ jobs:
       
           # 🔹 Get mode
           mode=$(get_mode_by_commit)
+          
+          weights='{"message,greeting":20,"greeting":40,"message":40}'
       
           echo "type=$TYPE" >> $GITHUB_OUTPUT
           echo "reaction=$REACTION" >> $GITHUB_OUTPUT
           echo "mode=$mode" >> $GITHUB_OUTPUT
           set_multiline "detail" "$DETAIL"
-          echo "COMPOSE_WEIGHTS={\"message,greeting\":20,\"greeting\":40,\"message\":40}" >> $GITHUB_ENV
+          echo "compose_weights=$weights" >> $GITHUB_OUTPUT
 
   # =========================
   # 🔹 NOTIFY (REUSABLE WORKFLOW)
@@ -93,6 +96,10 @@ jobs:
         uses: actions/checkout@v4
   
       - name: Run Aurielle Bot
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
+          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          COMPOSE_WEIGHTS: ${{ needs.prepare.outputs.compose_weights }}
         run: |
           echo "[FLOW] Triggering Aurielle reply..."
           
@@ -101,10 +108,7 @@ jobs:
           
           echo "[FLOW] MODE=$MODE"
           echo "[FLOW] TAG=$TAG"
+          echo "[FLOW] COMPOSE_WEIGHTS=$COMPOSE_WEIGHTS"
           
           bash .github/scripts/agent/run.agent.sh "$MODE" "$TAG"
         
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
-          TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
-          COMPOSE_WEIGHTS: ${{ env.COMPOSE_WEIGHTS }}
