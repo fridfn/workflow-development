@@ -17,6 +17,8 @@ apply_weighted_compose() {
   log_weight "STEP 1 → INIT"
   log_weight "=============================="
 
+  log_weight "Value weights → $weights"
+  
   if [ -z "$weights" ]; then
     log_weight "No COMPOSE_WEIGHTS provided → skip"
     return
