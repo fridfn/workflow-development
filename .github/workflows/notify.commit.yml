@@ -26,7 +26,8 @@ jobs:
         id: parse
         run: |
           chmod +x .github/scripts/core/*.sh
-      
+          chmod +x .github/scripts/agent/lib/*.sh
+          
           source .github/scripts/core/multiline.sh
           source .github/scripts/core/commit.sh
           source .github/scripts/core/mindset.sh
@@ -43,7 +44,7 @@ jobs:
           echo "reaction=$REACTION" >> $GITHUB_OUTPUT
           echo "mode=$mode" >> $GITHUB_OUTPUT
           set_multiline "detail" "$DETAIL"
-          
+          echo "COMPOSE_WEIGHTS={\"message,greeting\":20,\"greeting\":40,\"message\":40}" >> $GITHUB_ENV
 
   # =========================
   # 🔹 NOTIFY (REUSABLE WORKFLOW)
@@ -75,7 +76,6 @@ jobs:
         🔗 Detail Commit  
         https://github.com/${{ github.repository }}/commit/${{ github.sha }}
         ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ
-
     secrets:
       TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN_OWNER }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -107,3 +107,4 @@ jobs:
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
+          COMPOSE_WEIGHTS: ${{ env.COMPOSE_WEIGHTS }}

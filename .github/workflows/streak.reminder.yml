@@ -128,6 +128,7 @@ jobs:
           echo "=============================="
           
           chmod +x .github/scripts/core/*.sh
+          chmod +x .github/scripts/agent/lib/*.sh
           source .github/scripts/core/mindset.sh
           
           mode=$(get_mode_by_no_commit)
@@ -149,6 +150,7 @@ jobs:
           echo "=============================="
           
           chmod +x .github/scripts/core/*.sh
+          chmod +x .github/scripts/agent/lib/*.sh
           source .github/scripts/core/mindset.sh
           
           mode=$(get_mode_by_commit)
@@ -157,7 +159,7 @@ jobs:
           echo "MODE=$mode" >> $GITHUB_ENV
           echo "MODE_MESSAGE=appreciation" >> $GITHUB_ENV
           echo "TAG=$MODE_MESSAGE" >> $GITHUB_ENV
-          echo "COMPOSE_WEIGHTS={\"message,greeting\":10,\"greeting\":40,\"message\":50}" >> $GITHUB_ENV
+           echo "COMPOSE_WEIGHTS={\"message,greeting\":20,\"greeting\":40,\"message\":40}" >> $GITHUB_ENV
           
       # =========================
       # 🤖 RUN ENGINE
