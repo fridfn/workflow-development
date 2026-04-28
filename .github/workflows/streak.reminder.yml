@@ -135,6 +135,7 @@ jobs:
           echo "🎯 Mode: $mode"
           echo "MODE=$mode" >> $GITHUB_ENV
           echo "MODE_MESSAGE=reminder" >> $GITHUB_ENV
+          echo "TAG=$MODE_MESSAGE" >> $GITHUB_ENV
           echo "COMPOSE_WEIGHTS={\"message,greeting\":10,\"greeting\":40,\"message\":50}" >> $GITHUB_ENV
           
       # =========================
@@ -155,6 +156,7 @@ jobs:
           echo "🎯 Mode: $mode"
           echo "MODE=$mode" >> $GITHUB_ENV
           echo "MODE_MESSAGE=appreciation" >> $GITHUB_ENV
+          echo "TAG=$MODE_MESSAGE" >> $GITHUB_ENV
           echo "COMPOSE_WEIGHTS={\"message,greeting\":10,\"greeting\":40,\"message\":50}" >> $GITHUB_ENV
           
       # =========================

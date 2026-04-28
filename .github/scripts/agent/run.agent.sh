@@ -76,7 +76,7 @@ echo "=============================="
 echo "🤖 ENGINE START"
 echo "=============================="
 
-bash .github/scripts/agent/agent.engine.sh "$COMPOSE_WEIGHTS"
+bash .github/scripts/agent/agent.engine.sh "$MODE" "$TAG" "$TYPE"
 
 echo "=============================="
 echo "✅ ENGINE DONE"

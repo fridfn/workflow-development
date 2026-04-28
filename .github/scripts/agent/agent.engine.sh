@@ -16,8 +16,10 @@
 #
 # ==========================================
 
+source ".github/scripts/agent/retry.engine.sh"
+source ".github/scripts/agent/brain/memory.agent.sh"
+source ".github/scripts/agent/brain/memory.store.sh"
 source ".github/scripts/agent/lib/compose.weighted.sh"
-source ".github/scripts/agent/lib/memory.store.sh"
 source ".github/scripts/agent/lib/anti.repeat.sh"
 source ".github/scripts/agent/lib/weighted.tone.sh"
 source ".github/scripts/agent/lib/context.aware.sh"
@@ -139,7 +141,8 @@ for agent in $agents; do
   # =========================
   log_info "[$agent][STEP] Parsing engine..."
 
-  result=$(jq -c \
+  generate_reply() {
+   jq -c \
     --arg agent "$agent" \
     --arg mode "$MODE" \
     --arg tag "${TAG:-}" \
@@ -210,8 +213,21 @@ for agent in $agents; do
 
         end
     end
-  ' "$CONFIG")
-
+  ' "$CONFIG"
+  }
+  
+  # =========================
+  # 🧠 INITIAL GENERATION
+  # =========================
+  log_info "[$agent][STEP] Initial generation..."
+  
+  result=$(generate_reply)
+  
+  log_debug "[$agent] Raw result:"
+  echo "$result" | jq '.' | while read -r line; do
+    log_debug "[$agent] $line"
+  done
+  
   # =========================
   # 🔍 DEBUG BREAKDOWN
   # =========================
@@ -233,10 +249,38 @@ for agent in $agents; do
   reply=$(echo "$result" | jq -r '.reply')
   
   # =========================
+  # 🔁 SMART RETRY (ANTI-REPEAT IMPROVED)
+  # =========================
+  last=$(get_memory "$agent.last_message")
+  
+  if [ "$reply" = "$last" ]; then
+    log_debug "[$agent] Last message from memory:"
+    log_debug "[$agent] --------------------"
+    log_debug "[$agent] $last"
+    log_debug "[$agent] --------------------"
+    
+    log_warn "[$agent] Duplicate detected → trying retry engine"
+    
+    new=$(retry_generate "$agent" "$reply" generate_reply)
+  
+    if [ $? -eq 0 ]; then
+      log_info "[$agent] Retry raw result:"
+      echo "$new" | jq '.' | while read -r line; do
+        log_debug "[$agent] $line"
+      done
+  
+      reply=$(echo "$new" | jq -r '.reply')
+      log_info "[$agent] Retry success → new message applied"
+    else
+      log_warn "[$agent] Retry failed → keep original"
+    fi
+  fi
+  
+  # =========================
   # 🔍 MEMORY SAVE EXTRA (OPTIONAL)
   # =========================
-  set_memory "${agent}_last_mode" "$MODE"
-  set_memory "${agent}_last_tag" "$TAG"
+  set_memory "$agent" "last_mode" "$MODE"
+  set_memory "$agent" "last_tag" "$TAG"
 
   # =========================
   # 🔍 VALIDATION
@@ -252,9 +296,18 @@ for agent in $agents; do
     log_warn "[$agent] Skipped due to duplicate message"
     continue
   fi
+  
+  log_info "[$agent][V10] Checking history duplicate..."
+  
+  if is_in_history "$agent" "$reply"; then
+    log_warn "[$agent] Duplicate (history) → skip"
+    continue
+  fi
 
   log_info "[$agent][STEP] Reply generated ✔"
-
+  log_info "[$agent][MEMORY] Snapshot:"
+   jq -c --arg a "$agent" '.[$a]' "$MEMORY_FILE" | while read -r line; do
+     log_debug "[$agent] $line"
   log_debug "[$agent][OUTPUT]"
   log_debug "--------------------"
   log_debug "$reply"
