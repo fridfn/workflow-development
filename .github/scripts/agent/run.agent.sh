@@ -76,7 +76,7 @@ echo "=============================="
 echo "🤖 ENGINE START"
 echo "=============================="
 
-bash .github/scripts/agent/agent.engine.sh "$MODE" "$TAG" "$TYPE"
+bash .github/scripts/agent/agent.engine.sh
 
 echo "=============================="
 echo "✅ ENGINE DONE"
