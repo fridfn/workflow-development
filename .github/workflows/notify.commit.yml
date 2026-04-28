@@ -12,7 +12,7 @@ jobs:
     outputs:
       type: ${{ steps.parse.outputs.type }}
       detail: ${{ steps.parse.outputs.detail }}
-      tag: ${{ steps.parse.outputs.reaction }}
+      tag: ${{ steps.parse.outputs.tag }}
       mode: ${{ steps.parse.outputs.mode }}
       compose_weights: ${{ steps.parse.outputs.compose_weights }}
       
@@ -32,19 +32,20 @@ jobs:
           source .github/scripts/core/multiline.sh
           source .github/scripts/core/commit.sh
           source .github/scripts/core/mindset.sh
-      
+          
           msg="${{ github.event.head_commit.message }}"
           
           # 🔹 Call parser
           parse_commit "$msg"
-      
+          
           # 🔹 Get mode
           mode=$(get_mode_by_commit)
           
           weights="{\"message,greeting\":20,\"greeting\":40,\"message\":40}"
-      
+          
           echo "type=$TYPE" >> $GITHUB_OUTPUT
           echo "reaction=$REACTION" >> $GITHUB_OUTPUT
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
           echo "mode=$mode" >> $GITHUB_OUTPUT
           set_multiline "detail" "$DETAIL"
           echo "compose_weights=$weights" >> $GITHUB_OUTPUT
@@ -100,15 +101,14 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN_AURIELLE }}
           TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
           COMPOSE_WEIGHTS: ${{ needs.prepare.outputs.compose_weights }}
+          TYPE: ${{ needs.prepare.outputs.type }}
+          TAG: ${{ needs.prepare.outputs.tag }}
+          MODE: ${{ needs.prepare.outputs.mode }}
         run: |
           echo "[FLOW] Triggering Aurielle reply..."
-          
-          MODE="${{ needs.prepare.outputs.mode }}"
-          TAG="${{ needs.prepare.outputs.tag }}"
           
           echo "[FLOW] MODE=$MODE"
           echo "[FLOW] TAG=$TAG"
           echo "[FLOW] COMPOSE_WEIGHTS=$COMPOSE_WEIGHTS"
           
           bash .github/scripts/agent/run.agent.sh
-        

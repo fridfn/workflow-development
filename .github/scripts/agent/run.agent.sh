@@ -35,22 +35,11 @@ export COMPOSE_WEIGHTS="$COMPOSE_WEIGHTS_INPUT"
 echo "[ENV] COMPOSE_WEIGHTS=$COMPOSE_WEIGHTS"
 
 # =========================
-# 📥 INPUT
-# =========================
-MODE_INPUT="$1"
-TAG_INPUT="$2"
-TYPE_INPUT="$3"
-
-echo "[INPUT] MODE=$MODE_INPUT"
-echo "[INPUT] TAG=$TAG_INPUT"
-echo "[INPUT] TYPE=$TYPE_INPUT"
-
-# =========================
 # 🧠 VALIDATION + FALLBACK
 # =========================
-MODE="${MODE_INPUT:-}"
-TAG="${TAG_INPUT:-}"
-TYPE="${TYPE_INPUT:-}"
+MODE="${MODE:-}"
+TAG="${TAG:-}"
+TYPE="${TYPE:-}"
 
 # =========================
 # 🌍 EXPORT ENV
