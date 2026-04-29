@@ -29,8 +29,8 @@ CONFIG=".github/scripts/agent/agent.config.json"
 # =========================
 # 🔹 INPUT
 # =========================
-MODE="${1:-$MODE}"
-TAG="${2:-$TAG}"
+MODE="${MODE:-}"
+TAG="${TAG:-}"
 COMPOSE_OVERRIDE="${COMPOSE_MODE:-}"
 
 # =========================
