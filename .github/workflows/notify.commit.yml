@@ -12,7 +12,7 @@ jobs:
     outputs:
       type: ${{ steps.parse.outputs.type }}
       detail: ${{ steps.parse.outputs.detail }}
-      tag: ${{ steps.parse.outputs.tag }}
+      tag: ${{ steps.parse.outputs.reaction }}
       mode: ${{ steps.parse.outputs.mode }}
       compose_weights: ${{ steps.parse.outputs.compose_weights }}
       
@@ -43,8 +43,8 @@ jobs:
           
           weights="{\"message,greeting\":20,\"greeting\":40,\"message\":40}"
           
-          echo "type=$REACTION" >> $GITHUB_OUTPUT
-          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "reaction=$REACTION" >> $GITHUB_OUTPUT
+          echo "type=$TYPE" >> $GITHUB_OUTPUT
           echo "mode=$mode" >> $GITHUB_OUTPUT
           set_multiline "detail" "$DETAIL"
           echo "compose_weights=$weights" >> $GITHUB_OUTPUT
