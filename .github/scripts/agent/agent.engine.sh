@@ -313,6 +313,8 @@ for agent in $agents; do
   log_info "[$agent][MEMORY] Snapshot:"
    jq -c --arg a "$agent" '.[$a]' "$MEMORY_FILE" | while read -r line; do
      log_debug "[$agent] $line"
+   done
+  
   log_debug "[$agent][OUTPUT]"
   log_debug "--------------------"
   log_debug "$reply"
