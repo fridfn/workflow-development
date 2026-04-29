@@ -43,6 +43,7 @@ export TYPE
 echo "[ENV] MODE=$MODE"
 echo "[ENV] TAG=$TAG"
 echo "[ENV] TYPE=$TYPE"
+echo "[ENV] COMPOSE_WEIGHTS=$COMPOSE_WEIGHTS"
 
 # =========================
 # ⏱️ CONTEXT (optional tapi penting)
