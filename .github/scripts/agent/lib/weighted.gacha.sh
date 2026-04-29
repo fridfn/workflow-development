@@ -31,7 +31,7 @@ log_error() { log "ERROR" "$1" "$2"; }
 # 🔹 INPUT
 # =========================
 STEP=1
-WEIGHTS_JSON="$1"
+WEIGHTS_JSON=$COMPOSE_WEIGHTS
 
 log_info $STEP "Start Weighted Gacha Engine"
 
