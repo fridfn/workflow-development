@@ -62,7 +62,7 @@ send_message () {
     -d chat_id="$TELEGRAM_CHANNEL_ID" \
     --data-urlencode "text=$text
     ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ")
-
+    
   if [ "$response" != "200" ]; then
     log_warn "[$agent] Telegram API HTTP $response"
   else
@@ -74,10 +74,6 @@ send_message () {
 # 🚀 START
 # =========================
 log_info "[BOOT] Incoming arguments..."
-log_info "[BOOT] ARG MODE=$1"
-log_info "[BOOT] ARG TAG=$2"
-log_info "[BOOT] ARG TYPE=$3"
-
 log_info "[BOOT] ENV MODE=$MODE"
 log_info "[BOOT] ENV TAG=$TAG"
 log_info "[BOOT] ENV TYPE=$TYPE"
