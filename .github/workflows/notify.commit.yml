@@ -43,8 +43,7 @@ jobs:
           
           weights="{\"message,greeting\":20,\"greeting\":40,\"message\":40}"
           
-          echo "type=$TYPE" >> $GITHUB_OUTPUT
-          echo "reaction=$REACTION" >> $GITHUB_OUTPUT
+          echo "type=$REACTION" >> $GITHUB_OUTPUT
           echo "tag=$TAG" >> $GITHUB_OUTPUT
           echo "mode=$mode" >> $GITHUB_OUTPUT
           set_multiline "detail" "$DETAIL"
