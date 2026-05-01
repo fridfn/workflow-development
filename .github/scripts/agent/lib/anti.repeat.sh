@@ -12,7 +12,7 @@ filter_repeat() {
 
   echo "[ANTI-REPEAT][$agent] Checking last message..."
 
-  last=$(get_memory "$agent" "last_message")
+  last=$(get_memory "$agent.last_message")
 
   echo "[ANTI-REPEAT][$agent] Last:"
   echo "$last"
@@ -21,10 +21,7 @@ filter_repeat() {
     echo "[ANTI-REPEAT][$agent] Duplicate detected"
     return 1
   fi
-
-  set_memory "$agent" "last_message" "$text"
-  push_history "$agent" "$text" 5
-
+  
   echo "[ANTI-REPEAT][$agent] Accepted"
   return 0
 }

@@ -1,1 +1,9 @@
-{}
+{
+  "aurielle": {
+    "last_message": "...",
+    "history": ["...", "..."],
+    "context": {
+      "mood": "calm"
+    }
+  }
+}

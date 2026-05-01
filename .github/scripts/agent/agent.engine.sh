@@ -17,7 +17,6 @@
 # ==========================================
 
 source ".github/scripts/agent/retry.engine.sh"
-source ".github/scripts/agent/brain/memory.agent.sh"
 source ".github/scripts/agent/brain/memory.store.sh"
 source ".github/scripts/agent/lib/compose.weighted.sh"
 source ".github/scripts/agent/lib/anti.repeat.sh"
@@ -31,7 +30,7 @@ CONFIG=".github/scripts/agent/agent.config.json"
 # =========================
 MODE="${MODE:-}"
 TAG="${TAG:-}"
-COMPOSE_OVERRIDE="${COMPOSE_MODE:-}"
+COMPOSE_OVERRIDE="${COMPOSE_OVERRIDE:-$COMPOSE_MODE}"
 
 # =========================
 # 🔹 LOG SYSTEM
@@ -297,18 +296,24 @@ for agent in $agents; do
   
   log_info "[$agent][V9] Running Anti-Repeat Check..."
   
-  if ! filter_repeat "$agent" "$reply"; then
-    log_warn "[$agent] Skipped due to duplicate message"
+  # 1. Anti repeat (last message)
+  if ! is_in_history "$agent.history" "$reply"; then
+    log_warn "[$agent] Skipped (same as last_message)"
     continue
   fi
   
-  log_info "[$agent][V10] Checking history duplicate..."
-  
-  if is_in_history "$agent" "$reply"; then
-    log_warn "[$agent] Duplicate (history) → skip"
+  # 2. History check (BELUM disave)
+  if is_in_history "$agent.history" "$reply"; then
+    log_warn "[$agent] Skipped (duplicate in history)"
     continue
   fi
-
+  
+  # 3. SAVE (SETELAH LOLOS SEMUA)
+  log_info "[$agent][MEMORY] Saving..."
+  
+  set_memory "$agent.last_message" "$reply"
+  push_history "$agent.history" "$reply" 5
+  
   log_info "[$agent][STEP] Reply generated ✔"
   log_info "[$agent][MEMORY] Snapshot:"
    jq -c --arg a "$agent" '.[$a]' "$MEMORY_FILE" | while read -r line; do
