@@ -61,7 +61,7 @@ get_mode_by_commit() {
 
   else
     mode="proactive"
-    log_warn "Matched: 08–11 → consistent""
+    log_warn "Matched: 08–11 → consistent"
   fi
 
 
