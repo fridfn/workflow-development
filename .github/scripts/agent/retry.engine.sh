@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ".github/scripts/agent/lib/memory.sh"
+source ".github/scripts/agent/lib/memory.store.sh"
 
 agent="aurielle_nara_elowen"
 MAX_RETRY=5
