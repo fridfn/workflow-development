@@ -116,9 +116,22 @@ SEED_MSG=$RANDOM
 # =========================
 # 🔹 LOAD BOTS
 # =========================
-agents=$(jq -r 'keys[]' "$CONFIG")
 
-[ -z "$agents" ] && exit 0
+agents=$(jq -r 'keys[]' "$CONFIG" 2>/dev/null)
+
+if [ -z "$agents" ]; then
+  log_error "NO AGENTS FOUND IN CONFIG"
+  exit 1
+fi
+
+log_info "[DEBUG] Agents loaded:"
+for a in $agents; do
+  log_info " - $a"
+done
+
+log_info "[DEBUG] Current dir: $(pwd)"
+log_info "[DEBUG] Files:"
+ls -R .github/scripts/agent/
 
 # =========================
 # 🔁 LOOP
