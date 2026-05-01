@@ -8,9 +8,37 @@ RETRY_MAX=5
 RETRY_DELAY=0.2
 RETRY_LOCK=0
 
-log_retry() {
-  echo "[RETRY] $1" >&2
+# =========================
+# 🔹 LOG SYSTEM (ENHANCED)
+# =========================
+
+get_time() {
+  date +"%H:%M:%S"
 }
+
+log_retry() {
+  local level="$1"
+  local msg="$2"
+  local time=$(get_time)
+  echo "[$time][$level][RETRY] $msg" >&2
+}
+
+log_retry_info()  { log_retry "INFO" "$1"; }
+log_retry_warn()  { log_retry "WARN" "$1"; }
+log_retry_debug() { log_retry "DEBUG" "$1"; }
+
+log_retry_section() {
+  local title="$1"
+  local time=$(get_time)
+  echo "" >&2
+  echo "[$time][SECTION][RETRY] ==============================" >&2
+  echo "[$time][SECTION][RETRY] 🔁 $title" >&2
+  echo "[$time][SECTION][RETRY] ==============================" >&2
+}
+
+# =========================
+# 🔁 RETRY FUNCTION
+# =========================
 
 retry_generate() {
   local agent="$1"
@@ -19,18 +47,16 @@ retry_generate() {
 
   # 🔒 prevent recursive retry
   if [ "$RETRY_LOCK" -eq 1 ]; then
-    log_retry "LOCKED → prevent recursive retry"
+    log_retry_warn "[LOCK] Prevent recursive retry"
     return 1
   fi
 
   RETRY_LOCK=1
 
-  log_retry "=============================="
-  log_retry "START RETRY ENGINE ($agent)"
-  log_retry "=============================="
+  log_retry_section "START RETRY ENGINE → $agent"
 
   for ((i=1; i<=RETRY_MAX; i++)); do
-    log_retry "TRY $i / $RETRY_MAX"
+    log_retry_info "[TRY] $i / $RETRY_MAX"
 
     # 🧠 regenerate WITHOUT recursion
     new=$($generator 2>/dev/null)
@@ -38,27 +64,27 @@ retry_generate() {
     reply=$(echo "$new" | jq -r '.reply')
 
     if [ -z "$reply" ] || [ "$reply" = "null" ]; then
-      log_retry "EMPTY result → retrying..."
+      log_retry_warn "[RESULT] Empty → retrying..."
       sleep "$RETRY_DELAY"
       continue
     fi
 
     if [ "$reply" != "$original" ]; then
-      log_retry "SUCCESS → new message found"
+      log_retry_info "[SUCCESS] New message found"
       RETRY_LOCK=0
-    
-      log_retry "Generated:"
+
+      log_retry_debug "[OUTPUT] Generated JSON:"
       echo "$new" | jq '.' >&2
-    
-      echo "$new"   # 🔥 INI WAJIB
+
+      echo "$new"
       return 0
     fi
 
-    log_retry "DUPLICATE → retrying..."
+    log_retry_warn "[RESULT] Duplicate → retrying..."
     sleep "$RETRY_DELAY"
   done
 
-  log_retry "FAILED → max retry reached"
+  log_retry_warn "[FAILED] Max retry reached"
   RETRY_LOCK=0
   return 1
 }
