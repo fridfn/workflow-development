@@ -281,12 +281,6 @@ for agent in $agents; do
   fi
   
   # =========================
-  # 🔍 MEMORY SAVE EXTRA (OPTIONAL)
-  # =========================
-  set_memory "$agent" "last_mode" "$MODE"
-  set_memory "$agent" "last_tag" "$TAG"
-
-  # =========================
   # 🔍 VALIDATION
   # =========================
   if [ -z "$reply" ] || [ "$reply" = "null" ]; then
@@ -295,24 +289,32 @@ for agent in $agents; do
   fi
   
   log_info "[$agent][V9] Running Anti-Repeat Check..."
-  
-  # 1. Anti repeat (last message)
-  if ! is_in_history "$agent.history" "$reply"; then
-    log_warn "[$agent] Skipped (same as last_message)"
-    continue
-  fi
-  
-  # 2. History check (BELUM disave)
-  if is_in_history "$agent.history" "$reply"; then
-    log_warn "[$agent] Skipped (duplicate in history)"
-    continue
-  fi
-  
-  # 3. SAVE (SETELAH LOLOS SEMUA)
-  log_info "[$agent][MEMORY] Saving..."
-  
-  set_memory "$agent.last_message" "$reply"
-  push_history "$agent.history" "$reply" 5
+   
+   # =========================
+   # 1. LAST MESSAGE CHECK
+   # =========================
+   if [ "$reply" = "$last" ]; then
+     log_warn "[$agent] Skipped (same as last_message)"
+     continue
+   fi
+   
+   # =========================
+   # 2. HISTORY CHECK
+   # =========================
+   if is_in_history "$agent.history" "$reply"; then
+     log_warn "[$agent] Skipped (duplicate in history)"
+     continue
+   fi
+   
+   # =========================
+   # 3. SAVE MEMORY
+   # =========================
+   log_info "[$agent][MEMORY] Saving..."
+   
+   set_memory "$agent.last_message" "$reply"
+   push_history "$agent.history" "$reply" 5
+   
+   log_info "[$agent][STEP] Reply generated ✔"
   
   log_info "[$agent][STEP] Reply generated ✔"
   log_info "[$agent][MEMORY] Snapshot:"

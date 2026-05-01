@@ -1,49 +1,110 @@
 #!/bin/bash
 
-# ==========================================
-# 💜 RETRY ENGINE (SMART VARIATION FINDER)
-# ==========================================
+source ".github/scripts/agent/lib/memory.sh"
 
+agent="aurielle_nara_elowen"
 MAX_RETRY=5
 
-retry_generate() {
-  local agent="$1"
-  local original_reply="$2"
-  local generator_func="$3"
+log_engine() {
+  echo "[ENGINE] $1"
+}
 
-  echo "[RETRY] Starting retry engine for $agent"
-  echo "[RETRY] Max attempts: $MAX_RETRY"
+generate_message() {
+  log_engine "[GEN] Calling agent.engine..."
 
-  local attempt=1
-  local new_reply="$original_reply"
+  raw=$(bash .github/scripts/agent/agent.engine.sh)
 
-  while [ $attempt -le $MAX_RETRY ]; do
+  log_engine "[GEN] Raw output captured"
 
-    echo "[RETRY] Attempt $attempt"
+  # ambil JSON terakhir
+  json=$(echo "$raw" | grep -o '{.*}' | tail -n 1)
 
-    # Generate new seed
-    export SEED_GREET=$RANDOM
-    export SEED_MSG=$RANDOM
+  if [ -z "$json" ]; then
+    log_engine "[GEN][ERROR] No JSON found"
+    echo '{"reply":"hmm… aku kehilangan kata-kata tadi"}'
+    return
+  fi
 
-    echo "[RETRY] New seed → greet=$SEED_GREET msg=$SEED_MSG"
+  if ! echo "$json" | jq empty >/dev/null 2>&1; then
+    log_engine "[GEN][ERROR] Invalid JSON"
+    echo '{"reply":"kayaknya ada yang keputus di tengah jalan"}'
+    return
+  fi
 
-    # Re-run generator (pakai function reference)
-    new_reply=$($generator_func)
+  log_engine "[GEN] JSON OK ✔"
+  echo "$json"
+}
 
-    echo "[RETRY] Generated:"
-    echo "$new_reply"
+log_engine "START RETRY ENGINE"
 
-    # Compare
-    if [ "$new_reply" != "$original_reply" ]; then
-      echo "[RETRY] ✅ Found different message"
-      echo "$new_reply"
-      return 0
+attempt=1
+found=false
+used_replies=()
+
+while [ $attempt -le $MAX_RETRY ]; do
+  log_engine "=============================="
+  log_engine "TRY $attempt / $MAX_RETRY"
+
+  result=$(generate_message)
+  reply=$(echo "$result" | jq -r '.reply')
+
+  log_engine "Generated:"
+  echo "$reply"
+
+  last=$(get_memory "$agent.last_message")
+
+  log_engine "Last message → ${last:-<none>}"
+
+  # check same-loop duplicate
+  for used in "${used_replies[@]}"; do
+    if [ "$reply" == "$used" ]; then
+      log_engine "Duplicate in same loop ❌"
+      ((attempt++))
+      continue 2
     fi
-
-    echo "[RETRY] ❌ Still duplicate"
-    attempt=$((attempt+1))
   done
 
-  echo "[RETRY] ⚠️ Max retry reached → fallback"
-  return 1
-}
+  used_replies+=("$reply")
+
+  # check history
+  if is_in_history "$agent.history" "$reply"; then
+    log_engine "Duplicate in history ❌"
+    ((attempt++))
+    continue
+  fi
+
+  # check last message
+  if [ "$reply" == "$last" ] && [ -n "$last" ]; then
+    log_engine "Same as last message ❌"
+    ((attempt++))
+    continue
+  fi
+
+  log_engine "✅ UNIQUE FOUND"
+  found=true
+  break
+done
+
+if [ "$found" = false ]; then
+  log_engine "⚠️ FALLBACK USED"
+  reply="hmm… aku nyoba cari cara lain buat ngomong ke kamu hari ini 💜"
+fi
+
+log_engine "=============================="
+log_engine "FINAL MESSAGE:"
+echo "$reply"
+
+log_engine "SENDING TO TELEGRAM..."
+
+curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \
+  -d chat_id="$TELEGRAM_CHANNEL_ID" \
+  -d text="$reply"
+
+log_engine "SENT ✔"
+
+# save memory
+set_memory "$agent.last_message" "$reply"
+push_history "$agent.history" "$reply" 5
+
+log_engine "MEMORY UPDATED ✔"
+log_engine "ENGINE DONE 💜"
