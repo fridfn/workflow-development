@@ -60,7 +60,7 @@ echo "=============================="
 echo "🤖 ENGINE START"
 echo "=============================="
 
-bash .github/scripts/agent/retry.engine.sh
+bash .github/scripts/agent/agent.engine.sh
 
 echo "=============================="
 echo "✅ ENGINE DONE"
