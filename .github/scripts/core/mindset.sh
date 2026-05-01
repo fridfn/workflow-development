@@ -60,7 +60,8 @@ get_mode_by_commit() {
     log_debug "Matched: 21–07 → consistent"
 
   else
-    log_warn "No matching time range found"
+    mode="proactive"
+    log_warn "Matched: 08–11 → consistent""
   fi
 
 

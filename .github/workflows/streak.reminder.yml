@@ -191,7 +191,7 @@ jobs:
           echo "TAG=$TAG"
           echo "TYPE=$TYPE"
           echo "COMPOSE_WEIGHTS=$COMPOSE_WEIGHTS"
-      
+          
           chmod +x .github/scripts/agent/run.agent.sh
           bash .github/scripts/agent/run.agent.sh
           

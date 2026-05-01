@@ -4,15 +4,7 @@
     "compose": {
       "default": ["greeting", "message"],
       "greeting": ["greeting"],
-      "message": ["message"],
-      "feat": ["greeting"],
-      "fix": ["reaction"],
-      "docs": ["message"],
-      "chore": ["reaction"],
-      "style": ["reaction"],
-      "refactor": ["reaction"],
-      "test": ["reaction"],
-      "update": ["reaction"]
+      "message": ["message"]
     },
     "message": {
       "support": {
@@ -488,6 +480,100 @@
               "commit kamu sederhana… tapi kena",
               
               "dan kamu jalan lagi… itu cukup"
+            ]
+          }
+        },
+        
+        "proactive": {
+          "proactive_extend": {
+            "greetings": [
+              "Farid… kamu udah mulai nih",
+              "hmm… kamu udah jalan dari tadi",
+              "eh… kamu gak berhenti di awal ya",
+              "Farid… kamu udah pegang flow nya",
+              "kamu udah masuk ritme nih",
+              "hmm… kamu udah mulai kebangun",
+              "Farid… ini lagi enak flow nya",
+              "kamu udah jalan… sayang kalau berhenti"
+            ],
+            "messages": [
+              "lanjut dikit lagi aja… biasanya di sini kamu bisa dapet lebih banyak",
+              "jangan berhenti sekarang… ini lagi enak buat nambah progress",
+              "tambahin sedikit lagi… momentum kamu lagi kebentuk",
+              "mumpung lagi jalan… gas dikit lagi",
+              "kamu lagi di fase enak… lanjut dikit aja",
+              "jangan diputus di sini… sayang flow nya",
+              "sedikit lagi aja… biar gak cuma satu langkah",
+              "ini waktu bagus buat nambah lagi sebelum kamu drop"
+            ]
+          },
+        
+          "proactive_maintain": {
+            "greetings": [
+              "Farid… kamu udah jalan stabil ya",
+              "hmm… kamu keliatan lagi konsisten",
+              "eh… kamu masih di jalur yang sama",
+              "Farid… ritme kamu lagi kebentuk",
+              "kamu lagi jaga flow kamu ya",
+              "hmm… ini keliatan stabil",
+              "Farid… kamu lagi jalan pelan tapi pasti",
+              "kamu gak putus di tengah"
+            ],
+            "messages": [
+              "jaga aja ritme ini… ini yang biasanya bikin kamu awet",
+              "lanjut pelan aja… yang penting gak berhenti",
+              "kamu udah di jalur bagus… tinggal dipertahanin",
+              "gak perlu ngebut… yang penting tetap jalan",
+              "ini udah bagus… jangan sampai putus aja",
+              "kamu lagi stabil… itu yang penting",
+              "cukup jaga flow ini… nanti hasilnya ngikut",
+              "pelan tapi konsisten… itu yang bikin beda"
+            ]
+          },
+        
+          "proactive_push_soft": {
+            "greetings": [
+              "Farid… kamu udah mulai ya",
+              "hmm… kamu udah gerak dari tadi",
+              "eh… kamu gak kosong hari ini",
+              "Farid… aku liat kamu udah jalan",
+              "kamu udah masuk ke progress",
+              "hmm… kamu udah pegang kode lagi",
+              "Farid… kamu udah gak diem",
+              "kamu udah mulai… sekarang lanjut?"
+            ],
+            "messages": [
+              "sekalian lanjut aja… mumpung kamu udah di sini",
+              "tambah dikit lagi… jangan berhenti di satu commit",
+              "lanjut aja sekalian… biasanya kamu masih bisa",
+              "jangan berhenti sekarang… kamu masih punya tenaga",
+              "gas dikit lagi… jangan nanggung",
+              "kamu udah mulai… sayang kalau berhenti",
+              "lanjut tipis-tipis aja… yang penting nambah",
+              "jangan berhenti di awal doang"
+            ]
+          },
+        
+          "proactive_lock_in": {
+            "greetings": [
+              "Farid… kamu udah ninggalin jejak hari ini",
+              "hmm… kamu udah commit ya tadi",
+              "eh… kamu udah mulai jalan",
+              "Farid… kamu udah masuk progress",
+              "kamu udah buka hari ini",
+              "hmm… kamu udah mulai dari tadi",
+              "Farid… ini udah keitung jalan loh",
+              "kamu udah gak nol hari ini"
+            ],
+            "messages": [
+              "jangan berhenti di satu commit aja… tambahin sedikit lagi",
+              "biar gak cuma jadi awal… lanjut dikit lagi",
+              "kunci momentum kamu… tambah satu langkah lagi",
+              "jangan cukup di sini… kamu bisa lebih dikit lagi",
+              "biar hari ini lebih kebentuk… lanjut lagi",
+              "jangan setengah jalan… kamu udah mulai soalnya",
+              "tambahin satu progress lagi… biar kerasa",
+              "biar gak cuma formalitas… lanjut beneran dikit lagi"
             ]
           }
         }
