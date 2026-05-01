@@ -52,7 +52,7 @@ log_debug() { log "DEBUG" "$1"; }
 send_message () {
   local agent="$1"
   local text="$2"
-
+ 
   log_debug "[$agent] Sending request..."
 
   local response
