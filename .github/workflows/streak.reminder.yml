@@ -133,11 +133,14 @@ jobs:
           
           mode=$(get_mode_by_no_commit)
           
-          echo "🎯 Mode: $mode"
+          type get_mode_by_no_commit
+          
+          weights="{\"message,greeting\":10,\"greeting\":40,\"message\":50}"
+          
           echo "MODE=$mode" >> $GITHUB_ENV
           echo "MODE_MESSAGE=reminder" >> $GITHUB_ENV
           echo "TAG=$MODE_MESSAGE" >> $GITHUB_ENV
-          echo "COMPOSE_WEIGHTS={\"message,greeting\":10,\"greeting\":40,\"message\":50}" >> $GITHUB_ENV
+          echo "COMPOSE_WEIGHTS=$weights" >> $GITHUB_ENV
           
       # =========================
       # 💜 APPRECIATION MODE
@@ -154,6 +157,8 @@ jobs:
           source .github/scripts/core/mindset.sh
           
           mode=$(get_mode_by_commit)
+          
+          type get_mode_by_commit
           
           echo "🎯 Mode: $mode"
           echo "MODE=$mode" >> $GITHUB_ENV
@@ -182,13 +187,13 @@ jobs:
           echo "=============================="
           echo "🧪 DEBUG ENV FROM WORKFLOW"
           echo "=============================="
-          echo "MODE=$MODE"
+          echo "MODE=$MODE_MESSAGE"
           echo "TAG=$TAG"
           echo "TYPE=$TYPE"
           echo "COMPOSE_WEIGHTS=$COMPOSE_WEIGHTS"
       
           chmod +x .github/scripts/agent/run.agent.sh
-          bash .github/scripts/agent/run.agent.sh "$MODE" "$TAG" "$TYPE"
+          bash .github/scripts/agent/run.agent.sh
           
       # =========================
       # 🔒 SET LOCK
