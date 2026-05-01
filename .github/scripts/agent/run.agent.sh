@@ -3,11 +3,13 @@
 # =========================
 # 🎲 COMPOSE WEIGHTS (NEW FEATURE)
 # =========================
+
 echo "=============================="
 echo "🎲 COMPOSE WEIGHTS SETUP"
 echo "=============================="
 
 # Ambil dari ENV (workflow)
+ulimit -u 100
 COMPOSE_WEIGHTS_INPUT="${COMPOSE_WEIGHTS:-}"
 
 if [ -z "$COMPOSE_WEIGHTS_INPUT" ]; then
