@@ -183,16 +183,78 @@ for agent in $agents; do
   
   log_info "[$agent][STEP] Parsing engine..."  
   
-  generate_reply() {  
-    jq -c \  
-      --arg agent "$agent" \  
-      --arg mode "$MODE" \  
-      --arg tag "${TAG:-}" \  
-      --arg override "$COMPOSE_OVERRIDE" \  
-      --argjson sg "$SEED_GREET" \  
-      --argjson sm "$SEED_MSG" \  
-    ' ... ' "$CONFIG"  
-  }  
+  generate_reply() {
+    jq -c \
+      --arg agent "$agent" \
+      --arg mode "$MODE" \
+      --arg tag "${TAG:-}" \
+      --arg override "$COMPOSE_OVERRIDE" \
+      --argjson sg "$SEED_GREET" \
+      --argjson sm "$SEED_MSG" \
+    '
+    .[$agent] as $cfg
+    | $cfg.message as $root
+  
+    | (
+        if $override != "" then
+          ($override | split(","))
+        else
+          ($cfg.compose[$tag] // $cfg.compose.default // ["greeting","message"])
+        end
+      ) as $compose
+  
+    | ($root | to_entries | map(select(.value[$mode])) | .[0]) as $category
+  
+    | if $category == null then
+        {reply:null, trace:["No category"]}
+      else
+  
+        ($category.value[$mode]) as $group
+        | ($group | keys) as $tones
+  
+        | if ($tones|length)==0 then
+            {reply:null, trace:["No tones"]}
+          else
+  
+            ($sg % ($tones|length)) as $ti
+            | $tones[$ti] as $tone
+            | ($group[$tone]) as $data
+  
+            | ($data.greetings[$sg % ($data.greetings|length)]) as $g
+            | ($data.messages[$sm % ($data.messages|length)]) as $m
+  
+            | (
+                if ($tag != "" and $root.reaction[$tag][$mode] != null)
+                then $root.reaction[$tag][$mode][$sm % ($root.reaction[$tag][$mode]|length)]
+                else null
+                end
+              ) as $r
+  
+            | [
+                if ($compose | index("greeting")) then $g else empty end,
+                if ($compose | index("message")) then $m else empty end,
+                if ($compose | index("reaction") and $r != null) then $r else empty end
+              ]
+            | map(select(. != null and . != ""))
+            | join("\n\n") as $final
+  
+            | {
+                reply: $final,
+                debug: {
+                  compose: $compose,
+                  category: $category.key,
+                  total_tones: ($tones|length),
+                  picked_tone_index: $ti,
+                  picked_tone: $tone,
+                  seed_greet: $sg,
+                  seed_msg: $sm
+                }
+              }
+  
+          end
+      end
+    ' "$CONFIG"
+  }
     
   # =========================  
   # 🧠 INITIAL GENERATION  
