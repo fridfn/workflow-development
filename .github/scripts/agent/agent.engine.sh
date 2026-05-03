@@ -68,10 +68,9 @@ send_message () {
   local response  
   response=$(curl -s -w "%{http_code}" -o /dev/null -X POST \  
     "https://api.telegram.org/bot$TELEGRAM_TOKEN/sendMessage" \  
-    -d chat_id="$TELEGRAM_CHANNEL_ID" \  
-    --data-urlencode "text=$text  
-    ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ")  
-      
+      -d chat_id="$TELEGRAM_CHANNEL_ID" \  
+      --data-urlencode "text=$text  ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ")  
+    
   if [ "$response" != "200" ]; then  
     log_warn "[$agent][SEND] Telegram API HTTP $response"  
   else  
