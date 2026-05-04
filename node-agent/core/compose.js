@@ -1,4 +1,4 @@
-import { logDebug, logSection } from "../utils/logger.js";
+import { logDebug, logSection, logWarn } from "../utils/logger.js";
 
 function pickRandom(arr, seed) {
   return arr[seed % arr.length];
@@ -6,13 +6,13 @@ function pickRandom(arr, seed) {
 
 export function composeReply(agentConfig, mode, tag, seedGreet, seedMsg, override) {
   logSection("COMPOSE START");
-
+  
   const root = agentConfig.message;
-
+  
   const compose = override
     ? override.split(",")
     : (agentConfig.compose?.[tag] || agentConfig.compose?.default || ["greeting", "message"]);
-
+    
   logDebug("COMPOSE", "Compose mode", { compose });
 
   // =========================
@@ -34,20 +34,32 @@ export function composeReply(agentConfig, mode, tag, seedGreet, seedMsg, overrid
   // =========================
   const group = categoryData[mode];
   const tones = Object.keys(group);
-
+  
+  const modePrefix = mode;
+  
+  const filteredTones = tones.filter(t =>
+    t.startsWith(modePrefix)
+  );
+  
+  const finalTones = filteredTones.length > 0 ? filteredTones : tones;
+  
   if (tones.length === 0) {
     logDebug("COMPOSE", "No tones available");
     return { reply: null, debug: "No tones" };
   }
 
-  const toneIndex = seedGreet % tones.length;
-  const tone = tones[toneIndex];
-
+  const toneIndex = seedGreet % finalTones.length;
+  const tone = finalTones[toneIndex];
+  
   logDebug("COMPOSE", "Tone selection", {
+    mode,
+    totalTones: tones.length,
+    filteredCount: filteredTones.length,
+    used: filteredTones.length > 0 ? "filtered" : "fallback",
     toneIndex,
-    tone,
-    totalTones: tones.length
+    tone
   });
+  
 
   const data = group[tone];
 
@@ -86,7 +98,7 @@ export function composeReply(agentConfig, mode, tag, seedGreet, seedMsg, overrid
     parts,
     final
   });
-
+  
   return {
     reply: final,
     meta: {

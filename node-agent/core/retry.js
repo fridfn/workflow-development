@@ -12,7 +12,7 @@ export async function retryGenerate({
   while (attempt < maxRetry) {
     const seedGreet = Math.floor(Math.random() * 1000) + attempt * 7;
     const seedMsg = Math.floor(Math.random() * 1000) + attempt * 13;
-
+    
     const result = composeReply(
       config[agent],
       mode,
@@ -20,16 +20,16 @@ export async function retryGenerate({
       seedGreet,
       seedMsg
     );
-
+    
     if (!result?.reply) {
       attempt++;
       continue;
     }
-
+    
     if (!isDuplicate(result)) {
       return result;
     }
-
+    
     attempt++;
   }
 
