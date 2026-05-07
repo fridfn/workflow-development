@@ -1,3 +1,6 @@
+import fs from "fs";
+import "dotenv/config";
+import { composeReply } from "./compose.js";
 import { resolveDailyMode } from "../utils/time.js";
 import { hasCommitToday } from "../utils/github.js";
 import {
@@ -6,6 +9,15 @@ import {
   logDebug,
   logSection
 } from "../utils/logger.js";
+
+// =========================
+// 🔹 LOAD CONFIG
+// =========================
+const config = JSON.parse(
+  fs.readFileSync("./config/agent.config.json")
+);
+
+const agent = config["aurielle_nara_elowen"];
 
 // =========================
 // 🔹 PARSE COMMIT
@@ -36,37 +48,51 @@ function parseCommit(msg) {
 // =========================
 // 🔹 MAIN EXECUTION
 // =========================
-const msg = process.env.COMMIT_MESSAGE || "";
+logSection("COMMIT PARSER");const msg =
+  process.env.COMMIT_MESSAGE ||
+  "feat: migrate bash parser to nodejs";
 
-console.log("[COMMIT] Raw message:", msg);
+logInfo("COMMIT", "Raw commit message", {
+  msg
+});
 
 const parsed = parseCommit(msg);
+
+logDebug("COMMIT", "Parsed result", parsed);
 
 const hasCommit = await hasCommitToday({
   username: "fridfn",
   token: process.env.GITHUB_TOKEN
 });
 
-const { mode } = resolveDailyMode({
+const { mode, hour, source } = resolveDailyMode({
   hasCommit
 });
-
-const weights = {
-  "message,greeting": 20,
-  "greeting": 40,
-  "message": 40
-};
+logInfo("TIME", "Resolved mode", {
+  mode,
+  hour,
+  source
+});
 
 // =========================
-// 🔹 OUTPUT KE GITHUB ACTION
+// 🔹 GENERATE REPLY
 // =========================
-function setOutput(key, value) {
-  console.log(`${key}=${value}`);
-  process.stdout.write(`${key}=${value}\n`);
-}
+const seedGreet = Math.floor(Math.random() * 1000);
+const seedMsg = Math.floor(Math.random() * 1000);
 
-setOutput("type", parsed.type);
-setOutput("detail", parsed.detail);
-setOutput("reaction", parsed.reaction);
-setOutput("mode", mode);
-setOutput("compose_weights", JSON.stringify(weights));
+const result = composeReply(
+  agent,
+  mode,
+  parsed.reaction,
+  seedGreet,
+  seedMsg
+);
+
+logSection("FINAL RESULT");
+
+logInfo("REPLY", "Generated reply", {
+  reply: result.reply
+});
+
+logInfo("\n💜 FINAL REPLY:\n");
+logInfo(result.reply);
