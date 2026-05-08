@@ -1,98 +1,80 @@
-import fs from "fs";
 import "dotenv/config";
-import { composeReply } from "./compose.js";
-import { resolveDailyMode } from "../utils/time.js";
-import { hasCommitToday } from "../utils/github.js";
+
+import {
+  parseCommit
+} from "../utils/parser.js";
+
+import {
+  resolveDailyMode
+} from "../utils/time.js";
+
+import {
+  hasCommitToday
+} from "../utils/github.js";
+
+import {
+  runEngine
+} from "./run.engine.js";
+
 import {
   logInfo,
-  logWarn,
-  logDebug,
   logSection
 } from "../utils/logger.js";
 
-// =========================
-// 🔹 LOAD CONFIG
-// =========================
-const config = JSON.parse(
-  fs.readFileSync("./config/agent.config.json")
-);
+logSection("COMMIT FLOW");
 
-const agent = config["aurielle_nara_elowen"];
-
-// =========================
-// 🔹 PARSE COMMIT
-// =========================
-function parseCommit(msg) {
-  let type = "update";
-  let detail = msg;
-
-  if (msg.includes(":")) {
-    const [t, ...rest] = msg.split(":");
-    type = t.trim();
-    detail = rest.join(":").trim();
-  }
-
-  let reaction = "update";
-
-  if (type.startsWith("feat")) reaction = "feat";
-  else if (type.startsWith("fix")) reaction = "fix";
-  else if (type.startsWith("refactor")) reaction = "refactor";
-  else if (type.startsWith("chore")) reaction = "chore";
-  else if (type.startsWith("docs")) reaction = "docs";
-  else if (type.startsWith("style")) reaction = "style";
-  else if (type.startsWith("test")) reaction = "test";
-
-  return { type, detail, reaction };
-}
-
-// =========================
-// 🔹 MAIN EXECUTION
-// =========================
-logSection("COMMIT PARSER");const msg =
+const msg =
   process.env.COMMIT_MESSAGE ||
-  "feat: migrate bash parser to nodejs";
+  "feat: migrate parser";
 
-logInfo("COMMIT", "Raw commit message", {
+logInfo("COMMIT", "Raw message", {
   msg
 });
 
+// =========================
+// 🔹 PARSE
+// =========================
 const parsed = parseCommit(msg);
 
-logDebug("COMMIT", "Parsed result", parsed);
+logInfo("COMMIT", "Parsed", parsed);
 
+// =========================
+// 🔹 CHECK ACTIVITY
+// =========================
 const hasCommit = await hasCommitToday({
   username: "fridfn",
   token: process.env.GITHUB_TOKEN
 });
 
-const { mode, hour, source } = resolveDailyMode({
+// =========================
+// 🔹 MODE
+// =========================
+const {
+  mode,
+  hour
+} = resolveDailyMode({
   hasCommit
 });
+
 logInfo("TIME", "Resolved mode", {
   mode,
-  hour,
-  source
+  hour
 });
 
 // =========================
-// 🔹 GENERATE REPLY
+// 🔹 RUN ENGINE
 // =========================
-const seedGreet = Math.floor(Math.random() * 1000);
-const seedMsg = Math.floor(Math.random() * 1000);
+await runEngine({
 
-const result = composeReply(
-  agent,
+  source: "commit",
+
   mode,
-  parsed.reaction,
-  seedGreet,
-  seedMsg
-);
 
-logSection("FINAL RESULT");
+  tag: parsed.reaction,
 
-logInfo("REPLY", "Generated reply", {
-  reply: result.reply
+  context: {
+    commit: parsed
+  }
 });
 
-logInfo("\n💜 FINAL REPLY:\n");
-logInfo(result.reply);
+logSection("COMMIT DONE");

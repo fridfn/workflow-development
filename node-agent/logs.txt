@@ -1,0 +1,904 @@
+diff --git a/node-agent/core/commit.js b/node-agent/core/commit.js
+index b260e2d..701e880 100644
+--- a/node-agent/core/commit.js
++++ b/node-agent/core/commit.js
+@@ -1,98 +1,80 @@
+-import fs from "fs";
+ import "dotenv/config";
+-import { composeReply } from "./compose.js";
+-import { resolveDailyMode } from "../utils/time.js";
+-import { hasCommitToday } from "../utils/github.js";
+-import {
+-  logInfo,
+-  logWarn,
+-  logDebug,
+-  logSection
+-} from "../utils/logger.js";
+ 
+-// =========================
+-// 🔹 LOAD CONFIG
+-// =========================
+-const config = JSON.parse(
+-  fs.readFileSync("./config/agent.config.json")
+-);
++import {
++  parseCommit
++} from "../utils/parser.js";
+ 
+-const agent = config["aurielle_nara_elowen"];
++import {
++  resolveDailyMode
++} from "../utils/time.js";
+ 
+-// =========================
+-// 🔹 PARSE COMMIT
+-// =========================
+-function parseCommit(msg) {
+-  let type = "update";
+-  let detail = msg;
+-
+-  if (msg.includes(":")) {
+-    const [t, ...rest] = msg.split(":");
+-    type = t.trim();
+-    detail = rest.join(":").trim();
+-  }
++import {
++  hasCommitToday
++} from "../utils/github.js";
+ 
+-  let reaction = "update";
++import {
++  runEngine
++} from "./run.engine.js";
+ 
+-  if (type.startsWith("feat")) reaction = "feat";
+-  else if (type.startsWith("fix")) reaction = "fix";
+-  else if (type.startsWith("refactor")) reaction = "refactor";
+-  else if (type.startsWith("chore")) reaction = "chore";
+-  else if (type.startsWith("docs")) reaction = "docs";
+-  else if (type.startsWith("style")) reaction = "style";
+-  else if (type.startsWith("test")) reaction = "test";
++import {
++  logInfo,
++  logSection
++} from "../utils/logger.js";
+ 
+-  return { type, detail, reaction };
+-}
++logSection("COMMIT FLOW");
+ 
+-// =========================
+-// 🔹 MAIN EXECUTION
+-// =========================
+-logSection("COMMIT PARSER");const msg =
++const msg =
+   process.env.COMMIT_MESSAGE ||
+-  "feat: migrate bash parser to nodejs";
++  "feat: migrate parser";
+ 
+-logInfo("COMMIT", "Raw commit message", {
++logInfo("COMMIT", "Raw message", {
+   msg
+ });
+ 
++// =========================
++// 🔹 PARSE
++// =========================
+ const parsed = parseCommit(msg);
+ 
+-logDebug("COMMIT", "Parsed result", parsed);
++logInfo("COMMIT", "Parsed", parsed);
+ 
++// =========================
++// 🔹 CHECK ACTIVITY
++// =========================
+ const hasCommit = await hasCommitToday({
+   username: "fridfn",
+   token: process.env.GITHUB_TOKEN
+ });
+ 
+-const { mode, hour, source } = resolveDailyMode({
++// =========================
++// 🔹 MODE
++// =========================
++const {
++  mode,
++  hour
++} = resolveDailyMode({
+   hasCommit
+ });
++
+ logInfo("TIME", "Resolved mode", {
+   mode,
+-  hour,
+-  source
++  hour
+ });
+ 
+ // =========================
+-// 🔹 GENERATE REPLY
++// 🔹 RUN ENGINE
+ // =========================
+-const seedGreet = Math.floor(Math.random() * 1000);
+-const seedMsg = Math.floor(Math.random() * 1000);
++await runEngine({
++
++  source: "commit",
+ 
+-const result = composeReply(
+-  agent,
+   mode,
+-  parsed.reaction,
+-  seedGreet,
+-  seedMsg
+-);
+ 
+-logSection("FINAL RESULT");
++  tag: parsed.reaction,
+ 
+-logInfo("REPLY", "Generated reply", {
+-  reply: result.reply
++  context: {
++    commit: parsed
++  }
+ });
+ 
+-logInfo("\n💜 FINAL REPLY:\n");
+-logInfo(result.reply);
+\ No newline at end of file
++logSection("COMMIT DONE");
+\ No newline at end of file
+diff --git a/node-agent/core/engine.js b/node-agent/core/engine.js
+index 6e65f49..1627a26 100644
+--- a/node-agent/core/engine.js
++++ b/node-agent/core/engine.js
+@@ -1,259 +1,45 @@
+ import "dotenv/config";
+-import fs from "fs";
+-import { composeReply } from "./compose.js";
+-import { retryGenerate } from "./retry.js";
+-import { validateResult } from "../utils/validator.js";
+-import { hasCommitToday } from "../utils/github.js";
+-import { resolveDailyMode } from "../utils/time.js";
+-import {
+-  getMemory,
+-  setMemory,
+-  pushHistory,
+-  isInHistory
+-} from "../memory/memory.js";
+-import {
+-  logInfo,
+-  logWarn,
+-  logDebug,
+-  logSection
+-} from "../utils/logger.js";
+-
+-logSection("ENGINE START");
+-
+-const hasCommit = await hasCommitToday({
+-  username: "fridfn",
+-  token: process.env.GITHUB_TOKEN
+-});
+-
+-const { mode, shouldSend, skip, hour } = resolveDailyMode({
+-  hasCommit
+-});
+-
+-const MODE = mode;
+-const TAG = process.env.TAG;
+-
+-logInfo("TIME", "Mode resolved from time", {
+-  MODE,
+-  hour
+-});
+-
+-logInfo("ENGINE", "Node Agent Started");
+-logInfo("ENGINE", "Environment loaded", {
+-  MODE,
+-  TAG
+-});
+-
+-const config = JSON.parse(fs.readFileSync("./config/agent.config.json"));
+-
+-const agents = Object.keys(config);
+-
+-logSection("LOAD CONFIG");
+-
+-logInfo("CONFIG", "Loading config file...");
+-logInfo("CONFIG", "Agents detected", agents);
+-
+-for (const agent of agents) {
+-  const seedGreet = Math.floor(Math.random() * 1000);
+-  const seedMsg = Math.floor(Math.random() * 1000);
+-  
+-  logSection(`AGENT → ${agent}`);
+-  
+-  logInfo(agent, "Start processing");
+-  
+-  logDebug(agent, "Seed generated", {
+-    seedGreet,
+-    seedMsg
+-  });
+-
+-  let result = composeReply(
+-    config[agent],
+-    process.env.MODE,
+-    process.env.TAG,
+-    seedGreet,
+-    seedMsg
+-  );
+-  
+-  logDebug(agent, "Initial compose result", {
+-    reply: result.reply,
+-    meta: result.meta
+-  });
+-   
+-   const last = getMemory(`${agent}.last_message`);
+-   const lastGreeting = getMemory(`${agent}.last_greeting`);
+-   const lastTone = getMemory(`${agent}.last_tone`);
+-   
+-   logSection(`${agent} → MEMORY CHECK`);
+-   
+-   logDebug(agent, "Memory snapshot", {
+-     last,
+-     lastGreeting,
+-     lastTone
+-   });
+-   
+-   let finalResult = result;
+-   
+-   const validation = validateResult({
+-     result,
+-     last,
+-     lastGreeting,
+-     lastTone,
+-     isInHistory,
+-     agent
+-   });
+-   
+-   if (!validation.isValid) {
+-     logWarn(agent, "Initial rejected → retrying...", {
+-       reasons: validation.reasons
+-     });
+-     
+-     const retry = await retryGenerate({
+-      agent,
+-      config,
+-      mode: MODE,
+-      tag: TAG,
+-      composeReply,
+-      isDuplicate: (result) => {
+-          return !validateResult({
+-            result: result,
+-            last,
+-            lastGreeting,
+-            lastTone,
+-            isInHistory,
+-            agent
+-          }).isValid
+-        }
+-     });
+-     
+-     if (retry) {
+-       finalResult = retry;
+-       logInfo(agent, "Retry success ✔", {
+-         reply: retry.reply,
+-         meta: retry.meta
+-       });
+-     } else {
+-       logWarn(agent, "Retry failed → skip");
+-       continue
+-     }
+-   }
+-   
+-   logSection(`${agent} → FINAL OUTPUT`);
+-   logInfo(agent, "Reply ready");
+-   logDebug(agent, "Final payload", {
+-     reply: finalResult.reply
+-   });
+-   
+-  setMemory(`${agent}.last_message`, finalResult.reply);
+-  pushHistory(`${agent}.history`, finalResult.reply, 5);
+-  
+-  logDebug(agent, "Validation result / Decision source", validation);
+-  logInfo(agent, "Saving memory...");
+-  logDebug(agent, "Saved state", {
+-    last_message: finalResult.reply
+-  });
+-
+-  console.log("REPLY:\n", finalResult.reply);
+-}
+ 
++import {
++  resolveDailyMode
++} from "../utils/time.js";
+ 
+-logSection("ENGINE DONE");
+-logInfo("ENGINE", "All agents processed 💜");
++import {
++  hasCommitToday
++} from "../utils/github.js";
+ 
++import {
++  runEngine
++} from "./run.engine.js";
+ 
+-import fs from "fs";
+-import "dotenv/config";
+-import { composeReply } from "./compose.js";
+-import { resolveDailyMode } from "../utils/time.js";
+-import { hasCommitToday } from "../utils/github.js";
+ import {
+-  logInfo,
+-  logWarn,
+-  logDebug,
+-  logSection
++  logSection,
++  logInfo
+ } from "../utils/logger.js";
+ 
+-// =========================
+-// 🔹 LOAD CONFIG
+-// =========================
+-const config = JSON.parse(
+-  fs.readFileSync("./config/agent.config.json")
+-);
+-
+-const agent = config["aurielle_nara_elowen"];
+-
+-// =========================
+-// 🔹 PARSE COMMIT
+-// =========================
+-function parseCommit(msg) {
+-  let type = "update";
+-  let detail = msg;
+-
+-  if (msg.includes(":")) {
+-    const [t, ...rest] = msg.split(":");
+-    type = t.trim();
+-    detail = rest.join(":").trim();
+-  }
+-
+-  let reaction = "update";
+-
+-  if (type.startsWith("feat")) reaction = "feat";
+-  else if (type.startsWith("fix")) reaction = "fix";
+-  else if (type.startsWith("refactor")) reaction = "refactor";
+-  else if (type.startsWith("chore")) reaction = "chore";
+-  else if (type.startsWith("docs")) reaction = "docs";
+-  else if (type.startsWith("style")) reaction = "style";
+-  else if (type.startsWith("test")) reaction = "test";
+-
+-  return { type, detail, reaction };
+-}
+-
+-// =========================
+-// 🔹 MAIN EXECUTION
+-// =========================
+-logSection("COMMIT PARSER");const msg =
+-  process.env.COMMIT_MESSAGE ||
+-  "feat: migrate bash parser to nodejs";
+-
+-logInfo("COMMIT", "Raw commit message", {
+-  msg
+-});
+-
+-const parsed = parseCommit(msg);
+-
+-logDebug("COMMIT", "Parsed result", parsed);
++logSection("ENGINE START");
+ 
+ const hasCommit = await hasCommitToday({
+   username: "fridfn",
+   token: process.env.GITHUB_TOKEN
+ });
+ 
+-const { mode, hour, source } = resolveDailyMode({
++const {
++  mode,
++  hour
++} = resolveDailyMode({
+   hasCommit
+ });
+-logInfo("TIME", "Resolved mode", {
++
++logInfo("TIME", "Mode resolved", {
+   mode,
+-  hour,
+-  source
++  hour
+ });
+ 
+-// =========================
+-// 🔹 GENERATE REPLY
+-// =========================
+-const seedGreet = Math.floor(Math.random() * 1000);
+-const seedMsg = Math.floor(Math.random() * 1000);
+-
+-const result = composeReply(
+-  agent,
++await runEngine({
++  source: "scheduler",
+   mode,
+-  parsed.reaction,
+-  seedGreet,
+-  seedMsg
+-);
+-
+-logSection("FINAL RESULT");
+-
+-logInfo("REPLY", "Generated reply", {
+-  reply: result.reply
++  tag: process.env.TAG || "default"
+ });
+ 
+-logInfo("\n💜 FINAL REPLY:\n");
+-logInfo(result.reply);
+\ No newline at end of file
++logSection("ENGINE DONE");
+\ No newline at end of file
+diff --git a/node-agent/core/run.engine.js b/node-agent/core/run.engine.js
+index e69de29..4d2cbb9 100644
+--- a/node-agent/core/run.engine.js
++++ b/node-agent/core/run.engine.js
+@@ -0,0 +1,227 @@
++import fs from "fs";
++import { composeReply } from "./compose.js";
++import { retryGenerate } from "./retry.js";
++
++import { validateResult } from "../utils/validator.js";
++
++import {
++  getMemory,
++  setMemory,
++  pushHistory,
++  isInHistory
++} from "../memory/memory.js";
++
++import {
++  logInfo,
++  logWarn,
++  logDebug,
++  logSection
++} from "../utils/logger.js";
++
++export async function runEngine({
++  source = "system",
++  mode,
++  tag,
++  context = {}
++}) {
++
++  logSection(`ENGINE RUN → ${source}`);
++
++  // =========================
++  // 🔹 LOAD CONFIG
++  // =========================
++  const config = JSON.parse(
++    fs.readFileSync("./config/agent.config.json")
++  );
++
++  const agents = Object.keys(config);
++
++  logInfo("ENGINE", "Agents loaded", agents);
++
++  // =========================
++  // 🔹 LOOP AGENTS
++  // =========================
++  for (const agent of agents) {
++
++    logSection(`AGENT → ${agent}`);
++
++    const seedGreet = Math.floor(Math.random() * 1000);
++    const seedMsg = Math.floor(Math.random() * 1000);
++
++    logDebug(agent, "Seed generated", {
++      seedGreet,
++      seedMsg
++    });
++
++    // =========================
++    // 🔹 COMPOSE
++    // =========================
++    let result = composeReply(
++      config[agent],
++      mode,
++      tag,
++      seedGreet,
++      seedMsg
++    );
++
++    logDebug(agent, "Initial compose", {
++      reply: result.reply,
++      meta: result.meta
++    });
++
++    // =========================
++    // 🔹 MEMORY
++    // =========================
++    const last = getMemory(`${agent}.last_message`);
++    const lastGreeting = getMemory(`${agent}.last_greeting`);
++    const lastTone = getMemory(`${agent}.last_tone`);
++
++    const validation = validateResult({
++      result,
++      last,
++      lastGreeting,
++      lastTone,
++      isInHistory,
++      agent
++    });
++
++    let finalResult = result;
++
++    // =========================
++    // 🔹 RETRY
++    // =========================
++    if (!validation.isValid) {
++
++      logWarn(agent, "Rejected → retrying...", {
++        reasons: validation.reasons
++      });
++
++      const retry = await retryGenerate({
++        agent,
++        config,
++        mode,
++        tag,
++        composeReply,
++        isDuplicate: (result) => {
++          return !validateResult({
++            result,
++            last,
++            lastGreeting,
++            lastTone,
++            isInHistory,
++            agent
++          }).isValid;
++        }
++      });
++
++      if (retry) {
++
++        finalResult = retry;
++
++        logInfo(agent, "Retry success ✔", {
++          reply: retry.reply
++        });
++
++      } else {
++
++        logWarn(agent, "Retry failed → skip");
++
++        continue;
++      }
++    }
++
++    // =========================
++    // 🔹 FINAL PAYLOAD
++    // =========================
++    const payload = {
++      source,
++
++      reply: finalResult.reply,
++
++      meta: finalResult.meta,
++
++      context: {
++        mode,
++        tag
++      },
++
++      extra: context,
++
++      created_at: Date.now()
++    };
++
++    // =========================
++    // 🔹 SAVE MEMORY
++    // =========================
++    setMemory(`${agent}.last_message`, payload.reply);
++    setMemory(`${agent}.last_tone`, payload.meta.tone);
++    setMemory(`${agent}.last_greeting`, payload.meta.greeting);
++
++    pushHistory(
++      `${agent}.history`,
++      payload,
++      10
++    );
++
++    // =========================
++    // 🔹 STATS
++    // =========================
++    const stats =
++      getMemory(`${agent}.stats`) || {};
++
++    stats.total_generated =
++      (stats.total_generated || 0) + 1;
++
++    stats.last_generated_at = Date.now();
++
++    setMemory(`${agent}.stats`, stats);
++
++    // =========================
++    // 🔹 COMMIT MEMORY
++    // =========================
++    if (source === "commit") {
++
++      const commitStats =
++        getMemory(`${agent}.commit.stats`) || {};
++
++      const type =
++        context.commit?.type || "unknown";
++
++      commitStats[type] =
++        (commitStats[type] || 0) + 1;
++
++      setMemory(
++        `${agent}.commit.last`,
++        context.commit
++      );
++
++      setMemory(
++        `${agent}.commit.stats`,
++        commitStats
++      );
++
++      pushHistory(
++        `${agent}.commit.history`,
++        {
++          ...context.commit,
++          mode,
++          reply: payload.reply,
++          created_at: Date.now()
++        },
++        20
++      );
++    }
++
++    // =========================
++    // 🔹 OUTPUT
++    // =========================
++    logSection(`${agent} → FINAL`);
++
++    logInfo(agent, "Reply ready");
++
++    logDebug(agent, "Payload", payload);
++
++    console.log("\n💜 FINAL REPLY:\n");
++    console.log(payload.reply);
++  }
++}
+\ No newline at end of file
+diff --git a/node-agent/memory.json b/node-agent/memory.json
+index b46be57..e57aea6 100644
+--- a/node-agent/memory.json
++++ b/node-agent/memory.json
+@@ -1,12 +1,206 @@
+ {
+   "aurielle_nara_elowen": {
+-    "last_message": "wah… developer muncul nih\n\nlanjut terus ya… jangan cuma semangat di awal doang 😏",
++    "last_message": "Farid… masih bangun, tapi belum mulai ya\n\nprogress hari ini kosong, tapi belum benar-benar selesai sampai kamu memutuskan",
++    "last_tone": "warning_reflect",
++    "last_greeting": "Farid… masih bangun, tapi belum mulai ya",
+     "history": [
+-      "wah… developer muncul nih\n\nlanjut terus ya… jangan cuma semangat di awal doang 😏",
+-      "kamu jalan sesuai jalurmu\n\ncommit kamu nunjukin kamu tau arahmu hari ini",
+-      "kamu jalan sesuai jalurmu\n\ndan kamu lanjut tanpa ragu… itu tanda kamu lagi fokus",
+-      "kamu gak diem aja hari ini\n\ndan kamu commit… ini awal yang bagus buat jaga momentum kamu",
+-      "hmm… kamu gak lepas sampai malam\n\ndan kamu commit… ini bukti kamu beneran jaga konsistensimu"
+-    ]
++      {
++        "source": "commit",
++        "reply": "Farid… masih bangun, tapi belum mulai ya\n\nprogress hari ini kosong, tapi belum benar-benar selesai sampai kamu memutuskan",
++        "meta": {
++          "greeting": "Farid… masih bangun, tapi belum mulai ya",
++          "message": "progress hari ini kosong, tapi belum benar-benar selesai sampai kamu memutuskan",
++          "tone": "warning_reflect",
++          "category": "reminder"
++        },
++        "context": {
++          "mode": "final_warning",
++          "tag": "update"
++        },
++        "extra": {
++          "commit": {
++            "type": "update",
++            "detail": "auth system add login + register",
++            "reaction": "update"
++          }
++        },
++        "created_at": 1778282113805
++      },
++      {
++        "source": "commit",
++        "reply": "Farid… kamu mulai jalan hari ini ya\n\naku lihat kamu mulai jalan… itu yang bikin semuanya bisa lanjut",
++        "meta": {
++          "greeting": "Farid… kamu mulai jalan hari ini ya",
++          "message": "aku lihat kamu mulai jalan… itu yang bikin semuanya bisa lanjut",
++          "tone": "ambitious_proud",
++          "category": "support"
++        },
++        "context": {
++          "mode": "ambitious",
++          "tag": "update"
++        },
++        "extra": {
++          "commit": {
++            "type": "update",
++            "detail": "auth system add login + register",
++            "reaction": "update"
++          }
++        },
++        "created_at": 1778224739334
++      },
++      {
++        "source": "commit",
++        "reply": "kamu lagi santai ya… tapi masih bisa gerak dikit\n\nkamu belum nyentuh kode hari ini, tapi belum terlambat buat mulai",
++        "meta": {
++          "greeting": "kamu lagi santai ya… tapi masih bisa gerak dikit",
++          "message": "kamu belum nyentuh kode hari ini, tapi belum terlambat buat mulai",
++          "tone": "warning_nudge",
++          "category": "reminder"
++        },
++        "context": {
++          "mode": "warning",
++          "tag": "update"
++        },
++        "extra": {
++          "commit": {
++            "type": "update",
++            "detail": "auth system add login + register",
++            "reaction": "update"
++          }
++        },
++        "created_at": 1778217546544
++      },
++      {
++        "source": "commit",
++        "reply": "Farid… kamu mulai jalan hari ini ya\n\ndan kamu ambil langkah pertama… itu yang paling susah sebenarnya",
++        "meta": {
++          "greeting": "Farid… kamu mulai jalan hari ini ya",
++          "message": "dan kamu ambil langkah pertama… itu yang paling susah sebenarnya",
++          "tone": "ambitious_proud",
++          "category": "support"
++        },
++        "context": {
++          "mode": "ambitious",
++          "tag": "feat"
++        },
++        "extra": {
++          "commit": {
++            "type": "feat",
++            "detail": "auth system add login + register",
++            "reaction": "feat"
++          }
++        },
++        "created_at": 1778217425580
++      },
++      {
++        "source": "commit",
++        "reply": "wah… developer muncul nih\n\ncommit kecil tapi cukup buat buktiin kamu gak cuma ngomong",
++        "meta": {
++          "greeting": "wah… developer muncul nih",
++          "message": "commit kecil tapi cukup buat buktiin kamu gak cuma ngomong",
++          "tone": "ambitious_teasing",
++          "category": "support"
++        },
++        "context": {
++          "mode": "ambitious",
++          "tag": "feat"
++        },
++        "extra": {
++          "commit": {
++            "type": "feat",
++            "detail": "auth system add login + register",
++            "reaction": "feat"
++          }
++        },
++        "created_at": 1778217360875
++      },
++      {
++        "source": "commit",
++        "reply": "kayaknya kamu lagi butuh start dikit\n\nkamu belum nyentuh kode hari ini, mulai aja dulu biar semangatnya ikut naik",
++        "meta": {
++          "greeting": "kayaknya kamu lagi butuh start dikit",
++          "message": "kamu belum nyentuh kode hari ini, mulai aja dulu biar semangatnya ikut naik",
++          "tone": "warning_ignite",
++          "category": "reminder"
++        },
++        "context": {
++          "mode": "warning",
++          "tag": "feat"
++        },
++        "extra": {
++          "commit": {
++            "type": "feat",
++            "detail": "auth system add login + register",
++            "reaction": "feat"
++          }
++        },
++        "created_at": 1778217312820
++      }
++    ],
++    "stats": {
++      "total_generated": 6,
++      "last_generated_at": 1778282113809
++    },
++    "commit": {
++      "last": {
++        "type": "update",
++        "detail": "auth system add login + register",
++        "reaction": "update"
++      },
++      "stats": {
++        "feat": 3,
++        "update": 3
++      },
++      "history": [
++        {
++          "type": "update",
++          "detail": "auth system add login + register",
++          "reaction": "update",
++          "mode": "final_warning",
++          "reply": "Farid… masih bangun, tapi belum mulai ya\n\nprogress hari ini kosong, tapi belum benar-benar selesai sampai kamu memutuskan",
++          "created_at": 1778282113811
++        },
++        {
++          "type": "update",
++          "detail": "auth system add login + register",
++          "reaction": "update",
++          "mode": "ambitious",
++          "reply": "Farid… kamu mulai jalan hari ini ya\n\naku lihat kamu mulai jalan… itu yang bikin semuanya bisa lanjut",
++          "created_at": 1778224739341
++        },
++        {
++          "type": "update",
++          "detail": "auth system add login + register",
++          "reaction": "update",
++          "mode": "warning",
++          "reply": "kamu lagi santai ya… tapi masih bisa gerak dikit\n\nkamu belum nyentuh kode hari ini, tapi belum terlambat buat mulai",
++          "created_at": 1778217546549
++        },
++        {
++          "type": "feat",
++          "detail": "auth system add login + register",
++          "reaction": "feat",
++          "mode": "ambitious",
++          "reply": "Farid… kamu mulai jalan hari ini ya\n\ndan kamu ambil langkah pertama… itu yang paling susah sebenarnya",
++          "created_at": 1778217425602
++        },
++        {
++          "type": "feat",
++          "detail": "auth system add login + register",
++          "reaction": "feat",
++          "mode": "ambitious",
++          "reply": "wah… developer muncul nih\n\ncommit kecil tapi cukup buat buktiin kamu gak cuma ngomong",
++          "created_at": 1778217360879
++        },
++        {
++          "type": "feat",
++          "detail": "auth system add login + register",
++          "reaction": "feat",
++          "mode": "warning",
++          "reply": "kayaknya kamu lagi butuh start dikit\n\nkamu belum nyentuh kode hari ini, mulai aja dulu biar semangatnya ikut naik",
++          "created_at": 1778217312823
++        }
++      ]
++    }
+   }
+ }
+\ No newline at end of file
+diff --git a/node-agent/utils/time.js b/node-agent/utils/time.js
+index 3343a3d..b32cab1 100644
+--- a/node-agent/utils/time.js
++++ b/node-agent/utils/time.js
+@@ -16,7 +16,7 @@ export function resolveDailyMode({ hasCommit }) {
+   let mode = null;
+   let shouldSend = true; // default commit selalu send
+   let skip = false;
+-  let source = hasCommit ? "commit" : "no_commit";
++  let source = hasCommit ? "commit" : "no_commit"
+ 
+   if (hasCommit) {
+     // =========================

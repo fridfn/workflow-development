@@ -16,7 +16,7 @@ export function resolveDailyMode({ hasCommit }) {
   let mode = null;
   let shouldSend = true; // default commit selalu send
   let skip = false;
-  let source = hasCommit ? "commit" : "no_commit";
+  let source = hasCommit ? "commit" : "no_commit"
 
   if (hasCommit) {
     // =========================
