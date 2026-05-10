@@ -1,0 +1,46 @@
+[
+  {
+    "source": "engine",
+    "reply": "hmm… kamu tau ini belum selesai\n\nprogress hari ini kosong, padahal kamu gak butuh banyak buat isi sedikit",
+    "meta": {
+      "greeting": "hmm… kamu tau ini belum selesai",
+      "message": "progress hari ini kosong, padahal kamu gak butuh banyak buat isi sedikit",
+      "tone": "warning_guilt",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "final_warning",
+      "tag": "refactor"
+    },
+    "extra": {
+      "commit": {
+        "type": "refactor",
+        "detail": "optimize request handler structure",
+        "reaction": "refactor"
+      }
+    },
+    "created_at": 1778434321624
+  },
+  {
+    "source": "engine",
+    "reply": "jam segini… kamu masih punya alasan buat lanjut\n\nhari ini belum ada jejak, jangan sampai kamu kehilangan arah hanya karena satu malam",
+    "meta": {
+      "greeting": "jam segini… kamu masih punya alasan buat lanjut",
+      "message": "hari ini belum ada jejak, jangan sampai kamu kehilangan arah hanya karena satu malam",
+      "tone": "warning_anchor",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "final_warning",
+      "tag": "refactor"
+    },
+    "extra": {
+      "commit": {
+        "type": "refactor",
+        "detail": "optimize request handler structure",
+        "reaction": "refactor"
+      }
+    },
+    "created_at": 1778434332475
+  }
+]

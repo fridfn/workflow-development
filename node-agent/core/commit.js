@@ -21,9 +21,11 @@ import {
   logSection
 } from "../utils/logger.js";
 
+import { getRandomCommit } from "../utils/random.commit.js"
+
 logSection("COMMIT FLOW");
 
-const msg =
+const msg = getRandomCommit() ||
   process.env.COMMIT_MESSAGE ||
   "feat: migrate parser";
 

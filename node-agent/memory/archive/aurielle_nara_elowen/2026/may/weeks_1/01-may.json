@@ -1,0 +1,640 @@
+[
+  {
+    "source": "commit",
+    "reply": "kamu masih pegang ini sampai malam\n\ndan kamu masih pegang ritmemu… itu terasa banget",
+    "meta": {
+      "greeting": "kamu masih pegang ini sampai malam",
+      "message": "dan kamu masih pegang ritmemu… itu terasa banget",
+      "tone": "consistent_tender",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "test"
+    },
+    "extra": {
+      "commit": {
+        "type": "test",
+        "detail": "verify telegram message delivery",
+        "reaction": "test"
+      }
+    },
+    "created_at": 1778417064934
+  },
+  {
+    "source": "commit",
+    "reply": "kamu masih pegang ini\n\ncommit kamu sederhana… tapi kena",
+    "meta": {
+      "greeting": "kamu masih pegang ini",
+      "message": "commit kamu sederhana… tapi kena",
+      "tone": "consistent_subtle",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "feat"
+    },
+    "extra": {
+      "commit": {
+        "type": "feat",
+        "detail": "add login + register system",
+        "reaction": "feat"
+      }
+    },
+    "created_at": 1778417069288
+  },
+  {
+    "source": "commit",
+    "reply": "eh… kamu tetap lanjut sampai sekarang\n\nkamu gak berhenti hari ini… itu yang bikin kamu tetap di jalurmu",
+    "meta": {
+      "greeting": "eh… kamu tetap lanjut sampai sekarang",
+      "message": "kamu gak berhenti hari ini… itu yang bikin kamu tetap di jalurmu",
+      "tone": "consistent_grounded",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "feat"
+    },
+    "extra": {
+      "commit": {
+        "type": "feat",
+        "detail": "add login + register system",
+        "reaction": "feat"
+      }
+    },
+    "created_at": 1778417086030
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah mulai nih\n\ntambahin sedikit lagi… momentum kamu lagi kebentuk",
+    "meta": {
+      "greeting": "Farid… kamu udah mulai nih",
+      "message": "tambahin sedikit lagi… momentum kamu lagi kebentuk",
+      "tone": "proactive_extend",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "refactor"
+    },
+    "extra": {
+      "commit": {
+        "type": "refactor",
+        "detail": "simplify commit parser logic",
+        "reaction": "refactor"
+      }
+    },
+    "created_at": 1778420101477
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… ini keliatan stabil\n\nkamu lagi stabil… itu yang penting",
+    "meta": {
+      "greeting": "hmm… ini keliatan stabil",
+      "message": "kamu lagi stabil… itu yang penting",
+      "tone": "proactive_maintain",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "fix"
+    },
+    "extra": {
+      "commit": {
+        "type": "fix",
+        "detail": "handle invalid reflection payload",
+        "reaction": "fix"
+      }
+    },
+    "created_at": 1778421042603
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah masuk progress\n\nbiar hari ini lebih kebentuk… lanjut lagi",
+    "meta": {
+      "greeting": "Farid… kamu udah masuk progress",
+      "message": "biar hari ini lebih kebentuk… lanjut lagi",
+      "tone": "proactive_lock_in",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "style"
+    },
+    "extra": {
+      "commit": {
+        "type": "style",
+        "detail": "improve hover animations",
+        "reaction": "style"
+      }
+    },
+    "created_at": 1778421302882
+  },
+  {
+    "source": "commit",
+    "reply": "kamu udah gak nol hari ini\n\nbiar hari ini lebih kebentuk… lanjut lagi",
+    "meta": {
+      "greeting": "kamu udah gak nol hari ini",
+      "message": "biar hari ini lebih kebentuk… lanjut lagi",
+      "tone": "proactive_lock_in",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "docs"
+    },
+    "extra": {
+      "commit": {
+        "type": "docs",
+        "detail": "explain reflection flow structure",
+        "reaction": "docs"
+      }
+    },
+    "created_at": 1778421318819
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… kamu keliatan lagi konsisten\n\ncukup jaga flow ini… nanti hasilnya ngikut",
+    "meta": {
+      "greeting": "hmm… kamu keliatan lagi konsisten",
+      "message": "cukup jaga flow ini… nanti hasilnya ngikut",
+      "tone": "proactive_maintain",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "chore"
+    },
+    "extra": {
+      "commit": {
+        "type": "chore",
+        "detail": "cleanup unused workers",
+        "reaction": "chore"
+      }
+    },
+    "created_at": 1778421622245
+  },
+  {
+    "source": "commit",
+    "reply": "kamu udah masuk ritme nih\n\nsedikit lagi aja… biar gak cuma satu langkah",
+    "meta": {
+      "greeting": "kamu udah masuk ritme nih",
+      "message": "sedikit lagi aja… biar gak cuma satu langkah",
+      "tone": "proactive_extend",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "refactor"
+    },
+    "extra": {
+      "commit": {
+        "type": "refactor",
+        "detail": "improve log processing flow",
+        "reaction": "refactor"
+      }
+    },
+    "created_at": 1778421682040
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah gak diem\n\njangan berhenti di awal doang",
+    "meta": {
+      "greeting": "Farid… kamu udah gak diem",
+      "message": "jangan berhenti di awal doang",
+      "tone": "proactive_push_soft",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "style"
+    },
+    "extra": {
+      "commit": {
+        "type": "style",
+        "detail": "improve button spacing",
+        "reaction": "style"
+      }
+    },
+    "created_at": 1778422604103
+  },
+  {
+    "source": "commit",
+    "reply": "eh… kamu gak kosong hari ini\n\nkamu udah mulai… sayang kalau berhenti",
+    "meta": {
+      "greeting": "eh… kamu gak kosong hari ini",
+      "message": "kamu udah mulai… sayang kalau berhenti",
+      "tone": "proactive_push_soft",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "test"
+    },
+    "extra": {
+      "commit": {
+        "type": "test",
+        "detail": "validate stats generator",
+        "reaction": "test"
+      }
+    },
+    "created_at": 1778423069865
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah mulai nih\n\nkamu lagi di fase enak… lanjut dikit aja",
+    "meta": {
+      "greeting": "Farid… kamu udah mulai nih",
+      "message": "kamu lagi di fase enak… lanjut dikit aja",
+      "tone": "proactive_extend",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "fix"
+    },
+    "extra": {
+      "commit": {
+        "type": "fix",
+        "detail": "resolve invalid token issue",
+        "reaction": "fix"
+      }
+    },
+    "created_at": 1778424383951
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah mulai nih\n\nmumpung lagi jalan… gas dikit lagi",
+    "meta": {
+      "greeting": "Farid… kamu udah mulai nih",
+      "message": "mumpung lagi jalan… gas dikit lagi",
+      "tone": "proactive_extend",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "refactor"
+    },
+    "extra": {
+      "commit": {
+        "type": "refactor",
+        "detail": "clean unused component states",
+        "reaction": "refactor"
+      }
+    },
+    "created_at": 1778424782032
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah gak diem\n\ntambah dikit lagi… jangan berhenti di satu commit",
+    "meta": {
+      "greeting": "Farid… kamu udah gak diem",
+      "message": "tambah dikit lagi… jangan berhenti di satu commit",
+      "tone": "proactive_push_soft",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "fix"
+    },
+    "extra": {
+      "commit": {
+        "type": "fix",
+        "detail": "repair broken navbar on mobile",
+        "reaction": "fix"
+      }
+    },
+    "created_at": 1778424849988
+  },
+  {
+    "source": "commit",
+    "reply": "kamu udah masuk ritme nih\n\nkamu lagi di fase enak… lanjut dikit aja",
+    "meta": {
+      "greeting": "kamu udah masuk ritme nih",
+      "message": "kamu lagi di fase enak… lanjut dikit aja",
+      "tone": "proactive_extend",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "fix"
+    },
+    "extra": {
+      "commit": {
+        "type": "fix",
+        "detail": "repair broken navbar on mobile",
+        "reaction": "fix"
+      }
+    },
+    "created_at": 1778424886967
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah masuk progress\n\njangan setengah jalan… kamu udah mulai soalnya",
+    "meta": {
+      "greeting": "Farid… kamu udah masuk progress",
+      "message": "jangan setengah jalan… kamu udah mulai soalnya",
+      "tone": "proactive_lock_in",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "chore"
+    },
+    "extra": {
+      "commit": {
+        "type": "chore",
+        "detail": "upgrade express dependencies",
+        "reaction": "chore"
+      }
+    },
+    "created_at": 1778425254941
+  },
+  {
+    "source": "commit",
+    "reply": "kamu udah gak nol hari ini\n\ntambahin satu progress lagi… biar kerasa",
+    "meta": {
+      "greeting": "kamu udah gak nol hari ini",
+      "message": "tambahin satu progress lagi… biar kerasa",
+      "tone": "proactive_lock_in",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "test"
+    },
+    "extra": {
+      "commit": {
+        "type": "test",
+        "detail": "verify telegram message delivery",
+        "reaction": "test"
+      }
+    },
+    "created_at": 1778425333601
+  },
+  {
+    "source": "commit",
+    "reply": "kamu udah gak nol hari ini\n\ntambahin satu progress lagi… biar kerasa",
+    "meta": {
+      "greeting": "kamu udah gak nol hari ini",
+      "message": "tambahin satu progress lagi… biar kerasa",
+      "tone": "proactive_lock_in",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "feat"
+    },
+    "extra": {
+      "commit": {
+        "type": "feat",
+        "detail": "add realtime broadcast system",
+        "reaction": "feat"
+      }
+    },
+    "created_at": 1778425467070
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah masuk progress\n\nbiar hari ini lebih kebentuk… lanjut lagi",
+    "meta": {
+      "greeting": "Farid… kamu udah masuk progress",
+      "message": "biar hari ini lebih kebentuk… lanjut lagi",
+      "tone": "proactive_lock_in",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "docs"
+    },
+    "extra": {
+      "commit": {
+        "type": "docs",
+        "detail": "add endpoint usage examples",
+        "reaction": "docs"
+      }
+    },
+    "created_at": 1778426251997
+  },
+  {
+    "source": "commit",
+    "reply": "kamu udah masuk ritme nih\n\ntambahin sedikit lagi… momentum kamu lagi kebentuk",
+    "meta": {
+      "greeting": "kamu udah masuk ritme nih",
+      "message": "tambahin sedikit lagi… momentum kamu lagi kebentuk",
+      "tone": "proactive_extend",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "refactor"
+    },
+    "extra": {
+      "commit": {
+        "type": "refactor",
+        "detail": "improve prompt generation",
+        "reaction": "refactor"
+      }
+    },
+    "created_at": 1778426429556
+  },
+  {
+    "source": "commit",
+    "reply": "kamu udah masuk ritme nih\n\nlanjut dikit lagi aja… biasanya di sini kamu bisa dapet lebih banyak",
+    "meta": {
+      "greeting": "kamu udah masuk ritme nih",
+      "message": "lanjut dikit lagi aja… biasanya di sini kamu bisa dapet lebih banyak",
+      "tone": "proactive_extend",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "fix"
+    },
+    "extra": {
+      "commit": {
+        "type": "fix",
+        "detail": "prevent duplicate telegram messages",
+        "reaction": "fix"
+      }
+    },
+    "created_at": 1778426525828
+  },
+  {
+    "source": "commit",
+    "reply": "kamu udah gak nol hari ini\n\nkunci momentum kamu… tambah satu langkah lagi",
+    "meta": {
+      "greeting": "kamu udah gak nol hari ini",
+      "message": "kunci momentum kamu… tambah satu langkah lagi",
+      "tone": "proactive_lock_in",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "fix"
+    },
+    "extra": {
+      "commit": {
+        "type": "fix",
+        "detail": "handle invalid reflection payload",
+        "reaction": "fix"
+      }
+    },
+    "created_at": 1778426647768
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah gak diem\n\ngas dikit lagi… jangan nanggung",
+    "meta": {
+      "greeting": "Farid… kamu udah gak diem",
+      "message": "gas dikit lagi… jangan nanggung",
+      "tone": "proactive_push_soft",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "style"
+    },
+    "extra": {
+      "commit": {
+        "type": "style",
+        "detail": "improve player interface",
+        "reaction": "style"
+      }
+    },
+    "created_at": 1778426743191
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah gak diem\n\nlanjut tipis-tipis aja… yang penting nambah",
+    "meta": {
+      "greeting": "Farid… kamu udah gak diem",
+      "message": "lanjut tipis-tipis aja… yang penting nambah",
+      "tone": "proactive_push_soft",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "chore"
+    },
+    "extra": {
+      "commit": {
+        "type": "chore",
+        "detail": "upgrade express dependencies",
+        "reaction": "chore"
+      }
+    },
+    "created_at": 1778426789945
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah gak diem\n\nlanjut aja sekalian… biasanya kamu masih bisa",
+    "meta": {
+      "greeting": "Farid… kamu udah gak diem",
+      "message": "lanjut aja sekalian… biasanya kamu masih bisa",
+      "tone": "proactive_push_soft",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "test"
+    },
+    "extra": {
+      "commit": {
+        "type": "test",
+        "detail": "validate audio control flow",
+        "reaction": "test"
+      }
+    },
+    "created_at": 1778427273603
+  },
+  {
+    "source": "commit",
+    "reply": "eh… kamu gak kosong hari ini\n\nlanjut aja sekalian… biasanya kamu masih bisa",
+    "meta": {
+      "greeting": "eh… kamu gak kosong hari ini",
+      "message": "lanjut aja sekalian… biasanya kamu masih bisa",
+      "tone": "proactive_push_soft",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "refactor"
+    },
+    "extra": {
+      "commit": {
+        "type": "refactor",
+        "detail": "simplify commit parser logic",
+        "reaction": "refactor"
+      }
+    },
+    "created_at": 1778427299428
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah gak diem\n\ngas dikit lagi… jangan nanggung",
+    "meta": {
+      "greeting": "Farid… kamu udah gak diem",
+      "message": "gas dikit lagi… jangan nanggung",
+      "tone": "proactive_push_soft",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "test"
+    },
+    "extra": {
+      "commit": {
+        "type": "test",
+        "detail": "test login session flow",
+        "reaction": "test"
+      }
+    },
+    "created_at": 1778427303576
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah mulai nih\n\njangan berhenti sekarang… ini lagi enak buat nambah progress",
+    "meta": {
+      "greeting": "Farid… kamu udah mulai nih",
+      "message": "jangan berhenti sekarang… ini lagi enak buat nambah progress",
+      "tone": "proactive_extend",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "docs"
+    },
+    "extra": {
+      "commit": {
+        "type": "docs",
+        "detail": "add endpoint usage examples",
+        "reaction": "docs"
+      }
+    },
+    "created_at": 1778428101889
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu udah gak diem\n\nlanjut tipis-tipis aja… yang penting nambah",
+    "meta": {
+      "greeting": "Farid… kamu udah gak diem",
+      "message": "lanjut tipis-tipis aja… yang penting nambah",
+      "tone": "proactive_push_soft",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "feat"
+    },
+    "extra": {
+      "commit": {
+        "type": "feat",
+        "detail": "add realtime broadcast system",
+        "reaction": "feat"
+      }
+    },
+    "created_at": 1778428106954
+  }
+]

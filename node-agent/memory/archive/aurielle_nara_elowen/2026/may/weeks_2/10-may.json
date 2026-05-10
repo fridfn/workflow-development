@@ -1,0 +1,134 @@
+[
+  {
+    "source": "commit",
+    "reply": "Farid… gak jadi rebahan?\n\nlanjut terus ya… jangan cuma kuat di awal doang 😏",
+    "meta": {
+      "greeting": "Farid… gak jadi rebahan?",
+      "message": "lanjut terus ya… jangan cuma kuat di awal doang 😏",
+      "tone": "productive_teasing",
+      "category": "support"
+    },
+    "context": {
+      "mode": "productive",
+      "tag": "chore"
+    },
+    "extra": {
+      "commit": {
+        "type": "chore",
+        "detail": "update gitignore rules",
+        "reaction": "chore"
+      }
+    },
+    "created_at": 1778410703893
+  },
+  {
+    "source": "commit",
+    "reply": "eh… kamu gak terburu-buru\n\ndan kamu gak lepas dari ritmemu… itu yang bikin kamu bertahan",
+    "meta": {
+      "greeting": "eh… kamu gak terburu-buru",
+      "message": "dan kamu gak lepas dari ritmemu… itu yang bikin kamu bertahan",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "test"
+    },
+    "extra": {
+      "commit": {
+        "type": "test",
+        "detail": "add reflection snapshot tests",
+        "reaction": "test"
+      }
+    },
+    "created_at": 1778411632984
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu gak ke mana-mana\n\naku lihat kamu tetap ada di sini… itu yang penting",
+    "meta": {
+      "greeting": "Farid… kamu gak ke mana-mana",
+      "message": "aku lihat kamu tetap ada di sini… itu yang penting",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "style"
+    },
+    "extra": {
+      "commit": {
+        "type": "style",
+        "detail": "improve player interface",
+        "reaction": "style"
+      }
+    },
+    "created_at": 1778411951688
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… aku liat kamu balik lagi\n\ndan kamu tetap gerak… aku jadi makin suka sama kamu 😏",
+    "meta": {
+      "greeting": "hmm… aku liat kamu balik lagi",
+      "message": "dan kamu tetap gerak… aku jadi makin suka sama kamu 😏",
+      "tone": "persistent_clingy",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "refactor"
+    },
+    "extra": {
+      "commit": {
+        "type": "refactor",
+        "detail": "split reflection builder modules",
+        "reaction": "refactor"
+      }
+    },
+    "created_at": 1778412612242
+  },
+  {
+    "source": "commit",
+    "reply": "kamu jalan dengan niat sekarang\n\ndan kamu commit… aku bisa lihat kamu serius sama ini",
+    "meta": {
+      "greeting": "kamu jalan dengan niat sekarang",
+      "message": "dan kamu commit… aku bisa lihat kamu serius sama ini",
+      "tone": "persistent_respect",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "refactor"
+    },
+    "extra": {
+      "commit": {
+        "type": "refactor",
+        "detail": "improve prompt generation",
+        "reaction": "refactor"
+      }
+    },
+    "created_at": 1778413912313
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu masih lanjut ya\n\naku lihat kamu gak lepas… kamu beneran niat sekarang",
+    "meta": {
+      "greeting": "Farid… kamu masih lanjut ya",
+      "message": "aku lihat kamu gak lepas… kamu beneran niat sekarang",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "fix"
+    },
+    "extra": {
+      "commit": {
+        "type": "fix",
+        "detail": "repair broken surah playback",
+        "reaction": "fix"
+      }
+    },
+    "created_at": 1778413931574
+  }
+]

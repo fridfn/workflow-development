@@ -1,5 +1,7 @@
+import { getDateSimulation } from "../utils/date.js";
+
 export function getJakartaHour() {
-  const now = new Date();
+  const now = getDateSimulation();
   
   const jakartaTime = new Intl.DateTimeFormat("en-US", {
     timeZone: "Asia/Jakarta",

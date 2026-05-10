@@ -1,23 +1,31 @@
 import fs from "fs";
-import path from "path";
+import { updateHighlights } from "./highlight.engine.js";
+import { getWeekOfMonth } from "../utils/weeks.js";
+import { updateWeeklyStats } from "./stats.engine.js"
+import { getDateSimulation } from "../utils/date.js";
+import { handleMonthTransition } from "../engine/month.transition.js"
+import {
+  ensureDir,
+  ensureFiles
+} from "../utils/fs.helper.js";
 
 export function archiveMemory({
   agent,
   result,
   context,
-  stats
+  stats,
+  validation
 }) {
-  const now = new Date();
-
   // =========================
   // 🔹 DATE INFO
   // =========================
+  const now = getDateSimulation();
   const year = now.getFullYear();
-
-  const monthNumber = String(
-    now.getMonth() + 1
+  
+  const day = String(
+    now.getDate()
   ).padStart(2, "0");
-
+  
   const monthName = now
     .toLocaleString("en-US", {
       month: "long"
@@ -30,28 +38,73 @@ export function archiveMemory({
   const baseDir =
     `./memory/archive/${agent}/${year}`;
 
-  const monthDir =
-    `${baseDir}/${monthName}`;
-
+  // =========================
+  // 🔹 WEEK CALCULATION
+  // =========================
+  const weekNumber = getWeekOfMonth(now);
+  
+  const weekDir =
+    `${baseDir}/${monthName}/weeks_${weekNumber}`;
+    
+  const statsDir =
+  `./memory/stats/${agent}/${year}/${monthName}`;
+  
+  // stats memory file
+  const statsFile =
+  `${statsDir}/week_${weekNumber}.json`;
+  
   // raw memory file
   const rawFile =
-    `${monthDir}/${monthNumber}-${monthName}.json`;
+    `${weekDir}/${day}-${monthName}.json`;
 
   // optional future files
   const highlightsFile =
-    `${monthDir}/highlights.json`;
-
+    `${weekDir}/highlights.json`;
+    
   const summaryFile =
-    `${monthDir}/summary.json`;
+    `${weekDir}/summary.json`;
 
   const yearlySummaryFile =
-    `${baseDir}/yearly-summary.json`;
-
+    `./${baseDir}/yearly-summary.json`;
+  
   // =========================
-  // 🔹 ENSURE DIR
+  // 🔹 AUTO CREATE & ENSURE FILES
   // =========================
-  fs.mkdirSync(monthDir, {
-    recursive: true
+  ensureDir(weekDir);
+  ensureDir(statsDir);
+  
+  ensureFiles([
+    {
+      file: rawFile,
+      fallback: []
+    },
+    {
+      file: highlightsFile,
+      fallback: []
+    },
+    {
+      file: summaryFile,
+      fallback: {}
+    },
+    {
+      file: yearlySummaryFile,
+      fallback: {}
+    },
+    {
+      file: statsFile,
+      fallback: {}
+    }
+  ]);
+  
+  // =========================
+  // 🔹 HANDLE TRANSITION MONTH AND YEAR
+  // =========================
+  handleMonthTransition({
+    agent,
+    currentMonth: monthName,
+    currentYear: year,
+    statsBaseDir:
+      `./memory/stats`
   });
 
   // =========================
@@ -71,33 +124,25 @@ export function archiveMemory({
   const entry = {
     source:
       context.source || "engine",
-
     reply: result.reply,
-
     meta: {
       greeting:
         result.meta?.greeting,
-
       message:
         result.meta?.message,
-
       tone:
         result.meta?.tone,
-
       category:
         result.meta?.category
     },
-
     context: {
       mode: context.mode,
       tag: context.tag
     },
-
     extra: {
       commit:
         context.commit || null
     },
-
     created_at: Date.now()
   };
 
@@ -108,30 +153,29 @@ export function archiveMemory({
   // =========================
   fs.writeFileSync(
     rawFile,
-    JSON.stringify(archive, null, 2)
+    JSON.stringify(archive, null, 2),
+    "utf-8"
   );
-
+  
   // =========================
-  // 🔹 AUTO CREATE FILES
+  // 🔹 GENERATE HIGHLIGHT
   // =========================
-  if (!fs.existsSync(highlightsFile)) {
-    fs.writeFileSync(
-      highlightsFile,
-      JSON.stringify([], null, 2)
-    );
-  }
-
-  if (!fs.existsSync(summaryFile)) {
-    fs.writeFileSync(
-      summaryFile,
-      JSON.stringify({}, null, 2)
-    );
-  }
-
-  if (!fs.existsSync(yearlySummaryFile)) {
-    fs.writeFileSync(
-      yearlySummaryFile,
-      JSON.stringify({}, null, 2)
-    );
-  }
+  updateHighlights({
+    agent,
+    result,
+    context,
+    paths: {
+      highlightsFile
+    }
+  });
+  
+  // =========================
+  // 🔹 GENERATE STATS
+  // =========================
+  updateWeeklyStats({
+    statsFile,
+    context,
+    result,
+    validation
+  });
 }

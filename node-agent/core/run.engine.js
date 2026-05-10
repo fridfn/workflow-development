@@ -2,9 +2,13 @@ import fs from "fs";
 import { composeReply } from "./compose.js";
 import { retryGenerate } from "./retry.js";
 import { validateResult } from "../utils/validator.js";
-import { updateAgentStats } from "../utils/stats.js";
 import { archiveMemory } from "../memory/archive.js";
 import { hasCommitToday } from "../utils/github.js";
+
+import {
+  updateAgentStats,
+  generateMonthSummary
+} from "../utils/stats/index.js";
 
 import {
   getMemory,
@@ -212,8 +216,10 @@ export async function runEngine({
       validation
     });
     
+    generateMonthSummary(stats);
+    
     setMemory(agent, `${agent}.stats`, stats);
-
+    
     // =========================
     // 🔹 COMMIT MEMORY
     // =========================
@@ -256,7 +262,8 @@ export async function runEngine({
         tag,
         commit: context?.commit || null
       },
-      stats
+      stats,
+      validation
     });
 
     // =========================

@@ -1,0 +1,24 @@
+[
+  {
+    "source": "engine",
+    "reply": "Farid… masih bangun, tapi belum mulai ya\n\nbelum ada commit, dan kamu masih di momen buat nentuin akhirnya",
+    "meta": {
+      "greeting": "Farid… masih bangun, tapi belum mulai ya",
+      "message": "belum ada commit, dan kamu masih di momen buat nentuin akhirnya",
+      "tone": "warning_reflect",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "final_warning",
+      "tag": "docs"
+    },
+    "extra": {
+      "commit": {
+        "type": "docs",
+        "detail": "add telegram integration notes",
+        "reaction": "docs"
+      }
+    },
+    "created_at": 1778433464864
+  }
+]

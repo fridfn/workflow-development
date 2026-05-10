@@ -6,8 +6,9 @@ export function parseCommit(msg) {
   if (msg.includes(":")) {
 
     const [t, ...rest] = msg.split(":");
+    type = msg.match(/^[^(]+/)[0];
 
-    type = t.trim();
+    type = type.trim();
     detail = rest.join(":").trim();
   }
 

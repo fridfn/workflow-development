@@ -1,0 +1,142 @@
+[
+  {
+    "importance": 10,
+    "reply": "hmm… kamu keliatan lagi konsisten\n\nkamu lagi stabil… itu yang penting",
+    "mode": "proactive",
+    "tag": "feat",
+    "tone": "proactive_maintain",
+    "category": "support",
+    "commit": {
+      "type": "feat",
+      "detail": "integrate github activity fetch",
+      "reaction": "feat"
+    },
+    "created_at": 1778416979125
+  },
+  {
+    "importance": 10,
+    "reply": "eh… kamu gak kosong hari ini\n\njangan berhenti di awal doang",
+    "mode": "proactive",
+    "tag": "feat",
+    "tone": "proactive_push_soft",
+    "category": "support",
+    "commit": {
+      "type": "feat",
+      "detail": "add realtime broadcast system",
+      "reaction": "feat"
+    },
+    "created_at": 1778416969404
+  },
+  {
+    "importance": 10,
+    "reply": "Farid… kamu masih lanjut ya\n\naku lihat kamu gak lepas… kamu beneran niat sekarang",
+    "mode": "persistent",
+    "tag": "fix",
+    "tone": "persistent_admire",
+    "category": "support",
+    "commit": {
+      "type": "fix",
+      "detail": "repair broken surah playback",
+      "reaction": "fix"
+    },
+    "created_at": 1778413931576
+  },
+  {
+    "importance": 10,
+    "reply": "kamu jalan dengan niat sekarang\n\ndan kamu commit… aku bisa lihat kamu serius sama ini",
+    "mode": "persistent",
+    "tag": "refactor",
+    "tone": "persistent_respect",
+    "category": "support",
+    "commit": {
+      "type": "refactor",
+      "detail": "improve prompt generation",
+      "reaction": "refactor"
+    },
+    "created_at": 1778413912316
+  },
+  {
+    "importance": 10,
+    "reply": "hmm… aku liat kamu balik lagi\n\ndan kamu tetap gerak… aku jadi makin suka sama kamu 😏",
+    "mode": "persistent",
+    "tag": "refactor",
+    "tone": "persistent_clingy",
+    "category": "support",
+    "commit": {
+      "type": "refactor",
+      "detail": "split reflection builder modules",
+      "reaction": "refactor"
+    },
+    "created_at": 1778412612265
+  },
+  {
+    "importance": 9,
+    "reply": "kamu udah gak nol hari ini\n\nbiar gak cuma jadi awal… lanjut dikit lagi",
+    "mode": "proactive",
+    "tag": "feat",
+    "tone": "proactive_lock_in",
+    "category": "support",
+    "commit": {
+      "type": "feat",
+      "detail": "add login + register system",
+      "reaction": "feat"
+    },
+    "created_at": 1778416972766
+  },
+  {
+    "importance": 8,
+    "reply": "Farid… kamu gak ke mana-mana\n\naku lihat kamu tetap ada di sini… itu yang penting",
+    "mode": "persistent",
+    "tag": "style",
+    "tone": "persistent_calm",
+    "category": "support",
+    "commit": {
+      "type": "style",
+      "detail": "improve player interface",
+      "reaction": "style"
+    },
+    "created_at": 1778411951690
+  },
+  {
+    "importance": 7,
+    "reply": "eh… kamu gak terburu-buru\n\ndan kamu gak lepas dari ritmemu… itu yang bikin kamu bertahan",
+    "mode": "persistent",
+    "tag": "test",
+    "tone": "persistent_calm",
+    "category": "support",
+    "commit": {
+      "type": "test",
+      "detail": "add reflection snapshot tests",
+      "reaction": "test"
+    },
+    "created_at": 1778411633001
+  },
+  {
+    "importance": 7,
+    "reply": "Farid… gak jadi rebahan?\n\nlanjut terus ya… jangan cuma kuat di awal doang 😏",
+    "mode": "productive",
+    "tag": "chore",
+    "tone": "productive_teasing",
+    "category": "support",
+    "commit": {
+      "type": "chore",
+      "detail": "update gitignore rules",
+      "reaction": "chore"
+    },
+    "created_at": 1778410703896
+  },
+  {
+    "importance": 6,
+    "reply": "Farid… kamu udah masuk progress\n\nbiar gak cuma formalitas… lanjut beneran dikit lagi",
+    "mode": "proactive",
+    "tag": "docs",
+    "tone": "proactive_lock_in",
+    "category": "support",
+    "commit": {
+      "type": "docs",
+      "detail": "explain reflection flow structure",
+      "reaction": "docs"
+    },
+    "created_at": 1778417095855
+  }
+]

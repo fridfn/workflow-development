@@ -1,0 +1,46 @@
+[
+  {
+    "source": "commit",
+    "reply": "hmm… ini keliatan stabil\n\njaga aja ritme ini… ini yang biasanya bikin kamu awet",
+    "meta": {
+      "greeting": "hmm… ini keliatan stabil",
+      "message": "jaga aja ritme ini… ini yang biasanya bikin kamu awet",
+      "tone": "proactive_maintain",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "fix"
+    },
+    "extra": {
+      "commit": {
+        "type": "fix",
+        "detail": "resolve responsive layout bug",
+        "reaction": "fix"
+      }
+    },
+    "created_at": 1778417192611
+  },
+  {
+    "source": "commit",
+    "reply": "eh… kamu gak kosong hari ini\n\ngas dikit lagi… jangan nanggung",
+    "meta": {
+      "greeting": "eh… kamu gak kosong hari ini",
+      "message": "gas dikit lagi… jangan nanggung",
+      "tone": "proactive_push_soft",
+      "category": "support"
+    },
+    "context": {
+      "mode": "proactive",
+      "tag": "refactor"
+    },
+    "extra": {
+      "commit": {
+        "type": "refactor",
+        "detail": "improve prompt generation",
+        "reaction": "refactor"
+      }
+    },
+    "created_at": 1778417197395
+  }
+]

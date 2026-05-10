@@ -6,6 +6,10 @@
       "greeting": ["greeting"],
       "message": ["message"]
     },
+    "system": {
+      "last_month": "may",
+      "last_year": 2026
+    },
     "message": {
       "support": {
         "ambitious": {

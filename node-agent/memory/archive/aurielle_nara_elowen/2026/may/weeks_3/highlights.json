@@ -1,0 +1,100 @@
+[
+  {
+    "importance": 9,
+    "reply": "eh… kamu gak kosong hari ini\n\ngas dikit lagi… jangan nanggung",
+    "mode": "proactive",
+    "tag": "refactor",
+    "tone": "proactive_push_soft",
+    "category": "support",
+    "commit": {
+      "type": "refactor",
+      "detail": "improve prompt generation",
+      "reaction": "refactor"
+    },
+    "created_at": 1778417197397
+  },
+  {
+    "importance": 9,
+    "reply": "kamu udah masuk ritme nih\n\nsedikit lagi aja… biar gak cuma satu langkah",
+    "mode": "proactive",
+    "tag": "feat",
+    "tone": "proactive_extend",
+    "category": "support",
+    "commit": {
+      "type": "feat",
+      "detail": "add audio recitation support",
+      "reaction": "feat"
+    },
+    "created_at": 1778417163726
+  },
+  {
+    "importance": 8,
+    "reply": "hmm… ini keliatan stabil\n\njaga aja ritme ini… ini yang biasanya bikin kamu awet",
+    "mode": "proactive",
+    "tag": "fix",
+    "tone": "proactive_maintain",
+    "category": "support",
+    "commit": {
+      "type": "fix",
+      "detail": "resolve responsive layout bug",
+      "reaction": "fix"
+    },
+    "created_at": 1778417192613
+  },
+  {
+    "importance": 8,
+    "reply": "hmm… kamu keliatan lagi konsisten\n\nini udah bagus… jangan sampai putus aja",
+    "mode": "proactive",
+    "tag": "chore",
+    "tone": "proactive_maintain",
+    "category": "support",
+    "commit": {
+      "type": "chore",
+      "detail": "improve github actions workflow",
+      "reaction": "chore"
+    },
+    "created_at": 1778417159205
+  },
+  {
+    "importance": 7,
+    "reply": "Farid… kamu udah masuk progress\n\njangan berhenti di satu commit aja… tambahin sedikit lagi",
+    "mode": "proactive",
+    "tag": "fix",
+    "tone": "proactive_lock_in",
+    "category": "support",
+    "commit": {
+      "type": "fix",
+      "detail": "correct archive file parsing",
+      "reaction": "fix"
+    },
+    "created_at": 1778417169805
+  },
+  {
+    "importance": 6,
+    "reply": "kamu udah gak nol hari ini\n\ntambahin satu progress lagi… biar kerasa",
+    "mode": "proactive",
+    "tag": "docs",
+    "tone": "proactive_lock_in",
+    "category": "support",
+    "commit": {
+      "type": "docs",
+      "detail": "add firebase setup guide",
+      "reaction": "docs"
+    },
+    "created_at": 1778417208796
+  },
+  {
+    "importance": 5,
+    "reply": "Farid… kamu udah gak diem\n\ntambah dikit lagi… jangan berhenti di satu commit",
+    "mode": "proactive",
+    "tag": "test",
+    "tone": "proactive_push_soft",
+    "category": "support",
+    "commit": {
+      "type": "test",
+      "detail": "test login session flow",
+      "reaction": "test"
+    },
+    "created_at": 1778416958267
+  }
+]
