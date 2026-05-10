@@ -1,8 +1,10 @@
 import fs from "fs";
 import { composeReply } from "./compose.js";
 import { retryGenerate } from "./retry.js";
-
 import { validateResult } from "../utils/validator.js";
+import { updateAgentStats } from "../utils/stats.js";
+import { archiveMemory } from "../memory/archive.js";
+import { hasCommitToday } from "../utils/github.js";
 
 import {
   getMemory,
@@ -18,6 +20,11 @@ import {
   logSection
 } from "../utils/logger.js";
 
+import {
+  pushCommitLog,
+  pushReplyLog
+} from "../utils/analytics.js";
+
 export async function runEngine({
   source = "system",
   mode,
@@ -26,7 +33,15 @@ export async function runEngine({
 }) {
 
   logSection(`ENGINE RUN → ${source}`);
-
+  
+  // =========================
+  // 🔹 LOAD CONFIG
+  // =========================
+  const hasCommit = await hasCommitToday({
+    username: "fridfn",
+    token: process.env.GITHUB_TOKEN
+  });
+  
   // =========================
   // 🔹 LOAD CONFIG
   // =========================
@@ -72,9 +87,9 @@ export async function runEngine({
     // =========================
     // 🔹 MEMORY
     // =========================
-    const last = getMemory(`${agent}.last_message`);
-    const lastGreeting = getMemory(`${agent}.last_greeting`);
-    const lastTone = getMemory(`${agent}.last_tone`);
+    const last = getMemory(agent, "last_message");
+    const lastGreeting = getMemory(agent, "last_greeting");
+    const lastTone = getMemory(agent, "last_tone");
 
     const validation = validateResult({
       result,
@@ -153,11 +168,26 @@ export async function runEngine({
     // =========================
     // 🔹 SAVE MEMORY
     // =========================
-    setMemory(`${agent}.last_message`, payload.reply);
-    setMemory(`${agent}.last_tone`, payload.meta.tone);
-    setMemory(`${agent}.last_greeting`, payload.meta.greeting);
-
+    setMemory(
+      agent,
+      `${agent}.last_message`,
+      payload.reply
+    );
+    
+    setMemory(
+      agent,
+      `${agent}.last_tone`,
+      payload.meta.tone
+    );
+    
+    setMemory(
+      agent,
+      `${agent}.last_greeting`,
+      payload.meta.greeting
+    );
+    
     pushHistory(
+      agent,
       `${agent}.history`,
       payload,
       10
@@ -166,51 +196,68 @@ export async function runEngine({
     // =========================
     // 🔹 STATS
     // =========================
-    const stats =
-      getMemory(`${agent}.stats`) || {};
-
-    stats.total_generated =
-      (stats.total_generated || 0) + 1;
-
-    stats.last_generated_at = Date.now();
-
-    setMemory(`${agent}.stats`, stats);
+    const stats = getMemory(
+      agent,
+      `${agent}.stats`
+    ) || {};
+    
+    updateAgentStats({
+      stats,
+      context: {
+        tag,
+        mode,
+        commit: context.commit
+      },
+      result: finalResult,
+      validation
+    });
+    
+    setMemory(agent, `${agent}.stats`, stats);
 
     // =========================
     // 🔹 COMMIT MEMORY
     // =========================
     if (source === "commit") {
-
-      const commitStats =
-        getMemory(`${agent}.commit.stats`) || {};
-
       const type =
         context.commit?.type || "unknown";
+        
+      const detail =
+        context.commit?.detail || "unknown";
 
-      commitStats[type] =
-        (commitStats[type] || 0) + 1;
-
-      setMemory(
-        `${agent}.commit.last`,
-        context.commit
-      );
-
-      setMemory(
-        `${agent}.commit.stats`,
-        commitStats
-      );
-
-      pushHistory(
-        `${agent}.commit.history`,
-        {
-          ...context.commit,
+      pushCommitLog(agent, {
+        type,
+        mode,
+        detail,
+        reply: finalResult.reply
+      });
+      
+      pushReplyLog(agent, {
+        source: "commit",
+        reply: finalResult.reply,
+        meta: finalResult.meta,
+        context: {
           mode,
-          reply: payload.reply,
-          created_at: Date.now()
-        },
-        20
-      );
+          tag
+        }
+      });
     }
+    
+    // =========================
+    // 🔹 ARCHIVE MEMORY
+    // =========================
+    archiveMemory({
+      agent,
+      result: finalResult,
+      context: {
+        source: hasCommit
+          ? "commit"
+          : "engine",
+        mode,
+        tag,
+        commit: context?.commit || null
+      },
+      stats
+    });
 
     // =========================
     // 🔹 OUTPUT

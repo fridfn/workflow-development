@@ -1,86 +1,20 @@
 {
   "aurielle_nara_elowen": {
-    "last_message": "Farid… masih bangun, tapi belum mulai ya\n\nprogress hari ini kosong, tapi belum benar-benar selesai sampai kamu memutuskan",
-    "last_tone": "warning_reflect",
-    "last_greeting": "Farid… masih bangun, tapi belum mulai ya",
+    "last_message": "hmm… kamu gak kabur ya 😏\n\nkamu tetap balik lagi… kayak gak tega ninggalin progress ini",
+    "last_tone": "persistent_clingy",
+    "last_greeting": "hmm… kamu gak kabur ya 😏",
     "history": [
       {
         "source": "commit",
-        "reply": "Farid… masih bangun, tapi belum mulai ya\n\nprogress hari ini kosong, tapi belum benar-benar selesai sampai kamu memutuskan",
+        "reply": "hmm… kamu gak kabur ya 😏\n\nkamu tetap balik lagi… kayak gak tega ninggalin progress ini",
         "meta": {
-          "greeting": "Farid… masih bangun, tapi belum mulai ya",
-          "message": "progress hari ini kosong, tapi belum benar-benar selesai sampai kamu memutuskan",
-          "tone": "warning_reflect",
-          "category": "reminder"
-        },
-        "context": {
-          "mode": "final_warning",
-          "tag": "update"
-        },
-        "extra": {
-          "commit": {
-            "type": "update",
-            "detail": "auth system add login + register",
-            "reaction": "update"
-          }
-        },
-        "created_at": 1778282113805
-      },
-      {
-        "source": "commit",
-        "reply": "Farid… kamu mulai jalan hari ini ya\n\naku lihat kamu mulai jalan… itu yang bikin semuanya bisa lanjut",
-        "meta": {
-          "greeting": "Farid… kamu mulai jalan hari ini ya",
-          "message": "aku lihat kamu mulai jalan… itu yang bikin semuanya bisa lanjut",
-          "tone": "ambitious_proud",
+          "greeting": "hmm… kamu gak kabur ya 😏",
+          "message": "kamu tetap balik lagi… kayak gak tega ninggalin progress ini",
+          "tone": "persistent_clingy",
           "category": "support"
         },
         "context": {
-          "mode": "ambitious",
-          "tag": "update"
-        },
-        "extra": {
-          "commit": {
-            "type": "update",
-            "detail": "auth system add login + register",
-            "reaction": "update"
-          }
-        },
-        "created_at": 1778224739334
-      },
-      {
-        "source": "commit",
-        "reply": "kamu lagi santai ya… tapi masih bisa gerak dikit\n\nkamu belum nyentuh kode hari ini, tapi belum terlambat buat mulai",
-        "meta": {
-          "greeting": "kamu lagi santai ya… tapi masih bisa gerak dikit",
-          "message": "kamu belum nyentuh kode hari ini, tapi belum terlambat buat mulai",
-          "tone": "warning_nudge",
-          "category": "reminder"
-        },
-        "context": {
-          "mode": "warning",
-          "tag": "update"
-        },
-        "extra": {
-          "commit": {
-            "type": "update",
-            "detail": "auth system add login + register",
-            "reaction": "update"
-          }
-        },
-        "created_at": 1778217546544
-      },
-      {
-        "source": "commit",
-        "reply": "Farid… kamu mulai jalan hari ini ya\n\ndan kamu ambil langkah pertama… itu yang paling susah sebenarnya",
-        "meta": {
-          "greeting": "Farid… kamu mulai jalan hari ini ya",
-          "message": "dan kamu ambil langkah pertama… itu yang paling susah sebenarnya",
-          "tone": "ambitious_proud",
-          "category": "support"
-        },
-        "context": {
-          "mode": "ambitious",
+          "mode": "persistent",
           "tag": "feat"
         },
         "extra": {
@@ -90,115 +24,57 @@
             "reaction": "feat"
           }
         },
-        "created_at": 1778217425580
-      },
-      {
-        "source": "commit",
-        "reply": "wah… developer muncul nih\n\ncommit kecil tapi cukup buat buktiin kamu gak cuma ngomong",
-        "meta": {
-          "greeting": "wah… developer muncul nih",
-          "message": "commit kecil tapi cukup buat buktiin kamu gak cuma ngomong",
-          "tone": "ambitious_teasing",
-          "category": "support"
-        },
-        "context": {
-          "mode": "ambitious",
-          "tag": "feat"
-        },
-        "extra": {
-          "commit": {
-            "type": "feat",
-            "detail": "auth system add login + register",
-            "reaction": "feat"
-          }
-        },
-        "created_at": 1778217360875
-      },
-      {
-        "source": "commit",
-        "reply": "kayaknya kamu lagi butuh start dikit\n\nkamu belum nyentuh kode hari ini, mulai aja dulu biar semangatnya ikut naik",
-        "meta": {
-          "greeting": "kayaknya kamu lagi butuh start dikit",
-          "message": "kamu belum nyentuh kode hari ini, mulai aja dulu biar semangatnya ikut naik",
-          "tone": "warning_ignite",
-          "category": "reminder"
-        },
-        "context": {
-          "mode": "warning",
-          "tag": "feat"
-        },
-        "extra": {
-          "commit": {
-            "type": "feat",
-            "detail": "auth system add login + register",
-            "reaction": "feat"
-          }
-        },
-        "created_at": 1778217312820
+        "created_at": 1778333344828
       }
     ],
     "stats": {
-      "total_generated": 6,
-      "last_generated_at": 1778282113809
-    },
-    "commit": {
-      "last": {
-        "type": "update",
-        "detail": "auth system add login + register",
-        "reaction": "update"
+      "commit_stats": {
+        "feat": 1
       },
-      "stats": {
-        "feat": 3,
-        "update": 3
+      "mode_stats": {
+        "persistent": 1
       },
-      "history": [
-        {
-          "type": "update",
-          "detail": "auth system add login + register",
-          "reaction": "update",
-          "mode": "final_warning",
-          "reply": "Farid… masih bangun, tapi belum mulai ya\n\nprogress hari ini kosong, tapi belum benar-benar selesai sampai kamu memutuskan",
-          "created_at": 1778282113811
-        },
-        {
-          "type": "update",
-          "detail": "auth system add login + register",
-          "reaction": "update",
-          "mode": "ambitious",
-          "reply": "Farid… kamu mulai jalan hari ini ya\n\naku lihat kamu mulai jalan… itu yang bikin semuanya bisa lanjut",
-          "created_at": 1778224739341
-        },
-        {
-          "type": "update",
-          "detail": "auth system add login + register",
-          "reaction": "update",
-          "mode": "warning",
-          "reply": "kamu lagi santai ya… tapi masih bisa gerak dikit\n\nkamu belum nyentuh kode hari ini, tapi belum terlambat buat mulai",
-          "created_at": 1778217546549
-        },
+      "tone_stats": {
+        "persistent_clingy": 1
+      },
+      "category_stats": {
+        "support": 1
+      },
+      "tag_stats": {
+        "feat": 1
+      },
+      "reply_source_stats": {
+        "initial": 1
+      },
+      "active_hours": {
+        "20": 1
+      },
+      "total_generated": 1,
+      "last_generated_at": 1778333344831,
+      "commit_logs": [
         {
           "type": "feat",
+          "mode": "persistent",
           "detail": "auth system add login + register",
-          "reaction": "feat",
-          "mode": "ambitious",
-          "reply": "Farid… kamu mulai jalan hari ini ya\n\ndan kamu ambil langkah pertama… itu yang paling susah sebenarnya",
-          "created_at": 1778217425602
-        },
+          "reply": "hmm… kamu gak kabur ya 😏\n\nkamu tetap balik lagi… kayak gak tega ninggalin progress ini",
+          "created_at": 1778333344850
+        }
+      ],
+      "reply_logs": [
         {
-          "type": "feat",
-          "detail": "auth system add login + register",
-          "reaction": "feat",
-          "mode": "ambitious",
-          "reply": "wah… developer muncul nih\n\ncommit kecil tapi cukup buat buktiin kamu gak cuma ngomong",
-          "created_at": 1778217360879
-        },
-        {
-          "type": "feat",
-          "detail": "auth system add login + register",
-          "reaction": "feat",
-          "mode": "warning",
-          "reply": "kayaknya kamu lagi butuh start dikit\n\nkamu belum nyentuh kode hari ini, mulai aja dulu biar semangatnya ikut naik",
-          "created_at": 1778217312823
+          "source": "commit",
+          "reply": "hmm… kamu gak kabur ya 😏\n\nkamu tetap balik lagi… kayak gak tega ninggalin progress ini",
+          "meta": {
+            "greeting": "hmm… kamu gak kabur ya 😏",
+            "message": "kamu tetap balik lagi… kayak gak tega ninggalin progress ini",
+            "tone": "persistent_clingy",
+            "category": "support"
+          },
+          "context": {
+            "mode": "persistent",
+            "tag": "feat"
+          },
+          "created_at": 1778333344851
         }
       ]
     }

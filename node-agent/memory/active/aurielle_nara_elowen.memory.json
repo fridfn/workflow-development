@@ -1,0 +1,262 @@
+{
+  "aurielle_nara_elowen": {
+    "last_message": "eh… kamu tetap lanjut sampai sekarang\n\nkamu tetap ada sampai malam… itu bagian dari prosesmu",
+    "last_tone": "consistent_grounded",
+    "last_greeting": "eh… kamu tetap lanjut sampai sekarang",
+    "history": [
+      {
+        "source": "commit",
+        "reply": "eh… kamu tetap lanjut sampai sekarang\n\nkamu tetap ada sampai malam… itu bagian dari prosesmu",
+        "meta": {
+          "greeting": "eh… kamu tetap lanjut sampai sekarang",
+          "message": "kamu tetap ada sampai malam… itu bagian dari prosesmu",
+          "tone": "consistent_grounded",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "feat"
+        },
+        "extra": {
+          "commit": {
+            "type": "feat",
+            "detail": "auth system add login + register",
+            "reaction": "feat"
+          }
+        },
+        "created_at": 1778341690771
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu tetap pegang ritmemu\n\ndan kamu tetap ada sampai akhir hari… itu kuat",
+        "meta": {
+          "greeting": "hmm… kamu tetap pegang ritmemu",
+          "message": "dan kamu tetap ada sampai akhir hari… itu kuat",
+          "tone": "consistent_assured",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "feat"
+        },
+        "extra": {
+          "commit": {
+            "type": "feat",
+            "detail": "auth system add login + register",
+            "reaction": "feat"
+          }
+        },
+        "created_at": 1778341679818
+      },
+      {
+        "source": "commit",
+        "reply": "kamu masih pegang ini sampai malam\n\ndan kamu gak hilang malam ini… kamu tetap jalan",
+        "meta": {
+          "greeting": "kamu masih pegang ini sampai malam",
+          "message": "dan kamu gak hilang malam ini… kamu tetap jalan",
+          "tone": "consistent_tender",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "feat"
+        },
+        "extra": {
+          "commit": {
+            "type": "feat",
+            "detail": "auth system add login + register",
+            "reaction": "feat"
+          }
+        },
+        "created_at": 1778341651068
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu gak lepas sampai malam\n\ncommit kamu nunjukin kamu serius sama yang kamu bangun",
+        "meta": {
+          "greeting": "hmm… kamu gak lepas sampai malam",
+          "message": "commit kamu nunjukin kamu serius sama yang kamu bangun",
+          "tone": "consistent_assured",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "feat"
+        },
+        "extra": {
+          "commit": {
+            "type": "feat",
+            "detail": "auth system add login + register",
+            "reaction": "feat"
+          }
+        },
+        "created_at": 1778341454876
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu gak lepas sampai malam\n\nkamu tetap jalan sampai malam… itu bukan hal kecil",
+        "meta": {
+          "greeting": "hmm… kamu gak lepas sampai malam",
+          "message": "kamu tetap jalan sampai malam… itu bukan hal kecil",
+          "tone": "consistent_assured",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "feat"
+        },
+        "extra": {
+          "commit": {
+            "type": "feat",
+            "detail": "auth system add login + register",
+            "reaction": "feat"
+          }
+        },
+        "created_at": 1778339933160
+      }
+    ],
+    "stats": {
+      "commit_stats": {
+        "feat": 5
+      },
+      "mode_stats": {
+        "consistent": 5
+      },
+      "tone_stats": {
+        "consistent_assured": 3,
+        "consistent_tender": 1,
+        "consistent_grounded": 1
+      },
+      "category_stats": {
+        "support": 5
+      },
+      "tag_stats": {
+        "feat": 5
+      },
+      "reply_source_stats": {
+        "initial": 5
+      },
+      "active_hours": {
+        "22": 5
+      },
+      "total_generated": 5,
+      "last_generated_at": 1778341690780
+    }
+  },
+  "stats": {
+    "commit_logs": [
+      {
+        "type": "feat",
+        "mode": "consistent",
+        "detail": "auth system add login + register",
+        "reply": "eh… kamu tetap lanjut sampai sekarang\n\nkamu tetap ada sampai malam… itu bagian dari prosesmu",
+        "created_at": 1778341690782
+      },
+      {
+        "type": "feat",
+        "mode": "consistent",
+        "detail": "auth system add login + register",
+        "reply": "hmm… kamu tetap pegang ritmemu\n\ndan kamu tetap ada sampai akhir hari… itu kuat",
+        "created_at": 1778341679833
+      },
+      {
+        "type": "feat",
+        "mode": "consistent",
+        "detail": "auth system add login + register",
+        "reply": "kamu masih pegang ini sampai malam\n\ndan kamu gak hilang malam ini… kamu tetap jalan",
+        "created_at": 1778341651081
+      },
+      {
+        "type": "feat",
+        "mode": "consistent",
+        "detail": "auth system add login + register",
+        "reply": "hmm… kamu gak lepas sampai malam\n\ncommit kamu nunjukin kamu serius sama yang kamu bangun",
+        "created_at": 1778341454882
+      },
+      {
+        "type": "feat",
+        "mode": "consistent",
+        "detail": "auth system add login + register",
+        "reply": "hmm… kamu gak lepas sampai malam\n\nkamu tetap jalan sampai malam… itu bukan hal kecil",
+        "created_at": 1778339933167
+      }
+    ],
+    "reply_logs": [
+      {
+        "source": "commit",
+        "reply": "eh… kamu tetap lanjut sampai sekarang\n\nkamu tetap ada sampai malam… itu bagian dari prosesmu",
+        "meta": {
+          "greeting": "eh… kamu tetap lanjut sampai sekarang",
+          "message": "kamu tetap ada sampai malam… itu bagian dari prosesmu",
+          "tone": "consistent_grounded",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "feat"
+        },
+        "created_at": 1778341690784
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu tetap pegang ritmemu\n\ndan kamu tetap ada sampai akhir hari… itu kuat",
+        "meta": {
+          "greeting": "hmm… kamu tetap pegang ritmemu",
+          "message": "dan kamu tetap ada sampai akhir hari… itu kuat",
+          "tone": "consistent_assured",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "feat"
+        },
+        "created_at": 1778341679837
+      },
+      {
+        "source": "commit",
+        "reply": "kamu masih pegang ini sampai malam\n\ndan kamu gak hilang malam ini… kamu tetap jalan",
+        "meta": {
+          "greeting": "kamu masih pegang ini sampai malam",
+          "message": "dan kamu gak hilang malam ini… kamu tetap jalan",
+          "tone": "consistent_tender",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "feat"
+        },
+        "created_at": 1778341651082
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu gak lepas sampai malam\n\ncommit kamu nunjukin kamu serius sama yang kamu bangun",
+        "meta": {
+          "greeting": "hmm… kamu gak lepas sampai malam",
+          "message": "commit kamu nunjukin kamu serius sama yang kamu bangun",
+          "tone": "consistent_assured",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "feat"
+        },
+        "created_at": 1778341454883
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu gak lepas sampai malam\n\nkamu tetap jalan sampai malam… itu bukan hal kecil",
+        "meta": {
+          "greeting": "hmm… kamu gak lepas sampai malam",
+          "message": "kamu tetap jalan sampai malam… itu bukan hal kecil",
+          "tone": "consistent_assured",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "feat"
+        },
+        "created_at": 1778339933169
+      }
+    ]
+  }
+}

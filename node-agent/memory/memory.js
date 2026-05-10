@@ -1,40 +1,102 @@
 import fs from "fs";
+import path from "path";
 
-const MEMORY_FILE = new URL("../memory.json", import.meta.url).pathname;
+// =========================
+// 🔹 BASE DIRECTORY
+// =========================
+const MEMORY_DIR = new URL("./active", import.meta.url).pathname;
 
-function ensureFile() {
-  if (!fs.existsSync(MEMORY_FILE)) {
-    fs.writeFileSync(MEMORY_FILE, JSON.stringify({}, null, 2));
+// =========================
+// 🔹 GET FILE PATH
+// =========================
+function getMemoryFile(agent = "default") {
+  return path.join(
+    MEMORY_DIR,
+    `${agent}.memory.json`
+  );
+}
+
+// =========================
+// 🔹 ENSURE FILE
+// =========================
+function ensureFile(agent) {
+  const file = getMemoryFile(agent);
+
+  fs.mkdirSync(
+    path.dirname(file),
+    { recursive: true }
+  );
+
+  if (!fs.existsSync(file)) {
+    fs.writeFileSync(
+      file,
+      JSON.stringify({}, null, 2)
+    );
   }
 }
 
-function readMemory() {
-  ensureFile();
+// =========================
+// 🔹 READ MEMORY
+// =========================
+function readMemory(agent) {
+  ensureFile(agent);
+
+  const file = getMemoryFile(agent);
 
   try {
-    const raw = fs.readFileSync(MEMORY_FILE, "utf-8").trim();
+    const raw = fs
+      .readFileSync(file, "utf-8")
+      .trim();
 
     if (!raw) return {};
 
     return JSON.parse(raw);
+
   } catch (err) {
-    console.warn("⚠️ Memory corrupted, resetting...");
-    fs.writeFileSync(MEMORY_FILE, JSON.stringify({}, null, 2));
+    console.warn(
+      `⚠️ Memory corrupted (${agent}), resetting...`
+    );
+
+    fs.writeFileSync(
+      file,
+      JSON.stringify({}, null, 2)
+    );
+
     return {};
   }
 }
 
-function writeMemory(data) {
-  fs.writeFileSync(MEMORY_FILE, JSON.stringify(data, null, 2));
+// =========================
+// 🔹 WRITE MEMORY
+// =========================
+function writeMemory(agent, data) {
+  const file = getMemoryFile(agent);
+
+  fs.writeFileSync(
+    file,
+    JSON.stringify(data, null, 2)
+  );
 }
 
-export function getMemory(path) {
-  const data = readMemory();
-  return path.split(".").reduce((o, k) => o?.[k], data);
+// =========================
+// 🔹 GET MEMORY
+// =========================
+export function getMemory(agent, path) {
+  const data = readMemory(agent);
+
+  if (!path) return data;
+
+  return path
+    .split(".")
+    .reduce((o, k) => o?.[k], data);
 }
 
-export function setMemory(path, value) {
-  const data = readMemory();
+// =========================
+// 🔹 SET MEMORY
+// =========================
+export function setMemory(agent, path, value) {
+  const data = readMemory(agent);
+
   const keys = path.split(".");
   let cur = data;
 
@@ -45,30 +107,66 @@ export function setMemory(path, value) {
 
   cur[keys[keys.length - 1]] = value;
 
-  writeMemory(data);
+  writeMemory(agent, data);
 }
 
-export function pushHistory(path, value, limit = 5) {
-  const mem = readMemory();
+// =========================
+// 🔹 PUSH HISTORY
+// =========================
+export function pushHistory(
+  agent,
+  path,
+  value,
+  limit = 5
+) {
+  const mem = readMemory(agent);
+
   let arr = getNested(mem, path);
 
-  if (!Array.isArray(arr)) arr = [];
+  if (!Array.isArray(arr)) {
+    arr = [];
+  }
 
   arr.unshift(value);
-  arr = arr.slice(0, limit);
+
+  // unlimited kalau null
+  if (limit !== null) {
+    arr = arr.slice(0, limit);
+  }
 
   setNested(mem, path, arr);
-  writeMemory(mem);
+
+  writeMemory(agent, mem);
 }
 
-export function isInHistory(path, value) {
-  const mem = readMemory();
+// =========================
+// 🔹 CHECK HISTORY
+// =========================
+export function isInHistory(
+  agent,
+  path,
+  value
+) {
+  const mem = readMemory(agent);
+
   const arr = getNested(mem, path);
-  return Array.isArray(arr) && arr.includes(value);
+
+  return (
+    Array.isArray(arr) &&
+    arr.includes(value)
+  );
 }
 
+// =========================
+// 🔹 INTERNAL HELPERS
+// =========================
 function getNested(obj, path) {
-  return path.split(".").reduce((acc, key) => acc?.[key], obj);
+  return path
+    .split(".")
+    .reduce(
+      (acc, key) => acc?.[key],
+      obj
+    );
 }
 
 function setNested(obj, path, value) {
@@ -76,7 +174,10 @@ function setNested(obj, path, value) {
   let current = obj;
 
   keys.slice(0, -1).forEach(key => {
-    if (!current[key]) current[key] = {};
+    if (!current[key]) {
+      current[key] = {};
+    }
+
     current = current[key];
   });
 

@@ -12,7 +12,7 @@ export function validateResult({
 
   if (!text) reasons.push("empty");
   if (text === last) reasons.push("same_message");
-  if (isInHistory(`${agent}.history`, text)) reasons.push("in_history");
+  if (isInHistory(agent, `${agent}.history`, text)) reasons.push("in_history");
   if (result.meta?.greeting === lastGreeting) reasons.push("same_greeting");
   if (result.meta?.tone === lastTone) {
   reasons.push("same_tone");
