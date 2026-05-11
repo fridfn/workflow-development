@@ -130,5 +130,71 @@
       }
     },
     "created_at": 1778438584739
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu masih di sini\n\nkamu gak berhenti… itu yang penting",
+    "meta": {
+      "greeting": "Farid… kamu masih di sini",
+      "message": "kamu gak berhenti… itu yang penting",
+      "tone": "consistent_subtle",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "chore"
+    },
+    "extra": {
+      "commit": {
+        "type": "chore",
+        "detail": "cleanup debug logs",
+        "reaction": "chore"
+      }
+    },
+    "created_at": 1778457429645
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu masih di sini\n\ncommit kamu sederhana… tapi kena",
+    "meta": {
+      "greeting": "Farid… kamu masih di sini",
+      "message": "commit kamu sederhana… tapi kena",
+      "tone": "consistent_subtle",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "fix"
+    },
+    "extra": {
+      "commit": {
+        "type": "fix",
+        "detail": "handle invalid reflection payload",
+        "reaction": "fix"
+      }
+    },
+    "created_at": 1778466015358
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… kamu gak lepas sampai malam\n\ncommit kamu nunjukin kamu serius sama yang kamu bangun",
+    "meta": {
+      "greeting": "hmm… kamu gak lepas sampai malam",
+      "message": "commit kamu nunjukin kamu serius sama yang kamu bangun",
+      "tone": "consistent_assured",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "fix"
+    },
+    "extra": {
+      "commit": {
+        "type": "fix",
+        "detail": "resolve delayed push delivery",
+        "reaction": "fix"
+      }
+    },
+    "created_at": 1778503975075
   }
 ]

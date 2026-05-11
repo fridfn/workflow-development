@@ -1,130 +1,86 @@
 {
   "aurielle_nara_elowen": {
-    "last_message": "jam segini… kamu masih punya alasan buat lanjut\n\nkamu belum jalan hari ini, tapi kamu punya alasan yang lebih besar dari rasa capek",
-    "last_tone": "warning_anchor",
-    "last_greeting": "jam segini… kamu masih punya alasan buat lanjut",
+    "last_message": "Farid… kamu masih di sini ya\n\ndan kamu commit… pelan, tapi kamu tetap ada di sini malam ini",
+    "last_tone": "consistent_tender",
+    "last_greeting": "Farid… kamu masih di sini ya",
     "history": [
       {
         "source": "commit",
-        "reply": "jam segini… kamu masih punya alasan buat lanjut\n\nkamu belum jalan hari ini, tapi kamu punya alasan yang lebih besar dari rasa capek",
+        "reply": "Farid… kamu masih di sini ya\n\ndan kamu commit… pelan, tapi kamu tetap ada di sini malam ini",
         "meta": {
-          "greeting": "jam segini… kamu masih punya alasan buat lanjut",
-          "message": "kamu belum jalan hari ini, tapi kamu punya alasan yang lebih besar dari rasa capek",
-          "tone": "warning_anchor",
-          "category": "reminder"
+          "greeting": "Farid… kamu masih di sini ya",
+          "message": "dan kamu commit… pelan, tapi kamu tetap ada di sini malam ini",
+          "tone": "consistent_tender",
+          "category": "support"
         },
         "context": {
-          "mode": "final_warning",
-          "tag": "refactor"
+          "mode": "consistent",
+          "tag": "test"
         },
         "extra": {
           "commit": {
-            "type": "refactor",
-            "detail": "separate sender service",
-            "reaction": "refactor"
+            "type": "test",
+            "detail": "add endpoint validation tests",
+            "reaction": "test"
           }
         },
-        "created_at": 1778438584655
+        "created_at": 1778503985180
       },
       {
         "source": "commit",
-        "reply": "hmm… kamu tau ini belum selesai\n\nbelum ada commit, kamu sebenarnya cuma nunda hal yang bisa kamu mulai tadi",
+        "reply": "hmm… kamu gak lepas sampai malam\n\ncommit kamu nunjukin kamu serius sama yang kamu bangun",
         "meta": {
-          "greeting": "hmm… kamu tau ini belum selesai",
-          "message": "belum ada commit, kamu sebenarnya cuma nunda hal yang bisa kamu mulai tadi",
-          "tone": "warning_guilt",
-          "category": "reminder"
+          "greeting": "hmm… kamu gak lepas sampai malam",
+          "message": "commit kamu nunjukin kamu serius sama yang kamu bangun",
+          "tone": "consistent_assured",
+          "category": "support"
         },
         "context": {
-          "mode": "final_warning",
-          "tag": "feat"
+          "mode": "consistent",
+          "tag": "fix"
         },
         "extra": {
           "commit": {
-            "type": "feat",
-            "detail": "add login + register system",
-            "reaction": "feat"
+            "type": "fix",
+            "detail": "resolve delayed push delivery",
+            "reaction": "fix"
           }
         },
-        "created_at": 1778438558759
+        "created_at": 1778503974895
       },
       {
         "source": "commit",
-        "reply": "Farid… masih bangun, tapi belum mulai ya\n\nhari ini belum ada jejak, tapi kamu masih punya kesempatan terakhir",
+        "reply": "Farid… kamu tetap ada di jalurmu\n\nkamu tetap ada sampai malam… itu bagian dari prosesmu",
         "meta": {
-          "greeting": "Farid… masih bangun, tapi belum mulai ya",
-          "message": "hari ini belum ada jejak, tapi kamu masih punya kesempatan terakhir",
-          "tone": "warning_reflect",
-          "category": "reminder"
+          "greeting": "Farid… kamu tetap ada di jalurmu",
+          "message": "kamu tetap ada sampai malam… itu bagian dari prosesmu",
+          "tone": "consistent_grounded",
+          "category": "support"
         },
         "context": {
-          "mode": "final_warning",
-          "tag": "docs"
+          "mode": "consistent",
+          "tag": "fix"
         },
         "extra": {
           "commit": {
-            "type": "docs",
-            "detail": "update deployment steps",
-            "reaction": "docs"
+            "type": "fix",
+            "detail": "repair broken surah playback",
+            "reaction": "fix"
           }
         },
-        "created_at": 1778438229885
+        "created_at": 1778503264798
       },
       {
         "source": "commit",
-        "reply": "hmm… kamu masih nahan buat mulai ya\n\nhari ini belum ada jejak, padahal kamu sempet punya kesempatan",
+        "reply": "Farid… kamu masih di sini\n\nkamu tetap jalan… itu sudah cukup",
         "meta": {
-          "greeting": "hmm… kamu masih nahan buat mulai ya",
-          "message": "hari ini belum ada jejak, padahal kamu sempet punya kesempatan",
-          "tone": "warning_guilt",
-          "category": "reminder"
+          "greeting": "Farid… kamu masih di sini",
+          "message": "kamu tetap jalan… itu sudah cukup",
+          "tone": "consistent_subtle",
+          "category": "support"
         },
         "context": {
-          "mode": "final_warning",
-          "tag": "docs"
-        },
-        "extra": {
-          "commit": {
-            "type": "docs",
-            "detail": "document archive system",
-            "reaction": "docs"
-          }
-        },
-        "created_at": 1778438028017
-      },
-      {
-        "source": "commit",
-        "reply": "hmm… kamu tau ini belum selesai\n\nbelum ada commit, kamu sebenarnya cuma nunda hal yang bisa kamu mulai tadi",
-        "meta": {
-          "greeting": "hmm… kamu tau ini belum selesai",
-          "message": "belum ada commit, kamu sebenarnya cuma nunda hal yang bisa kamu mulai tadi",
-          "tone": "warning_guilt",
-          "category": "reminder"
-        },
-        "context": {
-          "mode": "final_warning",
-          "tag": "feat"
-        },
-        "extra": {
-          "commit": {
-            "type": "feat",
-            "detail": "support multi-mode reflections",
-            "reaction": "feat"
-          }
-        },
-        "created_at": 1778436762114
-      },
-      {
-        "source": "commit",
-        "reply": "eh… dari tadi belum ada progress\n\nbelum ada commit, dan satu-satunya cara mengubah itu adalah mulai sekarang",
-        "meta": {
-          "greeting": "eh… dari tadi belum ada progress",
-          "message": "belum ada commit, dan satu-satunya cara mengubah itu adalah mulai sekarang",
-          "tone": "warning_reality",
-          "category": "reminder"
-        },
-        "context": {
-          "mode": "final_warning",
+          "mode": "consistent",
           "tag": "fix"
         },
         "extra": {
@@ -134,41 +90,129 @@
             "reaction": "fix"
           }
         },
-        "created_at": 1778436687448
+        "created_at": 1778503212781
       },
       {
         "source": "commit",
-        "reply": "Farid… ini bukan cuma hari biasa\n\nbelum ada progress hari ini, ingat tujuan kamu dari awal kenapa kamu mulai",
+        "reply": "kamu masih pegang ini\n\ndan kamu lanjut… cukup untuk hari ini",
         "meta": {
-          "greeting": "Farid… ini bukan cuma hari biasa",
-          "message": "belum ada progress hari ini, ingat tujuan kamu dari awal kenapa kamu mulai",
-          "tone": "warning_anchor",
-          "category": "reminder"
+          "greeting": "kamu masih pegang ini",
+          "message": "dan kamu lanjut… cukup untuk hari ini",
+          "tone": "consistent_subtle",
+          "category": "support"
         },
         "context": {
-          "mode": "final_warning",
-          "tag": "refactor"
+          "mode": "consistent",
+          "tag": "docs"
         },
         "extra": {
           "commit": {
-            "type": "refactor",
-            "detail": "improve prompt generation",
-            "reaction": "refactor"
+            "type": "docs",
+            "detail": "explain reflection flow structure",
+            "reaction": "docs"
           }
         },
-        "created_at": 1778435208721
+        "created_at": 1778503185156
       },
       {
         "source": "commit",
-        "reply": "hmm… kamu masih nahan buat mulai ya\n\nkamu belum jalan hari ini, padahal satu langkah kecil udah cukup",
+        "reply": "kamu masih pegang ini\n\nkamu tetap jalan… itu sudah cukup",
         "meta": {
-          "greeting": "hmm… kamu masih nahan buat mulai ya",
-          "message": "kamu belum jalan hari ini, padahal satu langkah kecil udah cukup",
-          "tone": "warning_guilt",
-          "category": "reminder"
+          "greeting": "kamu masih pegang ini",
+          "message": "kamu tetap jalan… itu sudah cukup",
+          "tone": "consistent_subtle",
+          "category": "support"
         },
         "context": {
-          "mode": "final_warning",
+          "mode": "consistent",
+          "tag": "test"
+        },
+        "extra": {
+          "commit": {
+            "type": "test",
+            "detail": "cover reflection builder cases",
+            "reaction": "test"
+          }
+        },
+        "created_at": 1778503140295
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu masih di sini\n\ndan kamu lanjut… cukup untuk hari ini",
+        "meta": {
+          "greeting": "Farid… kamu masih di sini",
+          "message": "dan kamu lanjut… cukup untuk hari ini",
+          "tone": "consistent_subtle",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "docs"
+        },
+        "extra": {
+          "commit": {
+            "type": "docs",
+            "detail": "add telegram integration notes",
+            "reaction": "docs"
+          }
+        },
+        "created_at": 1778503070187
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu tetap pegang ritmemu\n\ndan kamu tetap ada sampai akhir hari… itu kuat",
+        "meta": {
+          "greeting": "hmm… kamu tetap pegang ritmemu",
+          "message": "dan kamu tetap ada sampai akhir hari… itu kuat",
+          "tone": "consistent_assured",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "fix"
+        },
+        "extra": {
+          "commit": {
+            "type": "fix",
+            "detail": "correct archive file parsing",
+            "reaction": "fix"
+          }
+        },
+        "created_at": 1778502657531
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu masih di sini\n\ncommit kamu sederhana… tapi kena",
+        "meta": {
+          "greeting": "Farid… kamu masih di sini",
+          "message": "commit kamu sederhana… tapi kena",
+          "tone": "consistent_subtle",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "fix"
+        },
+        "extra": {
+          "commit": {
+            "type": "fix",
+            "detail": "handle invalid reflection payload",
+            "reaction": "fix"
+          }
+        },
+        "created_at": 1778466015267
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu masih di sini\n\nkamu gak berhenti… itu yang penting",
+        "meta": {
+          "greeting": "Farid… kamu masih di sini",
+          "message": "kamu gak berhenti… itu yang penting",
+          "tone": "consistent_subtle",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
           "tag": "chore"
         },
         "extra": {
@@ -178,51 +222,7 @@
             "reaction": "chore"
           }
         },
-        "created_at": 1778435113386
-      },
-      {
-        "source": "commit",
-        "reply": "Farid… masih bangun, tapi belum mulai ya\n\nbelum ada commit, dan kamu masih di momen buat nentuin akhirnya",
-        "meta": {
-          "greeting": "Farid… masih bangun, tapi belum mulai ya",
-          "message": "belum ada commit, dan kamu masih di momen buat nentuin akhirnya",
-          "tone": "warning_reflect",
-          "category": "reminder"
-        },
-        "context": {
-          "mode": "final_warning",
-          "tag": "feat"
-        },
-        "extra": {
-          "commit": {
-            "type": "feat",
-            "detail": "support multi-mode reflections",
-            "reaction": "feat"
-          }
-        },
-        "created_at": 1778434630387
-      },
-      {
-        "source": "commit",
-        "reply": "Farid… masih bangun, tapi belum mulai ya\n\nhari ini belum ada jejak, tapi kamu masih punya kesempatan terakhir",
-        "meta": {
-          "greeting": "Farid… masih bangun, tapi belum mulai ya",
-          "message": "hari ini belum ada jejak, tapi kamu masih punya kesempatan terakhir",
-          "tone": "warning_reflect",
-          "category": "reminder"
-        },
-        "context": {
-          "mode": "final_warning",
-          "tag": "feat"
-        },
-        "extra": {
-          "commit": {
-            "type": "feat",
-            "detail": "integrate github activity fetch",
-            "reaction": "feat"
-          }
-        },
-        "created_at": 1778434481700
+        "created_at": 1778457429550
       }
     ],
     "stats": {
@@ -601,23 +601,23 @@
       "commit_stats": {
         "feat": 22,
         "refactor": 7,
-        "docs": 6,
+        "docs": 8,
         "style": 5,
-        "chore": 2,
-        "test": 1,
-        "fix": 2
+        "chore": 3,
+        "test": 3,
+        "fix": 7
       },
       "mode_stats": {
-        "consistent": 5,
+        "consistent": 15,
         "proactive": 5,
         "ambitious": 5,
         "productive": 11,
         "final_warning": 24
       },
       "tone_stats": {
-        "consistent_assured": 3,
-        "consistent_tender": 1,
-        "consistent_grounded": 1,
+        "consistent_assured": 5,
+        "consistent_tender": 2,
+        "consistent_grounded": 2,
         "proactive_lock_in": 1,
         "proactive_push_soft": 2,
         "proactive_maintain": 2,
@@ -631,27 +631,28 @@
         "warning_anchor": 5,
         "warning_reality": 7,
         "warning_guilt": 8,
-        "warning_reflect": 4
+        "warning_reflect": 4,
+        "consistent_subtle": 6
       },
       "category_stats": {
-        "support": 26,
+        "support": 36,
         "reminder": 24
       },
       "tag_stats": {
         "feat": 23,
-        "test": 2,
+        "test": 4,
         "refactor": 8,
         "update": 2,
-        "docs": 6,
+        "docs": 8,
         "style": 5,
-        "chore": 2,
-        "fix": 2
+        "chore": 3,
+        "fix": 7
       },
       "reply_source_stats": {
-        "initial": 50
+        "initial": 60
       },
       "active_hours": {
-        "0": 24,
+        "0": 34,
         "8": 1,
         "9": 1,
         "10": 3,
@@ -661,12 +662,82 @@
         "17": 8,
         "22": 5
       },
-      "total_generated": 50,
-      "last_generated_at": 1778438584691
+      "total_generated": 60,
+      "last_generated_at": 1778503985218
     }
   },
   "stats": {
     "commit_logs": [
+      {
+        "type": "test",
+        "mode": "consistent",
+        "detail": "add endpoint validation tests",
+        "reply": "Farid… kamu masih di sini ya\n\ndan kamu commit… pelan, tapi kamu tetap ada di sini malam ini",
+        "created_at": 1778503985231
+      },
+      {
+        "type": "fix",
+        "mode": "consistent",
+        "detail": "resolve delayed push delivery",
+        "reply": "hmm… kamu gak lepas sampai malam\n\ncommit kamu nunjukin kamu serius sama yang kamu bangun",
+        "created_at": 1778503974951
+      },
+      {
+        "type": "fix",
+        "mode": "consistent",
+        "detail": "repair broken surah playback",
+        "reply": "Farid… kamu tetap ada di jalurmu\n\nkamu tetap ada sampai malam… itu bagian dari prosesmu",
+        "created_at": 1778503264847
+      },
+      {
+        "type": "fix",
+        "mode": "consistent",
+        "detail": "resolve invalid token issue",
+        "reply": "Farid… kamu masih di sini\n\nkamu tetap jalan… itu sudah cukup",
+        "created_at": 1778503212829
+      },
+      {
+        "type": "docs",
+        "mode": "consistent",
+        "detail": "explain reflection flow structure",
+        "reply": "kamu masih pegang ini\n\ndan kamu lanjut… cukup untuk hari ini",
+        "created_at": 1778503185205
+      },
+      {
+        "type": "test",
+        "mode": "consistent",
+        "detail": "cover reflection builder cases",
+        "reply": "kamu masih pegang ini\n\nkamu tetap jalan… itu sudah cukup",
+        "created_at": 1778503140348
+      },
+      {
+        "type": "docs",
+        "mode": "consistent",
+        "detail": "add telegram integration notes",
+        "reply": "Farid… kamu masih di sini\n\ndan kamu lanjut… cukup untuk hari ini",
+        "created_at": 1778503070246
+      },
+      {
+        "type": "fix",
+        "mode": "consistent",
+        "detail": "correct archive file parsing",
+        "reply": "hmm… kamu tetap pegang ritmemu\n\ndan kamu tetap ada sampai akhir hari… itu kuat",
+        "created_at": 1778502657588
+      },
+      {
+        "type": "fix",
+        "mode": "consistent",
+        "detail": "handle invalid reflection payload",
+        "reply": "Farid… kamu masih di sini\n\ncommit kamu sederhana… tapi kena",
+        "created_at": 1778466015315
+      },
+      {
+        "type": "chore",
+        "mode": "consistent",
+        "detail": "cleanup debug logs",
+        "reply": "Farid… kamu masih di sini\n\nkamu gak berhenti… itu yang penting",
+        "created_at": 1778457429603
+      },
       {
         "type": "refactor",
         "mode": "final_warning",
@@ -1296,79 +1367,159 @@
         "detail": "add realtime broadcast system",
         "reply": "eh… kamu gak kosong hari ini\n\njangan berhenti di awal doang",
         "created_at": 1778416969381
-      },
-      {
-        "type": "test",
-        "mode": "proactive",
-        "detail": "test login session flow",
-        "reply": "Farid… kamu udah gak diem\n\ntambah dikit lagi… jangan berhenti di satu commit",
-        "created_at": 1778416958254
-      },
-      {
-        "type": "refactor",
-        "mode": "proactive",
-        "detail": "improve log processing flow",
-        "reply": "eh… kamu gak kosong hari ini\n\nlanjut aja sekalian… biasanya kamu masih bisa",
-        "created_at": 1778416929433
-      },
-      {
-        "type": "test",
-        "mode": "proactive",
-        "detail": "add reflection snapshot tests",
-        "reply": "kamu udah masuk ritme nih\n\nkamu lagi di fase enak… lanjut dikit aja",
-        "created_at": 1778416880902
-      },
-      {
-        "type": "refactor",
-        "mode": "proactive",
-        "detail": "clean unused component states",
-        "reply": "hmm… ini keliatan stabil\n\nkamu lagi stabil… itu yang penting",
-        "created_at": 1778416760904
-      },
-      {
-        "type": "style",
-        "mode": "proactive",
-        "detail": "reorganize layout styles",
-        "reply": "Farid… kamu udah mulai nih\n\njangan berhenti sekarang… ini lagi enak buat nambah progress",
-        "created_at": 1778416396402
-      },
-      {
-        "type": "fix",
-        "mode": "persistent",
-        "detail": "repair broken surah playback",
-        "reply": "Farid… kamu masih lanjut ya\n\naku lihat kamu gak lepas… kamu beneran niat sekarang",
-        "created_at": 1778413931563
-      },
-      {
-        "type": "refactor",
-        "mode": "persistent",
-        "detail": "improve prompt generation",
-        "reply": "kamu jalan dengan niat sekarang\n\ndan kamu commit… aku bisa lihat kamu serius sama ini",
-        "created_at": 1778413912301
-      },
-      {
-        "type": "refactor",
-        "mode": "persistent",
-        "detail": "split reflection builder modules",
-        "reply": "hmm… aku liat kamu balik lagi\n\ndan kamu tetap gerak… aku jadi makin suka sama kamu 😏",
-        "created_at": 1778412612215
-      },
-      {
-        "type": "chore",
-        "mode": "persistent",
-        "detail": "move env variables to config",
-        "reply": "kamu jalan dengan niat sekarang\n\ndan kamu commit… aku bisa lihat kamu serius sama ini",
-        "created_at": 1778412292044
-      },
-      {
-        "type": "style",
-        "mode": "persistent",
-        "detail": "improve player interface",
-        "reply": "Farid… kamu gak ke mana-mana\n\naku lihat kamu tetap ada di sini… itu yang penting",
-        "created_at": 1778411951679
       }
     ],
     "reply_logs": [
+      {
+        "source": "commit",
+        "reply": "Farid… kamu masih di sini ya\n\ndan kamu commit… pelan, tapi kamu tetap ada di sini malam ini",
+        "meta": {
+          "greeting": "Farid… kamu masih di sini ya",
+          "message": "dan kamu commit… pelan, tapi kamu tetap ada di sini malam ini",
+          "tone": "consistent_tender",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "test"
+        },
+        "created_at": 1778503985243
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu gak lepas sampai malam\n\ncommit kamu nunjukin kamu serius sama yang kamu bangun",
+        "meta": {
+          "greeting": "hmm… kamu gak lepas sampai malam",
+          "message": "commit kamu nunjukin kamu serius sama yang kamu bangun",
+          "tone": "consistent_assured",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "fix"
+        },
+        "created_at": 1778503974962
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu tetap ada di jalurmu\n\nkamu tetap ada sampai malam… itu bagian dari prosesmu",
+        "meta": {
+          "greeting": "Farid… kamu tetap ada di jalurmu",
+          "message": "kamu tetap ada sampai malam… itu bagian dari prosesmu",
+          "tone": "consistent_grounded",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "fix"
+        },
+        "created_at": 1778503264857
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu masih di sini\n\nkamu tetap jalan… itu sudah cukup",
+        "meta": {
+          "greeting": "Farid… kamu masih di sini",
+          "message": "kamu tetap jalan… itu sudah cukup",
+          "tone": "consistent_subtle",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "fix"
+        },
+        "created_at": 1778503212840
+      },
+      {
+        "source": "commit",
+        "reply": "kamu masih pegang ini\n\ndan kamu lanjut… cukup untuk hari ini",
+        "meta": {
+          "greeting": "kamu masih pegang ini",
+          "message": "dan kamu lanjut… cukup untuk hari ini",
+          "tone": "consistent_subtle",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "docs"
+        },
+        "created_at": 1778503185216
+      },
+      {
+        "source": "commit",
+        "reply": "kamu masih pegang ini\n\nkamu tetap jalan… itu sudah cukup",
+        "meta": {
+          "greeting": "kamu masih pegang ini",
+          "message": "kamu tetap jalan… itu sudah cukup",
+          "tone": "consistent_subtle",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "test"
+        },
+        "created_at": 1778503140362
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu masih di sini\n\ndan kamu lanjut… cukup untuk hari ini",
+        "meta": {
+          "greeting": "Farid… kamu masih di sini",
+          "message": "dan kamu lanjut… cukup untuk hari ini",
+          "tone": "consistent_subtle",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "docs"
+        },
+        "created_at": 1778503070262
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu tetap pegang ritmemu\n\ndan kamu tetap ada sampai akhir hari… itu kuat",
+        "meta": {
+          "greeting": "hmm… kamu tetap pegang ritmemu",
+          "message": "dan kamu tetap ada sampai akhir hari… itu kuat",
+          "tone": "consistent_assured",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "fix"
+        },
+        "created_at": 1778502657604
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu masih di sini\n\ncommit kamu sederhana… tapi kena",
+        "meta": {
+          "greeting": "Farid… kamu masih di sini",
+          "message": "commit kamu sederhana… tapi kena",
+          "tone": "consistent_subtle",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "fix"
+        },
+        "created_at": 1778466015330
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu masih di sini\n\nkamu gak berhenti… itu yang penting",
+        "meta": {
+          "greeting": "Farid… kamu masih di sini",
+          "message": "kamu gak berhenti… itu yang penting",
+          "tone": "consistent_subtle",
+          "category": "support"
+        },
+        "context": {
+          "mode": "consistent",
+          "tag": "chore"
+        },
+        "created_at": 1778457429614
+      },
       {
         "source": "commit",
         "reply": "jam segini… kamu masih punya alasan buat lanjut\n\nkamu belum jalan hari ini, tapi kamu punya alasan yang lebih besar dari rasa capek",
@@ -2718,161 +2869,11 @@
           "tag": "feat"
         },
         "created_at": 1778416969387
-      },
-      {
-        "source": "commit",
-        "reply": "Farid… kamu udah gak diem\n\ntambah dikit lagi… jangan berhenti di satu commit",
-        "meta": {
-          "greeting": "Farid… kamu udah gak diem",
-          "message": "tambah dikit lagi… jangan berhenti di satu commit",
-          "tone": "proactive_push_soft",
-          "category": "support"
-        },
-        "context": {
-          "mode": "proactive",
-          "tag": "test"
-        },
-        "created_at": 1778416958260
-      },
-      {
-        "source": "commit",
-        "reply": "eh… kamu gak kosong hari ini\n\nlanjut aja sekalian… biasanya kamu masih bisa",
-        "meta": {
-          "greeting": "eh… kamu gak kosong hari ini",
-          "message": "lanjut aja sekalian… biasanya kamu masih bisa",
-          "tone": "proactive_push_soft",
-          "category": "support"
-        },
-        "context": {
-          "mode": "proactive",
-          "tag": "refactor"
-        },
-        "created_at": 1778416929439
-      },
-      {
-        "source": "commit",
-        "reply": "kamu udah masuk ritme nih\n\nkamu lagi di fase enak… lanjut dikit aja",
-        "meta": {
-          "greeting": "kamu udah masuk ritme nih",
-          "message": "kamu lagi di fase enak… lanjut dikit aja",
-          "tone": "proactive_extend",
-          "category": "support"
-        },
-        "context": {
-          "mode": "proactive",
-          "tag": "test"
-        },
-        "created_at": 1778416880907
-      },
-      {
-        "source": "commit",
-        "reply": "hmm… ini keliatan stabil\n\nkamu lagi stabil… itu yang penting",
-        "meta": {
-          "greeting": "hmm… ini keliatan stabil",
-          "message": "kamu lagi stabil… itu yang penting",
-          "tone": "proactive_maintain",
-          "category": "support"
-        },
-        "context": {
-          "mode": "proactive",
-          "tag": "refactor"
-        },
-        "created_at": 1778416760909
-      },
-      {
-        "source": "commit",
-        "reply": "Farid… kamu udah mulai nih\n\njangan berhenti sekarang… ini lagi enak buat nambah progress",
-        "meta": {
-          "greeting": "Farid… kamu udah mulai nih",
-          "message": "jangan berhenti sekarang… ini lagi enak buat nambah progress",
-          "tone": "proactive_extend",
-          "category": "support"
-        },
-        "context": {
-          "mode": "proactive",
-          "tag": "style"
-        },
-        "created_at": 1778416396408
-      },
-      {
-        "source": "commit",
-        "reply": "Farid… kamu masih lanjut ya\n\naku lihat kamu gak lepas… kamu beneran niat sekarang",
-        "meta": {
-          "greeting": "Farid… kamu masih lanjut ya",
-          "message": "aku lihat kamu gak lepas… kamu beneran niat sekarang",
-          "tone": "persistent_admire",
-          "category": "support"
-        },
-        "context": {
-          "mode": "persistent",
-          "tag": "fix"
-        },
-        "created_at": 1778413931568
-      },
-      {
-        "source": "commit",
-        "reply": "kamu jalan dengan niat sekarang\n\ndan kamu commit… aku bisa lihat kamu serius sama ini",
-        "meta": {
-          "greeting": "kamu jalan dengan niat sekarang",
-          "message": "dan kamu commit… aku bisa lihat kamu serius sama ini",
-          "tone": "persistent_respect",
-          "category": "support"
-        },
-        "context": {
-          "mode": "persistent",
-          "tag": "refactor"
-        },
-        "created_at": 1778413912306
-      },
-      {
-        "source": "commit",
-        "reply": "hmm… aku liat kamu balik lagi\n\ndan kamu tetap gerak… aku jadi makin suka sama kamu 😏",
-        "meta": {
-          "greeting": "hmm… aku liat kamu balik lagi",
-          "message": "dan kamu tetap gerak… aku jadi makin suka sama kamu 😏",
-          "tone": "persistent_clingy",
-          "category": "support"
-        },
-        "context": {
-          "mode": "persistent",
-          "tag": "refactor"
-        },
-        "created_at": 1778412612221
-      },
-      {
-        "source": "commit",
-        "reply": "kamu jalan dengan niat sekarang\n\ndan kamu commit… aku bisa lihat kamu serius sama ini",
-        "meta": {
-          "greeting": "kamu jalan dengan niat sekarang",
-          "message": "dan kamu commit… aku bisa lihat kamu serius sama ini",
-          "tone": "persistent_respect",
-          "category": "support"
-        },
-        "context": {
-          "mode": "persistent",
-          "tag": "chore"
-        },
-        "created_at": 1778412292049
-      },
-      {
-        "source": "commit",
-        "reply": "Farid… kamu gak ke mana-mana\n\naku lihat kamu tetap ada di sini… itu yang penting",
-        "meta": {
-          "greeting": "Farid… kamu gak ke mana-mana",
-          "message": "aku lihat kamu tetap ada di sini… itu yang penting",
-          "tone": "persistent_calm",
-          "category": "support"
-        },
-        "context": {
-          "mode": "persistent",
-          "tag": "style"
-        },
-        "created_at": 1778411951683
       }
     ]
   },
   "system": {
     "last_month": "may",
-    "last_year": 2026
+    "last_year": 2027
   }
 }

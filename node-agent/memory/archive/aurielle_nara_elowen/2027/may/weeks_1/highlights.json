@@ -1,0 +1,58 @@
+[
+  {
+    "importance": 10,
+    "reply": "Farid… kamu tetap ada di jalurmu\n\nkamu tetap ada sampai malam… itu bagian dari prosesmu",
+    "mode": "consistent",
+    "tag": "fix",
+    "tone": "consistent_grounded",
+    "category": "support",
+    "commit": {
+      "type": "fix",
+      "detail": "repair broken surah playback",
+      "reaction": "fix"
+    },
+    "created_at": 1778503264885
+  },
+  {
+    "importance": 10,
+    "reply": "Farid… kamu masih di sini\n\nkamu tetap jalan… itu sudah cukup",
+    "mode": "consistent",
+    "tag": "fix",
+    "tone": "consistent_subtle",
+    "category": "support",
+    "commit": {
+      "type": "fix",
+      "detail": "resolve invalid token issue",
+      "reaction": "fix"
+    },
+    "created_at": 1778503212907
+  },
+  {
+    "importance": 10,
+    "reply": "hmm… kamu tetap pegang ritmemu\n\ndan kamu tetap ada sampai akhir hari… itu kuat",
+    "mode": "consistent",
+    "tag": "fix",
+    "tone": "consistent_assured",
+    "category": "support",
+    "commit": {
+      "type": "fix",
+      "detail": "correct archive file parsing",
+      "reaction": "fix"
+    },
+    "created_at": 1778502657642
+  },
+  {
+    "importance": 9,
+    "reply": "Farid… kamu masih di sini ya\n\ndan kamu commit… pelan, tapi kamu tetap ada di sini malam ini",
+    "mode": "consistent",
+    "tag": "test",
+    "tone": "consistent_tender",
+    "category": "support",
+    "commit": {
+      "type": "test",
+      "detail": "add endpoint validation tests",
+      "reaction": "test"
+    },
+    "created_at": 1778503985373
+  }
+]
