@@ -3,8 +3,6 @@ import { updateHighlights } from "./highlight.engine.js";
 import { getWeekOfMonth } from "../utils/weeks.js";
 import { updateWeeklyStats } from "./stats.engine.js"
 import { getDateSimulation } from "../utils/date.js";
-import { handleMonthTransition } from "../engine/month.transition.js"
-import { handleYearTransition } from "../engine/year.transition.js";
 import {
   ensureDir,
   ensureFiles
@@ -96,25 +94,6 @@ export function archiveMemory({
       fallback: {}
     }
   ]);
-  
-  // =========================
-  // 🔹 YEAR TRANSITION
-  // =========================
-  handleYearTransition({
-    agent,
-    currentYear: year
-  });
-  
-  // =========================
-  // 🔹 HANDLE TRANSITION MONTH AND YEAR
-  // =========================
-  handleMonthTransition({
-    agent,
-    currentMonth: monthName,
-    currentYear: year,
-    statsBaseDir:
-      `./memory/stats`
-  });
 
   // =========================
   // 🔹 LOAD RAW ARCHIVE

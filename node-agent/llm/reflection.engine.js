@@ -1,15 +1,10 @@
 import fs from "fs";
-
 import { generateLLM } from "./core/generate.js";
 import { safeJSONParse } from "./parsers/json.parser.js";
 import { buildDailyPrompt } from "./prompts/daily.prompt.js";
 import { buildWeeklyPrompt } from "./prompts/weekly.prompt.js";
-import { buildMonthlyPrompt
-} from "./prompts/monthly.prompt.js";
-
-import {
-  buildYearlyPrompt
-} from "./prompts/yearly.prompt.js";
+import { buildMonthlyPrompt } from "./prompts/monthly.prompt.js";
+import { buildYearlyPrompt } from "./prompts/yearly.prompt.js";
 
 const PROMPTS = {
   daily: buildDailyPrompt,
@@ -19,15 +14,11 @@ const PROMPTS = {
 };
 
 export async function generateReflection({
-
   type,
   data,
   outputFile,
-
   provider = "groq",
-
-  model =
-    "llama-3.1-8b-instant"
+  model = "llama-3.1-8b-instant"
 }) {
 
   const buildPrompt =
