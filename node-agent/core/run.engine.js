@@ -35,7 +35,7 @@ export async function runEngine({
   tag,
   context = {}
 }) {
-
+console.log({context})
   logSection(`ENGINE RUN → ${source}`);
   
   // =========================
@@ -251,17 +251,10 @@ export async function runEngine({
     // =========================
     // 🔹 ARCHIVE MEMORY
     // =========================
-    archiveMemory({
+    await archiveMemory({
       agent,
       result: finalResult,
-      context: {
-        source: hasCommit
-          ? "commit"
-          : "engine",
-        mode,
-        tag,
-        commit: context?.commit || null
-      },
+      context,
       stats,
       validation
     });
@@ -269,12 +262,12 @@ export async function runEngine({
     // =========================
     // 🔹 OUTPUT
     // =========================
-    logSection(`${agent} → FINAL`);
-
-    logInfo(agent, "Reply ready");
-
-    logDebug(agent, "Payload", payload);
-
+    // logSection(`${agent} → FINAL`);
+// 
+//     logInfo(agent, "Reply ready");
+// 
+//     logDebug(agent, "Payload", payload);
+// 
     console.log("\n💜 FINAL REPLY:\n");
     console.log(payload.reply);
   }

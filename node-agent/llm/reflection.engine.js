@@ -4,6 +4,7 @@ import { safeJSONParse } from "./parsers/json.parser.js";
 import { buildDailyPrompt } from "./prompts/daily.prompt.js";
 import { buildWeeklyPrompt } from "./prompts/weekly.prompt.js";
 import { buildMonthlyPrompt } from "./prompts/monthly.prompt.js";
+
 import { buildYearlyPrompt } from "./prompts/yearly.prompt.js";
 
 const PROMPTS = {
@@ -13,33 +14,43 @@ const PROMPTS = {
   yearly: buildYearlyPrompt
 };
 
+const config = JSON.parse(
+    fs.readFileSync("./config/agent.config.json")
+  );
+  
 export async function generateReflection({
+  agent,
   type,
   data,
   outputFile,
   provider = "groq",
   model = "llama-3.1-8b-instant"
 }) {
-
-  const buildPrompt =
-    PROMPTS[type];
-
+  const agents = config[agent]
+  const agentSource = agents.system
+  const systemParts = {
+    persona: agentSource.partner,
+    behavior: agentSource.cara_bicara_aurielle_nara_elowen,
+    closing: agentSource.penutup_dari_aurielle
+  };
+  
+  const agentPersona = JSON.stringify(systemParts)
+  
+  const buildPrompt = PROMPTS[type];
+  const prompt = buildPrompt({ data });
+  
   if (!buildPrompt) {
     throw new Error(
       `Unknown reflection type: ${type}`
     );
   }
-
-  const prompt =
-    buildPrompt(data);
-
+  
   const raw =
     await generateLLM({
       provider,
       model,
 
-      system:
-        "You are a reflective memory AI.",
+      system: agentPersona,
 
       prompt,
 
@@ -53,7 +64,7 @@ export async function generateReflection({
   fs.writeFileSync(
     outputFile,
     JSON.stringify(
-      parsed,
+      raw,
       null,
       2
     )

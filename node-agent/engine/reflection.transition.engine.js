@@ -117,8 +117,8 @@ export async function handleReflectionTransition({
   // 🔹 DAILY REFLECTION
   // ========================================
   const currentDay =
-    now.getDate();
-
+    now.getUTCDate();
+    
   if (lastDay !== currentDay) {
 
     const dailyDir =
@@ -153,6 +153,7 @@ export async function handleReflectionTransition({
       });
 
     await generateReflection({
+      agent,
       type: "daily",
       data: dailyData,
       outputFile,
@@ -178,7 +179,7 @@ export async function handleReflectionTransition({
         `week_${lastWeek}.json`
       );
 
-    ensureDir(outputFile);
+    ensureDir(path.dirname(outputFile));
 
     const weeklyData =
       loadWeeklyStats({
@@ -187,6 +188,7 @@ export async function handleReflectionTransition({
       });
 
     await generateReflection({
+      agent,
       type: "weekly",
       data: weeklyData,
       outputFile,
@@ -235,6 +237,7 @@ export async function handleReflectionTransition({
       `./memory/archive/${agent}/${year}/${lastMonth}/reflection.json`;
 
     await generateReflection({
+      agent,
       type: "monthly",
       data: monthlyData,
       outputFile,
@@ -275,6 +278,7 @@ export async function handleReflectionTransition({
       `./memory/archive/${agent}/${lastYear}/yearly-reflection.json`;
 
     await generateReflection({
+      agent,
       type: "yearly",
       data: yearlyData,
       outputFile,

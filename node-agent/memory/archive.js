@@ -3,12 +3,14 @@ import { updateHighlights } from "./highlight.engine.js";
 import { getWeekOfMonth } from "../utils/weeks.js";
 import { updateWeeklyStats } from "./stats.engine.js"
 import { getDateSimulation } from "../utils/date.js";
+import { handleReflectionTransition } from "../engine/reflection.transition.engine.js";
+import { buildEntry } from "../engine/enrichment/entry.builder.js";
 import {
   ensureDir,
   ensureFiles
 } from "../utils/fs.helper.js";
 
-export function archiveMemory({
+export async function archiveMemory({
   agent,
   result,
   context,
@@ -22,7 +24,7 @@ export function archiveMemory({
   const year = now.getFullYear();
   
   const day = String(
-    now.getDate()
+    now.getUTCDate()
   ).padStart(2, "0");
   
   const monthName = now
@@ -57,11 +59,11 @@ export function archiveMemory({
     `${weekDir}/${day}-${monthName}.json`;
 
   // optional future files
-  const highlightsFile =
-    `${weekDir}/highlights.json`;
+  // const highlightsFile =
+  // `${weekDir}/highlights.json`;
     
-  const summaryFile =
-    `${weekDir}/summary.json`;
+  // const summaryFile =
+  // `${weekDir}/summary.json`;
 
   const yearlySummaryFile =
     `./${baseDir}/yearly-summary.json`;
@@ -77,14 +79,14 @@ export function archiveMemory({
       file: rawFile,
       fallback: []
     },
-    {
-      file: highlightsFile,
-      fallback: []
-    },
-    {
-      file: summaryFile,
-      fallback: {}
-    },
+    // {
+//       file: highlightsFile,
+//       fallback: []
+//     },
+    // {
+//       file: summaryFile,
+//       fallback: {}
+//     },
     {
       file: yearlySummaryFile,
       fallback: {}
@@ -109,30 +111,24 @@ export function archiveMemory({
   // =========================
   // 🔹 BUILD ENTRY
   // =========================
-  const entry = {
-    source:
-      context.source || "engine",
-    reply: result.reply,
-    meta: {
-      greeting:
-        result.meta?.greeting,
-      message:
-        result.meta?.message,
-      tone:
-        result.meta?.tone,
-      category:
-        result.meta?.category
-    },
-    context: {
-      mode: context.mode,
-      tag: context.tag
-    },
-    extra: {
-      commit:
-        context.commit || null
-    },
-    created_at: Date.now()
-  };
+ // const entry = buildEntry(context, result);
+ const entry = {
+source:
+context.source || "engine",
+reply: result.reply,
+meta: {
+greeting:
+result.meta?.greeting,
+message:
+result.meta?.message,
+tone:
+result.meta?.tone,
+category:
+result.meta?.category
+},
+context,
+created_at: Date.now()
+};
 
   archive.push(entry);
 
@@ -148,14 +144,14 @@ export function archiveMemory({
   // =========================
   // 🔹 GENERATE HIGHLIGHT
   // =========================
-  updateHighlights({
-    agent,
-    result,
-    context,
-    paths: {
-      highlightsFile
-    }
-  });
+  // updateHighlights({
+//     agent,
+//     result,
+//     context,
+//     paths: {
+//       highlightsFile
+//     }
+//   });
   
   // =========================
   // 🔹 GENERATE STATS
@@ -166,4 +162,8 @@ export function archiveMemory({
     result,
     validation
   });
+  
+ //  await handleReflectionTransition({
+//     agent
+//   });
 }

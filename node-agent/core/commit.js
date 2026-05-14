@@ -43,7 +43,7 @@ logInfo("COMMIT", "Parsed", parsed);
 // =========================
 // 🔹 CHECK ACTIVITY
 // =========================
-const hasCommit = await hasCommitToday({
+const { hasCommit, repo, commitTime, repoMetadata } = await hasCommitToday({
   username: "fridfn",
   token: process.env.GITHUB_TOKEN
 });
@@ -51,10 +51,7 @@ const hasCommit = await hasCommitToday({
 // =========================
 // 🔹 MODE
 // =========================
-const {
-  mode,
-  hour
-} = resolveDailyMode({
+const { mode, hour } = resolveDailyMode({
   hasCommit
 });
 
@@ -75,6 +72,9 @@ await runEngine({
   tag: parsed.reaction,
 
   context: {
+    repo,
+    commitTime,
+    repoMetadata,
     commit: parsed
   }
 });

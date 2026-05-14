@@ -1,0 +1,57 @@
+[
+  {
+    "source": "engine",
+    "reply": "Farid… masih sempet lanjut dikit gak sore ini\n\nbelum ada progress hari ini, coba buka project kamu sebentar aja",
+    "meta": {
+      "greeting": "Farid… masih sempet lanjut dikit gak sore ini",
+      "message": "belum ada progress hari ini, coba buka project kamu sebentar aja",
+      "tone": "warning_nudge",
+      "category": "reminder"
+    },
+    "context": {},
+    "extra": {
+      "commit": {
+        "type": "feat",
+        "detail": "support multi-mode reflections",
+        "reaction": "feat"
+      }
+    },
+    "created_at": 1778753331467
+  },
+  {
+    "source": "engine",
+    "reply": "sore gini malah diem aja ya\n\nkamu belum jalan hari ini, jangan sampai cuma wacana doang",
+    "meta": {
+      "greeting": "sore gini malah diem aja ya",
+      "message": "kamu belum jalan hari ini, jangan sampai cuma wacana doang",
+      "tone": "warning_lazy",
+      "category": "reminder"
+    },
+    "context": {
+      "commit": {
+        "type": "test",
+        "detail": "add endpoint validation tests",
+        "reaction": "test"
+      }
+    },
+    "created_at": 1778753544930
+  },
+  {
+    "source": "engine",
+    "reply": "kamu lagi santai ya… tapi masih bisa gerak dikit\n\nhari ini belum ada commit, tapi kamu masih punya waktu buat mulai sedikit sekarang",
+    "meta": {
+      "greeting": "kamu lagi santai ya… tapi masih bisa gerak dikit",
+      "message": "hari ini belum ada commit, tapi kamu masih punya waktu buat mulai sedikit sekarang",
+      "tone": "warning_nudge",
+      "category": "reminder"
+    },
+    "context": {
+      "commit": {
+        "type": "fix",
+        "detail": "resolve responsive layout bug",
+        "reaction": "fix"
+      }
+    },
+    "created_at": 1778753749945
+  }
+]

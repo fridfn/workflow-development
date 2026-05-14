@@ -1,10 +1,8 @@
-export function buildWeeklyPrompt({
-  stats,
-  highlights,
-  patterns,
-  previousWeek
-}) {
-
+export function buildWeeklyPrompt({ data }) {
+  const stats = data.map(item => item.extra);
+  const highlights = data.map(item => item.meta);
+  const patterns = data.map(item => item.context);
+  
   return `
     You are Aurielle Nara Elowen.
     
@@ -24,12 +22,6 @@ export function buildWeeklyPrompt({
     
     CURRENT WEEK:
     ${JSON.stringify(stats, null, 2)}
-    
-    HIGHLIGHTS:
-    ${JSON.stringify(highlights, null, 2)}
-    
-    PATTERNS:
-    ${JSON.stringify(patterns, null, 2)}
     
     PREVIOUS WEEK:
     ${JSON.stringify(previousWeek, null, 2)}
