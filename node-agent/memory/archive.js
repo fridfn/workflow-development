@@ -35,36 +35,44 @@ export async function archiveMemory({
   // =========================
   // 🔹 DIRECTORY STRUCTURE
   // =========================
-  const baseDir =
-    `./memory/archive/${agent}/${year}`;
-
+  const archiveDir =
+  `./memory/archive/${agent}`;
+  
   // =========================
   // 🔹 WEEK CALCULATION
   // =========================
-  const weekNumber = getWeekOfMonth(now);
+  const weekNumber =
+    getWeekOfMonth(now);
   
-  const weekDir =
-    `${baseDir}/${monthName}/weeks_${weekNumber}`;
-    
+  const archivePath =
+    `${year}/${monthName}/week_${weekNumber}`;
+  
+  // =========================
+  // 🔹 FULL PATHS
+  // =========================
+  const rawDir =
+    `${archiveDir}/${archivePath}`;
+  
   const statsDir =
-  `./memory/stats/${agent}/${year}/${monthName}`;
+    `./memory/stats/${agent}/${archivePath}`;
   
   // stats memory file
   const statsFile =
-  `${statsDir}/week_${weekNumber}.json`;
+    `${statsDir}/${day}.json`;
   
   // raw memory file
   const rawFile =
-    `${weekDir}/${day}.json`;
-    
+    `${rawDir}/${day}.json`;
+  
   const yearlySummaryFile =
-    `./${baseDir}/yearly-summary.json`;
+    `${archiveDir}/${year}/summaries/yearly-summary.json`;
   
   // =========================
-  // 🔹 AUTO CREATE & ENSURE FILES
+  // 🔹 ENSURE DIRS
   // =========================
-  ensureDir(weekDir);
+  ensureDir(rawDir);
   ensureDir(statsDir);
+  ensureDir(`${archiveDir}/${year}/summaries/`);
   
   ensureFiles([
     {
@@ -132,8 +140,8 @@ created_at: Date.now()
     result,
     validation
   });
-  // 
-//   await handleReflectionTransition({
-//     agent
-//   });
+  
+  await handleReflectionTransition({
+    agent
+  });
 }

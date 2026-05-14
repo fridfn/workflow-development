@@ -117,7 +117,9 @@ export async function handleReflectionTransition({
   // 🔹 DAILY REFLECTION
   // ========================================
   const currentDay =
-    now.getUTCDate();
+    String(
+    now.getUTCDate()
+  ).padStart(2, "0");
     
   if (lastDay !== currentDay) {
 
@@ -138,7 +140,7 @@ export async function handleReflectionTransition({
       ).toLowerCase();
 
     const fileName =
-      `${dayName}-${currentDay}.json`;
+      `${currentDay}.json`;
 
     const outputFile =
       path.join(

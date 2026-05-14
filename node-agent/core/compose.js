@@ -74,13 +74,13 @@ export function composeReply(agentConfig, mode, tag, seedGreet, seedMsg, overrid
     message
   });
 
-  let reaction = null;
+  let actionTag = null;
 
-  if (tag && root.reaction?.[tag]?.[mode]) {
-    const reactions = root.reaction[tag][mode];
-    reaction = pickRandom(reactions, seedMsg);
+  if (tag && root.actionTag?.[tag]?.[mode]) {
+    const reactions = root.actionTag[tag][mode];
+    actionTag = pickRandom(reactions, seedMsg);
 
-    logDebug("COMPOSE", "Reaction picked", { reaction });
+    logDebug("COMPOSE", "Reaction picked", { actionTag });
   }
 
   // =========================
@@ -90,7 +90,7 @@ export function composeReply(agentConfig, mode, tag, seedGreet, seedMsg, overrid
 
   if (compose.includes("greeting")) parts.push(greeting);
   if (compose.includes("message")) parts.push(message);
-  if (compose.includes("reaction") && reaction) parts.push(reaction);
+  if (compose.includes("actionTag") && actionTag) parts.push(actionTag);
 
   const final = parts.join("\n\n");
 

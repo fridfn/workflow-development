@@ -69,12 +69,13 @@ await runEngine({
 
   mode,
 
-  tag: parsed.reaction,
+  tag: parsed.actionTag,
 
   context: {
     repo,
     commitTime,
-    commit: parsed
+    commit: parsed,
+    scope: parsed.scope
   }
 });
 

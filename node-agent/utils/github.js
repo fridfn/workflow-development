@@ -89,7 +89,7 @@ export async function hasCommitToday({ username, token }) {
         repoMetadata,
         hasCommit: true,
         repo: event.repo?.name,
-        commitTime: event.created_at
+        commitTime: event?.created_at
       };
     }
   }

@@ -19,32 +19,32 @@ export function parseCommit(msg) {
   
   const { type = "update", scope = "default", message = "commit update" } = parser(msg);
   
-  let reaction = "update";
+  let actionTag = "update";
 
   if (type.startsWith("feat"))
-    reaction = "feat"
+    actionTag = "feat"
 
   else if (type.startsWith("fix"))
-    reaction = "fix";
+    actionTag = "fix";
 
   else if (type.startsWith("refactor"))
-    reaction = "refactor";
+    actionTag = "refactor";
 
   else if (type.startsWith("chore"))
-    reaction = "chore";
+    actionTag = "chore";
 
   else if (type.startsWith("docs"))
-    reaction = "docs";
+    actionTag = "docs";
 
   else if (type.startsWith("style"))
-    reaction = "style";
+    actionTag = "style";
 
   else if (type.startsWith("test"))
-    reaction = "test";
+    actionTag = "test";
 
   return {
     type,
     detail,
-    reaction
+    actionTag
   };
 }

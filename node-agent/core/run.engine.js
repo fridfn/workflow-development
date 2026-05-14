@@ -46,7 +46,7 @@ export async function runEngine({
     token: process.env.GITHUB_TOKEN
   });
   
-  const repoContext = hasCommit?.repoMetadata || null;
+  const repoContext = hasCommit.repoMetadata;
   
   // =========================
   // 🔹 LOAD CONFIG
@@ -167,7 +167,7 @@ export async function runEngine({
       semantic: {
         type: context.commit?.type || null,
         detail: context.commit?.detail || null,
-        reaction: context.commit?.reaction || null
+        actionTag: context.commit?.actionTag || null
       }
     };
     

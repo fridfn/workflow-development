@@ -21,7 +21,7 @@
           "commit": {
             "type": "feat",
             "detail": "auth system add login + register",
-            "reaction": "feat"
+            "actionTag": "feat"
           }
         },
         "created_at": 1778333344828
