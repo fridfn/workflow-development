@@ -1,17 +1,32 @@
+function flattenObject(
+  obj = {},
+  prefix = "",
+  result = {}
+) {
+  for (const key in obj) {
+    const value = obj[key];
+
+    const newKey = prefix
+      ? `${prefix}.${key}`
+      : key;
+
+    if (
+      value &&
+      typeof value === "object" &&
+      !Array.isArray(value)
+    ) {
+      flattenObject(value, newKey, result);
+    } else {
+      result[newKey] = value;
+    }
+  }
+  return result;
+}
+
 export function extractStorySignals(entry) {
-  const signals = {};
-
-  for (const key in entry.context || {}) {
-    signals[key] = entry.context[key];
-  }
-
-  for (const key in entry.extra || {}) {
-    signals[key] = entry.extra[key];
-  }
-
-  for (const key in entry.meta || {}) {
-    signals[key] = entry.meta[key];
-  }
-
-  return signals;
+  return {
+    ...flattenObject(entry.context),
+    ...flattenObject(entry.extra),
+    ...flattenObject(entry.meta)
+  };
 }

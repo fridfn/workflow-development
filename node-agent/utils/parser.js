@@ -1,21 +1,28 @@
 export function parseCommit(msg) {
-
-  let type = "update";
   let detail = msg;
-
-  if (msg.includes(":")) {
-
-    const [t, ...rest] = msg.split(":");
-    type = msg.match(/^[^(]+/)[0];
-
-    type = type.trim();
-    detail = rest.join(":").trim();
-  }
-
+  
+  const parser = (msg) => {
+     if (!msg.includes(":")) return null;
+   
+     const match = msg.match(/^(\w+)\(([^)]+)\):\s(.+)$/);
+   
+     if (!match) return null;
+   
+     let [, type, scope, message] = match;
+   
+     return {
+       type: type.trim(),
+       scope: scope.trim(),
+       message: message.trim(),
+     };
+   };
+  
+  const { type = "update", scope = "default", message = "commit update" } = parser(msg);
+  
   let reaction = "update";
 
   if (type.startsWith("feat"))
-    reaction = "feat";
+    reaction = "feat"
 
   else if (type.startsWith("fix"))
     reaction = "fix";

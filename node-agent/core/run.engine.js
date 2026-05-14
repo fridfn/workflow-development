@@ -4,6 +4,7 @@ import { retryGenerate } from "./retry.js";
 import { validateResult } from "../utils/validator.js";
 import { archiveMemory } from "../memory/archive.js";
 import { hasCommitToday } from "../utils/github.js";
+import { buildStoryLayer } from "../engine/enrichment/story.mapper.js";
 
 import {
   updateAgentStats,
@@ -35,7 +36,6 @@ export async function runEngine({
   tag,
   context = {}
 }) {
-console.log({context})
   logSection(`ENGINE RUN → ${source}`);
   
   // =========================
@@ -45,6 +45,8 @@ console.log({context})
     username: "fridfn",
     token: process.env.GITHUB_TOKEN
   });
+  
+  const repoContext = hasCommit?.repoMetadata || null;
   
   // =========================
   // 🔹 LOAD CONFIG
@@ -148,24 +150,51 @@ console.log({context})
         continue;
       }
     }
+    
+    // =========================
+    // 🔹 ENRICHED CONTEXT
+    // =========================
+    const enrichedContext = {
+      ...context,
+    
+      activity: {
+        hasCommit: hasCommit?.hasCommit || false,
+        commitTime: hasCommit?.commitTime || null
+      },
+    
+      repository: repoContext,
+    
+      semantic: {
+        type: context.commit?.type || null,
+        detail: context.commit?.detail || null,
+        reaction: context.commit?.reaction || null
+      }
+    };
+    
+    const story = buildStoryLayer({
+      context: enrichedContext,
+      meta: finalResult.meta,
+      extra: context
+    });
 
     // =========================
     // 🔹 FINAL PAYLOAD
     // =========================
     const payload = {
       source,
-
+    
       reply: finalResult.reply,
-
+    
       meta: finalResult.meta,
-
+    
       context: {
         mode,
-        tag
+        tag,
+        ...enrichedContext
       },
-
-      extra: context,
-
+    
+      story,
+    
       created_at: Date.now()
     };
 
@@ -252,9 +281,10 @@ console.log({context})
     // 🔹 ARCHIVE MEMORY
     // =========================
     await archiveMemory({
+      source,
       agent,
       result: finalResult,
-      context,
+      context: payload.context,
       stats,
       validation
     });

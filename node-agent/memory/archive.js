@@ -1,16 +1,15 @@
 import fs from "fs";
-import { updateHighlights } from "./highlight.engine.js";
 import { getWeekOfMonth } from "../utils/weeks.js";
 import { updateWeeklyStats } from "./stats.engine.js"
 import { getDateSimulation } from "../utils/date.js";
 import { handleReflectionTransition } from "../engine/reflection.transition.engine.js";
-import { buildEntry } from "../engine/enrichment/entry.builder.js";
 import {
   ensureDir,
   ensureFiles
 } from "../utils/fs.helper.js";
 
 export async function archiveMemory({
+  source,
   agent,
   result,
   context,
@@ -56,15 +55,8 @@ export async function archiveMemory({
   
   // raw memory file
   const rawFile =
-    `${weekDir}/${day}-${monthName}.json`;
-
-  // optional future files
-  // const highlightsFile =
-  // `${weekDir}/highlights.json`;
+    `${weekDir}/${day}.json`;
     
-  // const summaryFile =
-  // `${weekDir}/summary.json`;
-
   const yearlySummaryFile =
     `./${baseDir}/yearly-summary.json`;
   
@@ -79,14 +71,6 @@ export async function archiveMemory({
       file: rawFile,
       fallback: []
     },
-    // {
-//       file: highlightsFile,
-//       fallback: []
-//     },
-    // {
-//       file: summaryFile,
-//       fallback: {}
-//     },
     {
       file: yearlySummaryFile,
       fallback: {}
@@ -111,10 +95,8 @@ export async function archiveMemory({
   // =========================
   // 🔹 BUILD ENTRY
   // =========================
- // const entry = buildEntry(context, result);
  const entry = {
-source:
-context.source || "engine",
+source: source || "engine",
 reply: result.reply,
 meta: {
 greeting:
@@ -142,18 +124,6 @@ created_at: Date.now()
   );
   
   // =========================
-  // 🔹 GENERATE HIGHLIGHT
-  // =========================
-  // updateHighlights({
-//     agent,
-//     result,
-//     context,
-//     paths: {
-//       highlightsFile
-//     }
-//   });
-  
-  // =========================
   // 🔹 GENERATE STATS
   // =========================
   updateWeeklyStats({
@@ -162,8 +132,8 @@ created_at: Date.now()
     result,
     validation
   });
-  
- //  await handleReflectionTransition({
+  // 
+//   await handleReflectionTransition({
 //     agent
 //   });
 }

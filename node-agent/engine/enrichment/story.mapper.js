@@ -1,16 +1,45 @@
-import { extractStorySignals } from "./extractor.js";
+import {
+  extractStorySignals
+} from "./extractor.js";
+
+function buildSummary(signals) {
+  return Object.entries(signals)
+    .filter(([_, value]) =>
+      value !== null &&
+      value !== undefined
+    )
+    .map(([key, value]) => ({
+      key,
+      value
+    }));
+}
+
+function generateTags(signals) {
+  return Object.keys(signals)
+    .map(key =>
+      key.split(".").pop()
+    );
+}
 
 export function buildStoryLayer(entry) {
-  const signals = extractStorySignals(entry);
+  const signals =
+    extractStorySignals(entry);
 
   return {
-    milestone: signals.milestone || signals.feature || null,
-    intent: signals.intent || signals.action_type || null,
-    problem: signals.problem || null,
-    result: signals.result || null,
-    impact: signals.impact || "low",
-    status: signals.status || "unknown",
+    signals,
 
-    summary_tags: Object.keys(signals)
+    summary:
+      buildSummary(signals),
+
+    tags:
+      generateTags(signals),
+
+    timeline: {
+      timestamp:
+        entry.created_at,
+
+      source:
+        entry.source
+    }
   };
 }

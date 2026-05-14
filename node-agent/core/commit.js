@@ -43,7 +43,7 @@ logInfo("COMMIT", "Parsed", parsed);
 // =========================
 // 🔹 CHECK ACTIVITY
 // =========================
-const { hasCommit, repo, commitTime, repoMetadata } = await hasCommitToday({
+const { hasCommit, repo, commitTime } = await hasCommitToday({
   username: "fridfn",
   token: process.env.GITHUB_TOKEN
 });
@@ -74,7 +74,6 @@ await runEngine({
   context: {
     repo,
     commitTime,
-    repoMetadata,
     commit: parsed
   }
 });

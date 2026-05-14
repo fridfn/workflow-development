@@ -2,16 +2,6 @@ import fetch from "node-fetch";
 import { logInfo, logWarn, logError, logDebug, logSection } from "./logger.js";
 import { getRepoMeta } from "./github.repo.js";
 
-export async function enrichRepoContext(context, token) {
-  if (!context?.commit?.repo) return null;
-
-  const repoMeta = await getRepoMeta({
-    repoFullName: context.commit.repo,
-    token
-  });
-
-  return repoMeta;
-}
 
 export async function hasCommitToday({ username, token }) {
   logSection("GitHub Commit Checker");
@@ -89,7 +79,11 @@ export async function hasCommitToday({ username, token }) {
         repo: event.repo?.name,
         pushedAt: event.created_at,
       });
-      const repoMetadata = enrichRepoContext(event.repo?.name)
+      
+      const repoMetadata = await getRepoMeta({
+        repoFullName: event.repo?.name,
+        token
+      });
       
       return {
         repoMetadata,
