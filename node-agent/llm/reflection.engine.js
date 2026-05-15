@@ -4,9 +4,8 @@ import { safeJSONParse } from "./parsers/json.parser.js";
 import { buildDailyPrompt } from "./prompts/daily.prompt.js";
 import { buildWeeklyPrompt } from "./prompts/weekly.prompt.js";
 import { buildMonthlyPrompt } from "./prompts/monthly.prompt.js";
-
 import { buildYearlyPrompt } from "./prompts/yearly.prompt.js";
-
+import { saveDecode } from "../utils/decode.file.js"
 const PROMPTS = {
   daily: buildDailyPrompt,
   weekly: buildWeeklyPrompt,
@@ -59,12 +58,13 @@ export async function generateReflection({
     });
 
   const parsed =
-    safeJSONParse(raw);
+    saveDecode(raw);
+    
 
   fs.writeFileSync(
     outputFile,
     JSON.stringify(
-      raw,
+      parsed,
       null,
       2
     )

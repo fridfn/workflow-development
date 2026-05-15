@@ -12,7 +12,6 @@ export async function generateGroq({
   temperature = 0.7,
   max_tokens = 1024
 }) {
-
   const completion =
     await groq.chat.completions.create({
       model,

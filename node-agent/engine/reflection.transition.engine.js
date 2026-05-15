@@ -22,7 +22,7 @@ import {
 export async function handleReflectionTransition({
   agent
 }) {
-  const model = getModel("instant")
+  const model = getModel("smart")
   const now =
     getDateSimulation();
 
@@ -140,7 +140,7 @@ export async function handleReflectionTransition({
       ).toLowerCase();
 
     const fileName =
-      `${currentDay}.json`;
+      `${currentDay}.md`;
 
     const outputFile =
       path.join(
@@ -161,7 +161,6 @@ export async function handleReflectionTransition({
       outputFile,
       model
     });
-
     setMemory(
       agent,
       "reflection.last_day",
@@ -308,7 +307,7 @@ function loadDailyMemory({
       archiveMonthDir
     )
     .filter(dir =>
-      dir.startsWith("weeks_")
+      dir.startsWith("week_")
     );
 
   const result = [];

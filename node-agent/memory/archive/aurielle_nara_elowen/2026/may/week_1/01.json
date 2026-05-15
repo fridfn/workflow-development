@@ -1,0 +1,178 @@
+[
+  {
+    "source": "commit",
+    "reply": "hmm… kamu tetap pegang ritmemu\n\nkamu jaga ini sampai sini… itu yang bikin kamu beda",
+    "meta": {
+      "greeting": "hmm… kamu tetap pegang ritmemu",
+      "message": "kamu jaga ini sampai sini… itu yang bikin kamu beda",
+      "tone": "consistent_assured",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "docs",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-05-14T23:33:03Z",
+      "commit": {
+        "type": "docs",
+        "scope": "engine",
+        "detail": "docs(engine): explain reflection flow structure",
+        "actionTag": "docs"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-05-14T23:33:03Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "stars": 0,
+        "forks": 1,
+        "topics": [],
+        "visibility": "public",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-05-14T23:33:06Z"
+      },
+      "semantic": {
+        "type": "docs",
+        "detail": "docs(engine): explain reflection flow structure",
+        "actionTag": "docs"
+      }
+    },
+    "created_at": 1778807777291
+  },
+  {
+    "source": "commit",
+    "reply": "eh… kamu tetap lanjut sampai sekarang\n\ndan kamu gak ninggalin hari ini… itu yang bikin semuanya berarti",
+    "meta": {
+      "greeting": "eh… kamu tetap lanjut sampai sekarang",
+      "message": "dan kamu gak ninggalin hari ini… itu yang bikin semuanya berarti",
+      "tone": "consistent_grounded",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "fix",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-05-14T23:33:03Z",
+      "commit": {
+        "type": "fix",
+        "scope": "quran",
+        "detail": "fix(quran): repair broken surah playback",
+        "actionTag": "fix"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-05-14T23:33:03Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "stars": 0,
+        "forks": 1,
+        "topics": [],
+        "visibility": "public",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-05-14T23:33:06Z"
+      },
+      "semantic": {
+        "type": "fix",
+        "detail": "fix(quran): repair broken surah playback",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1778807788678
+  },
+  {
+    "source": "commit",
+    "reply": "kamu masih pegang ini sampai malam\n\ndan kamu gak hilang malam ini… kamu tetap jalan",
+    "meta": {
+      "greeting": "kamu masih pegang ini sampai malam",
+      "message": "dan kamu gak hilang malam ini… kamu tetap jalan",
+      "tone": "consistent_tender",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "style",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-05-14T23:33:03Z",
+      "commit": {
+        "type": "style",
+        "scope": "css",
+        "detail": "style(css): reorganize layout styles",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-05-14T23:33:03Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "stars": 0,
+        "forks": 1,
+        "topics": [],
+        "visibility": "public",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-05-14T23:33:06Z"
+      },
+      "semantic": {
+        "type": "style",
+        "detail": "style(css): reorganize layout styles",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1778808050360
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… kamu gak lepas sampai malam\n\naku lihat kamu gak lepas… kamu beneran konsisten",
+    "meta": {
+      "greeting": "hmm… kamu gak lepas sampai malam",
+      "message": "aku lihat kamu gak lepas… kamu beneran konsisten",
+      "tone": "consistent_assured",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "chore",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-05-14T23:33:03Z",
+      "commit": {
+        "type": "chore",
+        "scope": "config",
+        "detail": "chore(config): move env variables to config",
+        "actionTag": "chore"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-05-14T23:33:03Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "stars": 0,
+        "forks": 1,
+        "topics": [],
+        "visibility": "public",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-05-14T23:33:06Z"
+      },
+      "semantic": {
+        "type": "chore",
+        "detail": "chore(config): move env variables to config",
+        "actionTag": "chore"
+      }
+    },
+    "created_at": 1778813170801
+  }
+]

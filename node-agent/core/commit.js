@@ -74,8 +74,7 @@ await runEngine({
   context: {
     repo,
     commitTime,
-    commit: parsed,
-    scope: parsed.scope
+    commit: parsed
   }
 });
 

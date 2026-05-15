@@ -1,0 +1,38 @@
+{
+  "commit_stats": {
+    "fix": 2,
+    "chore": 4,
+    "test": 3,
+    "docs": 2,
+    "feat": 1,
+    "style": 1
+  },
+  "mode_stats": {
+    "consistent": 13
+  },
+  "tone_stats": {
+    "consistent_grounded": 2,
+    "consistent_tender": 5,
+    "consistent_subtle": 3,
+    "consistent_assured": 3
+  },
+  "category_stats": {
+    "support": 13
+  },
+  "tag_stats": {
+    "fix": 2,
+    "chore": 4,
+    "test": 3,
+    "docs": 2,
+    "feat": 1,
+    "style": 1
+  },
+  "reply_source_stats": {
+    "initial": 13
+  },
+  "active_hours": {
+    "0": 13
+  },
+  "total_generated": 13,
+  "last_generated_at": 1778813170804
+}

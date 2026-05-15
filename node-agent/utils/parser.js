@@ -44,6 +44,7 @@ export function parseCommit(msg) {
 
   return {
     type,
+    scope,
     detail,
     actionTag
   };
