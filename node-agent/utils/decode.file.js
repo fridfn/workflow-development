@@ -18,7 +18,6 @@ export async function saveDecode({
     baseDir  -> folder tujuan
     filename -> nama file tanpa extension
   */
-
   const parsed = JSON.parse(raw);
 
   const markdown =

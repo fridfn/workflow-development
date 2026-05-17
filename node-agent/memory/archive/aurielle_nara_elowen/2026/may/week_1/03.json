@@ -1,0 +1,134 @@
+[
+  {
+    "source": "commit",
+    "reply": "hmm… kamu gak lepas sampai malam\n\naku lihat kamu gak lepas… kamu beneran konsisten",
+    "meta": {
+      "greeting": "hmm… kamu gak lepas sampai malam",
+      "message": "aku lihat kamu gak lepas… kamu beneran konsisten",
+      "tone": "consistent_assured",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-05-15T23:40:48Z",
+      "commit": {
+        "type": "feat",
+        "scope": "notification",
+        "detail": "feat(notification): add realtime broadcast system",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-05-15T23:40:48Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "stars": 0,
+        "forks": 1,
+        "topics": [],
+        "visibility": "public",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-05-15T23:40:51Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "detail": "feat(notification): add realtime broadcast system",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1778889074245
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… kamu gak lepas sampai malam\n\nkamu jaga ini sampai sini… itu yang bikin kamu beda",
+    "meta": {
+      "greeting": "hmm… kamu gak lepas sampai malam",
+      "message": "kamu jaga ini sampai sini… itu yang bikin kamu beda",
+      "tone": "consistent_assured",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "test",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-05-15T23:40:48Z",
+      "commit": {
+        "type": "test",
+        "scope": "engine",
+        "detail": "test(engine): cover reflection builder cases",
+        "actionTag": "test"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-05-15T23:40:48Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "stars": 0,
+        "forks": 1,
+        "topics": [],
+        "visibility": "public",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-05-15T23:40:51Z"
+      },
+      "semantic": {
+        "type": "test",
+        "detail": "test(engine): cover reflection builder cases",
+        "actionTag": "test"
+      }
+    },
+    "created_at": 1778889103176
+  },
+  {
+    "source": "commit",
+    "reply": "kamu masih pegang ini\n\nkamu gak berhenti… itu yang penting",
+    "meta": {
+      "greeting": "kamu masih pegang ini",
+      "message": "kamu gak berhenti… itu yang penting",
+      "tone": "consistent_subtle",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "test",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-05-15T23:40:48Z",
+      "commit": {
+        "type": "test",
+        "scope": "engine",
+        "detail": "test(engine): cover reflection builder cases",
+        "actionTag": "test"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-05-15T23:40:48Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "stars": 0,
+        "forks": 1,
+        "topics": [],
+        "visibility": "public",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-05-15T23:40:51Z"
+      },
+      "semantic": {
+        "type": "test",
+        "detail": "test(engine): cover reflection builder cases",
+        "actionTag": "test"
+      }
+    },
+    "created_at": 1778889285948
+  }
+]

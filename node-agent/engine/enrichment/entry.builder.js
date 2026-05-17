@@ -1,6 +1,12 @@
 import { buildStoryLayer } from "./story.mapper.js";
 
-export function buildEntry(context, result) {
+export function buildEntry({ context }) {
+ 
+ console.log(JSON.stringify(
+      context,
+      null,
+      2
+    ))
   const entry = {
     source: context.source || "engine",
     reply: result.reply,

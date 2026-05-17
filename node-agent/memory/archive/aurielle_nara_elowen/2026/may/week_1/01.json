@@ -174,5 +174,319 @@
       }
     },
     "created_at": 1778813170801
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… kamu tetap pegang ritmemu\n\ncommit kamu nunjukin kamu serius sama yang kamu bangun",
+    "meta": {
+      "greeting": "hmm… kamu tetap pegang ritmemu",
+      "message": "commit kamu nunjukin kamu serius sama yang kamu bangun",
+      "tone": "consistent_assured",
+      "category": "support"
+    },
+    "context": {
+      "mode": "consistent",
+      "tag": "fix",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-05-15T23:40:48Z",
+      "commit": {
+        "type": "fix",
+        "scope": "portfolio",
+        "detail": "fix(portfolio): resolve responsive layout bug",
+        "actionTag": "fix"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-05-15T23:40:48Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "stars": 0,
+        "forks": 1,
+        "topics": [],
+        "visibility": "public",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-05-15T23:40:51Z"
+      },
+      "semantic": {
+        "type": "fix",
+        "detail": "fix(portfolio): resolve responsive layout bug",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1778888586627
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… masih bangun, tapi belum mulai ya\n\nbelum ada commit, dan kamu masih di momen buat nentuin akhirnya",
+    "meta": {
+      "greeting": "Farid… masih bangun, tapi belum mulai ya",
+      "message": "belum ada commit, dan kamu masih di momen buat nentuin akhirnya",
+      "tone": "warning_reflect",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "final_warning",
+      "tag": "feat",
+      "commit": {
+        "type": "feat",
+        "scope": "engine",
+        "detail": "feat(engine): support multi-mode reflections",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "feat",
+        "detail": "feat(engine): support multi-mode reflections",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1778992977711
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… ini bukan cuma hari biasa\n\nkamu belum jalan hari ini, tapi kamu punya alasan yang lebih besar dari rasa capek",
+    "meta": {
+      "greeting": "Farid… ini bukan cuma hari biasa",
+      "message": "kamu belum jalan hari ini, tapi kamu punya alasan yang lebih besar dari rasa capek",
+      "tone": "warning_anchor",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "final_warning",
+      "tag": "fix",
+      "commit": {
+        "type": "fix",
+        "scope": "memory",
+        "detail": "fix(memory): correct archive file parsing",
+        "actionTag": "fix"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "fix",
+        "detail": "fix(memory): correct archive file parsing",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1778993070270
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… ini bukan soal mood\n\nhari ini belum ada commit, dan kalau kamu berhenti sekarang, hasilnya tetap kosong",
+    "meta": {
+      "greeting": "Farid… ini bukan soal mood",
+      "message": "hari ini belum ada commit, dan kalau kamu berhenti sekarang, hasilnya tetap kosong",
+      "tone": "warning_reality",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "final_warning",
+      "tag": "refactor",
+      "commit": {
+        "type": "refactor",
+        "scope": "portfolio",
+        "detail": "refactor(portfolio): modularize project cards",
+        "actionTag": "refactor"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "refactor",
+        "detail": "refactor(portfolio): modularize project cards",
+        "actionTag": "refactor"
+      }
+    },
+    "created_at": 1778993168674
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… kamu tau ini belum selesai\n\nbelum ada commit, kamu sebenarnya cuma nunda hal yang bisa kamu mulai tadi",
+    "meta": {
+      "greeting": "hmm… kamu tau ini belum selesai",
+      "message": "belum ada commit, kamu sebenarnya cuma nunda hal yang bisa kamu mulai tadi",
+      "tone": "warning_guilt",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "final_warning",
+      "tag": "style",
+      "commit": {
+        "type": "style",
+        "scope": "css",
+        "detail": "style(css): reorganize layout styles",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "style",
+        "detail": "style(css): reorganize layout styles",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1778993404700
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… ini bukan cuma hari biasa\n\nkamu belum jalan hari ini, tapi kamu punya alasan yang lebih besar dari rasa capek",
+    "meta": {
+      "greeting": "Farid… ini bukan cuma hari biasa",
+      "message": "kamu belum jalan hari ini, tapi kamu punya alasan yang lebih besar dari rasa capek",
+      "tone": "warning_anchor",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "final_warning",
+      "tag": "docs",
+      "commit": {
+        "type": "docs",
+        "scope": "readme",
+        "detail": "docs(readme): update installation guide",
+        "actionTag": "docs"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "docs",
+        "detail": "docs(readme): update installation guide",
+        "actionTag": "docs"
+      }
+    },
+    "created_at": 1778993553177
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… kamu masih nahan buat mulai ya\n\nhari ini belum ada commit, padahal kamu tadi punya waktu buat mulai walaupun sedikit",
+    "meta": {
+      "greeting": "hmm… kamu masih nahan buat mulai ya",
+      "message": "hari ini belum ada commit, padahal kamu tadi punya waktu buat mulai walaupun sedikit",
+      "tone": "warning_guilt",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "final_warning",
+      "tag": "feat",
+      "commit": {
+        "type": "feat",
+        "scope": "bot",
+        "detail": "feat(bot): add dynamic reflection engine",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "feat",
+        "detail": "feat(bot): add dynamic reflection engine",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1778993580126
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… ini bukan soal mood\n\nkamu belum nyentuh kode hari ini, dan itu sepenuhnya karena belum dimulai",
+    "meta": {
+      "greeting": "Farid… ini bukan soal mood",
+      "message": "kamu belum nyentuh kode hari ini, dan itu sepenuhnya karena belum dimulai",
+      "tone": "warning_reality",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "final_warning",
+      "tag": "style",
+      "commit": {
+        "type": "style",
+        "scope": "card",
+        "detail": "style(card): add glassmorphism effect",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "style",
+        "detail": "style(card): add glassmorphism effect",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1778993626090
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… ini bukan cuma hari biasa\n\nkamu belum jalan hari ini, tapi kamu punya alasan yang lebih besar dari rasa capek",
+    "meta": {
+      "greeting": "Farid… ini bukan cuma hari biasa",
+      "message": "kamu belum jalan hari ini, tapi kamu punya alasan yang lebih besar dari rasa capek",
+      "tone": "warning_anchor",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "final_warning",
+      "tag": "test",
+      "commit": {
+        "type": "test",
+        "scope": "engine",
+        "detail": "test(engine): add reflection snapshot tests",
+        "actionTag": "test"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "test",
+        "detail": "test(engine): add reflection snapshot tests",
+        "actionTag": "test"
+      }
+    },
+    "created_at": 1778993747357
+  },
+  {
+    "source": "commit",
+    "reply": "eh… dari tadi belum ada progress\n\nbelum ada commit, dan kondisi ini gak akan berubah kalau kamu tetap diam",
+    "meta": {
+      "greeting": "eh… dari tadi belum ada progress",
+      "message": "belum ada commit, dan kondisi ini gak akan berubah kalau kamu tetap diam",
+      "tone": "warning_reality",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "final_warning",
+      "tag": "style",
+      "commit": {
+        "type": "style",
+        "scope": "ui",
+        "detail": "style(ui): improve button spacing",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "style",
+        "detail": "style(ui): improve button spacing",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1778994287310
   }
 ]

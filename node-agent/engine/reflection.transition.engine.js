@@ -139,8 +139,7 @@ export async function handleReflectionTransition({
         }
       ).toLowerCase();
 
-    const fileName =
-      `${currentDay}.md`;
+    const fileName = currentDay;
 
     const outputFile =
       path.join(
@@ -156,11 +155,13 @@ export async function handleReflectionTransition({
 
     await generateReflection({
       agent,
+      model,
+      fileName,
       type: "daily",
       data: dailyData,
-      outputFile,
-      model
+      baseDir: dailyDir
     });
+    
     setMemory(
       agent,
       "reflection.last_day",
