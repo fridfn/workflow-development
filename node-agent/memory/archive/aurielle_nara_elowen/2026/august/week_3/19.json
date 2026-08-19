@@ -70,5 +70,53 @@
       }
     },
     "created_at": 1787143725293
+  },
+  {
+    "source": "scheduler",
+    "reply": "ini kamu lagi mau berhenti ya\n\nhari ini belum ada jejak, jangan biarin kosong, isi sedikit sekarang",
+    "meta": {
+      "greeting": "ini kamu lagi mau berhenti ya",
+      "message": "hari ini belum ada jejak, jangan biarin kosong, isi sedikit sekarang",
+      "tone": "warning_hold",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "default",
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": null,
+        "detail": null,
+        "actionTag": null
+      }
+    },
+    "created_at": 1787144523843
+  },
+  {
+    "source": "scheduler",
+    "reply": "Farid… tahan dikit lagi\n\nkamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
+    "meta": {
+      "greeting": "Farid… tahan dikit lagi",
+      "message": "kamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
+      "tone": "warning_hold",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "default",
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": null,
+        "detail": null,
+        "actionTag": null
+      }
+    },
+    "created_at": 1787146242520
   }
 ]
