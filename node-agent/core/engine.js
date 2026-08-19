@@ -17,11 +17,6 @@ import {
   logInfo
 } from "../utils/logger.js";
 
-import {
-  pushCommitLog,
-  pushReplyLog
-} from "../utils/logger.js";
-
 
 logSection("ENGINE START");
 

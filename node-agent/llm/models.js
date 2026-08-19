@@ -1,32 +1,94 @@
+import "dotenv/config";
+
 const GROQ_MODELS = {
-  // 🔥 fastest / cheapest
+  // ========================================
+  // ⚡ FAST
+  // ========================================
   instant: {
-    key: "llama-3.1-8b-instant",
-    name: "Llama 3.1 8B Instant",
+    key: "openai/gpt-oss-20b",
+    name: "GPT OSS 20B",
     tier: "fast",
-    context: 8192,
-    description: "Ultra fast, low cost, cocok untuk reflection ringan"
+    context: 131072,
+    description:
+      "Cepat dan ringan untuk reflection serta proses sederhana"
   },
 
-  // ⚖️ balanced
+  // ========================================
+  // ⚖️ BALANCED
+  // ========================================
   balanced: {
-    key: "llama-3.1-70b-versatile",
-    name: "Llama 3.1 70B Versatile",
+    key: "qwen/qwen3.6-27b",
+    name: "Qwen 3.6 27B",
     tier: "balanced",
-    context: 8192,
-    description: "Seimbang antara kualitas dan kecepatan"
+    context: 131072,
+    description:
+      "Seimbang untuk analisis dan proses agent"
   },
 
-  // 🧠 reasoning strong
+  // ========================================
+  // 🧠 SMART
+  // ========================================
   smart: {
-    key: "llama-3.3-70b-versatile",
-    name: "Llama 3.3 70B",
+    key: "openai/gpt-oss-120b",
+    name: "GPT OSS 120B",
     tier: "smart",
     context: 131072,
-    description: "Lebih kuat untuk reasoning & reflection dalam"
-  },
+    description:
+      "Model lebih kuat untuk reasoning dan reflection mendalam"
+  }
 };
 
+
+// ========================================
+// 🔹 GET MODEL
+// ========================================
+
 export function getModel(key = "instant") {
-  return GROQ_MODELS[key].key;
+
+  const model = GROQ_MODELS[key];
+
+  if (!model) {
+    throw new Error(
+      `Unknown model profile: ${key}`
+    );
+  }
+
+  return model.key;
+}
+
+
+// ========================================
+// 🔹 GET MODEL INFO
+// ========================================
+
+export function getModelInfo(key = "instant") {
+
+  const model = GROQ_MODELS[key];
+
+  if (!model) {
+    throw new Error(
+      `Unknown model profile: ${key}`
+    );
+  }
+
+  return {
+    ...model
+  };
+}
+
+
+// ========================================
+// 🔹 GET ALL MODELS
+// ========================================
+
+export function getModels() {
+
+  return Object.fromEntries(
+    Object.entries(GROQ_MODELS)
+      .map(([key, model]) => [
+        key,
+        { ...model }
+      ])
+  );
+
 }

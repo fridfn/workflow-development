@@ -1,25 +1,41 @@
 import { buildStoryLayer } from "./story.mapper.js";
 
-export function buildEntry({ context }) {
- 
- console.log(JSON.stringify(
-      context,
-      null,
-      2
-    ))
-  const entry = {
-    source: context.source || "engine",
-    reply: result.reply,
-    meta: result.meta || {},
-    context: context || {},
-    extra: {
-      commit: context.commit || null
-    },
-    created_at: Date.now()
+export function buildEntry(entry = {}) {
+
+  const normalizedEntry = {
+    ...entry,
+
+    source:
+      entry.source || "engine",
+
+    meta:
+      entry.meta &&
+      typeof entry.meta === "object"
+        ? entry.meta
+        : {},
+
+    context:
+      entry.context &&
+      typeof entry.context === "object"
+        ? entry.context
+        : {},
+
+    extra:
+      entry.extra &&
+      typeof entry.extra === "object"
+        ? entry.extra
+        : {},
+
+    created_at:
+      entry.created_at || Date.now()
   };
 
   return {
-    ...entry,
-    story: buildStoryLayer(entry)
+    ...normalizedEntry,
+
+    story:
+      buildStoryLayer(
+        normalizedEntry
+      )
   };
 }

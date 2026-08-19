@@ -1,0 +1,26 @@
+{
+  "commit_stats": {
+    "unknown": 3
+  },
+  "mode_stats": {
+    "last_warning": 3
+  },
+  "tone_stats": {
+    "warning_hold": 2,
+    "warning_deadline": 1
+  },
+  "category_stats": {
+    "reminder": 3
+  },
+  "tag_stats": {
+    "default": 3
+  },
+  "reply_source_stats": {
+    "initial": 3
+  },
+  "active_hours": {
+    "19": 3
+  },
+  "total_generated": 3,
+  "last_generated_at": 1787143725294
+}
