@@ -97,9 +97,7 @@ export async function generateReflection({
         .map(item =>
           buildEntry(item)
         );
-
   }
-
 
   // ----------------------------------------
   // OBJECT DATA
@@ -120,7 +118,6 @@ export async function generateReflection({
           data
       })
     ];
-
   }
 
 

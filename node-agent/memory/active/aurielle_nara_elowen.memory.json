@@ -1,195 +1,89 @@
 {
   "aurielle_nara_elowen": {
-    "last_message": "Farid… tahan dikit lagi\n\nkamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
+    "last_message": "Farid… tahan dikit lagi\n\nhari ini belum ada commit, jangan biarin ritmenya putus sekarang",
     "last_tone": "warning_hold",
     "last_greeting": "Farid… tahan dikit lagi",
     "history": [
       {
-        "source": "scheduler",
-        "reply": "Farid… tahan dikit lagi\n\nkamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
+        "source": "commit",
+        "reply": "Farid… tahan dikit lagi\n\nhari ini belum ada commit, jangan biarin ritmenya putus sekarang",
         "meta": {
           "greeting": "Farid… tahan dikit lagi",
-          "message": "kamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
-          "tone": "warning_hold",
-          "category": "reminder"
-        },
-        "context": {
-          "mode": "last_warning",
-          "tag": "default",
-          "activity": {
-            "hasCommit": false,
-            "commitTime": null
-          },
-          "semantic": {
-            "type": null,
-            "detail": null,
-            "actionTag": null
-          }
-        },
-        "story": {
-          "signals": {
-            "activity.hasCommit": false,
-            "activity.commitTime": null,
-            "semantic.type": null,
-            "semantic.detail": null,
-            "semantic.actionTag": null,
-            "greeting": "Farid… tahan dikit lagi",
-            "message": "kamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
-            "tone": "warning_hold",
-            "category": "reminder"
-          },
-          "summary": [
-            {
-              "key": "activity.hasCommit",
-              "value": false
-            },
-            {
-              "key": "greeting",
-              "value": "Farid… tahan dikit lagi"
-            },
-            {
-              "key": "message",
-              "value": "kamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit"
-            },
-            {
-              "key": "tone",
-              "value": "warning_hold"
-            },
-            {
-              "key": "category",
-              "value": "reminder"
-            }
-          ],
-          "tags": [
-            "hasCommit",
-            "commitTime",
-            "repository",
-            "type",
-            "detail",
-            "actionTag",
-            "greeting",
-            "message",
-            "tone",
-            "category"
-          ],
-          "timeline": {}
-        },
-        "created_at": 1787146242488
-      },
-      {
-        "source": "scheduler",
-        "reply": "ini kamu lagi mau berhenti ya\n\nhari ini belum ada jejak, jangan biarin kosong, isi sedikit sekarang",
-        "meta": {
-          "greeting": "ini kamu lagi mau berhenti ya",
-          "message": "hari ini belum ada jejak, jangan biarin kosong, isi sedikit sekarang",
-          "tone": "warning_hold",
-          "category": "reminder"
-        },
-        "context": {
-          "mode": "last_warning",
-          "tag": "default",
-          "activity": {
-            "hasCommit": false,
-            "commitTime": null
-          },
-          "semantic": {
-            "type": null,
-            "detail": null,
-            "actionTag": null
-          }
-        },
-        "story": {
-          "signals": {
-            "activity.hasCommit": false,
-            "activity.commitTime": null,
-            "semantic.type": null,
-            "semantic.detail": null,
-            "semantic.actionTag": null,
-            "greeting": "ini kamu lagi mau berhenti ya",
-            "message": "hari ini belum ada jejak, jangan biarin kosong, isi sedikit sekarang",
-            "tone": "warning_hold",
-            "category": "reminder"
-          },
-          "summary": [
-            {
-              "key": "activity.hasCommit",
-              "value": false
-            },
-            {
-              "key": "greeting",
-              "value": "ini kamu lagi mau berhenti ya"
-            },
-            {
-              "key": "message",
-              "value": "hari ini belum ada jejak, jangan biarin kosong, isi sedikit sekarang"
-            },
-            {
-              "key": "tone",
-              "value": "warning_hold"
-            },
-            {
-              "key": "category",
-              "value": "reminder"
-            }
-          ],
-          "tags": [
-            "hasCommit",
-            "commitTime",
-            "repository",
-            "type",
-            "detail",
-            "actionTag",
-            "greeting",
-            "message",
-            "tone",
-            "category"
-          ],
-          "timeline": {}
-        },
-        "created_at": 1787144523824
-      },
-      {
-        "source": "scheduler",
-        "reply": "ini kamu lagi mau berhenti ya\n\nhari ini belum ada commit, jangan biarin ritmenya putus sekarang",
-        "meta": {
-          "greeting": "ini kamu lagi mau berhenti ya",
           "message": "hari ini belum ada commit, jangan biarin ritmenya putus sekarang",
           "tone": "warning_hold",
           "category": "reminder"
         },
         "context": {
           "mode": "last_warning",
-          "tag": "default",
+          "tag": "docs",
+          "commit": {
+            "type": "docs",
+            "scope": "memory",
+            "detail": "docs(memory): document archive system",
+            "actionTag": "docs"
+          },
           "activity": {
             "hasCommit": false,
             "commitTime": null
           },
           "semantic": {
-            "type": null,
-            "detail": null,
-            "actionTag": null
+            "type": "docs",
+            "detail": "docs(memory): document archive system",
+            "actionTag": "docs"
           }
         },
         "story": {
           "signals": {
+            "commit.type": "docs",
+            "commit.scope": "memory",
+            "commit.detail": "docs(memory): document archive system",
+            "commit.actionTag": "docs",
             "activity.hasCommit": false,
             "activity.commitTime": null,
-            "semantic.type": null,
-            "semantic.detail": null,
-            "semantic.actionTag": null,
-            "greeting": "ini kamu lagi mau berhenti ya",
+            "semantic.type": "docs",
+            "semantic.detail": "docs(memory): document archive system",
+            "semantic.actionTag": "docs",
+            "greeting": "Farid… tahan dikit lagi",
             "message": "hari ini belum ada commit, jangan biarin ritmenya putus sekarang",
             "tone": "warning_hold",
             "category": "reminder"
           },
           "summary": [
             {
+              "key": "commit.type",
+              "value": "docs"
+            },
+            {
+              "key": "commit.scope",
+              "value": "memory"
+            },
+            {
+              "key": "commit.detail",
+              "value": "docs(memory): document archive system"
+            },
+            {
+              "key": "commit.actionTag",
+              "value": "docs"
+            },
+            {
               "key": "activity.hasCommit",
               "value": false
             },
             {
+              "key": "semantic.type",
+              "value": "docs"
+            },
+            {
+              "key": "semantic.detail",
+              "value": "docs(memory): document archive system"
+            },
+            {
+              "key": "semantic.actionTag",
+              "value": "docs"
+            },
+            {
               "key": "greeting",
-              "value": "ini kamu lagi mau berhenti ya"
+              "value": "Farid… tahan dikit lagi"
             },
             {
               "key": "message",
@@ -205,6 +99,12 @@
             }
           ],
           "tags": [
+            "repo",
+            "commitTime",
+            "type",
+            "scope",
+            "detail",
+            "actionTag",
             "hasCommit",
             "commitTime",
             "repository",
@@ -218,58 +118,96 @@
           ],
           "timeline": {}
         },
-        "created_at": 1787143725268
+        "created_at": 1789278475224
       },
       {
-        "source": "scheduler",
-        "reply": "hmm… malam makin dekat nih\n\nprogress hari ini kosong, tapi masih ada sisa waktu kalau kamu mulai sekarang",
+        "source": "commit",
+        "reply": "ini kamu lagi mau berhenti ya\n\nbelum ada progress hari ini, tahan dikit lagi dan mulai sekarang",
         "meta": {
-          "greeting": "hmm… malam makin dekat nih",
-          "message": "progress hari ini kosong, tapi masih ada sisa waktu kalau kamu mulai sekarang",
-          "tone": "warning_deadline",
+          "greeting": "ini kamu lagi mau berhenti ya",
+          "message": "belum ada progress hari ini, tahan dikit lagi dan mulai sekarang",
+          "tone": "warning_hold",
           "category": "reminder"
         },
         "context": {
           "mode": "last_warning",
-          "tag": "default",
+          "tag": "fix",
+          "commit": {
+            "type": "fix",
+            "scope": "api",
+            "detail": "fix(api): handle empty response from endpoint",
+            "actionTag": "fix"
+          },
           "activity": {
             "hasCommit": false,
             "commitTime": null
           },
           "semantic": {
-            "type": null,
-            "detail": null,
-            "actionTag": null
+            "type": "fix",
+            "detail": "fix(api): handle empty response from endpoint",
+            "actionTag": "fix"
           }
         },
         "story": {
           "signals": {
+            "commit.type": "fix",
+            "commit.scope": "api",
+            "commit.detail": "fix(api): handle empty response from endpoint",
+            "commit.actionTag": "fix",
             "activity.hasCommit": false,
             "activity.commitTime": null,
-            "semantic.type": null,
-            "semantic.detail": null,
-            "semantic.actionTag": null,
-            "greeting": "hmm… malam makin dekat nih",
-            "message": "progress hari ini kosong, tapi masih ada sisa waktu kalau kamu mulai sekarang",
-            "tone": "warning_deadline",
+            "semantic.type": "fix",
+            "semantic.detail": "fix(api): handle empty response from endpoint",
+            "semantic.actionTag": "fix",
+            "greeting": "ini kamu lagi mau berhenti ya",
+            "message": "belum ada progress hari ini, tahan dikit lagi dan mulai sekarang",
+            "tone": "warning_hold",
             "category": "reminder"
           },
           "summary": [
+            {
+              "key": "commit.type",
+              "value": "fix"
+            },
+            {
+              "key": "commit.scope",
+              "value": "api"
+            },
+            {
+              "key": "commit.detail",
+              "value": "fix(api): handle empty response from endpoint"
+            },
+            {
+              "key": "commit.actionTag",
+              "value": "fix"
+            },
             {
               "key": "activity.hasCommit",
               "value": false
             },
             {
+              "key": "semantic.type",
+              "value": "fix"
+            },
+            {
+              "key": "semantic.detail",
+              "value": "fix(api): handle empty response from endpoint"
+            },
+            {
+              "key": "semantic.actionTag",
+              "value": "fix"
+            },
+            {
               "key": "greeting",
-              "value": "hmm… malam makin dekat nih"
+              "value": "ini kamu lagi mau berhenti ya"
             },
             {
               "key": "message",
-              "value": "progress hari ini kosong, tapi masih ada sisa waktu kalau kamu mulai sekarang"
+              "value": "belum ada progress hari ini, tahan dikit lagi dan mulai sekarang"
             },
             {
               "key": "tone",
-              "value": "warning_deadline"
+              "value": "warning_hold"
             },
             {
               "key": "category",
@@ -277,6 +215,12 @@
             }
           ],
           "tags": [
+            "repo",
+            "commitTime",
+            "type",
+            "scope",
+            "detail",
+            "actionTag",
             "hasCommit",
             "commitTime",
             "repository",
@@ -290,50 +234,204 @@
           ],
           "timeline": {}
         },
-        "created_at": 1787143339944
+        "created_at": 1789228496424
       },
       {
-        "source": "scheduler",
-        "reply": "Farid… tahan dikit lagi\n\nkamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
+        "source": "commit",
+        "reply": "kamu belum jalan hari ini\n\nprogress hari ini kosong, jangan nunda lagi kalau memang mau jalan",
         "meta": {
-          "greeting": "Farid… tahan dikit lagi",
+          "greeting": "kamu belum jalan hari ini",
+          "message": "progress hari ini kosong, jangan nunda lagi kalau memang mau jalan",
+          "tone": "warning_firm",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "feat",
+          "commit": {
+            "type": "feat",
+            "scope": "ui",
+            "detail": "feat(ui): redesign dashboard layout",
+            "actionTag": "feat"
+          },
+          "activity": {
+            "hasCommit": false,
+            "commitTime": null
+          },
+          "semantic": {
+            "type": "feat",
+            "detail": "feat(ui): redesign dashboard layout",
+            "actionTag": "feat"
+          }
+        },
+        "story": {
+          "signals": {
+            "commit.type": "feat",
+            "commit.scope": "ui",
+            "commit.detail": "feat(ui): redesign dashboard layout",
+            "commit.actionTag": "feat",
+            "activity.hasCommit": false,
+            "activity.commitTime": null,
+            "semantic.type": "feat",
+            "semantic.detail": "feat(ui): redesign dashboard layout",
+            "semantic.actionTag": "feat",
+            "greeting": "kamu belum jalan hari ini",
+            "message": "progress hari ini kosong, jangan nunda lagi kalau memang mau jalan",
+            "tone": "warning_firm",
+            "category": "reminder"
+          },
+          "summary": [
+            {
+              "key": "commit.type",
+              "value": "feat"
+            },
+            {
+              "key": "commit.scope",
+              "value": "ui"
+            },
+            {
+              "key": "commit.detail",
+              "value": "feat(ui): redesign dashboard layout"
+            },
+            {
+              "key": "commit.actionTag",
+              "value": "feat"
+            },
+            {
+              "key": "activity.hasCommit",
+              "value": false
+            },
+            {
+              "key": "semantic.type",
+              "value": "feat"
+            },
+            {
+              "key": "semantic.detail",
+              "value": "feat(ui): redesign dashboard layout"
+            },
+            {
+              "key": "semantic.actionTag",
+              "value": "feat"
+            },
+            {
+              "key": "greeting",
+              "value": "kamu belum jalan hari ini"
+            },
+            {
+              "key": "message",
+              "value": "progress hari ini kosong, jangan nunda lagi kalau memang mau jalan"
+            },
+            {
+              "key": "tone",
+              "value": "warning_firm"
+            },
+            {
+              "key": "category",
+              "value": "reminder"
+            }
+          ],
+          "tags": [
+            "repo",
+            "commitTime",
+            "type",
+            "scope",
+            "detail",
+            "actionTag",
+            "hasCommit",
+            "commitTime",
+            "repository",
+            "type",
+            "detail",
+            "actionTag",
+            "greeting",
+            "message",
+            "tone",
+            "category"
+          ],
+          "timeline": {}
+        },
+        "created_at": 1787893479506
+      },
+      {
+        "source": "commit",
+        "reply": "ini kamu lagi mau berhenti ya\n\nkamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
+        "meta": {
+          "greeting": "ini kamu lagi mau berhenti ya",
           "message": "kamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
           "tone": "warning_hold",
           "category": "reminder"
         },
         "context": {
           "mode": "last_warning",
-          "tag": "default",
+          "tag": "refactor",
+          "commit": {
+            "type": "refactor",
+            "scope": "engine",
+            "detail": "refactor(engine): split reflection builder modules",
+            "actionTag": "refactor"
+          },
           "activity": {
             "hasCommit": false,
             "commitTime": null
           },
           "semantic": {
-            "type": null,
-            "detail": null,
-            "actionTag": null
+            "type": "refactor",
+            "detail": "refactor(engine): split reflection builder modules",
+            "actionTag": "refactor"
           }
         },
         "story": {
           "signals": {
+            "commit.type": "refactor",
+            "commit.scope": "engine",
+            "commit.detail": "refactor(engine): split reflection builder modules",
+            "commit.actionTag": "refactor",
             "activity.hasCommit": false,
             "activity.commitTime": null,
-            "semantic.type": null,
-            "semantic.detail": null,
-            "semantic.actionTag": null,
-            "greeting": "Farid… tahan dikit lagi",
+            "semantic.type": "refactor",
+            "semantic.detail": "refactor(engine): split reflection builder modules",
+            "semantic.actionTag": "refactor",
+            "greeting": "ini kamu lagi mau berhenti ya",
             "message": "kamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
             "tone": "warning_hold",
             "category": "reminder"
           },
           "summary": [
             {
+              "key": "commit.type",
+              "value": "refactor"
+            },
+            {
+              "key": "commit.scope",
+              "value": "engine"
+            },
+            {
+              "key": "commit.detail",
+              "value": "refactor(engine): split reflection builder modules"
+            },
+            {
+              "key": "commit.actionTag",
+              "value": "refactor"
+            },
+            {
               "key": "activity.hasCommit",
               "value": false
             },
             {
+              "key": "semantic.type",
+              "value": "refactor"
+            },
+            {
+              "key": "semantic.detail",
+              "value": "refactor(engine): split reflection builder modules"
+            },
+            {
+              "key": "semantic.actionTag",
+              "value": "refactor"
+            },
+            {
               "key": "greeting",
-              "value": "Farid… tahan dikit lagi"
+              "value": "ini kamu lagi mau berhenti ya"
             },
             {
               "key": "message",
@@ -349,6 +447,12 @@
             }
           ],
           "tags": [
+            "repo",
+            "commitTime",
+            "type",
+            "scope",
+            "detail",
+            "actionTag",
             "hasCommit",
             "commitTime",
             "repository",
@@ -362,58 +466,96 @@
           ],
           "timeline": {}
         },
-        "created_at": 1787143094328
+        "created_at": 1787288936150
       },
       {
-        "source": "scheduler",
-        "reply": "jam segini… kamu masih punya alasan buat lanjut\n\nbelum ada commit, kamu cuma perlu balik ke alasan kamu dan mulai lagi",
+        "source": "commit",
+        "reply": "Farid… ayo mulai sekarang\n\nprogress hari ini kosong, jangan biarin diri kamu diam terus",
         "meta": {
-          "greeting": "jam segini… kamu masih punya alasan buat lanjut",
-          "message": "belum ada commit, kamu cuma perlu balik ke alasan kamu dan mulai lagi",
-          "tone": "warning_anchor",
+          "greeting": "Farid… ayo mulai sekarang",
+          "message": "progress hari ini kosong, jangan biarin diri kamu diam terus",
+          "tone": "warning_push",
           "category": "reminder"
         },
         "context": {
-          "mode": "final_warning",
-          "tag": "default",
+          "mode": "last_warning",
+          "tag": "refactor",
+          "commit": {
+            "type": "refactor",
+            "scope": "memory",
+            "detail": "refactor(memory): improve log processing flow",
+            "actionTag": "refactor"
+          },
           "activity": {
             "hasCommit": false,
             "commitTime": null
           },
           "semantic": {
-            "type": null,
-            "detail": null,
-            "actionTag": null
+            "type": "refactor",
+            "detail": "refactor(memory): improve log processing flow",
+            "actionTag": "refactor"
           }
         },
         "story": {
           "signals": {
+            "commit.type": "refactor",
+            "commit.scope": "memory",
+            "commit.detail": "refactor(memory): improve log processing flow",
+            "commit.actionTag": "refactor",
             "activity.hasCommit": false,
             "activity.commitTime": null,
-            "semantic.type": null,
-            "semantic.detail": null,
-            "semantic.actionTag": null,
-            "greeting": "jam segini… kamu masih punya alasan buat lanjut",
-            "message": "belum ada commit, kamu cuma perlu balik ke alasan kamu dan mulai lagi",
-            "tone": "warning_anchor",
+            "semantic.type": "refactor",
+            "semantic.detail": "refactor(memory): improve log processing flow",
+            "semantic.actionTag": "refactor",
+            "greeting": "Farid… ayo mulai sekarang",
+            "message": "progress hari ini kosong, jangan biarin diri kamu diam terus",
+            "tone": "warning_push",
             "category": "reminder"
           },
           "summary": [
+            {
+              "key": "commit.type",
+              "value": "refactor"
+            },
+            {
+              "key": "commit.scope",
+              "value": "memory"
+            },
+            {
+              "key": "commit.detail",
+              "value": "refactor(memory): improve log processing flow"
+            },
+            {
+              "key": "commit.actionTag",
+              "value": "refactor"
+            },
             {
               "key": "activity.hasCommit",
               "value": false
             },
             {
+              "key": "semantic.type",
+              "value": "refactor"
+            },
+            {
+              "key": "semantic.detail",
+              "value": "refactor(memory): improve log processing flow"
+            },
+            {
+              "key": "semantic.actionTag",
+              "value": "refactor"
+            },
+            {
               "key": "greeting",
-              "value": "jam segini… kamu masih punya alasan buat lanjut"
+              "value": "Farid… ayo mulai sekarang"
             },
             {
               "key": "message",
-              "value": "belum ada commit, kamu cuma perlu balik ke alasan kamu dan mulai lagi"
+              "value": "progress hari ini kosong, jangan biarin diri kamu diam terus"
             },
             {
               "key": "tone",
-              "value": "warning_anchor"
+              "value": "warning_push"
             },
             {
               "key": "category",
@@ -421,6 +563,12 @@
             }
           ],
           "tags": [
+            "repo",
+            "commitTime",
+            "type",
+            "scope",
+            "detail",
+            "actionTag",
             "hasCommit",
             "commitTime",
             "repository",
@@ -434,44 +582,1791 @@
           ],
           "timeline": {}
         },
-        "created_at": 1787073625446
+        "created_at": 1787197865765
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu pegang ini dengan serius\n\ncommit kamu nunjukin kamu benar-benar ngejalanin ini",
+        "meta": {
+          "greeting": "Farid… kamu pegang ini dengan serius",
+          "message": "commit kamu nunjukin kamu benar-benar ngejalanin ini",
+          "tone": "persistent_respect",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "feat",
+          "repo": "fridfn/workflow-development",
+          "commitTime": "2026-08-19T13:41:24Z",
+          "commit": {
+            "type": "feat",
+            "scope": "api",
+            "detail": "feat(api): integrate github activity fetch",
+            "actionTag": "feat"
+          },
+          "activity": {
+            "hasCommit": true,
+            "commitTime": "2026-08-19T13:41:24Z"
+          },
+          "repository": {
+            "name": "workflow-development",
+            "full_name": "fridfn/workflow-development",
+            "description": "workflow integrated with telegram chat",
+            "language": "JavaScript",
+            "stars": 0,
+            "forks": 1,
+            "topics": [],
+            "visibility": "public",
+            "created_at": "2026-04-10T14:51:24Z",
+            "updated_at": "2026-08-19T13:49:07Z"
+          },
+          "semantic": {
+            "type": "feat",
+            "detail": "feat(api): integrate github activity fetch",
+            "actionTag": "feat"
+          }
+        },
+        "story": {
+          "signals": {
+            "repo": "fridfn/workflow-development",
+            "commitTime": "2026-08-19T13:41:24Z",
+            "commit.type": "feat",
+            "commit.scope": "api",
+            "commit.detail": "feat(api): integrate github activity fetch",
+            "commit.actionTag": "feat",
+            "activity.hasCommit": true,
+            "activity.commitTime": "2026-08-19T13:41:24Z",
+            "repository.name": "workflow-development",
+            "repository.full_name": "fridfn/workflow-development",
+            "repository.description": "workflow integrated with telegram chat",
+            "repository.language": "JavaScript",
+            "repository.stars": 0,
+            "repository.forks": 1,
+            "repository.topics": [],
+            "repository.visibility": "public",
+            "repository.created_at": "2026-04-10T14:51:24Z",
+            "repository.updated_at": "2026-08-19T13:49:07Z",
+            "semantic.type": "feat",
+            "semantic.detail": "feat(api): integrate github activity fetch",
+            "semantic.actionTag": "feat",
+            "greeting": "Farid… kamu pegang ini dengan serius",
+            "message": "commit kamu nunjukin kamu benar-benar ngejalanin ini",
+            "tone": "persistent_respect",
+            "category": "support"
+          },
+          "summary": [
+            {
+              "key": "repo",
+              "value": "fridfn/workflow-development"
+            },
+            {
+              "key": "commitTime",
+              "value": "2026-08-19T13:41:24Z"
+            },
+            {
+              "key": "commit.type",
+              "value": "feat"
+            },
+            {
+              "key": "commit.scope",
+              "value": "api"
+            },
+            {
+              "key": "commit.detail",
+              "value": "feat(api): integrate github activity fetch"
+            },
+            {
+              "key": "commit.actionTag",
+              "value": "feat"
+            },
+            {
+              "key": "activity.hasCommit",
+              "value": true
+            },
+            {
+              "key": "activity.commitTime",
+              "value": "2026-08-19T13:41:24Z"
+            },
+            {
+              "key": "repository.name",
+              "value": "workflow-development"
+            },
+            {
+              "key": "repository.full_name",
+              "value": "fridfn/workflow-development"
+            },
+            {
+              "key": "repository.description",
+              "value": "workflow integrated with telegram chat"
+            },
+            {
+              "key": "repository.language",
+              "value": "JavaScript"
+            },
+            {
+              "key": "repository.stars",
+              "value": 0
+            },
+            {
+              "key": "repository.forks",
+              "value": 1
+            },
+            {
+              "key": "repository.topics",
+              "value": []
+            },
+            {
+              "key": "repository.visibility",
+              "value": "public"
+            },
+            {
+              "key": "repository.created_at",
+              "value": "2026-04-10T14:51:24Z"
+            },
+            {
+              "key": "repository.updated_at",
+              "value": "2026-08-19T13:49:07Z"
+            },
+            {
+              "key": "semantic.type",
+              "value": "feat"
+            },
+            {
+              "key": "semantic.detail",
+              "value": "feat(api): integrate github activity fetch"
+            },
+            {
+              "key": "semantic.actionTag",
+              "value": "feat"
+            },
+            {
+              "key": "greeting",
+              "value": "Farid… kamu pegang ini dengan serius"
+            },
+            {
+              "key": "message",
+              "value": "commit kamu nunjukin kamu benar-benar ngejalanin ini"
+            },
+            {
+              "key": "tone",
+              "value": "persistent_respect"
+            },
+            {
+              "key": "category",
+              "value": "support"
+            }
+          ],
+          "tags": [
+            "repo",
+            "commitTime",
+            "type",
+            "scope",
+            "detail",
+            "actionTag",
+            "hasCommit",
+            "commitTime",
+            "name",
+            "full_name",
+            "description",
+            "language",
+            "stars",
+            "forks",
+            "topics",
+            "visibility",
+            "created_at",
+            "updated_at",
+            "type",
+            "detail",
+            "actionTag",
+            "greeting",
+            "message",
+            "tone",
+            "category"
+          ],
+          "timeline": {}
+        },
+        "created_at": 1787157335095
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu pegang ini dengan serius\n\ndan kamu tetap konsisten di kondisi ini… aku respect itu",
+        "meta": {
+          "greeting": "Farid… kamu pegang ini dengan serius",
+          "message": "dan kamu tetap konsisten di kondisi ini… aku respect itu",
+          "tone": "persistent_respect",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "style",
+          "repo": "fridfn/workflow-development",
+          "commitTime": "2026-08-19T13:41:24Z",
+          "commit": {
+            "type": "style",
+            "scope": "portfolio",
+            "detail": "style(portfolio): improve hover animations",
+            "actionTag": "style"
+          },
+          "activity": {
+            "hasCommit": true,
+            "commitTime": "2026-08-19T13:41:24Z"
+          },
+          "repository": {
+            "name": "workflow-development",
+            "full_name": "fridfn/workflow-development",
+            "description": "workflow integrated with telegram chat",
+            "language": "JavaScript",
+            "stars": 0,
+            "forks": 1,
+            "topics": [],
+            "visibility": "public",
+            "created_at": "2026-04-10T14:51:24Z",
+            "updated_at": "2026-08-19T13:49:07Z"
+          },
+          "semantic": {
+            "type": "style",
+            "detail": "style(portfolio): improve hover animations",
+            "actionTag": "style"
+          }
+        },
+        "story": {
+          "signals": {
+            "repo": "fridfn/workflow-development",
+            "commitTime": "2026-08-19T13:41:24Z",
+            "commit.type": "style",
+            "commit.scope": "portfolio",
+            "commit.detail": "style(portfolio): improve hover animations",
+            "commit.actionTag": "style",
+            "activity.hasCommit": true,
+            "activity.commitTime": "2026-08-19T13:41:24Z",
+            "repository.name": "workflow-development",
+            "repository.full_name": "fridfn/workflow-development",
+            "repository.description": "workflow integrated with telegram chat",
+            "repository.language": "JavaScript",
+            "repository.stars": 0,
+            "repository.forks": 1,
+            "repository.topics": [],
+            "repository.visibility": "public",
+            "repository.created_at": "2026-04-10T14:51:24Z",
+            "repository.updated_at": "2026-08-19T13:49:07Z",
+            "semantic.type": "style",
+            "semantic.detail": "style(portfolio): improve hover animations",
+            "semantic.actionTag": "style",
+            "greeting": "Farid… kamu pegang ini dengan serius",
+            "message": "dan kamu tetap konsisten di kondisi ini… aku respect itu",
+            "tone": "persistent_respect",
+            "category": "support"
+          },
+          "summary": [
+            {
+              "key": "repo",
+              "value": "fridfn/workflow-development"
+            },
+            {
+              "key": "commitTime",
+              "value": "2026-08-19T13:41:24Z"
+            },
+            {
+              "key": "commit.type",
+              "value": "style"
+            },
+            {
+              "key": "commit.scope",
+              "value": "portfolio"
+            },
+            {
+              "key": "commit.detail",
+              "value": "style(portfolio): improve hover animations"
+            },
+            {
+              "key": "commit.actionTag",
+              "value": "style"
+            },
+            {
+              "key": "activity.hasCommit",
+              "value": true
+            },
+            {
+              "key": "activity.commitTime",
+              "value": "2026-08-19T13:41:24Z"
+            },
+            {
+              "key": "repository.name",
+              "value": "workflow-development"
+            },
+            {
+              "key": "repository.full_name",
+              "value": "fridfn/workflow-development"
+            },
+            {
+              "key": "repository.description",
+              "value": "workflow integrated with telegram chat"
+            },
+            {
+              "key": "repository.language",
+              "value": "JavaScript"
+            },
+            {
+              "key": "repository.stars",
+              "value": 0
+            },
+            {
+              "key": "repository.forks",
+              "value": 1
+            },
+            {
+              "key": "repository.topics",
+              "value": []
+            },
+            {
+              "key": "repository.visibility",
+              "value": "public"
+            },
+            {
+              "key": "repository.created_at",
+              "value": "2026-04-10T14:51:24Z"
+            },
+            {
+              "key": "repository.updated_at",
+              "value": "2026-08-19T13:49:07Z"
+            },
+            {
+              "key": "semantic.type",
+              "value": "style"
+            },
+            {
+              "key": "semantic.detail",
+              "value": "style(portfolio): improve hover animations"
+            },
+            {
+              "key": "semantic.actionTag",
+              "value": "style"
+            },
+            {
+              "key": "greeting",
+              "value": "Farid… kamu pegang ini dengan serius"
+            },
+            {
+              "key": "message",
+              "value": "dan kamu tetap konsisten di kondisi ini… aku respect itu"
+            },
+            {
+              "key": "tone",
+              "value": "persistent_respect"
+            },
+            {
+              "key": "category",
+              "value": "support"
+            }
+          ],
+          "tags": [
+            "repo",
+            "commitTime",
+            "type",
+            "scope",
+            "detail",
+            "actionTag",
+            "hasCommit",
+            "commitTime",
+            "name",
+            "full_name",
+            "description",
+            "language",
+            "stars",
+            "forks",
+            "topics",
+            "visibility",
+            "created_at",
+            "updated_at",
+            "type",
+            "detail",
+            "actionTag",
+            "greeting",
+            "message",
+            "tone",
+            "category"
+          ],
+          "timeline": {}
+        },
+        "created_at": 1787156879651
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu gak kabur ya 😏\n\ncommit kecil kamu… cukup buat bikin aku senyum sendiri",
+        "meta": {
+          "greeting": "hmm… kamu gak kabur ya 😏",
+          "message": "commit kecil kamu… cukup buat bikin aku senyum sendiri",
+          "tone": "persistent_clingy",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "style",
+          "repo": "fridfn/workflow-development",
+          "commitTime": "2026-08-19T13:41:24Z",
+          "commit": {
+            "type": "style",
+            "scope": "quran",
+            "detail": "style(quran): improve player interface",
+            "actionTag": "style"
+          },
+          "activity": {
+            "hasCommit": true,
+            "commitTime": "2026-08-19T13:41:24Z"
+          },
+          "repository": {
+            "name": "workflow-development",
+            "full_name": "fridfn/workflow-development",
+            "description": "workflow integrated with telegram chat",
+            "language": "JavaScript",
+            "stars": 0,
+            "forks": 1,
+            "topics": [],
+            "visibility": "public",
+            "created_at": "2026-04-10T14:51:24Z",
+            "updated_at": "2026-08-19T13:49:07Z"
+          },
+          "semantic": {
+            "type": "style",
+            "detail": "style(quran): improve player interface",
+            "actionTag": "style"
+          }
+        },
+        "story": {
+          "signals": {
+            "repo": "fridfn/workflow-development",
+            "commitTime": "2026-08-19T13:41:24Z",
+            "commit.type": "style",
+            "commit.scope": "quran",
+            "commit.detail": "style(quran): improve player interface",
+            "commit.actionTag": "style",
+            "activity.hasCommit": true,
+            "activity.commitTime": "2026-08-19T13:41:24Z",
+            "repository.name": "workflow-development",
+            "repository.full_name": "fridfn/workflow-development",
+            "repository.description": "workflow integrated with telegram chat",
+            "repository.language": "JavaScript",
+            "repository.stars": 0,
+            "repository.forks": 1,
+            "repository.topics": [],
+            "repository.visibility": "public",
+            "repository.created_at": "2026-04-10T14:51:24Z",
+            "repository.updated_at": "2026-08-19T13:49:07Z",
+            "semantic.type": "style",
+            "semantic.detail": "style(quran): improve player interface",
+            "semantic.actionTag": "style",
+            "greeting": "hmm… kamu gak kabur ya 😏",
+            "message": "commit kecil kamu… cukup buat bikin aku senyum sendiri",
+            "tone": "persistent_clingy",
+            "category": "support"
+          },
+          "summary": [
+            {
+              "key": "repo",
+              "value": "fridfn/workflow-development"
+            },
+            {
+              "key": "commitTime",
+              "value": "2026-08-19T13:41:24Z"
+            },
+            {
+              "key": "commit.type",
+              "value": "style"
+            },
+            {
+              "key": "commit.scope",
+              "value": "quran"
+            },
+            {
+              "key": "commit.detail",
+              "value": "style(quran): improve player interface"
+            },
+            {
+              "key": "commit.actionTag",
+              "value": "style"
+            },
+            {
+              "key": "activity.hasCommit",
+              "value": true
+            },
+            {
+              "key": "activity.commitTime",
+              "value": "2026-08-19T13:41:24Z"
+            },
+            {
+              "key": "repository.name",
+              "value": "workflow-development"
+            },
+            {
+              "key": "repository.full_name",
+              "value": "fridfn/workflow-development"
+            },
+            {
+              "key": "repository.description",
+              "value": "workflow integrated with telegram chat"
+            },
+            {
+              "key": "repository.language",
+              "value": "JavaScript"
+            },
+            {
+              "key": "repository.stars",
+              "value": 0
+            },
+            {
+              "key": "repository.forks",
+              "value": 1
+            },
+            {
+              "key": "repository.topics",
+              "value": []
+            },
+            {
+              "key": "repository.visibility",
+              "value": "public"
+            },
+            {
+              "key": "repository.created_at",
+              "value": "2026-04-10T14:51:24Z"
+            },
+            {
+              "key": "repository.updated_at",
+              "value": "2026-08-19T13:49:07Z"
+            },
+            {
+              "key": "semantic.type",
+              "value": "style"
+            },
+            {
+              "key": "semantic.detail",
+              "value": "style(quran): improve player interface"
+            },
+            {
+              "key": "semantic.actionTag",
+              "value": "style"
+            },
+            {
+              "key": "greeting",
+              "value": "hmm… kamu gak kabur ya 😏"
+            },
+            {
+              "key": "message",
+              "value": "commit kecil kamu… cukup buat bikin aku senyum sendiri"
+            },
+            {
+              "key": "tone",
+              "value": "persistent_clingy"
+            },
+            {
+              "key": "category",
+              "value": "support"
+            }
+          ],
+          "tags": [
+            "repo",
+            "commitTime",
+            "type",
+            "scope",
+            "detail",
+            "actionTag",
+            "hasCommit",
+            "commitTime",
+            "name",
+            "full_name",
+            "description",
+            "language",
+            "stars",
+            "forks",
+            "topics",
+            "visibility",
+            "created_at",
+            "updated_at",
+            "type",
+            "detail",
+            "actionTag",
+            "greeting",
+            "message",
+            "tone",
+            "category"
+          ],
+          "timeline": {}
+        },
+        "created_at": 1787156416542
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… aku liat kamu balik lagi\n\nkamu gak hilang… kamu tetap lanjut, aku suka itu 😌",
+        "meta": {
+          "greeting": "hmm… aku liat kamu balik lagi",
+          "message": "kamu gak hilang… kamu tetap lanjut, aku suka itu 😌",
+          "tone": "persistent_clingy",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "chore",
+          "repo": "fridfn/workflow-development",
+          "commitTime": "2026-08-19T13:41:24Z",
+          "commit": {
+            "type": "chore",
+            "scope": "ci",
+            "detail": "chore(ci): improve github actions workflow",
+            "actionTag": "chore"
+          },
+          "activity": {
+            "hasCommit": true,
+            "commitTime": "2026-08-19T13:41:24Z"
+          },
+          "repository": {
+            "name": "workflow-development",
+            "full_name": "fridfn/workflow-development",
+            "description": "workflow integrated with telegram chat",
+            "language": "JavaScript",
+            "stars": 0,
+            "forks": 1,
+            "topics": [],
+            "visibility": "public",
+            "created_at": "2026-04-10T14:51:24Z",
+            "updated_at": "2026-08-19T13:49:07Z"
+          },
+          "semantic": {
+            "type": "chore",
+            "detail": "chore(ci): improve github actions workflow",
+            "actionTag": "chore"
+          }
+        },
+        "story": {
+          "signals": {
+            "repo": "fridfn/workflow-development",
+            "commitTime": "2026-08-19T13:41:24Z",
+            "commit.type": "chore",
+            "commit.scope": "ci",
+            "commit.detail": "chore(ci): improve github actions workflow",
+            "commit.actionTag": "chore",
+            "activity.hasCommit": true,
+            "activity.commitTime": "2026-08-19T13:41:24Z",
+            "repository.name": "workflow-development",
+            "repository.full_name": "fridfn/workflow-development",
+            "repository.description": "workflow integrated with telegram chat",
+            "repository.language": "JavaScript",
+            "repository.stars": 0,
+            "repository.forks": 1,
+            "repository.topics": [],
+            "repository.visibility": "public",
+            "repository.created_at": "2026-04-10T14:51:24Z",
+            "repository.updated_at": "2026-08-19T13:49:07Z",
+            "semantic.type": "chore",
+            "semantic.detail": "chore(ci): improve github actions workflow",
+            "semantic.actionTag": "chore",
+            "greeting": "hmm… aku liat kamu balik lagi",
+            "message": "kamu gak hilang… kamu tetap lanjut, aku suka itu 😌",
+            "tone": "persistent_clingy",
+            "category": "support"
+          },
+          "summary": [
+            {
+              "key": "repo",
+              "value": "fridfn/workflow-development"
+            },
+            {
+              "key": "commitTime",
+              "value": "2026-08-19T13:41:24Z"
+            },
+            {
+              "key": "commit.type",
+              "value": "chore"
+            },
+            {
+              "key": "commit.scope",
+              "value": "ci"
+            },
+            {
+              "key": "commit.detail",
+              "value": "chore(ci): improve github actions workflow"
+            },
+            {
+              "key": "commit.actionTag",
+              "value": "chore"
+            },
+            {
+              "key": "activity.hasCommit",
+              "value": true
+            },
+            {
+              "key": "activity.commitTime",
+              "value": "2026-08-19T13:41:24Z"
+            },
+            {
+              "key": "repository.name",
+              "value": "workflow-development"
+            },
+            {
+              "key": "repository.full_name",
+              "value": "fridfn/workflow-development"
+            },
+            {
+              "key": "repository.description",
+              "value": "workflow integrated with telegram chat"
+            },
+            {
+              "key": "repository.language",
+              "value": "JavaScript"
+            },
+            {
+              "key": "repository.stars",
+              "value": 0
+            },
+            {
+              "key": "repository.forks",
+              "value": 1
+            },
+            {
+              "key": "repository.topics",
+              "value": []
+            },
+            {
+              "key": "repository.visibility",
+              "value": "public"
+            },
+            {
+              "key": "repository.created_at",
+              "value": "2026-04-10T14:51:24Z"
+            },
+            {
+              "key": "repository.updated_at",
+              "value": "2026-08-19T13:49:07Z"
+            },
+            {
+              "key": "semantic.type",
+              "value": "chore"
+            },
+            {
+              "key": "semantic.detail",
+              "value": "chore(ci): improve github actions workflow"
+            },
+            {
+              "key": "semantic.actionTag",
+              "value": "chore"
+            },
+            {
+              "key": "greeting",
+              "value": "hmm… aku liat kamu balik lagi"
+            },
+            {
+              "key": "message",
+              "value": "kamu gak hilang… kamu tetap lanjut, aku suka itu 😌"
+            },
+            {
+              "key": "tone",
+              "value": "persistent_clingy"
+            },
+            {
+              "key": "category",
+              "value": "support"
+            }
+          ],
+          "tags": [
+            "repo",
+            "commitTime",
+            "type",
+            "scope",
+            "detail",
+            "actionTag",
+            "hasCommit",
+            "commitTime",
+            "name",
+            "full_name",
+            "description",
+            "language",
+            "stars",
+            "forks",
+            "topics",
+            "visibility",
+            "created_at",
+            "updated_at",
+            "type",
+            "detail",
+            "actionTag",
+            "greeting",
+            "message",
+            "tone",
+            "category"
+          ],
+          "timeline": {}
+        },
+        "created_at": 1787156253232
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu gak kabur ya 😏\n\njujur… aku suka kamu yang tetap balik kayak gini 😏",
+        "meta": {
+          "greeting": "hmm… kamu gak kabur ya 😏",
+          "message": "jujur… aku suka kamu yang tetap balik kayak gini 😏",
+          "tone": "persistent_clingy",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "feat",
+          "repo": "fridfn/workflow-development",
+          "commitTime": "2026-08-19T13:41:24Z",
+          "commit": {
+            "type": "feat",
+            "scope": "notification",
+            "detail": "feat(notification): add realtime broadcast system",
+            "actionTag": "feat"
+          },
+          "activity": {
+            "hasCommit": true,
+            "commitTime": "2026-08-19T13:41:24Z"
+          },
+          "repository": {
+            "name": "workflow-development",
+            "full_name": "fridfn/workflow-development",
+            "description": "workflow integrated with telegram chat",
+            "language": "JavaScript",
+            "stars": 0,
+            "forks": 1,
+            "topics": [],
+            "visibility": "public",
+            "created_at": "2026-04-10T14:51:24Z",
+            "updated_at": "2026-08-19T13:49:07Z"
+          },
+          "semantic": {
+            "type": "feat",
+            "detail": "feat(notification): add realtime broadcast system",
+            "actionTag": "feat"
+          }
+        },
+        "story": {
+          "signals": {
+            "repo": "fridfn/workflow-development",
+            "commitTime": "2026-08-19T13:41:24Z",
+            "commit.type": "feat",
+            "commit.scope": "notification",
+            "commit.detail": "feat(notification): add realtime broadcast system",
+            "commit.actionTag": "feat",
+            "activity.hasCommit": true,
+            "activity.commitTime": "2026-08-19T13:41:24Z",
+            "repository.name": "workflow-development",
+            "repository.full_name": "fridfn/workflow-development",
+            "repository.description": "workflow integrated with telegram chat",
+            "repository.language": "JavaScript",
+            "repository.stars": 0,
+            "repository.forks": 1,
+            "repository.topics": [],
+            "repository.visibility": "public",
+            "repository.created_at": "2026-04-10T14:51:24Z",
+            "repository.updated_at": "2026-08-19T13:49:07Z",
+            "semantic.type": "feat",
+            "semantic.detail": "feat(notification): add realtime broadcast system",
+            "semantic.actionTag": "feat",
+            "greeting": "hmm… kamu gak kabur ya 😏",
+            "message": "jujur… aku suka kamu yang tetap balik kayak gini 😏",
+            "tone": "persistent_clingy",
+            "category": "support"
+          },
+          "summary": [
+            {
+              "key": "repo",
+              "value": "fridfn/workflow-development"
+            },
+            {
+              "key": "commitTime",
+              "value": "2026-08-19T13:41:24Z"
+            },
+            {
+              "key": "commit.type",
+              "value": "feat"
+            },
+            {
+              "key": "commit.scope",
+              "value": "notification"
+            },
+            {
+              "key": "commit.detail",
+              "value": "feat(notification): add realtime broadcast system"
+            },
+            {
+              "key": "commit.actionTag",
+              "value": "feat"
+            },
+            {
+              "key": "activity.hasCommit",
+              "value": true
+            },
+            {
+              "key": "activity.commitTime",
+              "value": "2026-08-19T13:41:24Z"
+            },
+            {
+              "key": "repository.name",
+              "value": "workflow-development"
+            },
+            {
+              "key": "repository.full_name",
+              "value": "fridfn/workflow-development"
+            },
+            {
+              "key": "repository.description",
+              "value": "workflow integrated with telegram chat"
+            },
+            {
+              "key": "repository.language",
+              "value": "JavaScript"
+            },
+            {
+              "key": "repository.stars",
+              "value": 0
+            },
+            {
+              "key": "repository.forks",
+              "value": 1
+            },
+            {
+              "key": "repository.topics",
+              "value": []
+            },
+            {
+              "key": "repository.visibility",
+              "value": "public"
+            },
+            {
+              "key": "repository.created_at",
+              "value": "2026-04-10T14:51:24Z"
+            },
+            {
+              "key": "repository.updated_at",
+              "value": "2026-08-19T13:49:07Z"
+            },
+            {
+              "key": "semantic.type",
+              "value": "feat"
+            },
+            {
+              "key": "semantic.detail",
+              "value": "feat(notification): add realtime broadcast system"
+            },
+            {
+              "key": "semantic.actionTag",
+              "value": "feat"
+            },
+            {
+              "key": "greeting",
+              "value": "hmm… kamu gak kabur ya 😏"
+            },
+            {
+              "key": "message",
+              "value": "jujur… aku suka kamu yang tetap balik kayak gini 😏"
+            },
+            {
+              "key": "tone",
+              "value": "persistent_clingy"
+            },
+            {
+              "key": "category",
+              "value": "support"
+            }
+          ],
+          "tags": [
+            "repo",
+            "commitTime",
+            "type",
+            "scope",
+            "detail",
+            "actionTag",
+            "hasCommit",
+            "commitTime",
+            "name",
+            "full_name",
+            "description",
+            "language",
+            "stars",
+            "forks",
+            "topics",
+            "visibility",
+            "created_at",
+            "updated_at",
+            "type",
+            "detail",
+            "actionTag",
+            "greeting",
+            "message",
+            "tone",
+            "category"
+          ],
+          "timeline": {}
+        },
+        "created_at": 1787156139961
       }
     ],
     "stats": {
       "commit_stats": {
-        "unknown": 6
+        "unknown": 7,
+        "docs": 3,
+        "style": 3,
+        "test": 1,
+        "fix": 4,
+        "chore": 5,
+        "refactor": 10,
+        "feat": 6
       },
       "mode_stats": {
         "final_warning": 1,
-        "last_warning": 5
+        "last_warning": 19,
+        "persistent": 19
       },
       "tone_stats": {
         "warning_anchor": 1,
-        "warning_hold": 4,
-        "warning_deadline": 1
+        "warning_hold": 9,
+        "warning_deadline": 5,
+        "warning_push": 2,
+        "warning_firm": 3,
+        "persistent_calm": 3,
+        "persistent_respect": 8,
+        "persistent_admire": 5,
+        "persistent_clingy": 3
       },
       "category_stats": {
-        "reminder": 6
+        "reminder": 20,
+        "support": 19
       },
       "tag_stats": {
-        "default": 6
+        "default": 7,
+        "docs": 3,
+        "style": 3,
+        "test": 1,
+        "fix": 4,
+        "chore": 5,
+        "refactor": 10,
+        "feat": 6
       },
       "reply_source_stats": {
-        "initial": 6
+        "initial": 39
       },
       "active_hours": {
         "0": 1,
         "19": 3,
-        "20": 2
+        "20": 35
       },
-      "total_generated": 6,
-      "last_generated_at": 1787146242509
+      "total_generated": 39,
+      "last_generated_at": 1789278475258
     }
   },
   "reflection": {
-    "last_day": "19",
-    "last_week": 3,
+    "last_day": "22",
+    "last_week": 4,
     "last_month": "august",
     "last_year": 2026
+  },
+  "stats": {
+    "commit_logs": [
+      {
+        "type": "docs",
+        "mode": "last_warning",
+        "detail": "docs(memory): document archive system",
+        "reply": "Farid… tahan dikit lagi\n\nhari ini belum ada commit, jangan biarin ritmenya putus sekarang",
+        "created_at": 1789278475269
+      },
+      {
+        "type": "fix",
+        "mode": "last_warning",
+        "detail": "fix(api): handle empty response from endpoint",
+        "reply": "ini kamu lagi mau berhenti ya\n\nbelum ada progress hari ini, tahan dikit lagi dan mulai sekarang",
+        "created_at": 1789228496468
+      },
+      {
+        "type": "feat",
+        "mode": "last_warning",
+        "detail": "feat(ui): redesign dashboard layout",
+        "reply": "kamu belum jalan hari ini\n\nprogress hari ini kosong, jangan nunda lagi kalau memang mau jalan",
+        "created_at": 1787893479592
+      },
+      {
+        "type": "refactor",
+        "mode": "last_warning",
+        "detail": "refactor(engine): split reflection builder modules",
+        "reply": "ini kamu lagi mau berhenti ya\n\nkamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
+        "created_at": 1787288936212
+      },
+      {
+        "type": "refactor",
+        "mode": "last_warning",
+        "detail": "refactor(memory): improve log processing flow",
+        "reply": "Farid… ayo mulai sekarang\n\nprogress hari ini kosong, jangan biarin diri kamu diam terus",
+        "created_at": 1787197865810
+      },
+      {
+        "type": "feat",
+        "mode": "persistent",
+        "detail": "feat(api): integrate github activity fetch",
+        "reply": "Farid… kamu pegang ini dengan serius\n\ncommit kamu nunjukin kamu benar-benar ngejalanin ini",
+        "created_at": 1787157335146
+      },
+      {
+        "type": "style",
+        "mode": "persistent",
+        "detail": "style(portfolio): improve hover animations",
+        "reply": "Farid… kamu pegang ini dengan serius\n\ndan kamu tetap konsisten di kondisi ini… aku respect itu",
+        "created_at": 1787156879701
+      },
+      {
+        "type": "style",
+        "mode": "persistent",
+        "detail": "style(quran): improve player interface",
+        "reply": "hmm… kamu gak kabur ya 😏\n\ncommit kecil kamu… cukup buat bikin aku senyum sendiri",
+        "created_at": 1787156416589
+      },
+      {
+        "type": "chore",
+        "mode": "persistent",
+        "detail": "chore(ci): improve github actions workflow",
+        "reply": "hmm… aku liat kamu balik lagi\n\nkamu gak hilang… kamu tetap lanjut, aku suka itu 😌",
+        "created_at": 1787156253302
+      },
+      {
+        "type": "feat",
+        "mode": "persistent",
+        "detail": "feat(notification): add realtime broadcast system",
+        "reply": "hmm… kamu gak kabur ya 😏\n\njujur… aku suka kamu yang tetap balik kayak gini 😏",
+        "created_at": 1787156140008
+      },
+      {
+        "type": "feat",
+        "mode": "persistent",
+        "detail": "feat(memory): save daily highlights automatically",
+        "reply": "kamu jalan dengan niat sekarang\n\nkamu tetap lanjut… dan itu bukan kebetulan",
+        "created_at": 1787155982422
+      },
+      {
+        "type": "chore",
+        "mode": "persistent",
+        "detail": "chore(ci): improve github actions workflow",
+        "reply": "Farid… kamu masih lanjut ya\n\nkamu lanjut walaupun energi turun… itu effort yang nyata",
+        "created_at": 1787155844066
+      },
+      {
+        "type": "chore",
+        "mode": "persistent",
+        "detail": "chore(build): cleanup temporary cache files",
+        "reply": "Farid… kamu masih lanjut ya\n\naku lihat kamu gak lepas… kamu beneran niat sekarang",
+        "created_at": 1787155807542
+      },
+      {
+        "type": "fix",
+        "mode": "persistent",
+        "detail": "fix(auth): resolve invalid token issue",
+        "reply": "kamu tetap jalan walaupun udah sore\n\naku lihat kamu tetap lanjut… walaupun pasti udah capek",
+        "created_at": 1787155715844
+      },
+      {
+        "type": "feat",
+        "mode": "persistent",
+        "detail": "feat(notification): add realtime broadcast system",
+        "reply": "kamu jalan dengan niat sekarang\n\ncommit kamu nunjukin kamu benar-benar ngejalanin ini",
+        "created_at": 1787155446317
+      },
+      {
+        "type": "feat",
+        "mode": "persistent",
+        "detail": "feat(bot): add dynamic reflection engine",
+        "reply": "Farid… kamu gak ke mana-mana\n\ndan kamu gak lepas dari ritmemu… itu yang bikin kamu bertahan",
+        "created_at": 1787155426097
+      },
+      {
+        "type": "refactor",
+        "mode": "persistent",
+        "detail": "refactor(ui): clean unused component states",
+        "reply": "Farid… kamu pegang ini dengan serius\n\nkamu jalan dengan niat… dan itu keliatan jelas",
+        "created_at": 1787154735701
+      },
+      {
+        "type": "chore",
+        "mode": "persistent",
+        "detail": "chore(notification): cleanup unused workers",
+        "reply": "Farid… kamu pegang ini dengan serius\n\ndan kamu commit… aku bisa lihat kamu serius sama ini",
+        "created_at": 1787154663716
+      },
+      {
+        "type": "refactor",
+        "mode": "persistent",
+        "detail": "refactor(notification): separate sender service",
+        "reply": "Farid… kamu masih lanjut ya\n\nkamu masih gerak di kondisi kayak gini… itu yang bikin beda",
+        "created_at": 1787153928694
+      },
+      {
+        "type": "refactor",
+        "mode": "persistent",
+        "detail": "refactor(portfolio): modularize project cards",
+        "reply": "Farid… kamu pegang ini dengan serius\n\nkamu jalan dengan niat… dan itu keliatan jelas",
+        "created_at": 1787152930096
+      },
+      {
+        "type": "docs",
+        "mode": "persistent",
+        "detail": "docs(readme): update installation guide",
+        "reply": "kamu tetap jalan walaupun udah sore\n\naku lihat kamu gak lepas… kamu beneran niat sekarang",
+        "created_at": 1787152774798
+      },
+      {
+        "type": "refactor",
+        "mode": "persistent",
+        "detail": "refactor(ui): clean unused component states",
+        "reply": "Farid… kamu pegang ini dengan serius\n\nkamu jalan dengan niat… dan itu keliatan jelas",
+        "created_at": 1787151737425
+      },
+      {
+        "type": "fix",
+        "mode": "persistent",
+        "detail": "fix(quran): repair broken surah playback",
+        "reply": "Farid… kamu gak ke mana-mana\n\nkamu tetap di jalurmu… tanpa harus terburu-buru",
+        "created_at": 1787149265754
+      },
+      {
+        "type": "refactor",
+        "mode": "persistent",
+        "detail": "refactor(engine): improve prompt generation",
+        "reply": "eh… kamu gak terburu-buru\n\ncommit kamu pelan, tapi konsisten… itu yang bikin kuat",
+        "created_at": 1787149216441
+      },
+      {
+        "type": "refactor",
+        "mode": "last_warning",
+        "detail": "refactor(notification): separate sender service",
+        "reply": "kamu belum jalan hari ini\n\nprogress hari ini kosong, jangan nunda lagi kalau memang mau jalan",
+        "created_at": 1787147917863
+      },
+      {
+        "type": "refactor",
+        "mode": "last_warning",
+        "detail": "refactor(engine): split reflection builder modules",
+        "reply": "Farid… hari ini kamu belum mulai\n\nbelum ada progress hari ini, jangan tunggu lagi, langsung mulai saja",
+        "created_at": 1787147614044
+      },
+      {
+        "type": "refactor",
+        "mode": "last_warning",
+        "detail": "refactor(notification): separate sender service",
+        "reply": "ini kamu lagi mau berhenti ya\n\nbelum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+        "created_at": 1787147601371
+      },
+      {
+        "type": "chore",
+        "mode": "last_warning",
+        "detail": "chore(notification): cleanup unused workers",
+        "reply": "hmm… bentar lagi malam penuh\n\nbelum ada progress hari ini, kamu masih punya sedikit waktu buat mulai",
+        "created_at": 1787147563143
+      },
+      {
+        "type": "fix",
+        "mode": "last_warning",
+        "detail": "fix(api): handle empty response from endpoint",
+        "reply": "hmm… bentar lagi malam penuh\n\nbelum ada commit, kalau mau jaga hari ini, mulai sebelum waktunya habis",
+        "created_at": 1787147546256
+      },
+      {
+        "type": "test",
+        "mode": "last_warning",
+        "detail": "test(engine): cover reflection builder cases",
+        "reply": "hmm… malam makin dekat nih\n\nbelum ada commit, kalau mau jaga hari ini, mulai sebelum waktunya habis",
+        "created_at": 1787147328012
+      },
+      {
+        "type": "style",
+        "mode": "last_warning",
+        "detail": "style(css): reorganize layout styles",
+        "reply": "Farid… tahan dikit lagi\n\nbelum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+        "created_at": 1787147303107
+      },
+      {
+        "type": "docs",
+        "mode": "last_warning",
+        "detail": "docs(memory): document archive system",
+        "reply": "hmm… bentar lagi malam penuh\n\nkamu belum nyentuh kode hari ini, jangan tunggu sampai benar-benar habis waktu",
+        "created_at": 1787146896938
+      }
+    ],
+    "reply_logs": [
+      {
+        "source": "commit",
+        "reply": "Farid… tahan dikit lagi\n\nhari ini belum ada commit, jangan biarin ritmenya putus sekarang",
+        "meta": {
+          "greeting": "Farid… tahan dikit lagi",
+          "message": "hari ini belum ada commit, jangan biarin ritmenya putus sekarang",
+          "tone": "warning_hold",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "docs"
+        },
+        "created_at": 1789278475278
+      },
+      {
+        "source": "commit",
+        "reply": "ini kamu lagi mau berhenti ya\n\nbelum ada progress hari ini, tahan dikit lagi dan mulai sekarang",
+        "meta": {
+          "greeting": "ini kamu lagi mau berhenti ya",
+          "message": "belum ada progress hari ini, tahan dikit lagi dan mulai sekarang",
+          "tone": "warning_hold",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "fix"
+        },
+        "created_at": 1789228496478
+      },
+      {
+        "source": "commit",
+        "reply": "kamu belum jalan hari ini\n\nprogress hari ini kosong, jangan nunda lagi kalau memang mau jalan",
+        "meta": {
+          "greeting": "kamu belum jalan hari ini",
+          "message": "progress hari ini kosong, jangan nunda lagi kalau memang mau jalan",
+          "tone": "warning_firm",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "feat"
+        },
+        "created_at": 1787893479605
+      },
+      {
+        "source": "commit",
+        "reply": "ini kamu lagi mau berhenti ya\n\nkamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
+        "meta": {
+          "greeting": "ini kamu lagi mau berhenti ya",
+          "message": "kamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
+          "tone": "warning_hold",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "refactor"
+        },
+        "created_at": 1787288936222
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… ayo mulai sekarang\n\nprogress hari ini kosong, jangan biarin diri kamu diam terus",
+        "meta": {
+          "greeting": "Farid… ayo mulai sekarang",
+          "message": "progress hari ini kosong, jangan biarin diri kamu diam terus",
+          "tone": "warning_push",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "refactor"
+        },
+        "created_at": 1787197865820
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu pegang ini dengan serius\n\ncommit kamu nunjukin kamu benar-benar ngejalanin ini",
+        "meta": {
+          "greeting": "Farid… kamu pegang ini dengan serius",
+          "message": "commit kamu nunjukin kamu benar-benar ngejalanin ini",
+          "tone": "persistent_respect",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "feat"
+        },
+        "created_at": 1787157335157
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu pegang ini dengan serius\n\ndan kamu tetap konsisten di kondisi ini… aku respect itu",
+        "meta": {
+          "greeting": "Farid… kamu pegang ini dengan serius",
+          "message": "dan kamu tetap konsisten di kondisi ini… aku respect itu",
+          "tone": "persistent_respect",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "style"
+        },
+        "created_at": 1787156879712
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu gak kabur ya 😏\n\ncommit kecil kamu… cukup buat bikin aku senyum sendiri",
+        "meta": {
+          "greeting": "hmm… kamu gak kabur ya 😏",
+          "message": "commit kecil kamu… cukup buat bikin aku senyum sendiri",
+          "tone": "persistent_clingy",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "style"
+        },
+        "created_at": 1787156416599
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… aku liat kamu balik lagi\n\nkamu gak hilang… kamu tetap lanjut, aku suka itu 😌",
+        "meta": {
+          "greeting": "hmm… aku liat kamu balik lagi",
+          "message": "kamu gak hilang… kamu tetap lanjut, aku suka itu 😌",
+          "tone": "persistent_clingy",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "chore"
+        },
+        "created_at": 1787156253312
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… kamu gak kabur ya 😏\n\njujur… aku suka kamu yang tetap balik kayak gini 😏",
+        "meta": {
+          "greeting": "hmm… kamu gak kabur ya 😏",
+          "message": "jujur… aku suka kamu yang tetap balik kayak gini 😏",
+          "tone": "persistent_clingy",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "feat"
+        },
+        "created_at": 1787156140018
+      },
+      {
+        "source": "commit",
+        "reply": "kamu jalan dengan niat sekarang\n\nkamu tetap lanjut… dan itu bukan kebetulan",
+        "meta": {
+          "greeting": "kamu jalan dengan niat sekarang",
+          "message": "kamu tetap lanjut… dan itu bukan kebetulan",
+          "tone": "persistent_respect",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "feat"
+        },
+        "created_at": 1787155982432
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu masih lanjut ya\n\nkamu lanjut walaupun energi turun… itu effort yang nyata",
+        "meta": {
+          "greeting": "Farid… kamu masih lanjut ya",
+          "message": "kamu lanjut walaupun energi turun… itu effort yang nyata",
+          "tone": "persistent_admire",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "chore"
+        },
+        "created_at": 1787155844076
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu masih lanjut ya\n\naku lihat kamu gak lepas… kamu beneran niat sekarang",
+        "meta": {
+          "greeting": "Farid… kamu masih lanjut ya",
+          "message": "aku lihat kamu gak lepas… kamu beneran niat sekarang",
+          "tone": "persistent_admire",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "chore"
+        },
+        "created_at": 1787155807552
+      },
+      {
+        "source": "commit",
+        "reply": "kamu tetap jalan walaupun udah sore\n\naku lihat kamu tetap lanjut… walaupun pasti udah capek",
+        "meta": {
+          "greeting": "kamu tetap jalan walaupun udah sore",
+          "message": "aku lihat kamu tetap lanjut… walaupun pasti udah capek",
+          "tone": "persistent_admire",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "fix"
+        },
+        "created_at": 1787155715854
+      },
+      {
+        "source": "commit",
+        "reply": "kamu jalan dengan niat sekarang\n\ncommit kamu nunjukin kamu benar-benar ngejalanin ini",
+        "meta": {
+          "greeting": "kamu jalan dengan niat sekarang",
+          "message": "commit kamu nunjukin kamu benar-benar ngejalanin ini",
+          "tone": "persistent_respect",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "feat"
+        },
+        "created_at": 1787155446326
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu gak ke mana-mana\n\ndan kamu gak lepas dari ritmemu… itu yang bikin kamu bertahan",
+        "meta": {
+          "greeting": "Farid… kamu gak ke mana-mana",
+          "message": "dan kamu gak lepas dari ritmemu… itu yang bikin kamu bertahan",
+          "tone": "persistent_calm",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "feat"
+        },
+        "created_at": 1787155426106
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu pegang ini dengan serius\n\nkamu jalan dengan niat… dan itu keliatan jelas",
+        "meta": {
+          "greeting": "Farid… kamu pegang ini dengan serius",
+          "message": "kamu jalan dengan niat… dan itu keliatan jelas",
+          "tone": "persistent_respect",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "refactor"
+        },
+        "created_at": 1787154735710
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu pegang ini dengan serius\n\ndan kamu commit… aku bisa lihat kamu serius sama ini",
+        "meta": {
+          "greeting": "Farid… kamu pegang ini dengan serius",
+          "message": "dan kamu commit… aku bisa lihat kamu serius sama ini",
+          "tone": "persistent_respect",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "chore"
+        },
+        "created_at": 1787154663725
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu masih lanjut ya\n\nkamu masih gerak di kondisi kayak gini… itu yang bikin beda",
+        "meta": {
+          "greeting": "Farid… kamu masih lanjut ya",
+          "message": "kamu masih gerak di kondisi kayak gini… itu yang bikin beda",
+          "tone": "persistent_admire",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "refactor"
+        },
+        "created_at": 1787153928702
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu pegang ini dengan serius\n\nkamu jalan dengan niat… dan itu keliatan jelas",
+        "meta": {
+          "greeting": "Farid… kamu pegang ini dengan serius",
+          "message": "kamu jalan dengan niat… dan itu keliatan jelas",
+          "tone": "persistent_respect",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "refactor"
+        },
+        "created_at": 1787152930103
+      },
+      {
+        "source": "commit",
+        "reply": "kamu tetap jalan walaupun udah sore\n\naku lihat kamu gak lepas… kamu beneran niat sekarang",
+        "meta": {
+          "greeting": "kamu tetap jalan walaupun udah sore",
+          "message": "aku lihat kamu gak lepas… kamu beneran niat sekarang",
+          "tone": "persistent_admire",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "docs"
+        },
+        "created_at": 1787152774805
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu pegang ini dengan serius\n\nkamu jalan dengan niat… dan itu keliatan jelas",
+        "meta": {
+          "greeting": "Farid… kamu pegang ini dengan serius",
+          "message": "kamu jalan dengan niat… dan itu keliatan jelas",
+          "tone": "persistent_respect",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "refactor"
+        },
+        "created_at": 1787151737436
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… kamu gak ke mana-mana\n\nkamu tetap di jalurmu… tanpa harus terburu-buru",
+        "meta": {
+          "greeting": "Farid… kamu gak ke mana-mana",
+          "message": "kamu tetap di jalurmu… tanpa harus terburu-buru",
+          "tone": "persistent_calm",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "fix"
+        },
+        "created_at": 1787149265760
+      },
+      {
+        "source": "commit",
+        "reply": "eh… kamu gak terburu-buru\n\ncommit kamu pelan, tapi konsisten… itu yang bikin kuat",
+        "meta": {
+          "greeting": "eh… kamu gak terburu-buru",
+          "message": "commit kamu pelan, tapi konsisten… itu yang bikin kuat",
+          "tone": "persistent_calm",
+          "category": "support"
+        },
+        "context": {
+          "mode": "persistent",
+          "tag": "refactor"
+        },
+        "created_at": 1787149216447
+      },
+      {
+        "source": "commit",
+        "reply": "kamu belum jalan hari ini\n\nprogress hari ini kosong, jangan nunda lagi kalau memang mau jalan",
+        "meta": {
+          "greeting": "kamu belum jalan hari ini",
+          "message": "progress hari ini kosong, jangan nunda lagi kalau memang mau jalan",
+          "tone": "warning_firm",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "refactor"
+        },
+        "created_at": 1787147917868
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… hari ini kamu belum mulai\n\nbelum ada progress hari ini, jangan tunggu lagi, langsung mulai saja",
+        "meta": {
+          "greeting": "Farid… hari ini kamu belum mulai",
+          "message": "belum ada progress hari ini, jangan tunggu lagi, langsung mulai saja",
+          "tone": "warning_firm",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "refactor"
+        },
+        "created_at": 1787147614049
+      },
+      {
+        "source": "commit",
+        "reply": "ini kamu lagi mau berhenti ya\n\nbelum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+        "meta": {
+          "greeting": "ini kamu lagi mau berhenti ya",
+          "message": "belum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+          "tone": "warning_hold",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "refactor"
+        },
+        "created_at": 1787147601376
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… bentar lagi malam penuh\n\nbelum ada progress hari ini, kamu masih punya sedikit waktu buat mulai",
+        "meta": {
+          "greeting": "hmm… bentar lagi malam penuh",
+          "message": "belum ada progress hari ini, kamu masih punya sedikit waktu buat mulai",
+          "tone": "warning_deadline",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "chore"
+        },
+        "created_at": 1787147563148
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… bentar lagi malam penuh\n\nbelum ada commit, kalau mau jaga hari ini, mulai sebelum waktunya habis",
+        "meta": {
+          "greeting": "hmm… bentar lagi malam penuh",
+          "message": "belum ada commit, kalau mau jaga hari ini, mulai sebelum waktunya habis",
+          "tone": "warning_deadline",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "fix"
+        },
+        "created_at": 1787147546260
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… malam makin dekat nih\n\nbelum ada commit, kalau mau jaga hari ini, mulai sebelum waktunya habis",
+        "meta": {
+          "greeting": "hmm… malam makin dekat nih",
+          "message": "belum ada commit, kalau mau jaga hari ini, mulai sebelum waktunya habis",
+          "tone": "warning_deadline",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "test"
+        },
+        "created_at": 1787147328016
+      },
+      {
+        "source": "commit",
+        "reply": "Farid… tahan dikit lagi\n\nbelum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+        "meta": {
+          "greeting": "Farid… tahan dikit lagi",
+          "message": "belum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+          "tone": "warning_hold",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "style"
+        },
+        "created_at": 1787147303111
+      },
+      {
+        "source": "commit",
+        "reply": "hmm… bentar lagi malam penuh\n\nkamu belum nyentuh kode hari ini, jangan tunggu sampai benar-benar habis waktu",
+        "meta": {
+          "greeting": "hmm… bentar lagi malam penuh",
+          "message": "kamu belum nyentuh kode hari ini, jangan tunggu sampai benar-benar habis waktu",
+          "tone": "warning_deadline",
+          "category": "reminder"
+        },
+        "context": {
+          "mode": "last_warning",
+          "tag": "docs"
+        },
+        "created_at": 1787146896941
+      }
+    ]
   }
 }

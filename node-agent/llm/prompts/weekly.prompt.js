@@ -1,5 +1,4 @@
 export function buildWeeklyPrompt({ data }) {
-
   const stats =
     data.map(item => item.extra);
 

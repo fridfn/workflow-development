@@ -1,7 +1,6 @@
 import { buildStoryLayer } from "./story.mapper.js";
 
 export function buildEntry(entry = {}) {
-
   const normalizedEntry = {
     ...entry,
 

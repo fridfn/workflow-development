@@ -1,122 +1,92 @@
 [
   {
-    "source": "scheduler",
-    "reply": "Farid… tahan dikit lagi\n\nkamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
+    "source": "commit",
+    "reply": "Farid… tahan dikit lagi\n\nbelum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
     "meta": {
       "greeting": "Farid… tahan dikit lagi",
-      "message": "kamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
+      "message": "belum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
       "tone": "warning_hold",
       "category": "reminder"
     },
     "context": {
       "mode": "last_warning",
-      "tag": "default",
+      "tag": "style",
+      "commit": {
+        "type": "style",
+        "scope": "css",
+        "detail": "style(css): reorganize layout styles",
+        "actionTag": "style"
+      },
       "activity": {
         "hasCommit": false,
         "commitTime": null
       },
       "semantic": {
-        "type": null,
-        "detail": null,
-        "actionTag": null
+        "type": "style",
+        "detail": "style(css): reorganize layout styles",
+        "actionTag": "style"
       }
     },
-    "created_at": 1787143094355
+    "created_at": 1787147303118
   },
   {
-    "source": "scheduler",
-    "reply": "hmm… malam makin dekat nih\n\nprogress hari ini kosong, tapi masih ada sisa waktu kalau kamu mulai sekarang",
+    "source": "commit",
+    "reply": "hmm… malam makin dekat nih\n\nbelum ada commit, kalau mau jaga hari ini, mulai sebelum waktunya habis",
     "meta": {
       "greeting": "hmm… malam makin dekat nih",
-      "message": "progress hari ini kosong, tapi masih ada sisa waktu kalau kamu mulai sekarang",
+      "message": "belum ada commit, kalau mau jaga hari ini, mulai sebelum waktunya habis",
       "tone": "warning_deadline",
       "category": "reminder"
     },
     "context": {
       "mode": "last_warning",
-      "tag": "default",
+      "tag": "test",
+      "commit": {
+        "type": "test",
+        "scope": "engine",
+        "detail": "test(engine): cover reflection builder cases",
+        "actionTag": "test"
+      },
       "activity": {
         "hasCommit": false,
         "commitTime": null
       },
       "semantic": {
-        "type": null,
-        "detail": null,
-        "actionTag": null
+        "type": "test",
+        "detail": "test(engine): cover reflection builder cases",
+        "actionTag": "test"
       }
     },
-    "created_at": 1787143339958
+    "created_at": 1787147328032
   },
   {
-    "source": "scheduler",
-    "reply": "ini kamu lagi mau berhenti ya\n\nhari ini belum ada commit, jangan biarin ritmenya putus sekarang",
+    "source": "commit",
+    "reply": "hmm… bentar lagi malam penuh\n\nbelum ada commit, kalau mau jaga hari ini, mulai sebelum waktunya habis",
     "meta": {
-      "greeting": "ini kamu lagi mau berhenti ya",
-      "message": "hari ini belum ada commit, jangan biarin ritmenya putus sekarang",
-      "tone": "warning_hold",
+      "greeting": "hmm… bentar lagi malam penuh",
+      "message": "belum ada commit, kalau mau jaga hari ini, mulai sebelum waktunya habis",
+      "tone": "warning_deadline",
       "category": "reminder"
     },
     "context": {
       "mode": "last_warning",
-      "tag": "default",
+      "tag": "fix",
+      "commit": {
+        "type": "fix",
+        "scope": "api",
+        "detail": "fix(api): handle empty response from endpoint",
+        "actionTag": "fix"
+      },
       "activity": {
         "hasCommit": false,
         "commitTime": null
       },
       "semantic": {
-        "type": null,
-        "detail": null,
-        "actionTag": null
+        "type": "fix",
+        "detail": "fix(api): handle empty response from endpoint",
+        "actionTag": "fix"
       }
     },
-    "created_at": 1787143725293
-  },
-  {
-    "source": "scheduler",
-    "reply": "ini kamu lagi mau berhenti ya\n\nhari ini belum ada jejak, jangan biarin kosong, isi sedikit sekarang",
-    "meta": {
-      "greeting": "ini kamu lagi mau berhenti ya",
-      "message": "hari ini belum ada jejak, jangan biarin kosong, isi sedikit sekarang",
-      "tone": "warning_hold",
-      "category": "reminder"
-    },
-    "context": {
-      "mode": "last_warning",
-      "tag": "default",
-      "activity": {
-        "hasCommit": false,
-        "commitTime": null
-      },
-      "semantic": {
-        "type": null,
-        "detail": null,
-        "actionTag": null
-      }
-    },
-    "created_at": 1787144523843
-  },
-  {
-    "source": "scheduler",
-    "reply": "Farid… tahan dikit lagi\n\nkamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
-    "meta": {
-      "greeting": "Farid… tahan dikit lagi",
-      "message": "kamu belum jalan hari ini, jangan lepas begitu aja, lanjut sedikit",
-      "tone": "warning_hold",
-      "category": "reminder"
-    },
-    "context": {
-      "mode": "last_warning",
-      "tag": "default",
-      "activity": {
-        "hasCommit": false,
-        "commitTime": null
-      },
-      "semantic": {
-        "type": null,
-        "detail": null,
-        "actionTag": null
-      }
-    },
-    "created_at": 1787146242520
+    "created_at": 1787147546288
   }
 ]

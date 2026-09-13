@@ -172,13 +172,13 @@ export async function handleReflectionTransition({
   // ========================================
   // 🔹 WEEKLY REFLECTION
   // ========================================
-  if (lastWeek !== week) {
+  if (/* lastWeek !== week*/ 1 === 1) {
 
     const outputFile =
       path.join(
         archiveMonthDir,
         "weekly",
-        `week_${lastWeek}.json`
+        `week_${lastWeek}.md`
       );
 
     ensureDir(path.dirname(outputFile));
@@ -188,7 +188,7 @@ export async function handleReflectionTransition({
         statsMonthDir,
         week: lastWeek
       });
-
+      
     await generateReflection({
       agent,
       type: "weekly",
@@ -353,25 +353,80 @@ function loadDailyMemory({
 // ========================================
 // 🔹 LOAD WEEKLY STATS
 // ========================================
+function mergeStats(target, source) {
+  for (const [key, value] of Object.entries(source)) {
+    if (typeof value === "number") {
+      target[key] = (target[key] ?? 0) + value;
+      continue;
+    }
+
+    if (Array.isArray(value)) {
+      target[key] = [
+        ...(target[key] ?? []),
+        ...value
+      ];
+      continue;
+    }
+
+    if (value && typeof value === "object") {
+      target[key] ??= {};
+      mergeStats(target[key], value);
+    }
+  }
+
+  return target;
+}
+
+
 function loadWeeklyStats({
   statsMonthDir,
   week
 }) {
+  console.log("[WEEK KE]", week);
 
-  const file =
-    path.join(
-      statsMonthDir,
-      `week_${week}.json`
-    );
+  const weekDir = path.join(
+    statsMonthDir,
+    `week_${week}`
+  );
 
-  if (!fs.existsSync(file)) {
+  if (!fs.existsSync(weekDir)) {
     return {};
   }
 
-  return JSON.parse(
-    fs.readFileSync(
-      file,
-      "utf-8"
-    )
-  );
+  if (!fs.statSync(weekDir).isDirectory()) {
+    return {};
+  }
+
+  const files = fs
+    .readdirSync(weekDir)
+    .filter(file => file.endsWith(".json"))
+    .sort();
+
+  const weeklyStats = {};
+
+  for (const file of files) {
+    const filePath = path.join(
+      weekDir,
+      file
+    );
+
+    try {
+      const dailyStats = JSON.parse(
+        fs.readFileSync(filePath, "utf-8")
+      );
+
+      mergeStats(
+        weeklyStats,
+        dailyStats
+      );
+
+    } catch (error) {
+      console.error(
+        `[WEEK ERROR] ${file}:`,
+        error.message
+      );
+    }
+  }
+
+  return weeklyStats;
 }

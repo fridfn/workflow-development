@@ -1,0 +1,46 @@
+[
+  {
+    "source": "commit",
+    "reply": "Farid… kamu masih lanjut ya\n\nkamu masih gerak di kondisi kayak gini… itu yang bikin beda",
+    "meta": {
+      "greeting": "Farid… kamu masih lanjut ya",
+      "message": "kamu masih gerak di kondisi kayak gini… itu yang bikin beda",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "refactor",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-08-19T13:41:24Z",
+      "commit": {
+        "type": "refactor",
+        "scope": "notification",
+        "detail": "refactor(notification): separate sender service",
+        "actionTag": "refactor"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-08-19T13:41:24Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "stars": 0,
+        "forks": 1,
+        "topics": [],
+        "visibility": "public",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-08-19T13:49:07Z"
+      },
+      "semantic": {
+        "type": "refactor",
+        "detail": "refactor(notification): separate sender service",
+        "actionTag": "refactor"
+      }
+    },
+    "created_at": 1787153928713
+  }
+]
