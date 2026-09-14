@@ -1,0 +1,194 @@
+[
+  {
+    "source": "commit",
+    "reply": "hmm… kamu gak kabur ya 😏\n\nkamu gak hilang… kamu tetap lanjut, aku suka itu 😌",
+    "meta": {
+      "greeting": "hmm… kamu gak kabur ya 😏",
+      "message": "kamu gak hilang… kamu tetap lanjut, aku suka itu 😌",
+      "tone": "persistent_clingy",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "docs",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-13T05:49:06Z",
+      "commit": {
+        "type": "docs",
+        "scope": "api",
+        "detail": "docs(api): add endpoint usage examples",
+        "actionTag": "docs"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-13T05:49:06Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "stars": 0,
+        "forks": 1,
+        "topics": [],
+        "visibility": "public",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-13T05:49:09Z"
+      },
+      "semantic": {
+        "type": "docs",
+        "detail": "docs(api): add endpoint usage examples",
+        "actionTag": "docs"
+      }
+    },
+    "created_at": 1789308856615
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… ayo mulai sekarang\n\nbelum ada commit, kalau kamu mau lanjut, sekarang waktunya dorong diri kamu",
+    "meta": {
+      "greeting": "Farid… ayo mulai sekarang",
+      "message": "belum ada commit, kalau kamu mau lanjut, sekarang waktunya dorong diri kamu",
+      "tone": "warning_push",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "chore",
+      "commit": {
+        "type": "chore",
+        "scope": "ci",
+        "detail": "chore(ci): improve github actions workflow",
+        "actionTag": "chore"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "chore",
+        "detail": "chore(ci): improve github actions workflow",
+        "actionTag": "chore"
+      }
+    },
+    "created_at": 1789311303773
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… kamu gak kabur ya 😏\n\njujur… aku suka kamu yang tetap balik kayak gini 😏",
+    "meta": {
+      "greeting": "hmm… kamu gak kabur ya 😏",
+      "message": "jujur… aku suka kamu yang tetap balik kayak gini 😏",
+      "tone": "persistent_clingy",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "style",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-13T05:49:06Z",
+      "commit": {
+        "type": "style",
+        "scope": "ui",
+        "detail": "style(ui): improve button spacing",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-13T05:49:06Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "stars": 0,
+        "forks": 1,
+        "topics": [],
+        "visibility": "public",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-13T05:49:09Z"
+      },
+      "semantic": {
+        "type": "style",
+        "detail": "style(ui): improve button spacing",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1789313817084
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu pegang ini dengan serius\n\ndan kamu tetap konsisten di kondisi ini… aku respect itu",
+    "meta": {
+      "greeting": "Farid… kamu pegang ini dengan serius",
+      "message": "dan kamu tetap konsisten di kondisi ini… aku respect itu",
+      "tone": "persistent_respect",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "fix",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-13T05:49:06Z",
+      "commit": {
+        "type": "fix",
+        "scope": "quran",
+        "detail": "fix(quran): repair broken surah playback",
+        "actionTag": "fix"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-13T05:49:06Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "stars": 0,
+        "forks": 1,
+        "topics": [],
+        "visibility": "public",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-13T05:49:09Z"
+      },
+      "semantic": {
+        "type": "fix",
+        "detail": "fix(quran): repair broken surah playback",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1789317311325
+  },
+  {
+    "source": "commit",
+    "reply": "ini kamu lagi mau berhenti ya\n\nbelum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+    "meta": {
+      "greeting": "ini kamu lagi mau berhenti ya",
+      "message": "belum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+      "tone": "warning_hold",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "style",
+      "commit": {
+        "type": "style",
+        "scope": "ui",
+        "detail": "style(ui): improve button spacing",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "style",
+        "detail": "style(ui): improve button spacing",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1789320253636
+  }
+]

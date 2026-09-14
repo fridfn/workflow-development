@@ -1,0 +1,124 @@
+Folder PATH listing
+Volume serial number is 4A22-4E21
+node-agent 
+|   .env
+|   .env.examples
+|   commit.example.json
+|   memory.json
+|   package-lock.json
+|   package.json
+|   structure.txt
+|   
++---config
+|       agent.config.json
+|       
++---core
+|       commit.js
+|       compose.js
+|       engine.js
+|       retry.js
+|       run.engine.js
+|       scheduler.js
+|       
++---engine
+|   |   reflection.transition.engine.js
+|   |   
+|   \---enrichment
+|           entry.builder.js
+|           extractor.js
+|           story.mapper.js
+|           
++---llm
+|   |   models.js
+|   |   reflection.engine.js
+|   |   
+|   +---core
+|   |       generate.js
+|   |       
+|   +---parsers
+|   |       json.parser.js
+|   |       
+|   +---prompts
+|   |       daily.prompt.js
+|   |       monthly.prompt.js
+|   |       weekly.prompt.js
+|   |       yearly.prompt.js
+|   |       
+|   \---providers
+|           groq.provider.js
+|           
++---memory
+|   |   archive.js
+|   |   history.js
+|   |   memory.js
+|   |   stats.engine.js
+|   |   
+|   +---active
+|   |       aurielle_nara_elowen.memory.json
+|   |       
+|   +---archive
+|   |   \---aurielle_nara_elowen
+|   |       \---2026
+|   |           +---august
+|   |           |   +---weekly
+|   |           |   |       week_1.json
+|   |           |   |       week_3.md
+|   |           |   |       week_4.json
+|   |           |   |       week_4.md
+|   |           |   |       
+|   |           |   +---week_1
+|   |           |   |       01.json
+|   |           |   |       
+|   |           |   +---week_3
+|   |           |   |       18.json
+|   |           |   |       19.json
+|   |           |   |       
+|   |           |   \---week_4
+|   |           |           22.json
+|   |           |           
+|   |           \---summaries
+|   |                   yearly-summary.json
+|   |                   
+|   \---stats
+|       \---aurielle_nara_elowen
+|           \---2026
+|               \---august
+|                   +---week_1
+|                   |       01.json
+|                   |       
+|                   +---week_3
+|                   |       18.json
+|                   |       19.json
+|                   |       
+|                   \---week_4
+|                           22.json
+|                           
++---transport
+|       telegram.js
+|       
+\---utils
+    |   analytics.js
+    |   context.js
+    |   date.js
+    |   decode.file.js
+    |   fs.helper.js
+    |   github.js
+    |   github.repo.js
+    |   logger.js
+    |   parser.js
+    |   random.commit.js
+    |   time.js
+    |   validator.js
+    |   weeks.js
+    |   
+    \---stats
+            flat.stats.js
+            get.top.key.js
+            groups.js
+            increment.js
+            index.js
+            merge.js
+            summary.js
+            timeline.js
+            update.js
+            

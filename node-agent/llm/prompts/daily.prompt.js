@@ -36,17 +36,15 @@ export function buildDailyPrompt({ data }) {
    
    ---
    
-   FORMAT OUTPUT:
+   FORMAT OUTPUT EXAMPLE:
    Return ONLY valid markdown.
    
    # 🌙 Daily Reflection
 
    > Date: 15 Mei 2026
    > Active Repositories: fridfn/workflow-development
-   > Total Activity: 10 commits
    > Dominant Focus: refactor & feature integration
-   
-   > Total Activity:
+
    > Total aktivitas yang terdeteksi hari ini.
    > Bisa berupa jumlah commit, perubahan workflow, atau movement kecil lain.
    
@@ -165,9 +163,8 @@ export function buildDailyPrompt({ data }) {
    - gunakan markdown
    - jangan gunakan code block
    - jangan ubah judul section
-   - maksimal 5 section pendek
    - fokus pada development journey
    - tuliskan seperti format yang ada
-   - tulis secara natural seperti Aurielle Nara Elowen
+   - tuliskan berdasarkan konteks sistem bawaan kamu
 `;
 }

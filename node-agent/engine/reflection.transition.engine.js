@@ -144,7 +144,7 @@ export async function handleReflectionTransition({
     const outputFile =
       path.join(
         dailyDir,
-        fileName
+        `${fileName}.md`
       );
 
     const dailyData =
@@ -156,7 +156,7 @@ export async function handleReflectionTransition({
     await generateReflection({
       agent,
       model,
-      fileName,
+      outputFile,
       type: "daily",
       data: dailyData,
       baseDir: dailyDir
@@ -172,7 +172,7 @@ export async function handleReflectionTransition({
   // ========================================
   // 🔹 WEEKLY REFLECTION
   // ========================================
-  if (/* lastWeek !== week*/ 1 === 1) {
+  if (lastWeek !== week) {
 
     const outputFile =
       path.join(

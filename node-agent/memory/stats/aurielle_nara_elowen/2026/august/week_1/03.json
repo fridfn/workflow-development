@@ -1,0 +1,35 @@
+{
+  "commit_stats": {
+    "feat": 1,
+    "style": 2,
+    "fix": 1,
+    "docs": 1,
+    "refactor": 2
+  },
+  "mode_stats": {
+    "last_warning": 7
+  },
+  "tone_stats": {
+    "warning_deadline": 3,
+    "warning_firm": 2,
+    "warning_push": 2
+  },
+  "category_stats": {
+    "reminder": 7
+  },
+  "tag_stats": {
+    "feat": 1,
+    "style": 2,
+    "fix": 1,
+    "docs": 1,
+    "refactor": 2
+  },
+  "reply_source_stats": {
+    "initial": 7
+  },
+  "active_hours": {
+    "20": 7
+  },
+  "total_generated": 7,
+  "last_generated_at": 1789389219714
+}

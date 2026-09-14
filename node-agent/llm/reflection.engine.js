@@ -26,8 +26,6 @@ export async function generateReflection({
   agent,
   type,
   data,
-  baseDir,
-  fileName,
   outputFile,
   provider = "groq",
   model
@@ -53,10 +51,7 @@ export async function generateReflection({
       agentSource.partner,
 
     behavior:
-      agentSource.cara_bicara_aurielle_nara_elowen,
-
-    closing:
-      agentSource.penutup_dari_aurielle
+      agentSource.gaya_bicara,
   };
 
   const agentPersona =
@@ -188,11 +183,9 @@ export async function generateReflection({
 
     fs.writeFileSync(
       outputFile,
-      JSON.stringify(
         raw,
         null,
-        2
-      ),
+        2,
       "utf-8"
     );
 

@@ -1,10 +1,13 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
 // =========================
 // 🔹 BASE DIRECTORY
 // =========================
-const MEMORY_DIR = new URL("./active", import.meta.url).pathname;
+const MEMORY_DIR = fileURLToPath(
+  new URL("./active", import.meta.url)
+);
 
 // =========================
 // 🔹 GET FILE PATH
