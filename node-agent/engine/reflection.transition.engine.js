@@ -13,7 +13,7 @@ import {
 
 import {
   ensureDir,
-  ensureFiles
+  ensureFile
 } from "../utils/fs.helper.js";
 
 // ========================================
@@ -107,11 +107,12 @@ export async function handleReflectionTransition({
   // ========================================
   // 🔹 PATHS
   // ========================================
-  const archiveMonthDir =
-    `./memory/archive/${agent}/${year}/${month}`;
+  const relativeDir = `${agent}/${year}/${month}`;
 
-  const statsMonthDir =
-    `./memory/stats/${agent}/${year}/${month}`;
+  const archiveMonthDir = `./memory/archive/${relativeDir}/journal`; 
+  const archiveMetadata = `./memory/archive/${relativeDir}/metadata`; 
+    
+  const statsMonthDir = `./memory/stats/${relativeDir}/metadata`;
 
   // ========================================
   // 🔹 DAILY REFLECTION
@@ -130,14 +131,6 @@ export async function handleReflectionTransition({
       );
       
       ensureDir(dailyDir);
-      
-    const dayName =
-      now.toLocaleString(
-        "en-US",
-        {
-          weekday: "long"
-        }
-      ).toLowerCase();
 
     const fileName = currentDay;
 
@@ -147,20 +140,19 @@ export async function handleReflectionTransition({
         `${fileName}.md`
       );
 
-    const dailyData =
-      loadDailyMemory({
-        archiveMonthDir,
-        currentDay
-      });
-
-    await generateReflection({
-      agent,
-      model,
-      outputFile,
-      type: "daily",
-      data: dailyData,
-      baseDir: dailyDir
+    const dailyData = loadDailyMemory({
+      archiveMetadata,
+      currentDay,
     });
+      console.log(dailyDir, "DAILY DIR")
+      console.log(dailyData, "DAILY DATAAAAAA")
+    // await generateReflection({
+    //   agent,
+    //   model,
+    //   outputFile,
+    //   type: "daily",
+    //   data: dailyData
+    // });
     
     setMemory(
       agent,
@@ -173,29 +165,36 @@ export async function handleReflectionTransition({
   // 🔹 WEEKLY REFLECTION
   // ========================================
   if (lastWeek !== week) {
+    
+    const weeklyDir =
+      path.join(
+        archiveMonthDir,
+        "weekly"
+      );
+      
+      ensureDir(weeklyDir);
+
+    const fileName = lastWeek;
 
     const outputFile =
       path.join(
-        archiveMonthDir,
-        "weekly",
-        `week_${lastWeek}.md`
+        weeklyDir,
+        `${fileName}.md`
       );
-
-    ensureDir(path.dirname(outputFile));
 
     const weeklyData =
       loadWeeklyStats({
         statsMonthDir,
         week: lastWeek
       });
-      
-    await generateReflection({
-      agent,
-      type: "weekly",
-      data: weeklyData,
-      outputFile,
-      model
-    });
+      console.log(weeklyData, "DAATTAAA WEEKLYYYY")
+    // await generateReflection({
+    //   agent,
+    //   type: "weekly",
+    //   data: weeklyData,
+    //   outputFile,
+    //   model
+    // });
 
     setMemory(
       agent,
@@ -217,8 +216,8 @@ export async function handleReflectionTransition({
         previousMonthDir,
         "summary.json"
       );
-     
-    ensureDir(summaryFile);
+
+    ensureFile(summaryFile);
      
     let monthlyData = {};
 
@@ -240,9 +239,9 @@ export async function handleReflectionTransition({
 
     await generateReflection({
       agent,
+      outputFile,
       type: "monthly",
       data: monthlyData,
-      outputFile,
       model
     });
 
@@ -298,55 +297,39 @@ export async function handleReflectionTransition({
 // ========================================
 // 🔹 LOAD DAILY MEMORY
 // ========================================
-function loadDailyMemory({
-  archiveMonthDir,
-  currentDay
-}) {
-
+function loadDailyMemory({ archiveMetadata, currentDay }) {
   const weeks = fs
-    .readdirSync(
-      archiveMonthDir
-    )
-    .filter(dir =>
-      dir.startsWith("week_")
-    );
-
+    .readdirSync(archiveMetadata)
+    .filter((dir) => dir.startsWith("week_"));
+    
   const result = [];
-
+  console.log(weeks, "WEEKS     ");
   for (const week of weeks) {
-
-    const weekDir =
-      path.join(
-        archiveMonthDir,
-        week
-      );
+    const weekDir = path.join(archiveMetadata, week);
+    console.log(weekDir, "WEEK DIR LIST     ");
 
     const files = fs
       .readdirSync(weekDir)
-      .filter(file =>
-        file.startsWith(
-          String(currentDay)
-            .padStart(2, "0")
-        )
-      );
+      .filter((file) => file.startsWith(String(currentDay).padStart(2, "0")));
 
     for (const file of files) {
+      const filePath = path.join(weekDir, file);
 
-      const data =
-        JSON.parse(
-          fs.readFileSync(
-            path.join(
-              weekDir,
-              file
-            ),
-            "utf-8"
-          )
-        );
+      const data = JSON.parse(
+        fs.readFileSync(path.join(weekDir, file), "utf-8"),
+      );
+
+      console.log({
+        filePath,
+        isArray: Array.isArray(data),
+        type: typeof data,
+        data,
+      });
 
       result.push(...data);
     }
   }
-
+  console.log(result, "RESULTTTTT");
   return result;
 }
 
@@ -388,15 +371,9 @@ function loadWeeklyStats({
     statsMonthDir,
     `week_${week}`
   );
-
-  if (!fs.existsSync(weekDir)) {
-    return {};
-  }
-
-  if (!fs.statSync(weekDir).isDirectory()) {
-    return {};
-  }
-
+  
+  ensureDir(weekDir)
+  
   const files = fs
     .readdirSync(weekDir)
     .filter(file => file.endsWith(".json"))

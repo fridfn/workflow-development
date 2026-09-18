@@ -1,0 +1,27 @@
+{
+  "commit_stats": {
+    "style": 1,
+    "feat": 1
+  },
+  "mode_stats": {
+    "last_warning": 2
+  },
+  "tone_stats": {
+    "warning_firm": 2
+  },
+  "category_stats": {
+    "reminder": 2
+  },
+  "tag_stats": {
+    "style": 1,
+    "feat": 1
+  },
+  "reply_source_stats": {
+    "initial": 2
+  },
+  "active_hours": {
+    "20": 2
+  },
+  "total_generated": 2,
+  "last_generated_at": 1789769808067
+}

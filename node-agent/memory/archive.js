@@ -45,7 +45,7 @@ export async function archiveMemory({
     getWeekOfMonth(now);
   
   const archivePath =
-    `${year}/${monthName}/week_${weekNumber}`;
+    `${year}/${monthName}/metadata/week_${weekNumber}`;
   
   // =========================
   // 🔹 FULL PATHS
@@ -77,16 +77,16 @@ export async function archiveMemory({
   ensureFiles([
     {
       file: rawFile,
-      fallback: []
+      fallback: [],
     },
     {
       file: yearlySummaryFile,
-      fallback: {}
+      fallback: {},
     },
     {
       file: statsFile,
-      fallback: {}
-    }
+      fallback: {},
+    },
   ]);
 
   // =========================
@@ -104,21 +104,17 @@ export async function archiveMemory({
   // 🔹 BUILD ENTRY
   // =========================
  const entry = {
-source: source || "engine",
-reply: result.reply,
-meta: {
-greeting:
-result.meta?.greeting,
-message:
-result.meta?.message,
-tone:
-result.meta?.tone,
-category:
-result.meta?.category
-},
-context,
-created_at: Date.now()
-};
+   source: source || "engine",
+   reply: result.reply,
+   meta: {
+     greeting: result.meta?.greeting,
+     message: result.meta?.message,
+     tone: result.meta?.tone,
+     category: result.meta?.category,
+   },
+   context,
+   created_at: Date.now(),
+ };
 
   archive.push(entry);
 

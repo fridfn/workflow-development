@@ -1,0 +1,62 @@
+[
+  {
+    "source": "commit",
+    "reply": "kamu belum jalan hari ini\n\nbelum ada progress hari ini, jangan tunggu lagi, langsung mulai saja",
+    "meta": {
+      "greeting": "kamu belum jalan hari ini",
+      "message": "belum ada progress hari ini, jangan tunggu lagi, langsung mulai saja",
+      "tone": "warning_firm",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "style",
+      "commit": {
+        "type": "style",
+        "scope": "quran",
+        "detail": "style(quran): improve player interface",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "style",
+        "detail": "style(quran): improve player interface",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1789682682399
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… hari ini kamu belum mulai\n\nkamu belum nyentuh kode hari ini, sekarang waktu yang tepat buat mulai",
+    "meta": {
+      "greeting": "Farid… hari ini kamu belum mulai",
+      "message": "kamu belum nyentuh kode hari ini, sekarang waktu yang tepat buat mulai",
+      "tone": "warning_firm",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "feat",
+      "commit": {
+        "type": "feat",
+        "scope": "quran",
+        "detail": "feat(quran): add audio recitation support",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "feat",
+        "detail": "feat(quran): add audio recitation support",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789769808064
+  }
+]

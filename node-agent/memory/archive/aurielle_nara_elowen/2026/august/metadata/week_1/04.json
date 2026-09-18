@@ -1,0 +1,32 @@
+[
+  {
+    "source": "commit",
+    "reply": "hmm… malam makin dekat nih\n\nhari ini belum ada jejak, sekarang waktu terbaik sebelum terlambat",
+    "meta": {
+      "greeting": "hmm… malam makin dekat nih",
+      "message": "hari ini belum ada jejak, sekarang waktu terbaik sebelum terlambat",
+      "tone": "warning_deadline",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "docs",
+      "commit": {
+        "type": "docs",
+        "scope": "readme",
+        "detail": "docs(readme): update installation guide",
+        "actionTag": "docs"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "docs",
+        "detail": "docs(readme): update installation guide",
+        "actionTag": "docs"
+      }
+    },
+    "created_at": 1789682451163
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "source": "commit",
+    "reply": "kamu belum jalan hari ini\n\nhari ini belum ada commit, kalau mau lanjut kamu harus mulai sekarang",
+    "meta": {
+      "greeting": "kamu belum jalan hari ini",
+      "message": "hari ini belum ada commit, kalau mau lanjut kamu harus mulai sekarang",
+      "tone": "warning_firm",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "fix",
+      "commit": {
+        "type": "fix",
+        "scope": "notification",
+        "detail": "fix(notification): resolve delayed push delivery",
+        "actionTag": "fix"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "fix",
+        "detail": "fix(notification): resolve delayed push delivery",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1789683516036
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… tahan dikit lagi\n\nhari ini belum ada commit, jangan biarin ritmenya putus sekarang",
+    "meta": {
+      "greeting": "Farid… tahan dikit lagi",
+      "message": "hari ini belum ada commit, jangan biarin ritmenya putus sekarang",
+      "tone": "warning_hold",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "style",
+      "commit": {
+        "type": "style",
+        "scope": "ui",
+        "detail": "style(ui): improve button spacing",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "style",
+        "detail": "style(ui): improve button spacing",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1789768323357
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… bentar lagi malam penuh\n\nkamu belum nyentuh kode hari ini, jangan tunggu sampai benar-benar habis waktu",
+    "meta": {
+      "greeting": "hmm… bentar lagi malam penuh",
+      "message": "kamu belum nyentuh kode hari ini, jangan tunggu sampai benar-benar habis waktu",
+      "tone": "warning_deadline",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "fix",
+      "commit": {
+        "type": "fix",
+        "scope": "memory",
+        "detail": "fix(memory): correct archive file parsing",
+        "actionTag": "fix"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "fix",
+        "detail": "fix(memory): correct archive file parsing",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1789769157936
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… tahan dikit lagi\n\nhari ini belum ada commit, jangan biarin ritmenya putus sekarang",
+    "meta": {
+      "greeting": "Farid… tahan dikit lagi",
+      "message": "hari ini belum ada commit, jangan biarin ritmenya putus sekarang",
+      "tone": "warning_hold",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "feat",
+      "commit": {
+        "type": "feat",
+        "scope": "auth",
+        "detail": "feat(auth): add login + register system",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "feat",
+        "detail": "feat(auth): add login + register system",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789769476742
+  }
+]
