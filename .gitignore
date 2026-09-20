@@ -23,3 +23,18 @@ node-agent/.env
 *.njsproj
 *.sln
 *.sw?
+# ================================
+# GENERATED MEMORY
+# ================================
+
+# Daily journal
+memory/archive/**/journal/daily/
+
+# Weekly reflection
+memory/archive/**/journal/weekly/
+
+# Raw weekly metadata
+memory/archive/**/metadata/week_*/
+
+# Raw weekly stats
+memory/stats/**/metadata/week_*/
