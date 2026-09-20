@@ -144,15 +144,14 @@ export async function handleReflectionTransition({
       archiveMetadata,
       currentDay,
     });
-      console.log(dailyDir, "DAILY DIR")
-      console.log(dailyData, "DAILY DATAAAAAA")
-    // await generateReflection({
-    //   agent,
-    //   model,
-    //   outputFile,
-    //   type: "daily",
-    //   data: dailyData
-    // });
+    
+    await generateReflection({
+      agent,
+      model,
+      outputFile,
+      type: "daily",
+      data: dailyData
+    });
     
     setMemory(
       agent,
@@ -163,7 +162,7 @@ export async function handleReflectionTransition({
 
   // ========================================
   // 🔹 WEEKLY REFLECTION
-  // ========================================
+  // ============================ ============
   if (lastWeek !== week) {
     
     const weeklyDir =
@@ -187,14 +186,14 @@ export async function handleReflectionTransition({
         statsMonthDir,
         week: lastWeek
       });
-      console.log(weeklyData, "DAATTAAA WEEKLYYYY")
-    // await generateReflection({
-    //   agent,
-    //   type: "weekly",
-    //   data: weeklyData,
-    //   outputFile,
-    //   model
-    // });
+      
+    await generateReflection({
+      agent,
+      type: "weekly",
+      data: weeklyData,
+      outputFile,
+      model
+    });
 
     setMemory(
       agent,
@@ -303,10 +302,9 @@ function loadDailyMemory({ archiveMetadata, currentDay }) {
     .filter((dir) => dir.startsWith("week_"));
     
   const result = [];
-  console.log(weeks, "WEEKS     ");
+  
   for (const week of weeks) {
     const weekDir = path.join(archiveMetadata, week);
-    console.log(weekDir, "WEEK DIR LIST     ");
 
     const files = fs
       .readdirSync(weekDir)
@@ -319,17 +317,10 @@ function loadDailyMemory({ archiveMetadata, currentDay }) {
         fs.readFileSync(path.join(weekDir, file), "utf-8"),
       );
 
-      console.log({
-        filePath,
-        isArray: Array.isArray(data),
-        type: typeof data,
-        data,
-      });
-
       result.push(...data);
     }
   }
-  console.log(result, "RESULTTTTT");
+  
   return result;
 }
 
@@ -367,43 +358,42 @@ function loadWeeklyStats({
 }) {
   console.log("[WEEK KE]", week);
 
-  const weekDir = path.join(
-    statsMonthDir,
-    `week_${week}`
-  );
-  
-  ensureDir(weekDir)
-  
+  const weekDir = path.join(statsMonthDir, `week_${week}`);
+
+  ensureDir(weekDir);
+
   const files = fs
     .readdirSync(weekDir)
-    .filter(file => file.endsWith(".json"))
+    .filter((file) => file.endsWith(".json"))
     .sort();
 
   const weeklyStats = {};
 
   for (const file of files) {
-    const filePath = path.join(
-      weekDir,
-      file
-    );
+    const filePath = path.join(weekDir, file);
 
     try {
-      const dailyStats = JSON.parse(
-        fs.readFileSync(filePath, "utf-8")
-      );
+      const dailyStats = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-      mergeStats(
-        weeklyStats,
-        dailyStats
-      );
-
+      mergeStats(weeklyStats, dailyStats);
     } catch (error) {
-      console.error(
-        `[WEEK ERROR] ${file}:`,
-        error.message
-      );
+      console.error(`[WEEK ERROR] ${file}:`, error.message);
     }
   }
+
+  // ========================================
+  // 🔹 SAVE MERGED WEEKLY DATA
+  // ========================================
+
+  const mergedDir = path.join(statsMonthDir, "merged");
+
+  ensureDir(mergedDir);
+
+  const mergedFile = path.join(mergedDir, `week_${week}.json`);
+
+  fs.writeFileSync(mergedFile, JSON.stringify(weeklyStats, null, 2), "utf-8");
+
+  console.log(`[WEEK MERGED] week_${week}.json`);
 
   return weeklyStats;
 }
