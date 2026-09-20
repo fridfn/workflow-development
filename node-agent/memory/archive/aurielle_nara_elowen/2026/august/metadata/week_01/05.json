@@ -1,0 +1,31 @@
+[
+  {
+    "source": "commit",
+    "reply": "Farid… tahan dikit lagi\n\nbelum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+    "meta": {
+      "greeting": "Farid… tahan dikit lagi",
+      "message": "belum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+      "tone": "warning_hold",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "refactor",
+      "commit": {
+        "type": "refactor",
+        "scope": "portfolio",
+        "detail": "refactor(portfolio): modularize project cards",
+        "actionTag": "refactor"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "refactor",
+        "actionTag": "refactor"
+      }
+    },
+    "created_at": 1789902563902
+  }
+]

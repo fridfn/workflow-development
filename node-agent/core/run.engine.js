@@ -166,7 +166,6 @@ export async function runEngine({
     
       semantic: {
         type: context.commit?.type || null,
-        detail: context.commit?.detail || null,
         actionTag: context.commit?.actionTag || null
       }
     };

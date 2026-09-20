@@ -33,10 +33,6 @@ export async function getRepoMeta({ repoFullName, token }) {
       full_name: data.full_name,
       description: data.description,
       language: data.language,
-      stars: data.stargazers_count,
-      forks: data.forks_count,
-      topics: data.topics,
-      visibility: data.visibility,
       created_at: data.created_at,
       updated_at: data.updated_at
     };

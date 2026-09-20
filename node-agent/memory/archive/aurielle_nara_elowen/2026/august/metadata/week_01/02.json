@@ -1,0 +1,147 @@
+[
+  {
+    "source": "commit",
+    "reply": "eh… jangan berhenti di niat doang\n\nbelum ada commit, jangan berhenti di rencana, ubah jadi aksi sekarang",
+    "meta": {
+      "greeting": "eh… jangan berhenti di niat doang",
+      "message": "belum ada commit, jangan berhenti di rencana, ubah jadi aksi sekarang",
+      "tone": "warning_push",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "fix",
+      "commit": {
+        "type": "fix",
+        "scope": "notification",
+        "detail": "fix(notification): resolve delayed push delivery",
+        "actionTag": "fix"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "fix",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1789902447732
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… hari ini kamu belum mulai\n\nhari ini belum ada jejak, kamu tinggal pilih mau lanjut atau tidak",
+    "meta": {
+      "greeting": "Farid… hari ini kamu belum mulai",
+      "message": "hari ini belum ada jejak, kamu tinggal pilih mau lanjut atau tidak",
+      "tone": "warning_firm",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "chore",
+      "commit": {
+        "type": "chore",
+        "scope": "engine",
+        "detail": "chore(engine): cleanup debug logs",
+        "actionTag": "chore"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "chore",
+        "actionTag": "chore"
+      }
+    },
+    "created_at": 1789902452471
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… malam makin dekat nih\n\nprogress hari ini kosong, tapi masih ada sisa waktu kalau kamu mulai sekarang",
+    "meta": {
+      "greeting": "hmm… malam makin dekat nih",
+      "message": "progress hari ini kosong, tapi masih ada sisa waktu kalau kamu mulai sekarang",
+      "tone": "warning_deadline",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "feat",
+      "commit": {
+        "type": "feat",
+        "scope": "notification",
+        "detail": "feat(notification): add realtime broadcast system",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789902474925
+  },
+  {
+    "source": "commit",
+    "reply": "kamu belum jalan hari ini\n\nbelum ada progress hari ini, jangan tunggu lagi, langsung mulai saja",
+    "meta": {
+      "greeting": "kamu belum jalan hari ini",
+      "message": "belum ada progress hari ini, jangan tunggu lagi, langsung mulai saja",
+      "tone": "warning_firm",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "feat",
+      "commit": {
+        "type": "feat",
+        "scope": "notification",
+        "detail": "feat(notification): add realtime broadcast system",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789902487610
+  },
+  {
+    "source": "commit",
+    "reply": "ini kamu lagi mau berhenti ya\n\nbelum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+    "meta": {
+      "greeting": "ini kamu lagi mau berhenti ya",
+      "message": "belum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+      "tone": "warning_hold",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "feat",
+      "commit": {
+        "type": "feat",
+        "scope": "api",
+        "detail": "feat(api): integrate github activity fetch",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789902503594
+  }
+]

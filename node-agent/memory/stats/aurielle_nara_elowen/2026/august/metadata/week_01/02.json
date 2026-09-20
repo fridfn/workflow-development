@@ -1,0 +1,32 @@
+{
+  "commit_stats": {
+    "fix": 1,
+    "chore": 1,
+    "feat": 3
+  },
+  "mode_stats": {
+    "last_warning": 5
+  },
+  "tone_stats": {
+    "warning_push": 1,
+    "warning_firm": 2,
+    "warning_deadline": 1,
+    "warning_hold": 1
+  },
+  "category_stats": {
+    "reminder": 5
+  },
+  "tag_stats": {
+    "fix": 1,
+    "chore": 1,
+    "feat": 3
+  },
+  "reply_source_stats": {
+    "initial": 5
+  },
+  "active_hours": {
+    "20": 5
+  },
+  "total_generated": 5,
+  "last_generated_at": 1789902503596
+}

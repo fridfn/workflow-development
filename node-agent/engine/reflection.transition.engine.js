@@ -1,105 +1,54 @@
 // engine/reflection.transition.js
 import fs from "fs";
 import path from "path";
-import { getModel } from "../llm/models.js"
+import { getModel } from "../llm/models.js";
 import { generateReflection } from "../llm/reflection.engine.js";
 import { getDateSimulation } from "../utils/date.js";
 import { getWeekOfMonth } from "../utils/weeks.js";
 
-import {
-  getMemory,
-  setMemory
-} from "../memory/memory.js";
+import { getMemory, setMemory } from "../memory/memory.js";
 
-import {
-  ensureDir,
-  ensureFile
-} from "../utils/fs.helper.js";
+import { ensureDir, ensureFile } from "../utils/fs.helper.js";
 
 // ========================================
 // 🔹 MAIN
 // ========================================
-export async function handleReflectionTransition({
-  agent
-}) {
-  const model = getModel("smart")
-  const now =
-    getDateSimulation();
+export async function handleReflectionTransition({ agent }) {0
+  const model = getModel("smart");
+  const now = getDateSimulation();
 
-  const year =
-    now.getFullYear();
+  const year = now.getFullYear();
 
-  const month =
-    now.toLocaleString(
-      "en-US",
-      {
-        month: "long"
-      }
-    ).toLowerCase();
+  const month = now
+    .toLocaleString("en-US", {
+      month: "long",
+    })
+    .toLowerCase();
 
-  const week =
-    getWeekOfMonth(now);
+  const week = getWeekOfMonth(now);
 
   // ========================================
   // 🔹 LAST STATE
   // ========================================
-  const lastDay =
-    getMemory(
-      agent,
-      "reflection.last_day"
-    );
+  const lastDay = getMemory(agent, "reflection.last_day");
 
-  const lastWeek =
-    getMemory(
-      agent,
-      "reflection.last_week"
-    );
+  const lastWeek = getMemory(agent, "reflection.last_week");
 
-  const lastMonth =
-    getMemory(
-      agent,
-      "reflection.last_month"
-    );
+  const lastMonth = getMemory(agent, "reflection.last_month");
 
-  const lastYear =
-    getMemory(
-      agent,
-      "reflection.last_year"
-    );
+  const lastYear = getMemory(agent, "reflection.last_year");
 
   // ========================================
   // 🔹 FIRST BOOT
   // ========================================
-  if (
-    !lastDay &&
-    !lastWeek &&
-    !lastMonth &&
-    !lastYear
-  ) {
+  if (!lastDay && !lastWeek && !lastMonth && !lastYear) {
+    setMemory(agent, "reflection.last_day", now.getDate());
 
-    setMemory(
-      agent,
-      "reflection.last_day",
-      now.getDate()
-    );
+    setMemory(agent, "reflection.last_week", week);
 
-    setMemory(
-      agent,
-      "reflection.last_week",
-      week
-    );
+    setMemory(agent, "reflection.last_month", month);
 
-    setMemory(
-      agent,
-      "reflection.last_month",
-      month
-    );
-
-    setMemory(
-      agent,
-      "reflection.last_year",
-      year
-    );
+    setMemory(agent, "reflection.last_year", year);
 
     return;
   }
@@ -109,187 +58,122 @@ export async function handleReflectionTransition({
   // ========================================
   const relativeDir = `${agent}/${year}/${month}`;
 
-  const archiveMonthDir = `./memory/archive/${relativeDir}/journal`; 
-  const archiveMetadata = `./memory/archive/${relativeDir}/metadata`; 
-    
+  const archiveMonthDir = `./memory/archive/${relativeDir}/journal`;
+  const archiveMetadata = `./memory/archive/${relativeDir}/metadata`;
+
   const statsMonthDir = `./memory/stats/${relativeDir}/metadata`;
 
   // ========================================
   // 🔹 DAILY REFLECTION
   // ========================================
-  const currentDay =
-    String(
-    now.getUTCDate()
-  ).padStart(2, "0");
-    
-  if (lastDay !== currentDay) {
+  const currentDay = String(now.getUTCDate()).padStart(2, "0");
 
-    const dailyDir =
-      path.join(
-        archiveMonthDir,
-        "daily"
-      );
-      
-      ensureDir(dailyDir);
+  if (lastDay !== currentDay) {
+    const dailyDir = path.join(archiveMonthDir, "daily");
+
+    ensureDir(dailyDir);
 
     const fileName = currentDay;
 
-    const outputFile =
-      path.join(
-        dailyDir,
-        `${fileName}.md`
-      );
+    const outputFile = path.join(dailyDir, `${fileName}.md`);
 
     const dailyData = loadDailyMemory({
       archiveMetadata,
       currentDay,
     });
-    
-    await generateReflection({
-      agent,
-      model,
-      outputFile,
-      type: "daily",
-      data: dailyData
-    });
-    
-    setMemory(
-      agent,
-      "reflection.last_day",
-      currentDay
-    );
+
+    // await generateReflection({
+    //   agent,
+    //   model,
+    //   outputFile,
+    //   type: "daily",
+    //   data: dailyData,
+    // });
+
+    setMemory(agent, "reflection.last_day", currentDay);
   }
 
   // ========================================
   // 🔹 WEEKLY REFLECTION
   // ============================ ============
   if (lastWeek !== week) {
-    
-    const weeklyDir =
-      path.join(
-        archiveMonthDir,
-        "weekly"
-      );
-      
-      ensureDir(weeklyDir);
+    const weeklyDir = path.join(archiveMonthDir, "weekly");
+
+    ensureDir(weeklyDir);
 
     const fileName = lastWeek;
 
-    const outputFile =
-      path.join(
-        weeklyDir,
-        `${fileName}.md`
-      );
+    const outputFile = path.join(weeklyDir, `${fileName}.md`);
 
-    const weeklyData =
-      loadWeeklyStats({
-        statsMonthDir,
-        week: lastWeek
-      });
-      
-    await generateReflection({
-      agent,
-      type: "weekly",
-      data: weeklyData,
-      outputFile,
-      model
+    const weeklyData = loadWeeklyStats({
+      statsMonthDir,
+      archiveMetadata,
+      week: lastWeek,
     });
+    console.dir(weeklyData, { depth: null });
+    // await generateReflection({
+    //   agent,
+    //   type: "weekly",
+    //   data: weeklyData,
+    //   outputFile,
+    //   model
+    // });
 
-    setMemory(
-      agent,
-      "reflection.last_week",
-      week
-    );
+    setMemory(agent, "reflection.last_week", week);
   }
 
   // ========================================
   // 🔹 MONTHLY REFLECTION
   // ========================================
   if (lastMonth !== month) {
+    const previousMonthDir = `./memory/stats/${agent}/${year}/${lastMonth}`;
 
-    const previousMonthDir =
-      `./memory/stats/${agent}/${year}/${lastMonth}`;
-
-    const summaryFile =
-      path.join(
-        previousMonthDir,
-        "summary.json"
-      );
+    const summaryFile = path.join(previousMonthDir, "summary.json");
 
     ensureFile(summaryFile);
-     
+
     let monthlyData = {};
 
-    if (
-      fs.existsSync(summaryFile)
-    ) {
-
-      monthlyData =
-        JSON.parse(
-          fs.readFileSync(
-            summaryFile,
-            "utf-8"
-          )
-        );
+    if (fs.existsSync(summaryFile)) {
+      monthlyData = JSON.parse(fs.readFileSync(summaryFile, "utf-8"));
     }
 
-    const outputFile =
-      `./memory/archive/${agent}/${year}/${lastMonth}/reflection.json`;
+    const outputFile = `./memory/archive/${agent}/${year}/${lastMonth}/reflection.json`;
 
     await generateReflection({
       agent,
       outputFile,
       type: "monthly",
       data: monthlyData,
-      model
+      model,
     });
 
-    setMemory(
-      agent,
-      "reflection.last_month",
-      month
-    );
+    setMemory(agent, "reflection.last_month", month);
   }
 
   // ========================================
   // 🔹 YEARLY REFLECTION
   // ========================================
   if (lastYear !== year) {
-
-    const yearlySummary =
-      `./memory/stats/${agent}/${lastYear}/yearly-summary.json`;
+    const yearlySummary = `./memory/stats/${agent}/${lastYear}/yearly-summary.json`;
 
     let yearlyData = {};
 
-    if (
-      fs.existsSync(yearlySummary)
-    ) {
-
-      yearlyData =
-        JSON.parse(
-          fs.readFileSync(
-            yearlySummary,
-            "utf-8"
-          )
-        );
+    if (fs.existsSync(yearlySummary)) {
+      yearlyData = JSON.parse(fs.readFileSync(yearlySummary, "utf-8"));
     }
 
-    const outputFile =
-      `./memory/archive/${agent}/${lastYear}/yearly-reflection.json`;
+    const outputFile = `./memory/archive/${agent}/${lastYear}/yearly-reflection.json`;
 
     await generateReflection({
       agent,
       type: "yearly",
       data: yearlyData,
       outputFile,
-      model
+      model,
     });
 
-    setMemory(
-      agent,
-      "reflection.last_year",
-      year
-    );
+    setMemory(agent, "reflection.last_year", year);
   }
 }
 
@@ -300,9 +184,9 @@ function loadDailyMemory({ archiveMetadata, currentDay }) {
   const weeks = fs
     .readdirSync(archiveMetadata)
     .filter((dir) => dir.startsWith("week_"));
-    
+
   const result = [];
-  
+
   for (const week of weeks) {
     const weekDir = path.join(archiveMetadata, week);
 
@@ -320,7 +204,7 @@ function loadDailyMemory({ archiveMetadata, currentDay }) {
       result.push(...data);
     }
   }
-  
+
   return result;
 }
 
@@ -335,10 +219,7 @@ function mergeStats(target, source) {
     }
 
     if (Array.isArray(value)) {
-      target[key] = [
-        ...(target[key] ?? []),
-        ...value
-      ];
+      target[key] = [...(target[key] ?? []), ...value];
       continue;
     }
 
@@ -351,11 +232,7 @@ function mergeStats(target, source) {
   return target;
 }
 
-
-function loadWeeklyStats({
-  statsMonthDir,
-  week
-}) {
+function loadWeeklyStats({ statsMonthDir, archiveMetadata, week }) {
   console.log("[WEEK KE]", week);
 
   const weekDir = path.join(statsMonthDir, `week_${week}`);
@@ -368,6 +245,11 @@ function loadWeeklyStats({
     .sort();
 
   const weeklyStats = {};
+  const repositories = {};
+
+  // ========================================
+  // 🔹 LOAD WEEKLY STATS
+  // ========================================
 
   for (const file of files) {
     const filePath = path.join(weekDir, file);
@@ -382,18 +264,109 @@ function loadWeeklyStats({
   }
 
   // ========================================
-  // 🔹 SAVE MERGED WEEKLY DATA
+  // 🔹 LOAD REPOSITORY CONTEXT
   // ========================================
 
-  const mergedDir = path.join(statsMonthDir, "merged");
+  const metadataWeekDir = path.join(archiveMetadata, `week_${week}`);
 
-  ensureDir(mergedDir);
+  ensureDir(metadataWeekDir);
 
-  const mergedFile = path.join(mergedDir, `week_${week}.json`);
+  const metadataFiles = fs
+    .readdirSync(metadataWeekDir)
+    .filter((file) => file.endsWith(".json"))
+    .sort();
 
-  fs.writeFileSync(mergedFile, JSON.stringify(weeklyStats, null, 2), "utf-8");
+  for (const file of metadataFiles) {
+    const filePath = path.join(metadataWeekDir, file);
 
-  console.log(`[WEEK MERGED] week_${week}.json`);
+    try {
+      const metadataData = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
-  return weeklyStats;
+      for (const entry of metadataData) {
+        buildRepositoryContext(repositories, entry);
+      }
+    } catch (error) {
+      console.error(`[METADATA ERROR] ${file}:`, error.message);
+    }
+  }
+
+  // ========================================
+  // 🔹 RESULT
+  // ========================================
+
+  return {
+    stats: weeklyStats,
+    repositories,
+  };
+}
+
+function buildRepositoryContext(repositories, entry) {
+  const context = entry?.context;
+
+  if (!context) {
+    return;
+  }
+
+  const repository = context.repository;
+
+  if (!repository) {
+    return;
+  }
+
+  const repoKey = repository.full_name || context.repo;
+
+  if (!repoKey) {
+    return;
+  }
+
+  const hasCommit = context.activity?.hasCommit;
+
+  if (!hasCommit) {
+    return;
+  }
+
+  // ========================================
+  // 🔹 INITIALIZE REPOSITORY
+  // ========================================
+
+  repositories[repoKey] ??= {
+    repository: {
+      name: repository.name,
+      full_name: repository.full_name,
+      description: repository.description,
+      language: repository.language,
+    },
+
+    stats: {
+      commits: 0,
+      commit_types: {},
+    },
+
+    activities: [],
+  };
+
+  const repo = repositories[repoKey];
+
+  // ========================================
+  // 🔹 COMMIT STATS
+  // ========================================
+
+  repo.stats.commits++;
+
+  const type = context.commit?.type || context.semantic?.type;
+
+  if (type) {
+    repo.stats.commit_types[type] = (repo.stats.commit_types[type] ?? 0) + 1;
+  }
+
+  // ========================================
+  // 🔹 GIT ACTIVITY
+  // ========================================
+
+  repo.activities.push({
+    time: context.commitTime,
+    type: context.commit?.type || null,
+    scope: context.commit?.scope || null,
+    detail: context.commit?.detail || null,
+  });
 }
