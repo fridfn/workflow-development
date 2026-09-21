@@ -1,0 +1,41 @@
+[
+  {
+    "source": "commit",
+    "reply": "Farid… kamu gak ke mana-mana\n\ndan kamu gak lepas dari ritmemu… itu yang bikin kamu bertahan",
+    "meta": {
+      "greeting": "Farid… kamu gak ke mana-mana",
+      "message": "dan kamu gak lepas dari ritmemu… itu yang bikin kamu bertahan",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "test",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "test",
+        "scope": "auth",
+        "detail": "test(auth): test login session flow",
+        "actionTag": "test"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "test",
+        "actionTag": "test"
+      }
+    },
+    "created_at": 1789909629937
+  }
+]

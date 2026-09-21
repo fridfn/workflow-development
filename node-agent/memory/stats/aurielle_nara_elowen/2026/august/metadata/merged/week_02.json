@@ -1,0 +1,118 @@
+{
+  "stats": {
+    "commit_stats": {
+      "test": 3,
+      "chore": 1,
+      "style": 2,
+      "refactor": 1,
+      "fix": 2,
+      "feat": 1
+    },
+    "mode_stats": {
+      "last_warning": 1,
+      "persistent": 9
+    },
+    "tone_stats": {
+      "warning_firm": 1,
+      "persistent_respect": 4,
+      "persistent_calm": 5
+    },
+    "category_stats": {
+      "reminder": 1,
+      "support": 9
+    },
+    "tag_stats": {
+      "test": 3,
+      "chore": 1,
+      "style": 2,
+      "refactor": 1,
+      "fix": 2,
+      "feat": 1
+    },
+    "reply_source_stats": {
+      "initial": 10
+    },
+    "active_hours": {
+      "20": 10
+    },
+    "total_generated": 10,
+    "last_generated_at": 12529367743174
+  },
+  "repositories": {
+    "fridfn/workflow-development": {
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript"
+      },
+      "stats": {
+        "commits": 9,
+        "commit_types": {
+          "chore": 1,
+          "style": 2,
+          "test": 2,
+          "refactor": 1,
+          "fix": 2,
+          "feat": 1
+        }
+      },
+      "activities": [
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "chore",
+          "scope": "deps",
+          "detail": "chore(deps): upgrade express dependencies"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "style",
+          "scope": "css",
+          "detail": "style(css): reorganize layout styles"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "test",
+          "scope": "bot",
+          "detail": "test(bot): verify telegram message delivery"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "refactor",
+          "scope": "quran",
+          "detail": "refactor(quran): optimize audio streaming logic"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "style",
+          "scope": "portfolio",
+          "detail": "style(portfolio): improve hover animations"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "fix",
+          "scope": "bot",
+          "detail": "fix(bot): prevent duplicate telegram messages"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "fix",
+          "scope": "memory",
+          "detail": "fix(memory): correct archive file parsing"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "feat",
+          "scope": "api",
+          "detail": "feat(api): integrate github activity fetch"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "test",
+          "scope": "auth",
+          "detail": "test(auth): test login session flow"
+        }
+      ]
+    }
+  }
+}

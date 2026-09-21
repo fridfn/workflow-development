@@ -1,25 +1,31 @@
 {
   "commit_stats": {
-    "chore": 1
+    "chore": 1,
+    "feat": 2,
+    "refactor": 1
   },
   "mode_stats": {
-    "last_warning": 1
+    "last_warning": 4
   },
   "tone_stats": {
-    "warning_push": 1
+    "warning_push": 2,
+    "warning_firm": 1,
+    "warning_deadline": 1
   },
   "category_stats": {
-    "reminder": 1
+    "reminder": 4
   },
   "tag_stats": {
-    "chore": 1
+    "chore": 1,
+    "feat": 2,
+    "refactor": 1
   },
   "reply_source_stats": {
-    "initial": 1
+    "initial": 4
   },
   "active_hours": {
-    "20": 1
+    "20": 4
   },
-  "total_generated": 1,
-  "last_generated_at": 1789902538161
+  "total_generated": 4,
+  "last_generated_at": 1789963777090
 }

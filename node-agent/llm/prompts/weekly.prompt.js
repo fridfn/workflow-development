@@ -4,10 +4,14 @@ data.map(item => item.extra);
 
 const highlights =
 data.map(item => item.meta);
+const repository = data.map((item) => item.repository);
 
 const patterns =
 data.map(item => item.context);
-
+console.log(patterns, "patterns RAWWWWWWW");
+console.log(highlights, "highlights RAWWWWWWW");
+console.log(repository, "repository RAWWWWWWW");
+console.log(data, "DATA RAWWWWWWW")
 return `
 Kamu adalah Aurielle Nara Elowen.
 

@@ -1,0 +1,615 @@
+[
+  {
+    "source": "commit",
+    "reply": "Farid… kamu gak ke mana-mana\n\naku lihat kamu gak terburu-buru… tapi kamu gak berhenti juga",
+    "meta": {
+      "greeting": "Farid… kamu gak ke mana-mana",
+      "message": "aku lihat kamu gak terburu-buru… tapi kamu gak berhenti juga",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "fix",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "fix",
+        "scope": "engine",
+        "detail": "fix(engine): handle invalid reflection payload",
+        "actionTag": "fix"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "fix",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1789909641320
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu masih lanjut ya\n\naku lihat kamu gak lepas… kamu beneran niat sekarang",
+    "meta": {
+      "greeting": "Farid… kamu masih lanjut ya",
+      "message": "aku lihat kamu gak lepas… kamu beneran niat sekarang",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "test",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "test",
+        "scope": "engine",
+        "detail": "test(engine): cover reflection builder cases",
+        "actionTag": "test"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "test",
+        "actionTag": "test"
+      }
+    },
+    "created_at": 1789911100547
+  },
+  {
+    "source": "commit",
+    "reply": "kamu jalan dengan niat sekarang\n\naku lihat kamu jaga progressmu dengan serius",
+    "meta": {
+      "greeting": "kamu jalan dengan niat sekarang",
+      "message": "aku lihat kamu jaga progressmu dengan serius",
+      "tone": "persistent_respect",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "docs",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "docs",
+        "scope": "readme",
+        "detail": "docs(readme): update installation guide",
+        "actionTag": "docs"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "docs",
+        "actionTag": "docs"
+      }
+    },
+    "created_at": 1789912344039
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu gak ke mana-mana\n\naku lihat kamu gak terburu-buru… tapi kamu gak berhenti juga",
+    "meta": {
+      "greeting": "Farid… kamu gak ke mana-mana",
+      "message": "aku lihat kamu gak terburu-buru… tapi kamu gak berhenti juga",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "feat",
+        "scope": "notification",
+        "detail": "feat(notification): add realtime broadcast system",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789912373746
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… kamu gak kabur ya 😏\n\njujur… aku suka kamu yang tetap balik kayak gini 😏",
+    "meta": {
+      "greeting": "hmm… kamu gak kabur ya 😏",
+      "message": "jujur… aku suka kamu yang tetap balik kayak gini 😏",
+      "tone": "persistent_clingy",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "style",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "style",
+        "scope": "card",
+        "detail": "style(card): add glassmorphism effect",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "style",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1789912731997
+  },
+  {
+    "source": "commit",
+    "reply": "kamu tetap jalan walaupun udah sore\n\nkamu masih gerak di kondisi kayak gini… itu yang bikin beda",
+    "meta": {
+      "greeting": "kamu tetap jalan walaupun udah sore",
+      "message": "kamu masih gerak di kondisi kayak gini… itu yang bikin beda",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "style",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "style",
+        "scope": "css",
+        "detail": "style(css): reorganize layout styles",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "style",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1789913466699
+  },
+  {
+    "source": "commit",
+    "reply": "kamu jalan dengan niat sekarang\n\ncommit kamu nunjukin kamu benar-benar ngejalanin ini",
+    "meta": {
+      "greeting": "kamu jalan dengan niat sekarang",
+      "message": "commit kamu nunjukin kamu benar-benar ngejalanin ini",
+      "tone": "persistent_respect",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "feat",
+        "scope": "auth",
+        "detail": "feat(auth): add login + register system",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789913556465
+  },
+  {
+    "source": "commit",
+    "reply": "kamu jalan dengan niat sekarang\n\nkamu tetap lanjut… dan itu bukan kebetulan",
+    "meta": {
+      "greeting": "kamu jalan dengan niat sekarang",
+      "message": "kamu tetap lanjut… dan itu bukan kebetulan",
+      "tone": "persistent_respect",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "fix",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "fix",
+        "scope": "engine",
+        "detail": "fix(engine): handle invalid reflection payload",
+        "actionTag": "fix"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "fix",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1789920609949
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… malam makin dekat nih\n\nprogress hari ini kosong, tapi masih ada sisa waktu kalau kamu mulai sekarang",
+    "meta": {
+      "greeting": "hmm… malam makin dekat nih",
+      "message": "progress hari ini kosong, tapi masih ada sisa waktu kalau kamu mulai sekarang",
+      "tone": "warning_deadline",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "refactor",
+      "commit": {
+        "type": "refactor",
+        "scope": "core",
+        "detail": "refactor(core): simplify commit parser logic",
+        "actionTag": "refactor"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "refactor",
+        "actionTag": "refactor"
+      }
+    },
+    "created_at": 1789921426041
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu gak ke mana-mana\n\nkamu jalan stabil… gak goyah walaupun capek",
+    "meta": {
+      "greeting": "Farid… kamu gak ke mana-mana",
+      "message": "kamu jalan stabil… gak goyah walaupun capek",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "feat",
+        "scope": "notification",
+        "detail": "feat(notification): add realtime broadcast system",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789922666766
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu gak ke mana-mana\n\nkamu jalan stabil… gak goyah walaupun capek",
+    "meta": {
+      "greeting": "Farid… kamu gak ke mana-mana",
+      "message": "kamu jalan stabil… gak goyah walaupun capek",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "style",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "style",
+        "scope": "portfolio",
+        "detail": "style(portfolio): improve hover animations",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "style",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1789922737414
+  },
+  {
+    "source": "commit",
+    "reply": "kamu jalan dengan niat sekarang\n\nkamu tetap lanjut… dan itu bukan kebetulan",
+    "meta": {
+      "greeting": "kamu jalan dengan niat sekarang",
+      "message": "kamu tetap lanjut… dan itu bukan kebetulan",
+      "tone": "persistent_respect",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "refactor",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "refactor",
+        "scope": "notification",
+        "detail": "refactor(notification): separate sender service",
+        "actionTag": "refactor"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "refactor",
+        "actionTag": "refactor"
+      }
+    },
+    "created_at": 1789923022606
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu gak ke mana-mana\n\ndan kamu commit… tenang, tapi kamu tetap jalan sampai sini",
+    "meta": {
+      "greeting": "Farid… kamu gak ke mana-mana",
+      "message": "dan kamu commit… tenang, tapi kamu tetap jalan sampai sini",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "refactor",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "refactor",
+        "scope": "notification",
+        "detail": "refactor(notification): separate sender service",
+        "actionTag": "refactor"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "refactor",
+        "actionTag": "refactor"
+      }
+    },
+    "created_at": 1789923114740
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… ayo mulai sekarang\n\nhari ini belum ada commit, jangan berhenti di niat, mulai sekarang",
+    "meta": {
+      "greeting": "Farid… ayo mulai sekarang",
+      "message": "hari ini belum ada commit, jangan berhenti di niat, mulai sekarang",
+      "tone": "warning_push",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "feat",
+      "commit": {
+        "type": "feat",
+        "scope": "quran",
+        "detail": "feat(quran): add audio recitation support",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789923889238
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… tahan dikit lagi\n\nbelum ada commit, kamu masih bisa jaga alurnya kalau mulai sekarang",
+    "meta": {
+      "greeting": "Farid… tahan dikit lagi",
+      "message": "belum ada commit, kamu masih bisa jaga alurnya kalau mulai sekarang",
+      "tone": "warning_hold",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "chore",
+      "commit": {
+        "type": "chore",
+        "scope": "ci",
+        "detail": "chore(ci): improve github actions workflow",
+        "actionTag": "chore"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "chore",
+        "actionTag": "chore"
+      }
+    },
+    "created_at": 1789923938730
+  },
+  {
+    "source": "commit",
+    "reply": "eh… jangan berhenti di niat doang\n\nbelum ada progress hari ini, kamu harus dorong diri kamu buat mulai",
+    "meta": {
+      "greeting": "eh… jangan berhenti di niat doang",
+      "message": "belum ada progress hari ini, kamu harus dorong diri kamu buat mulai",
+      "tone": "warning_push",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "refactor",
+      "commit": {
+        "type": "refactor",
+        "scope": "notification",
+        "detail": "refactor(notification): separate sender service",
+        "actionTag": "refactor"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "refactor",
+        "actionTag": "refactor"
+      }
+    },
+    "created_at": 1789924028084
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… tahan dikit lagi\n\nbelum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+    "meta": {
+      "greeting": "Farid… tahan dikit lagi",
+      "message": "belum ada commit, kamu cuma butuh satu langkah buat tetap lanjut",
+      "tone": "warning_hold",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "style",
+      "commit": {
+        "type": "style",
+        "scope": "quran",
+        "detail": "style(quran): improve player interface",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "style",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1789924348123
+  }
+]

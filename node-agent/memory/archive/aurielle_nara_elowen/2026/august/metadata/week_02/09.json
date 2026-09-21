@@ -1,0 +1,80 @@
+[
+  {
+    "source": "commit",
+    "reply": "eh… kamu gak terburu-buru\n\ndan kamu lanjut dengan cara kamu sendiri… itu cukup",
+    "meta": {
+      "greeting": "eh… kamu gak terburu-buru",
+      "message": "dan kamu lanjut dengan cara kamu sendiri… itu cukup",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "test",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "test",
+        "scope": "bot",
+        "detail": "test(bot): verify telegram message delivery",
+        "actionTag": "test"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "test",
+        "actionTag": "test"
+      }
+    },
+    "created_at": 1789909552365
+  },
+  {
+    "source": "commit",
+    "reply": "eh… kamu gak terburu-buru\n\nkamu jalan stabil… gak goyah walaupun capek",
+    "meta": {
+      "greeting": "eh… kamu gak terburu-buru",
+      "message": "kamu jalan stabil… gak goyah walaupun capek",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "refactor",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "refactor",
+        "scope": "quran",
+        "detail": "refactor(quran): optimize audio streaming logic",
+        "actionTag": "refactor"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "refactor",
+        "actionTag": "refactor"
+      }
+    },
+    "created_at": 1789909559073
+  }
+]

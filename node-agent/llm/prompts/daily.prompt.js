@@ -4,6 +4,7 @@ export function buildDailyPrompt({ data }) {
     .map(item => ({
       context: item.context
     }));
+    console.log(compactData, 'COMPACT DATAAAA')
   return `
    Tulis refleksi harian development Farid berdasarkan aktivitas hari ini.
    

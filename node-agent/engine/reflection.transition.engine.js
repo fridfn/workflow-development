@@ -13,7 +13,8 @@ import { ensureDir, ensureFile } from "../utils/fs.helper.js";
 // ========================================
 // 🔹 MAIN
 // ========================================
-export async function handleReflectionTransition({ agent }) {0
+export async function handleReflectionTransition({ agent }) {
+  0;
   const model = getModel("smart");
   const now = getDateSimulation();
 
@@ -82,13 +83,13 @@ export async function handleReflectionTransition({ agent }) {0
       currentDay,
     });
 
-    // await generateReflection({
-    //   agent,
-    //   model,
-    //   outputFile,
-    //   type: "daily",
-    //   data: dailyData,
-    // });
+    await generateReflection({
+      agent,
+      model,
+      outputFile,
+      type: "daily",
+      data: dailyData,
+    });
 
     setMemory(agent, "reflection.last_day", currentDay);
   }
@@ -110,14 +111,14 @@ export async function handleReflectionTransition({ agent }) {0
       archiveMetadata,
       week: lastWeek,
     });
-    console.dir(weeklyData, { depth: null });
-    // await generateReflection({
-    //   agent,
-    //   type: "weekly",
-    //   data: weeklyData,
-    //   outputFile,
-    //   model
-    // });
+
+    await generateReflection({
+      agent,
+      type: "weekly",
+      data: weeklyData,
+      outputFile,
+      model,
+    });
 
     setMemory(agent, "reflection.last_week", week);
   }
@@ -291,13 +292,27 @@ function loadWeeklyStats({ statsMonthDir, archiveMetadata, week }) {
   }
 
   // ========================================
-  // 🔹 RESULT
+  // 🔹 SAVE MERGED WEEKLY DATA
   // ========================================
 
-  return {
+  const mergedDir = path.join(statsMonthDir, "merged");
+
+  ensureDir(mergedDir);
+
+  const mergedFile = path.join(mergedDir, `week_${week}.json`);
+
+  const weeklyData = {
     stats: weeklyStats,
     repositories,
   };
+
+  fs.writeFileSync(mergedFile, JSON.stringify(weeklyData, null, 2));
+
+  // ========================================
+  // 🔹 RESULT
+  // ========================================
+
+  return weeklyData;
 }
 
 function buildRepositoryContext(repositories, entry) {
