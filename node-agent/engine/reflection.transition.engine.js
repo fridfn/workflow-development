@@ -15,7 +15,7 @@ import { ensureDir, ensureFile } from "../utils/fs.helper.js";
 // ========================================
 export async function handleReflectionTransition({ agent }) {
   0;
-  const model = getModel("smart");
+  const model = getModel("balanced");
   const now = getDateSimulation();
 
   const year = now.getFullYear();
@@ -40,6 +40,16 @@ export async function handleReflectionTransition({ agent }) {
   const lastYear = getMemory(agent, "reflection.last_year");
 
   // ========================================
+  // 🔹 REFLECTION SOURCE
+  // ========================================
+
+  const isMonthChanged = lastMonth !== month;
+
+  const reflectionYear = isMonthChanged ? lastYear : year;
+
+  const reflectionMonth = isMonthChanged ? lastMonth : month;
+
+  // ========================================
   // 🔹 FIRST BOOT
   // ========================================
   if (!lastDay && !lastWeek && !lastMonth && !lastYear) {
@@ -57,17 +67,25 @@ export async function handleReflectionTransition({ agent }) {
   // ========================================
   // 🔹 PATHS
   // ========================================
+
   const relativeDir = `${agent}/${year}/${month}`;
 
   const archiveMonthDir = `./memory/archive/${relativeDir}/journal`;
+
   const archiveMetadata = `./memory/archive/${relativeDir}/metadata`;
 
   const statsMonthDir = `./memory/stats/${relativeDir}/metadata`;
 
+  const weeklyRelativeDir = `${agent}/${reflectionYear}/${reflectionMonth}`;
+
+  const weeklyArchiveMetadata = `./memory/archive/${weeklyRelativeDir}/metadata`;
+
+  const weeklyStatsMonthDir = `./memory/stats/${weeklyRelativeDir}/metadata`;
+
   // ========================================
   // 🔹 DAILY REFLECTION
   // ========================================
-  const currentDay = String(now.getUTCDate()).padStart(2, "0");
+  const currentDay = String(now.getDate()).padStart(2, "0");
 
   if (lastDay !== currentDay) {
     const dailyDir = path.join(archiveMonthDir, "daily");
@@ -83,13 +101,13 @@ export async function handleReflectionTransition({ agent }) {
       currentDay,
     });
 
-    await generateReflection({
-      agent,
-      model,
-      outputFile,
-      type: "daily",
-      data: dailyData,
-    });
+    // await generateReflection({
+    //   agent,
+    //   model,
+    //   outputFile,
+    //   type: "daily",
+    //   data: dailyData,
+    // });
 
     setMemory(agent, "reflection.last_day", currentDay);
   }
@@ -97,8 +115,28 @@ export async function handleReflectionTransition({ agent }) {
   // ========================================
   // 🔹 WEEKLY REFLECTION
   // ============================ ============
+
+  console.log("[WEEK CHECK]", {
+    lastWeek,
+    currentWeek: week,
+    lastMonth,
+    currentMonth: month,
+  });
+
   if (lastWeek !== week) {
-    const weeklyDir = path.join(archiveMonthDir, "weekly");
+    console.log("[WEEKLY] RUNNING");
+    console.log("[WEEKLY SOURCE]", {
+      weeklyStatsMonthDir,
+      weeklyArchiveMetadata,
+      week: lastWeek,
+    });
+
+    const weeklyDir = path.join(
+      "./memory/archive",
+      weeklyRelativeDir,
+      "journal",
+      "weekly",
+    );
 
     ensureDir(weeklyDir);
 
@@ -107,18 +145,18 @@ export async function handleReflectionTransition({ agent }) {
     const outputFile = path.join(weeklyDir, `${fileName}.md`);
 
     const weeklyData = loadWeeklyStats({
-      statsMonthDir,
-      archiveMetadata,
+      statsMonthDir: weeklyStatsMonthDir,
+      archiveMetadata: weeklyArchiveMetadata,
       week: lastWeek,
     });
 
-    await generateReflection({
-      agent,
-      type: "weekly",
-      data: weeklyData,
-      outputFile,
-      model,
-    });
+    // await generateReflection({
+    //   agent,
+    //   type: "weekly",
+    //   data: weeklyData,
+    //   outputFile,
+    //   model,
+    // });
 
     setMemory(agent, "reflection.last_week", week);
   }
@@ -127,26 +165,19 @@ export async function handleReflectionTransition({ agent }) {
   // 🔹 MONTHLY REFLECTION
   // ========================================
   if (lastMonth !== month) {
-    const previousMonthDir = `./memory/stats/${agent}/${year}/${lastMonth}`;
+    const lastMonthDir = `./memory/stats/${agent}/${lastYear}/${lastMonth}/metadata`;
+    const monthlyData = loadMonthlyStats({
+      lastMonthDir,
+    });
 
-    const summaryFile = path.join(previousMonthDir, "summary.json");
-
-    ensureFile(summaryFile);
-
-    let monthlyData = {};
-
-    if (fs.existsSync(summaryFile)) {
-      monthlyData = JSON.parse(fs.readFileSync(summaryFile, "utf-8"));
-    }
-
-    const outputFile = `./memory/archive/${agent}/${year}/${lastMonth}/reflection.json`;
+    const outputFile = `./memory/archive/${agent}/${lastYear}/${lastMonth}/reflection.md`;
 
     await generateReflection({
       agent,
+      model,
       outputFile,
       type: "monthly",
       data: monthlyData,
-      model,
     });
 
     setMemory(agent, "reflection.last_month", month);
@@ -164,7 +195,7 @@ export async function handleReflectionTransition({ agent }) {
       yearlyData = JSON.parse(fs.readFileSync(yearlySummary, "utf-8"));
     }
 
-    const outputFile = `./memory/archive/${agent}/${lastYear}/yearly-reflection.json`;
+    const lastMonthDir = `./memory/stats/${agent}/${lastYear}/${lastMonth}/metadata`;
 
     await generateReflection({
       agent,
@@ -307,7 +338,7 @@ function loadWeeklyStats({ statsMonthDir, archiveMetadata, week }) {
   };
 
   fs.writeFileSync(mergedFile, JSON.stringify(weeklyData, null, 2));
-
+  console.log("[MERGED SAVED]", mergedFile);
   // ========================================
   // 🔹 RESULT
   // ========================================
@@ -384,4 +415,88 @@ function buildRepositoryContext(repositories, entry) {
     scope: context.commit?.scope || null,
     detail: context.commit?.detail || null,
   });
+}
+
+function loadMonthlyStats({ lastMonthDir }) {
+  const mergedDir = path.join(lastMonthDir, "merged");
+
+  if (!fs.existsSync(mergedDir)) {
+    return {};
+  }
+
+  const files = fs
+    .readdirSync(mergedDir)
+    .filter(
+      (file) =>
+        file.startsWith("week_") &&
+        file.endsWith(".json"),
+    )
+    .sort();
+
+  const monthlyData = {};
+
+  for (const file of files) {
+    const filePath = path.join(mergedDir, file);
+
+    try {
+      const weeklyData = JSON.parse(
+        fs.readFileSync(filePath, "utf-8"),
+      );
+
+      const weekName = path.basename(
+        file,
+        ".json",
+      );
+
+      // ========================================
+      // 🔹 INITIALIZE WEEK
+      // ========================================
+
+      monthlyData[weekName] = {};
+
+      // ========================================
+      // 🔹 LOAD REPOSITORIES
+      // ========================================
+
+      for (const [repoKey, repoData] of Object.entries(
+        weeklyData.repositories ?? {},
+      )) {
+        const repositoryName =
+          repoData.repository?.name || repoKey;
+
+        monthlyData[weekName][repositoryName] = {
+          commits: repoData.stats?.commits ?? 0,
+
+          types: {
+            ...(repoData.stats?.commit_types ?? {}),
+          },
+
+          activities: (repoData.activities ?? [])
+            .map((activity) => activity.detail)
+            .filter(Boolean),
+        };
+      }
+    } catch (error) {
+      console.error(
+        `[MONTH ERROR] ${file}:`,
+        error.message,
+      );
+    }
+  }
+
+  // ========================================
+  // 🔹 SAVE MONTHLY RECAP
+  // ========================================
+
+  const mergedFile = path.join(
+    mergedDir,
+    "monthly_recap.json",
+  );
+
+  fs.writeFileSync(
+    mergedFile,
+    JSON.stringify(monthlyData, null, 2),
+  );
+
+  return monthlyData;
 }

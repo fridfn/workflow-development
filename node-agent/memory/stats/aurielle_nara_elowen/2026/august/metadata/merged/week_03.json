@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "commit_stats": {
+      "fix": 3,
+      "test": 3,
+      "docs": 1,
+      "feat": 5,
+      "style": 4,
+      "refactor": 4,
+      "chore": 3
+    },
+    "mode_stats": {
+      "persistent": 12,
+      "last_warning": 11
+    },
+    "tone_stats": {
+      "persistent_calm": 5,
+      "persistent_admire": 2,
+      "persistent_respect": 4,
+      "persistent_clingy": 1,
+      "warning_deadline": 4,
+      "warning_push": 4,
+      "warning_hold": 3
+    },
+    "category_stats": {
+      "support": 12,
+      "reminder": 11
+    },
+    "tag_stats": {
+      "fix": 3,
+      "test": 3,
+      "docs": 1,
+      "feat": 5,
+      "style": 4,
+      "refactor": 4,
+      "chore": 3
+    },
+    "reply_source_stats": {
+      "initial": 23
+    },
+    "active_hours": {
+      "20": 17,
+      "20.51": 6
+    },
+    "total_generated": 23,
+    "last_generated_at": 12530476376524
+  },
+  "repositories": {
+    "fridfn/workflow-development": {
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript"
+      },
+      "stats": {
+        "commits": 12,
+        "commit_types": {
+          "fix": 2,
+          "test": 1,
+          "docs": 1,
+          "feat": 3,
+          "style": 3,
+          "refactor": 2
+        }
+      },
+      "activities": [
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "fix",
+          "scope": "engine",
+          "detail": "fix(engine): handle invalid reflection payload"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "test",
+          "scope": "engine",
+          "detail": "test(engine): cover reflection builder cases"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "docs",
+          "scope": "readme",
+          "detail": "docs(readme): update installation guide"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "feat",
+          "scope": "notification",
+          "detail": "feat(notification): add realtime broadcast system"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "style",
+          "scope": "card",
+          "detail": "style(card): add glassmorphism effect"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "style",
+          "scope": "css",
+          "detail": "style(css): reorganize layout styles"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "feat",
+          "scope": "auth",
+          "detail": "feat(auth): add login + register system"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "fix",
+          "scope": "engine",
+          "detail": "fix(engine): handle invalid reflection payload"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "feat",
+          "scope": "notification",
+          "detail": "feat(notification): add realtime broadcast system"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "style",
+          "scope": "portfolio",
+          "detail": "style(portfolio): improve hover animations"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "refactor",
+          "scope": "notification",
+          "detail": "refactor(notification): separate sender service"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "refactor",
+          "scope": "notification",
+          "detail": "refactor(notification): separate sender service"
+        }
+      ]
+    }
+  }
+}

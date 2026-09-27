@@ -1,42 +1,49 @@
 {
   "stats": {
     "commit_stats": {
-      "test": 3,
-      "chore": 1,
-      "style": 2,
-      "refactor": 1,
-      "fix": 2,
-      "feat": 1
+      "test": 9,
+      "chore": 5,
+      "style": 5,
+      "feat": 7,
+      "docs": 3,
+      "refactor": 4,
+      "fix": 2
     },
     "mode_stats": {
-      "last_warning": 1,
-      "persistent": 9
+      "last_warning": 5,
+      "persistent": 30
     },
     "tone_stats": {
-      "warning_firm": 1,
-      "persistent_respect": 4,
-      "persistent_calm": 5
+      "warning_firm": 2,
+      "persistent_respect": 8,
+      "persistent_clingy": 4,
+      "persistent_calm": 9,
+      "persistent_admire": 9,
+      "warning_push": 2,
+      "warning_hold": 1
     },
     "category_stats": {
-      "reminder": 1,
-      "support": 9
+      "reminder": 5,
+      "support": 30
     },
     "tag_stats": {
-      "test": 3,
-      "chore": 1,
-      "style": 2,
-      "refactor": 1,
-      "fix": 2,
-      "feat": 1
+      "test": 9,
+      "chore": 5,
+      "style": 5,
+      "feat": 7,
+      "docs": 3,
+      "refactor": 4,
+      "fix": 2
     },
     "reply_source_stats": {
-      "initial": 10
+      "initial": 35
     },
     "active_hours": {
-      "20": 10
+      "20": 12,
+      "20.51": 23
     },
-    "total_generated": 10,
-    "last_generated_at": 12529367743174
+    "total_generated": 35,
+    "last_generated_at": 12529737624233
   },
   "repositories": {
     "fridfn/workflow-development": {
@@ -47,14 +54,15 @@
         "language": "JavaScript"
       },
       "stats": {
-        "commits": 9,
+        "commits": 30,
         "commit_types": {
-          "chore": 1,
-          "style": 2,
-          "test": 2,
-          "refactor": 1,
-          "fix": 2,
-          "feat": 1
+          "chore": 4,
+          "style": 5,
+          "test": 6,
+          "feat": 7,
+          "docs": 2,
+          "refactor": 4,
+          "fix": 2
         }
       },
       "activities": [
@@ -69,6 +77,132 @@
           "type": "style",
           "scope": "css",
           "detail": "style(css): reorganize layout styles"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "test",
+          "scope": "auth",
+          "detail": "test(auth): test login session flow"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "chore",
+          "scope": "notification",
+          "detail": "chore(notification): cleanup unused workers"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "test",
+          "scope": "bot",
+          "detail": "test(bot): verify telegram message delivery"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "quran",
+          "detail": "feat(quran): add audio recitation support"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "ui",
+          "detail": "feat(ui): redesign dashboard layout"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "docs",
+          "scope": "notification",
+          "detail": "docs(notification): add firebase setup guide"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "refactor",
+          "scope": "engine",
+          "detail": "refactor(engine): split reflection builder modules"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "chore",
+          "scope": "repo",
+          "detail": "chore(repo): update gitignore rules"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "chore",
+          "scope": "engine",
+          "detail": "chore(engine): cleanup debug logs"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "notification",
+          "detail": "feat(notification): add realtime broadcast system"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "refactor",
+          "scope": "ui",
+          "detail": "refactor(ui): clean unused component states"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "memory",
+          "detail": "feat(memory): save daily highlights automatically"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "style",
+          "scope": "ui",
+          "detail": "style(ui): improve button spacing"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "test",
+          "scope": "bot",
+          "detail": "test(bot): verify telegram message delivery"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "style",
+          "scope": "portfolio",
+          "detail": "style(portfolio): improve hover animations"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "memory",
+          "detail": "feat(memory): save daily highlights automatically"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "auth",
+          "detail": "feat(auth): add login + register system"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "test",
+          "scope": "engine",
+          "detail": "test(engine): add reflection snapshot tests"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "docs",
+          "scope": "readme",
+          "detail": "docs(readme): update installation guide"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "style",
+          "scope": "css",
+          "detail": "style(css): reorganize layout styles"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "refactor",
+          "scope": "portfolio",
+          "detail": "refactor(portfolio): modularize project cards"
         },
         {
           "time": "2026-09-20T12:59:13Z",

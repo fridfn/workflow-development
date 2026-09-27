@@ -17,8 +17,8 @@ const GROQ_MODELS = {
   // ⚖️ BALANCED
   // ========================================
   balanced: {
-    key: "qwen/qwen3.6-27b",
-    name: "Qwen 3.6 27B",
+    key: "qwen/qwen3.8-27b",
+    name: "Qwen 3.8 27B",
     tier: "balanced",
     context: 131072,
     description:

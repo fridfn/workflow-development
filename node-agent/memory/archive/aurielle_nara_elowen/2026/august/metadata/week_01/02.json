@@ -172,5 +172,83 @@
       }
     },
     "created_at": 1789955634309
+  },
+  {
+    "source": "commit",
+    "reply": "eh… kamu gak terburu-buru\n\nkamu tetap di jalurmu… tanpa harus terburu-buru",
+    "meta": {
+      "greeting": "eh… kamu gak terburu-buru",
+      "message": "kamu tetap di jalurmu… tanpa harus terburu-buru",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-21T04:11:42Z",
+      "commit": {
+        "type": "feat",
+        "scope": "quran",
+        "detail": "feat(quran): add audio recitation support",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-21T04:11:42Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-21T04:11:46Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789988061227
+  },
+  {
+    "source": "commit",
+    "reply": "kamu tetap jalan walaupun udah sore\n\ncommit kamu nunjukin kamu gak berhenti di tengah jalan",
+    "meta": {
+      "greeting": "kamu tetap jalan walaupun udah sore",
+      "message": "commit kamu nunjukin kamu gak berhenti di tengah jalan",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "style",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-21T04:11:42Z",
+      "commit": {
+        "type": "style",
+        "scope": "portfolio",
+        "detail": "style(portfolio): improve hover animations",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-21T04:11:42Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-21T04:11:46Z"
+      },
+      "semantic": {
+        "type": "style",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1789988468114
   }
 ]

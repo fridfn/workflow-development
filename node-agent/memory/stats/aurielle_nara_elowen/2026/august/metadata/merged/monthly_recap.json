@@ -1,0 +1,208 @@
+{
+  "week_01": {
+    "workflow-development": {
+      "commits": 13,
+      "types": {
+        "feat": 3,
+        "style": 4,
+        "test": 3,
+        "fix": 2,
+        "docs": 1
+      },
+      "activities": [
+        "feat(quran): add audio recitation support",
+        "style(portfolio): improve hover animations",
+        "test(api): add endpoint validation tests",
+        "style(ui): improve button spacing",
+        "style(card): add glassmorphism effect",
+        "fix(auth): resolve invalid token issue",
+        "test(api): add endpoint validation tests",
+        "feat(ui): redesign dashboard layout",
+        "fix(bot): prevent duplicate telegram messages",
+        "docs(memory): document archive system",
+        "feat(quran): add audio recitation support",
+        "style(card): add glassmorphism effect",
+        "test(bot): verify telegram message delivery"
+      ]
+    },
+    "portfolio-v2": {
+      "commits": 3,
+      "types": {
+        "feat": 1,
+        "fix": 1,
+        "style": 1
+      },
+      "activities": [
+        "feat(audio): integrate customized music player component",
+        "fix(router): fix dynamic page navigation bug",
+        "style(theme): add dark mode color palette"
+      ]
+    },
+    "japanese-quiz-app": {
+      "commits": 3,
+      "types": {
+        "feat": 1,
+        "refactor": 2
+      },
+      "activities": [
+        "feat(hiragana): add flashcard practice mode",
+        "refactor(quiz): optimize scoring state logic",
+        "refactor(romaji): modularize translation lookup helper"
+      ]
+    },
+    "telegram-bot-notifier": {
+      "commits": 3,
+      "types": {
+        "fix": 1,
+        "refactor": 1,
+        "feat": 1
+      },
+      "activities": [
+        "fix(polling): handle connection timeout error gracefully",
+        "refactor(commands): split bot command handlers into modules",
+        "feat(webhook): add support for scheduled reminder messages"
+      ]
+    }
+  },
+  "week_02": {
+    "workflow-development": {
+      "commits": 30,
+      "types": {
+        "chore": 4,
+        "style": 5,
+        "test": 6,
+        "feat": 7,
+        "docs": 2,
+        "refactor": 4,
+        "fix": 2
+      },
+      "activities": [
+        "chore(deps): upgrade express dependencies",
+        "style(css): reorganize layout styles",
+        "test(auth): test login session flow",
+        "chore(notification): cleanup unused workers",
+        "test(bot): verify telegram message delivery",
+        "feat(quran): add audio recitation support",
+        "feat(ui): redesign dashboard layout",
+        "docs(notification): add firebase setup guide",
+        "refactor(engine): split reflection builder modules",
+        "chore(repo): update gitignore rules",
+        "chore(engine): cleanup debug logs",
+        "feat(notification): add realtime broadcast system",
+        "refactor(ui): clean unused component states",
+        "feat(memory): save daily highlights automatically",
+        "style(ui): improve button spacing",
+        "test(bot): verify telegram message delivery",
+        "style(portfolio): improve hover animations",
+        "feat(memory): save daily highlights automatically",
+        "feat(auth): add login + register system",
+        "test(engine): add reflection snapshot tests",
+        "docs(readme): update installation guide",
+        "style(css): reorganize layout styles",
+        "refactor(portfolio): modularize project cards",
+        "test(bot): verify telegram message delivery",
+        "refactor(quran): optimize audio streaming logic",
+        "style(portfolio): improve hover animations",
+        "fix(bot): prevent duplicate telegram messages",
+        "fix(memory): correct archive file parsing",
+        "feat(api): integrate github activity fetch",
+        "test(auth): test login session flow"
+      ]
+    }
+  },
+  "week_03": {
+    "workflow-development": {
+      "commits": 12,
+      "types": {
+        "fix": 2,
+        "test": 1,
+        "docs": 1,
+        "feat": 3,
+        "style": 3,
+        "refactor": 2
+      },
+      "activities": [
+        "fix(engine): handle invalid reflection payload",
+        "test(engine): cover reflection builder cases",
+        "docs(readme): update installation guide",
+        "feat(notification): add realtime broadcast system",
+        "style(card): add glassmorphism effect",
+        "style(css): reorganize layout styles",
+        "feat(auth): add login + register system",
+        "fix(engine): handle invalid reflection payload",
+        "feat(notification): add realtime broadcast system",
+        "style(portfolio): improve hover animations",
+        "refactor(notification): separate sender service",
+        "refactor(notification): separate sender service"
+      ]
+    }
+  },
+  "week_04": {
+    "workflow-development": {
+      "commits": 12,
+      "types": {
+        "fix": 2,
+        "test": 1,
+        "docs": 1,
+        "feat": 3,
+        "style": 3,
+        "refactor": 2
+      },
+      "activities": [
+        "fix(engine): handle invalid reflection payload",
+        "test(engine): cover reflection builder cases",
+        "docs(readme): update installation guide",
+        "feat(notification): add realtime broadcast system",
+        "style(card): add glassmorphism effect",
+        "style(css): reorganize layout styles",
+        "feat(auth): add login + register system",
+        "fix(engine): handle invalid reflection payload",
+        "feat(notification): add realtime broadcast system",
+        "style(portfolio): improve hover animations",
+        "refactor(notification): separate sender service",
+        "refactor(notification): separate sender service"
+      ]
+    }
+  },
+  "week_05": {
+    "workflow-development": {
+      "commits": 25,
+      "types": {
+        "fix": 1,
+        "test": 5,
+        "chore": 4,
+        "style": 4,
+        "feat": 6,
+        "docs": 2,
+        "refactor": 3
+      },
+      "activities": [
+        "fix(memory): correct archive file parsing",
+        "test(auth): test login session flow",
+        "chore(deps): upgrade express dependencies",
+        "style(css): reorganize layout styles",
+        "test(auth): test login session flow",
+        "chore(notification): cleanup unused workers",
+        "test(bot): verify telegram message delivery",
+        "feat(quran): add audio recitation support",
+        "feat(ui): redesign dashboard layout",
+        "docs(notification): add firebase setup guide",
+        "refactor(engine): split reflection builder modules",
+        "chore(repo): update gitignore rules",
+        "chore(engine): cleanup debug logs",
+        "feat(notification): add realtime broadcast system",
+        "refactor(ui): clean unused component states",
+        "feat(memory): save daily highlights automatically",
+        "style(ui): improve button spacing",
+        "test(bot): verify telegram message delivery",
+        "style(portfolio): improve hover animations",
+        "feat(memory): save daily highlights automatically",
+        "feat(auth): add login + register system",
+        "test(engine): add reflection snapshot tests",
+        "docs(readme): update installation guide",
+        "style(css): reorganize layout styles",
+        "refactor(portfolio): modularize project cards"
+      ]
+    }
+  }
+}

@@ -35,8 +35,11 @@ export function updateFlatStats({
       : "retry";
   
   const date = getDateSimulation()
-  const hour =
-    date.getHours();
+  const timeString = date.toLocaleTimeString("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
 
   // groups
   const commitStats =
@@ -82,45 +85,21 @@ export function updateFlatStats({
     );
 
   // increment
-  incrementStat(
-    stats,
-    "total_generated"
-  );
+  incrementStat(stats, "total_generated");
 
-  incrementStat(
-    commitStats,
-    type
-  );
+  incrementStat(commitStats, type);
 
-  incrementStat(
-    modeStats,
-    mode
-  );
+  incrementStat(modeStats, mode);
 
-  incrementStat(
-    toneStats,
-    tone
-  );
+  incrementStat(toneStats, tone);
 
-  incrementStat(
-    categoryStats,
-    category
-  );
+  incrementStat(categoryStats, category);
 
-  incrementStat(
-    tagStats,
-    tag
-  );
+  incrementStat(tagStats, tag);
 
-  incrementStat(
-    sourceStats,
-    source
-  );
+  incrementStat(sourceStats, source);
 
-  incrementStat(
-    activeHours,
-    hour
-  );
+  incrementStat(activeHours, timeString);
 
   stats.last_generated_at =
     Date.now();

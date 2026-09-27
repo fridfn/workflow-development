@@ -1,31 +1,43 @@
 {
   "commit_stats": {
     "chore": 1,
-    "feat": 2,
-    "refactor": 1
+    "feat": 3,
+    "refactor": 1,
+    "test": 2,
+    "style": 2,
+    "fix": 2
   },
   "mode_stats": {
-    "last_warning": 4
+    "last_warning": 4,
+    "persistent": 7
   },
   "tone_stats": {
     "warning_push": 2,
     "warning_firm": 1,
-    "warning_deadline": 1
+    "warning_deadline": 1,
+    "persistent_calm": 1,
+    "persistent_respect": 1,
+    "persistent_clingy": 3,
+    "persistent_admire": 2
   },
   "category_stats": {
-    "reminder": 4
+    "reminder": 4,
+    "support": 7
   },
   "tag_stats": {
     "chore": 1,
-    "feat": 2,
-    "refactor": 1
+    "feat": 3,
+    "refactor": 1,
+    "test": 2,
+    "style": 2,
+    "fix": 2
   },
   "reply_source_stats": {
-    "initial": 4
+    "initial": 11
   },
   "active_hours": {
-    "20": 4
+    "20": 11
   },
-  "total_generated": 4,
-  "last_generated_at": 1789963777090
+  "total_generated": 11,
+  "last_generated_at": 1789986687851
 }

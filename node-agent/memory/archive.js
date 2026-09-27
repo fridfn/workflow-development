@@ -64,9 +64,6 @@ export async function archiveMemory({
   const rawFile =
     `${rawDir}/${day}.json`;
   
-  const yearlySummaryFile =
-    `${archiveDir}/${year}/summaries/yearly-summary.json`;
-  
   // =========================
   // 🔹 ENSURE DIRS
   // =========================
@@ -78,10 +75,6 @@ export async function archiveMemory({
     {
       file: rawFile,
       fallback: [],
-    },
-    {
-      file: yearlySummaryFile,
-      fallback: {},
     },
     {
       file: statsFile,

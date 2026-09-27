@@ -1,0 +1,31 @@
+[
+  {
+    "source": "commit",
+    "reply": "Farid… ayo mulai sekarang\n\nkamu belum nyentuh kode hari ini, paksa mulai dari hal kecil sekarang",
+    "meta": {
+      "greeting": "Farid… ayo mulai sekarang",
+      "message": "kamu belum nyentuh kode hari ini, paksa mulai dari hal kecil sekarang",
+      "tone": "warning_push",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "test",
+      "commit": {
+        "type": "test",
+        "scope": "engine",
+        "detail": "test(engine): add reflection snapshot tests",
+        "actionTag": "test"
+      },
+      "activity": {
+        "hasCommit": false,
+        "commitTime": null
+      },
+      "semantic": {
+        "type": "test",
+        "actionTag": "test"
+      }
+    },
+    "created_at": 1790092120959
+  }
+]

@@ -99,17 +99,21 @@ export async function generateReflection({
   // 🔹 GENERATE LLM
   // ========================================
 
+    const prompt = buildPrompt({
+      data: reflectionData,
+    });
+
     const raw = await generateLLM({
       provider,
       model,
 
       system: agentPersona,
 
-      prompt: JSON.stringify(reflectionData, null, 2),
+      prompt,
 
       temperature: 0.8,
 
-      max_tokens: 1200,
+      max_tokens: 2000,
     });
 
     // ========================================

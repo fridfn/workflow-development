@@ -1,0 +1,255 @@
+{
+  "stats": {
+    "commit_stats": {
+      "style": 4,
+      "fix": 4,
+      "chore": 3,
+      "feat": 7,
+      "refactor": 3,
+      "test": 2,
+      "docs": 2
+    },
+    "mode_stats": {
+      "last_warning": 15,
+      "persistent": 10
+    },
+    "tone_stats": {
+      "warning_firm": 6,
+      "warning_push": 3,
+      "warning_deadline": 3,
+      "warning_hold": 3,
+      "persistent_calm": 2,
+      "persistent_admire": 3,
+      "persistent_respect": 1,
+      "persistent_clingy": 4
+    },
+    "category_stats": {
+      "reminder": 15,
+      "support": 10
+    },
+    "tag_stats": {
+      "style": 4,
+      "fix": 4,
+      "chore": 3,
+      "feat": 7,
+      "refactor": 3,
+      "test": 2,
+      "docs": 2
+    },
+    "reply_source_stats": {
+      "initial": 25
+    },
+    "active_hours": {
+      "20": 25
+    },
+    "total_generated": 25,
+    "last_generated_at": 12529496176506
+  },
+  "repositories": {
+    "fridfn/workflow-development": {
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript"
+      },
+      "stats": {
+        "commits": 13,
+        "commit_types": {
+          "feat": 3,
+          "style": 4,
+          "test": 3,
+          "fix": 2,
+          "docs": 1
+        }
+      },
+      "activities": [
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "quran",
+          "detail": "feat(quran): add audio recitation support"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "style",
+          "scope": "portfolio",
+          "detail": "style(portfolio): improve hover animations"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "test",
+          "scope": "api",
+          "detail": "test(api): add endpoint validation tests"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "style",
+          "scope": "ui",
+          "detail": "style(ui): improve button spacing"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "style",
+          "scope": "card",
+          "detail": "style(card): add glassmorphism effect"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "fix",
+          "scope": "auth",
+          "detail": "fix(auth): resolve invalid token issue"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "test",
+          "scope": "api",
+          "detail": "test(api): add endpoint validation tests"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "ui",
+          "detail": "feat(ui): redesign dashboard layout"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "fix",
+          "scope": "bot",
+          "detail": "fix(bot): prevent duplicate telegram messages"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "docs",
+          "scope": "memory",
+          "detail": "docs(memory): document archive system"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "quran",
+          "detail": "feat(quran): add audio recitation support"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "style",
+          "scope": "card",
+          "detail": "style(card): add glassmorphism effect"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "test",
+          "scope": "bot",
+          "detail": "test(bot): verify telegram message delivery"
+        }
+      ]
+    },
+    "fridfn/portfolio-v2": {
+      "repository": {
+        "name": "portfolio-v2",
+        "full_name": "fridfn/portfolio-v2",
+        "description": "personal developer portfolio built with React and Vite",
+        "language": "JavaScript"
+      },
+      "stats": {
+        "commits": 3,
+        "commit_types": {
+          "feat": 1,
+          "fix": 1,
+          "style": 1
+        }
+      },
+      "activities": [
+        {
+          "time": "2026-09-21T05:30:10Z",
+          "type": "feat",
+          "scope": "audio",
+          "detail": "feat(audio): integrate customized music player component"
+        },
+        {
+          "time": "2026-09-21T05:15:00Z",
+          "type": "fix",
+          "scope": "router",
+          "detail": "fix(router): fix dynamic page navigation bug"
+        },
+        {
+          "time": "2026-09-21T04:50:22Z",
+          "type": "style",
+          "scope": "theme",
+          "detail": "style(theme): add dark mode color palette"
+        }
+      ]
+    },
+    "fridfn/japanese-quiz-app": {
+      "repository": {
+        "name": "japanese-quiz-app",
+        "full_name": "fridfn/japanese-quiz-app",
+        "description": "interactive web application for learning Hiragana and Japanese vocabulary",
+        "language": "JavaScript"
+      },
+      "stats": {
+        "commits": 3,
+        "commit_types": {
+          "feat": 1,
+          "refactor": 2
+        }
+      },
+      "activities": [
+        {
+          "time": "2026-09-21T03:20:00Z",
+          "type": "feat",
+          "scope": "hiragana",
+          "detail": "feat(hiragana): add flashcard practice mode"
+        },
+        {
+          "time": "2026-09-20T21:10:05Z",
+          "type": "refactor",
+          "scope": "quiz",
+          "detail": "refactor(quiz): optimize scoring state logic"
+        },
+        {
+          "time": "2026-09-20T19:45:30Z",
+          "type": "refactor",
+          "scope": "romaji",
+          "detail": "refactor(romaji): modularize translation lookup helper"
+        }
+      ]
+    },
+    "fridfn/telegram-bot-notifier": {
+      "repository": {
+        "name": "telegram-bot-notifier",
+        "full_name": "fridfn/telegram-bot-notifier",
+        "description": "automated notification service for system updates and schedules",
+        "language": "JavaScript"
+      },
+      "stats": {
+        "commits": 3,
+        "commit_types": {
+          "fix": 1,
+          "refactor": 1,
+          "feat": 1
+        }
+      },
+      "activities": [
+        {
+          "time": "2026-09-21T02:00:12Z",
+          "type": "fix",
+          "scope": "polling",
+          "detail": "fix(polling): handle connection timeout error gracefully"
+        },
+        {
+          "time": "2026-09-20T22:15:40Z",
+          "type": "refactor",
+          "scope": "commands",
+          "detail": "refactor(commands): split bot command handlers into modules"
+        },
+        {
+          "time": "2026-09-20T15:30:00Z",
+          "type": "feat",
+          "scope": "webhook",
+          "detail": "feat(webhook): add support for scheduled reminder messages"
+        }
+      ]
+    }
+  }
+}

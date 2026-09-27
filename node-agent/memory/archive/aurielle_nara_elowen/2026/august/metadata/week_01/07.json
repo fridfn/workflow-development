@@ -1,31 +1,470 @@
 [
   {
     "source": "commit",
-    "reply": "kamu belum jalan hari ini\n\nbelum ada progress hari ini, jangan tunggu lagi, langsung mulai saja",
+    "reply": "fitur baru lagu/audio-nya udah masuk… keren banget, pelan-pelan asal konsisten ya",
     "meta": {
-      "greeting": "kamu belum jalan hari ini",
-      "message": "belum ada progress hari ini, jangan tunggu lagi, langsung mulai saja",
+      "greeting": "fitur baru lagu/audio-nya udah masuk…",
+      "message": "keren banget, pelan-pelan asal konsisten ya",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/portfolio-v2",
+      "commitTime": "2026-09-21T05:30:10Z",
+      "commit": {
+        "type": "feat",
+        "scope": "audio",
+        "detail": "feat(audio): integrate customized music player component",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-21T05:30:10Z"
+      },
+      "repository": {
+        "name": "portfolio-v2",
+        "full_name": "fridfn/portfolio-v2",
+        "description": "personal developer portfolio built with React and Vite",
+        "language": "JavaScript",
+        "created_at": "2026-05-12T09:15:00Z",
+        "updated_at": "2026-09-21T05:30:15Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789968610000
+  },
+  {
+    "source": "commit",
+    "reply": "bug navigasi router-nya beres… kerja bagus, pelan-pelan rapikan kodenya ya",
+    "meta": {
+      "greeting": "bug navigasi router-nya beres…",
+      "message": "kerja bagus, pelan-pelan rapikan kodenya ya",
+      "tone": "persistent_respect",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "fix",
+      "repo": "fridfn/portfolio-v2",
+      "commitTime": "2026-09-21T05:15:00Z",
+      "commit": {
+        "type": "fix",
+        "scope": "router",
+        "detail": "fix(router): fix dynamic page navigation bug",
+        "actionTag": "fix"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-21T05:15:00Z"
+      },
+      "repository": {
+        "name": "portfolio-v2",
+        "full_name": "fridfn/portfolio-v2",
+        "description": "personal developer portfolio built with React and Vite",
+        "language": "JavaScript",
+        "created_at": "2026-05-12T09:15:00Z",
+        "updated_at": "2026-09-21T05:15:05Z"
+      },
+      "semantic": {
+        "type": "fix",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1789967700000
+  },
+  {
+    "source": "commit",
+    "reply": "dark mode-nya udah makin nyaman dilihat… makin betah liat portofolio kamu",
+    "meta": {
+      "greeting": "dark mode-nya udah makin nyaman dilihat…",
+      "message": "makin betah liat portofolio kamu",
+      "tone": "persistent_clingy",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "style",
+      "repo": "fridfn/portfolio-v2",
+      "commitTime": "2026-09-21T04:50:22Z",
+      "commit": {
+        "type": "style",
+        "scope": "theme",
+        "detail": "style(theme): add dark mode color palette",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-21T04:50:22Z"
+      },
+      "repository": {
+        "name": "portfolio-v2",
+        "full_name": "fridfn/portfolio-v2",
+        "description": "personal developer portfolio built with React and Vite",
+        "language": "JavaScript",
+        "created_at": "2026-05-12T09:15:00Z",
+        "updated_at": "2026-09-21T04:50:25Z"
+      },
+      "semantic": {
+        "type": "style",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1789966222000
+  },
+  {
+    "source": "commit",
+    "reply": "flashcard hiragana udah siap dimainkan… belajar bahasa jepangnya makin seru ya",
+    "meta": {
+      "greeting": "flashcard hiragana udah siap dimainkan…",
+      "message": "belajar bahasa jepangnya makin seru ya",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/japanese-quiz-app",
+      "commitTime": "2026-09-21T03:20:00Z",
+      "commit": {
+        "type": "feat",
+        "scope": "hiragana",
+        "detail": "feat(hiragana): add flashcard practice mode",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-21T03:20:00Z"
+      },
+      "repository": {
+        "name": "japanese-quiz-app",
+        "full_name": "fridfn/japanese-quiz-app",
+        "description": "interactive web application for learning Hiragana and Japanese vocabulary",
+        "language": "JavaScript",
+        "created_at": "2026-06-01T11:20:00Z",
+        "updated_at": "2026-09-21T03:20:05Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789960800000
+  },
+  {
+    "source": "commit",
+    "reply": "jangan lupa istirahat sebentar… kuis hiragana-nya udah makin rapi kok",
+    "meta": {
+      "greeting": "jangan lupa istirahat sebentar…",
+      "message": "kuis hiragana-nya udah makin rapi kok",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "refactor",
+      "repo": "fridfn/japanese-quiz-app",
+      "commitTime": "2026-09-20T21:10:05Z",
+      "commit": {
+        "type": "refactor",
+        "scope": "quiz",
+        "detail": "refactor(quiz): optimize scoring state logic",
+        "actionTag": "refactor"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T21:10:05Z"
+      },
+      "repository": {
+        "name": "japanese-quiz-app",
+        "full_name": "fridfn/japanese-quiz-app",
+        "description": "interactive web application for learning Hiragana and Japanese vocabulary",
+        "language": "JavaScript",
+        "created_at": "2026-06-01T11:20:00Z",
+        "updated_at": "2026-09-20T21:10:10Z"
+      },
+      "semantic": {
+        "type": "refactor",
+        "actionTag": "refactor"
+      }
+    },
+    "created_at": 1789938605000
+  },
+  {
+    "source": "commit",
+    "reply": "helper romaji-nya disederhanakan… makin rapi struktur kodenya, keren",
+    "meta": {
+      "greeting": "helper romaji-nya disederhanakan…",
+      "message": "makin rapi struktur kodenya, keren",
+      "tone": "persistent_respect",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "refactor",
+      "repo": "fridfn/japanese-quiz-app",
+      "commitTime": "2026-09-20T19:45:30Z",
+      "commit": {
+        "type": "refactor",
+        "scope": "romaji",
+        "detail": "refactor(romaji): modularize translation lookup helper",
+        "actionTag": "refactor"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T19:45:30Z"
+      },
+      "repository": {
+        "name": "japanese-quiz-app",
+        "full_name": "fridfn/japanese-quiz-app",
+        "description": "interactive web application for learning Hiragana and Japanese vocabulary",
+        "language": "JavaScript",
+        "created_at": "2026-06-01T11:20:00Z",
+        "updated_at": "2026-09-20T19:45:35Z"
+      },
+      "semantic": {
+        "type": "refactor",
+        "actionTag": "refactor"
+      }
+    },
+    "created_at": 1789933530000
+  },
+  {
+    "source": "commit",
+    "reply": "eh, bug polling-nya udah beres ya? mantap, lanjut terus tapi tetep jaga kesehatan ya",
+    "meta": {
+      "greeting": "eh, bug polling-nya udah beres ya?",
+      "message": "mantap, lanjut terus tapi tetep jaga kesehatan ya",
       "tone": "warning_firm",
       "category": "reminder"
     },
     "context": {
       "mode": "last_warning",
-      "tag": "chore",
+      "tag": "fix",
+      "repo": "fridfn/telegram-bot-notifier",
+      "commitTime": "2026-09-21T02:00:12Z",
       "commit": {
-        "type": "chore",
-        "scope": "repo",
-        "detail": "chore(repo): update gitignore rules",
-        "actionTag": "chore"
+        "type": "fix",
+        "scope": "polling",
+        "detail": "fix(polling): handle connection timeout error gracefully",
+        "actionTag": "fix"
       },
       "activity": {
-        "hasCommit": false,
-        "commitTime": null
+        "hasCommit": true,
+        "commitTime": "2026-09-21T02:00:12Z"
+      },
+      "repository": {
+        "name": "telegram-bot-notifier",
+        "full_name": "fridfn/telegram-bot-notifier",
+        "description": "automated notification service for system updates and schedules",
+        "language": "JavaScript",
+        "created_at": "2026-07-15T08:00:00Z",
+        "updated_at": "2026-09-21T02:00:15Z"
       },
       "semantic": {
-        "type": "chore",
-        "actionTag": "chore"
+        "type": "fix",
+        "actionTag": "fix"
       }
     },
-    "created_at": 1789902582035
+    "created_at": 1789956012000
+  },
+  {
+    "source": "commit",
+    "reply": "handler bot-nya udah dipecah-pecah… kodenya jadi jauh lebih mudah dibaca sekarang",
+    "meta": {
+      "greeting": "handler bot-nya udah dipecah-pecah…",
+      "message": "kodenya jadi jauh lebih mudah dibaca sekarang",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "refactor",
+      "repo": "fridfn/telegram-bot-notifier",
+      "commitTime": "2026-09-20T22:15:40Z",
+      "commit": {
+        "type": "refactor",
+        "scope": "commands",
+        "detail": "refactor(commands): split bot command handlers into modules",
+        "actionTag": "refactor"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T22:15:40Z"
+      },
+      "repository": {
+        "name": "telegram-bot-notifier",
+        "full_name": "fridfn/telegram-bot-notifier",
+        "description": "automated notification service for system updates and schedules",
+        "language": "JavaScript",
+        "created_at": "2026-07-15T08:00:00Z",
+        "updated_at": "2026-09-20T22:15:45Z"
+      },
+      "semantic": {
+        "type": "refactor",
+        "actionTag": "refactor"
+      }
+    },
+    "created_at": 1789942540000
+  },
+  {
+    "source": "commit",
+    "reply": "pengingat otomatisnya udah jalan… usahakan selesaiin tugas sebelum deadline ya!",
+    "meta": {
+      "greeting": "pengingat otomatisnya udah jalan…",
+      "message": "usahakan selesaiin tugas sebelum deadline ya!",
+      "tone": "warning_deadline",
+      "category": "reminder"
+    },
+    "context": {
+      "mode": "last_warning",
+      "tag": "feat",
+      "repo": "fridfn/telegram-bot-notifier",
+      "commitTime": "2026-09-20T15:30:00Z",
+      "commit": {
+        "type": "feat",
+        "scope": "webhook",
+        "detail": "feat(webhook): add support for scheduled reminder messages",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T15:30:00Z"
+      },
+      "repository": {
+        "name": "telegram-bot-notifier",
+        "full_name": "fridfn/telegram-bot-notifier",
+        "description": "automated notification service for system updates and schedules",
+        "language": "JavaScript",
+        "created_at": "2026-07-15T08:00:00Z",
+        "updated_at": "2026-09-20T15:30:05Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789918200000
+  },
+  {
+    "source": "commit",
+    "reply": "fitur audio quran udah masuk… tambah adem dengernya, semangat terus bikin aplikasinya",
+    "meta": {
+      "greeting": "fitur audio quran udah masuk…",
+      "message": "tambah adem dengernya, semangat terus bikin aplikasinya",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-21T04:11:42Z",
+      "commit": {
+        "type": "feat",
+        "scope": "quran",
+        "detail": "feat(quran): add audio recitation support",
+        "actionTag": "feat"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-21T04:11:42Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-21T04:11:45Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1789963902000
+  },
+  {
+    "source": "commit",
+    "reply": "efek glassmorphism-nya cakep banget… detail kecil yang bikin tampilan beda",
+    "meta": {
+      "greeting": "efek glassmorphism-nya cakep banget…",
+      "message": "detail kecil yang bikin tampilan beda",
+      "tone": "persistent_clingy",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "style",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-21T04:11:42Z",
+      "commit": {
+        "type": "style",
+        "scope": "card",
+        "detail": "style(card): add glassmorphism effect",
+        "actionTag": "style"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-21T04:11:42Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-21T04:11:45Z"
+      },
+      "semantic": {
+        "type": "style",
+        "actionTag": "style"
+      }
+    },
+    "created_at": 1789963902001
+  },
+  {
+    "source": "commit",
+    "reply": "eh… kamu gak terburu-buru\n\ndan kamu lanjut dengan cara kamu sendiri… itu cukup",
+    "meta": {
+      "greeting": "eh… kamu gak terburu-buru",
+      "message": "dan kamu lanjut dengan cara kamu sendiri… itu cukup",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "test",
+      "repo": "fridfn/workflow-development",
+      "commitTime": "2026-09-20T12:59:13Z",
+      "commit": {
+        "type": "test",
+        "scope": "bot",
+        "detail": "test(bot): verify telegram message delivery",
+        "actionTag": "test"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-20T12:59:13Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-20T12:59:17Z"
+      },
+      "semantic": {
+        "type": "test",
+        "actionTag": "test"
+      }
+    },
+    "created_at": 1789909552365
   }
 ]

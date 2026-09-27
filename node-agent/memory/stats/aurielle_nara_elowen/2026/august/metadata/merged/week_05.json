@@ -1,0 +1,205 @@
+{
+  "stats": {
+    "commit_stats": {
+      "chore": 2,
+      "feat": 1
+    },
+    "mode_stats": {
+      "last_warning": 3
+    },
+    "tone_stats": {
+      "warning_hold": 1,
+      "warning_deadline": 1,
+      "warning_firm": 1
+    },
+    "category_stats": {
+      "reminder": 3
+    },
+    "tag_stats": {
+      "chore": 2,
+      "feat": 1
+    },
+    "reply_source_stats": {
+      "initial": 3
+    },
+    "active_hours": {
+      "20.51": 3
+    },
+    "total_generated": 3,
+    "last_generated_at": 5370321582885
+  },
+  "repositories": {
+    "fridfn/workflow-development": {
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript"
+      },
+      "stats": {
+        "commits": 25,
+        "commit_types": {
+          "fix": 1,
+          "test": 5,
+          "chore": 4,
+          "style": 4,
+          "feat": 6,
+          "docs": 2,
+          "refactor": 3
+        }
+      },
+      "activities": [
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "fix",
+          "scope": "memory",
+          "detail": "fix(memory): correct archive file parsing"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "test",
+          "scope": "auth",
+          "detail": "test(auth): test login session flow"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "chore",
+          "scope": "deps",
+          "detail": "chore(deps): upgrade express dependencies"
+        },
+        {
+          "time": "2026-09-20T12:59:13Z",
+          "type": "style",
+          "scope": "css",
+          "detail": "style(css): reorganize layout styles"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "test",
+          "scope": "auth",
+          "detail": "test(auth): test login session flow"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "chore",
+          "scope": "notification",
+          "detail": "chore(notification): cleanup unused workers"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "test",
+          "scope": "bot",
+          "detail": "test(bot): verify telegram message delivery"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "quran",
+          "detail": "feat(quran): add audio recitation support"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "ui",
+          "detail": "feat(ui): redesign dashboard layout"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "docs",
+          "scope": "notification",
+          "detail": "docs(notification): add firebase setup guide"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "refactor",
+          "scope": "engine",
+          "detail": "refactor(engine): split reflection builder modules"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "chore",
+          "scope": "repo",
+          "detail": "chore(repo): update gitignore rules"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "chore",
+          "scope": "engine",
+          "detail": "chore(engine): cleanup debug logs"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "notification",
+          "detail": "feat(notification): add realtime broadcast system"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "refactor",
+          "scope": "ui",
+          "detail": "refactor(ui): clean unused component states"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "memory",
+          "detail": "feat(memory): save daily highlights automatically"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "style",
+          "scope": "ui",
+          "detail": "style(ui): improve button spacing"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "test",
+          "scope": "bot",
+          "detail": "test(bot): verify telegram message delivery"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "style",
+          "scope": "portfolio",
+          "detail": "style(portfolio): improve hover animations"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "memory",
+          "detail": "feat(memory): save daily highlights automatically"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "feat",
+          "scope": "auth",
+          "detail": "feat(auth): add login + register system"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "test",
+          "scope": "engine",
+          "detail": "test(engine): add reflection snapshot tests"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "docs",
+          "scope": "readme",
+          "detail": "docs(readme): update installation guide"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "style",
+          "scope": "css",
+          "detail": "style(css): reorganize layout styles"
+        },
+        {
+          "time": "2026-09-21T04:11:42Z",
+          "type": "refactor",
+          "scope": "portfolio",
+          "detail": "refactor(portfolio): modularize project cards"
+        }
+      ]
+    }
+  }
+}
