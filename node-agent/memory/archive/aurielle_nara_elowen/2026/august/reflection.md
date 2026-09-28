@@ -1,64 +1,63 @@
-# 🌙 November 2024
+# 🌙 [Month] [Year]
 
-> Bulan di mana kerangka sistem mulai terisi, dan detail UI mulai menemukan ritmenya.
+> Bulan ini terasa padat dengan pembersihan struktur dan penyesuaian tampilan, di tengah upaya menjaga stabilitasi sistem notifikasi dan autentikasi.
 
 ---
 
 ## 🧩 Yang Tetap Ada
 
-Ada dua hal yang terus muncul di hampir setiap minggu: **pengujian** dan **penyempurnaan tampilan**.
+Hal yang paling sering muncul kembali di hampir semua bagian bulan ini adalah perbaikan pada **Telegram Bot**. Aktivitas seperti `fix(bot): prevent duplicate telegram messages` dan `test(bot): verify telegram message delivery` terus berulang. Ini menunjukkan bahwa pengiriman pesan dan penanganan error pada bot menjadi area yang butuh perhatian ekstra dan pengujian berulang kali sepanjang bulan.
 
-Commit untuk `test` sering kali muncul beriringan dengan `feat`. Misalnya, saat fitur login dan register ditambahkan, ada juga commit untuk menguji alur sesi login. Saat fitur notifikasi realtime dikembangkan, ada juga commit untuk memverifikasi pengiriman pesan Telegram. Ini menunjukkan bahwa Farid tidak hanya menulis kode, tetapi juga memastikan cara kerjanya sebelum melangkah ke langkah berikutnya.
-
-Di sisi visual, ada pola yang konsisten tentang *polishing*. Commit seperti `improve hover animations`, `improve button spacing`, dan `add glassmorphism effect` muncul berulang kali. Ini bukan sekadar mengubah warna, melainkan proses halus untuk membuat antarmuka terasa lebih hidup dan rapi.
+Selain itu, **perbaikan sistem Auth (Login/Register)** juga konsisten hadir, baik dalam bentuk fitur baru maupun pengujian alur sesi login (`test(auth): test login session flow`).
 
 ---
 
 ## 🌱 Yang Mulai Terbentuk
 
-Bulan ini terlihat jelas bahwa **sistem notifikasi** sedang dibangun dari nol. Di awal bulan, fokusnya masih pada perbaikan bug (seperti masalah duplikasi pesan Telegram). Namun, seiring berjalannya waktu, fitur-fitur baru mulai ditambahkan: support untuk *scheduled reminder messages* dan *realtime broadcast system*.
-
-Selain itu, ada juga evolusi pada **modularitas kode**. Farid mulai memecah handler command bot menjadi modul terpisah, serta memisahkan *sender service* untuk notifikasi. Ini menandakan transisi dari kode yang mungkin masih tercampur, menjadi struktur yang lebih rapi dan mudah dikelola.
-
-Fitur **Audio Recitation** untuk Quran juga mulai terlihat bentuknya, mulai dari dukungan dasar hingga optimasi logika streaming audio.
+Beberapa fitur inti mulai terlihat bentuknya lebih jelas:
+*   **Sistem Notifikasi Realtime**: Ada upaya nyata untuk membangun `realtime broadcast system` dan memisahkan layanan pengirimnya (`refactor(notification): separate sender service`).
+*   **Fitur Quran**: Tambahkan dukungan audio recitation (`feat(quran): add audio recitation support`) yang juga disertai optimasi logika streaming audio.
+*   **Memory System**: Mulai berjalan otomatis dengan fitur `save daily highlights automatically` dan perbaikan parsing file arsip.
 
 ---
 
 ## 🔄 Yang Berubah
 
-Di minggu-minggu awal (Week 01), Farid bekerja di beberapa repository sekaligus: `workflow-development`, `portfolio-v2`, `japanese-quiz-app`, dan `telegram-bot-notifier`. Terasa seperti bulan eksplorasi atau pemeliharaan berbagai proyek kecil.
+Fokus kerja bergeser dari pengembangan fitur baru di awal bulan (seperti integrasi music player di portfolio dan flashcard di japanese-quiz) ke arah **refactoring dan pembersihan kode** di pertengahan dan akhir bulan.
 
-Namun, mulai dari Week 02 hingga akhir bulan, fokusnya menyempit hampir sepenuhnya ke `workflow-development`. Komposisi commit juga berubah; jumlah commit `chore` dan `refactor` meningkat secara signifikan di pertengahan dan akhir bulan. Ini menunjukkan pergeseran dari "menambahkan fitur baru" ke "merapikan apa yang sudah ada" dan "memperkuat infrastruktur".
+Banyak aktivitas `refactor` terlihat, seperti pemisahan modul reflection builder, modularisasi project cards di portfolio, dan pembersihan state komponen yang tidak terpakai. Ini menandakan transisi dari "membangun" ke "merapikan dan mengoptimalkan" apa yang sudah ada.
 
 ---
 
 ## 🗂️ Tempat-Tempat yang Dikerjakan
 
-*   **workflow-development**: Ini adalah pusat aktivitas bulan ini. Dari 95 total commit, mayoritas ada di sini. Area yang paling banyak disentuh adalah `engine` (reflection builder), `notification`, `auth`, dan `ui`.
-*   **portfolio-v2**: Aktivitasnya lebih ringan, berfokus pada integrasi komponen music player, perbaikan bug navigasi, dan penambahan palet warna dark mode.
-*   **japanese-quiz-app**: Hanya muncul di awal bulan dengan aktivitas kecil seperti penambahan mode flashcard dan refactoring logika scoring.
-*   **telegram-bot-notifier**: Dikerjakan di awal bulan untuk memperbaiki handling timeout dan merapikan handler command.
+*   **workflow-development**: Menjadi fokus utama dengan jumlah commit terbesar (terutama di minggu ke-2 dan ke-5). Area kerja mencakup engine reflection, sistem notifikasi, auth, quran, dan memory.
+*   **portfolio-v2**: Aktivitas lebih ringan, fokus pada integrasi komponen music player, perbaikan navigasi dinamis, dan penyesuaian tema dark mode.
+*   **japanese-quiz-app**: Hanya di awal bulan, fokus pada mode flashcard hiragana dan optimasi logika scoring.
+*   **telegram-bot-notifier**: Dipisahkan sebagai entitas yang perlu dikerjakan spesifik untuk perbaikan timeout polling dan pemisahan handler perintah.
 
 ---
 
 ## 🧵 The Thread
 
-Kalau melihat bulan ini secara keseluruhan, yang paling terasa adalah transisi dari *lebar* ke *dalam*. Di awal bulan, Farid masih berpindah-pindah antar proyek kecil. Tapi begitu masuk ke pertengahan bulan, fokusnya terkunci pada `workflow-development`.
+Kalau melihat bulan ini secara keseluruhan, yang paling terasa adalah proses pematangan. Di minggu-minggu awal, banyak fitur baru yang ditambahkan ke berbagai project. Namun, semakin ke belakang, aktivitasnya lebih banyak berupa pengujian ulang (`test`), perbaikan bug kecil (`fix`), dan pemisahan modul (`refactor`).
 
-Ada alur yang jelas: fitur-fitur utama seperti *auth*, *notification*, dan *audio* ditambahkan, lalu diikuti oleh pengujian yang ketat, dan diakhiri dengan refactoring agar kode lebih modular. Terasa seperti bulan di mana Farid tidak hanya menambahkan hal-hal baru, tetapi juga memastikan hal-hal tersebut berdiri kokoh dan mudah dirawat.
+Ada siklus yang jelas: fitur seperti notifikasi realtime dan auth dibangun, lalu diuji, diperbaiki jika ada masalah payload atau sesi, dan akhirnya di-refactor agar lebih modular. Begitu juga dengan bot Telegram, yang terus disentuh sampai perilakunya stabil. Bulan ini bukan tentang melompat jauh ke hal baru, tapi tentang memastikan apa yang sudah dibangun berjalan dengan benar dan rapi.
 
 ---
 
 ## 📝 Yang Perlu Diingat
 
-1.  **Sistem Notifikasi Mulai Matang**: Dari sekadar memperbaiki bug duplikasi, berkembang menjadi sistem broadcast realtime dan scheduled reminders.
-2.  **Pentingnya Testing**: Uji kasus untuk auth, bot, dan reflection builder dilakukan secara konsisten, bukan hanya saat rilis.
-3.  **Refactoring Notifikasi**: Keputusan untuk memisahkan *sender service* adalah langkah penting untuk menjaga struktur kode tetap bersih.
-4.  **UI Polish**: detail-detail kecil seperti glassmorphism dan hover animations terus dipoles, menunjukkan perhatian pada pengalaman pengguna.
-5.  **Fokus Konsentrasi**: Sebagian besar energi bulan ini tercurah ke satu repository utama, `workflow-development`, setelah fase awal yang tersebar.
+1.  **Stabilitas Bot Telegram**: Permasalahan duplikasi pesan dan timeout koneksi adalah isu berulang yang akhirnya ditangani melalui perbaikan graceful handling dan pengujian delivery.
+2.  **Refactoring Engine & Notification**: Modul reflection builder dan layanan notifikasi dipisah-pisah menjadi modul yang lebih kecil untuk memudahkan pemeliharaan.
+3.  **Integrasi Auth & Session**: Sistem login/register tidak hanya ditambahkan, tetapi juga diuji alur sesinya secara berkala untuk memastikan keandalan.
+4.  **Optimasi UI/Style**: Perubahan gaya (glassmorphism, hover animations, spacing) dilakukan secara konsisten di portfolio dan dashboard, menunjukkan perhatian pada detail visual.
+5.  **Fitur Audio Quran**: Dukungan audio recitation diimplementasikan, termasuk optimasi logika streamingnya.
 
 ---
 
 ## 🌙 End of Chapter
 
-Bulan yang tenang tapi produktif. Tidak ada lonjakan dramatis, hanya langkah-langkah kecil yang tertata rapi, satu demi satu.
+Banyak hal kecil yang diperbaiki, diuji, dan dirapikan.
+
+Bulan yang tenang dalam prosesnya, fokus pada kualitas di balik layar.

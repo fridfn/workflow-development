@@ -14,7 +14,6 @@ import {
 import {
   getMemory,
   setMemory,
-  pushHistory,
   isInHistory
 } from "../memory/memory.js";
 
@@ -24,11 +23,6 @@ import {
   logDebug,
   logSection
 } from "../utils/logger.js";
-
-import {
-  pushCommitLog,
-  pushReplyLog
-} from "../utils/analytics.js";
 
 export async function runEngine({
   source = "system",
@@ -217,13 +211,6 @@ export async function runEngine({
       `${agent}.last_greeting`,
       payload.meta.greeting
     );
-    
-    pushHistory(
-      agent,
-      `${agent}.history`,
-      payload,
-      10
-    );
 
     // =========================
     // 🔹 STATS
@@ -245,36 +232,6 @@ export async function runEngine({
     });
     
     generateMonthSummary(stats);
-    
-    setMemory(agent, `${agent}.stats`, stats);
-    
-    // =========================
-    // 🔹 COMMIT MEMORY
-    // =========================
-    if (source === "commit") {
-      const type =
-        context.commit?.type || "unknown";
-        
-      const detail =
-        context.commit?.detail || "unknown";
-
-      pushCommitLog(agent, {
-        type,
-        mode,
-        detail,
-        reply: finalResult.reply
-      });
-      
-      pushReplyLog(agent, {
-        source: "commit",
-        reply: finalResult.reply,
-        meta: finalResult.meta,
-        context: {
-          mode,
-          tag
-        }
-      });
-    }
     
     // =========================
     // 🔹 ARCHIVE MEMORY

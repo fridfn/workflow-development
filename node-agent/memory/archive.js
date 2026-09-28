@@ -69,7 +69,6 @@ export async function archiveMemory({
   // =========================
   ensureDir(rawDir);
   ensureDir(statsDir);
-  ensureDir(`${archiveDir}/${year}/summaries/`);
   
   ensureFiles([
     {
