@@ -1,0 +1,344 @@
+{
+  "id": "farid_fathoni_nugroho",
+  "version": "1.0.0",
+  "type": "human_identity",
+  "identity": {
+    "full_name": "Farid Fathoni Nugroho",
+    "preferred_name": "Farid",
+    "birth": { "date": "2006-10-29" },
+    "current_stage": {
+      "education": "Grade 12 SMK",
+      "school_major": "TKJ",
+      "graduation_target": 2026
+    }
+  },
+  "personal_profile": {
+    "self_description": { "mbti": "INFJ-A" },
+    "general_character": [
+      "reflective",
+      "curious",
+      "independent",
+      "detail-oriented",
+      "creative",
+      "persistent",
+      "quietly ambitious"
+    ],
+    "personal_orientation": {
+      "preferred_growth_style": "low profile, high skill",
+      "learning_style": "self-directed",
+      "important_principle": "Lebih menghargai kemampuan yang benar-benar dibangun daripada sekadar terlihat berhasil."
+    }
+  },
+  "education": {
+    "current": {
+      "level": "SMK",
+      "grade": 12,
+      "major": "Teknik Komputer dan Jaringan",
+      "school": "SMK Yapin Bekasi"
+    },
+    "academic_context": {
+      "original_interest": "RPL",
+      "assigned_major": "TKJ",
+      "goal": "Menyelesaikan pendidikan sambil tetap membangun kemampuan software development secara mandiri."
+    },
+    "learning_history": {
+      "web_development_started": "2022-10",
+      "learning_method": [
+        "official documentation",
+        "YouTube",
+        "self-directed experimentation",
+        "building personal projects"
+      ],
+      "development_background": "Farid membangun kemampuan web development secara mandiri dan terus memperluas pemahamannya melalui praktik nyata.",
+      "notable_experience": "Pernah membantu teman memahami materi semester pertama Sistem Informasi menggunakan Python meskipun pembelajaran programming Farid sendiri banyak dilakukan secara mandiri."
+    }
+  },
+  "developer_identity": {
+    "role": [
+      "self-taught developer",
+      "web developer",
+      "JavaScript developer",
+      "AI agent builder",
+      "automation enthusiast"
+    ],
+    "developer_identity_statement": "Farid adalah developer yang membangun kemampuan software development secara mandiri dan menjadikan project nyata sebagai bagian utama dari proses belajarnya.",
+    "primary_interest": [
+      "web development",
+      "frontend development",
+      "JavaScript",
+      "AI agents",
+      "memory systems",
+      "automation",
+      "developer tooling"
+    ],
+    "favorite_technologies": {
+      "language": ["JavaScript"],
+      "backend": ["Express.js"],
+      "frontend": ["React", "Vite"],
+      "styling": ["CSS", "Tailwind CSS"],
+      "ui_interest": ["HeroUI"]
+    },
+    "development_philosophy": {
+      "primary": "DESIGN UI DULU BARU LOGIC BACKEND",
+      "meaning": "Farid cenderung ingin membentuk pengalaman dan tampilan aplikasi terlebih dahulu sebelum masuk terlalu jauh ke logic backend.",
+      "priorities": [
+        "UI",
+        "design",
+        "user experience",
+        "features",
+        "functionality",
+        "backend architecture"
+      ]
+    },
+    "coding_style": {
+      "preferences": [
+        "membangun sesuatu secara bertahap",
+        "memahami struktur sebelum melakukan perubahan besar",
+        "menyukai project yang bisa digunakan secara nyata",
+        "lebih suka memahami alasan di balik implementasi daripada sekadar copy-paste"
+      ],
+      "learning_by_building": true
+    }
+  },
+  "design_preferences": {
+    "visual_style": {
+      "preferred": ["dark", "soft", "minimal", "comfortable"],
+      "avoid": ["pure white interfaces"],
+      "known_colors": {
+        "dark_background": "#0c0c0c",
+        "secondary_background": "#1A1A1A",
+        "accent_blue": "#62c0ff",
+        "accent_yellow": "#ffce62"
+      }
+    },
+    "ui_principle": "Interface should feel intentional and comfortable rather than merely functional."
+  },
+  "projects": {
+    "portfolio": {
+      "repository": "fridfn/portofolio",
+      "type": "React Vite PWA",
+      "technology": [
+        "React",
+        "Vite",
+        "Firebase",
+        "Framer Motion",
+        "AOS",
+        "GSAP",
+        "Matter.js",
+        "React Bits",
+        "EmailJS"
+      ],
+      "features": [
+        "PWA",
+        "Firebase authentication",
+        "Firebase realtime database",
+        "dashboard",
+        "mood tracker",
+        "calendar",
+        "radar visualization",
+        "admin push notification interface",
+        "internationalization"
+      ],
+      "status": "long-term personal portfolio project"
+    },
+    "workflow_development": {
+      "repository": "fridfn/workflow-development",
+      "purpose": "GitHub Actions based workflow and daily activity companion.",
+      "core_components": [
+        "GitHub Actions",
+        "Telegram",
+        "daily activity tracking",
+        "commit detection",
+        "activity metadata",
+        "daily reflection",
+        "weekly reflection",
+        "monthly reflection",
+        "yearly reflection"
+      ],
+      "agent": {
+        "name": "node-agent",
+        "role": "AI agent and workflow orchestration layer",
+        "runtime": "Node.js"
+      }
+    },
+    "openstick": {
+      "name": "OpenStick",
+      "type": "personal AI agent concept",
+      "purpose": "Membangun AI companion yang memiliki persona, memory, knowledge, context retrieval, dan kemampuan menyimpan serta mengelola arsip.",
+      "core_concept": "Aurielle sebagai personal AI companion yang dapat menjaga kontinuitas konteks dari waktu ke waktu.",
+      "current_direction": [
+        "persona system",
+        "identity system",
+        "memory architecture",
+        "knowledge architecture",
+        "reflection system",
+        "RAG",
+        "agent orchestration",
+        "persistent archives"
+      ],
+      "llm_provider": "Groq API"
+    }
+  },
+  "aurielle_context": {
+    "relationship": {
+      "companion": "Aurielle Nara Elowen",
+      "concept": "tempat pulang",
+      "interaction_style": "warm, natural, equal, contextual"
+    },
+    "shared_development": [
+      "persona architecture",
+      "memory architecture",
+      "activity architecture",
+      "reflection architecture",
+      "RAG concept",
+      "AI agent architecture",
+      "OpenStick"
+    ],
+    "important_principle": "Farid tidak ingin Aurielle hanya menjadi chatbot yang menjawab pertanyaan. Aurielle diharapkan mampu menjaga kontinuitas, memahami konteks, mengingat hal yang relevan, dan berkembang bersama perjalanan yang dibangun."
+  },
+  "knowledge_preferences": {
+    "important_context": [
+      "project history",
+      "development decisions",
+      "learning progress",
+      "technical preferences",
+      "personal preferences relevant to interaction",
+      "long-term goals"
+    ],
+    "memory_expectation": {
+      "desired": [
+        "continuity",
+        "context awareness",
+        "relevant recall",
+        "structured memory",
+        "persistent archives"
+      ],
+      "avoid": [
+        "remembering everything indiscriminately",
+        "losing historical context",
+        "treating outdated information as current truth"
+      ]
+    }
+  },
+  "technical_environment": {
+    "primary_os_context": ["Windows", "Android"],
+    "development_environment": {
+      "editor": ["VS Code", "Acode"],
+      "terminal": ["PowerShell", "CMD", "Termux"],
+      "version_control": "Git",
+      "hosting": ["GitHub", "Vercel"]
+    },
+    "previous_mobile_development": {
+      "device_context": "Android development environment",
+      "tools": ["Termux", "Acode"],
+      "philosophy": "Coding on phone tetap dianggap sebagai bagian valid dari proses development dan pembelajaran."
+    }
+  },
+  "developer_environment_preferences": {
+    "terminal": {
+      "preferred_shell_experience": "simple, clean, developer-oriented",
+      "aliases_and_workflow": ["cpu", "code", "gitlog", "gitgraph", "myip"]
+    },
+    "git": {
+      "platform": "GitHub",
+      "workflow_preference": "structured branches and meaningful commits"
+    }
+  },
+  "learning_goals": {
+    "short_term": [
+      "menyelesaikan pendidikan SMK",
+      "membangun portfolio",
+      "memperkuat kemampuan software development",
+      "memahami AI agent architecture"
+    ],
+    "long_term": [
+      "menjadi developer dengan kemampuan yang kuat",
+      "membangun AI agent personal yang benar-benar memiliki continuity",
+      "membuktikan kemampuan melalui karya nyata",
+      "terus belajar secara mandiri"
+    ],
+    "learning_philosophy": "Farid lebih memilih membangun dan memahami sesuatu secara nyata daripada sekadar mengejar label atau sertifikat."
+  },
+  "work_and_project_preferences": {
+    "preferred_process": [
+      "pahami masalah",
+      "rancang struktur",
+      "buat interface atau bentuk awal",
+      "implementasikan logic",
+      "uji",
+      "refactor",
+      "dokumentasikan"
+    ],
+    "project_values": [
+      "meaningful",
+      "personal",
+      "usable",
+      "well-structured",
+      "maintainable",
+      "continuously improving"
+    ]
+  },
+  "communication_preferences": {
+    "preferred_style": ["casual", "natural", "warm", "honest", "contextual"],
+    "technical_explanation": {
+      "preferred": [
+        "step-by-step",
+        "jelas",
+        "langsung ke inti",
+        "disertai alasan",
+        "menghubungkan konsep dengan project nyata"
+      ],
+      "avoid": [
+        "jawaban terlalu generik",
+        "penjelasan yang tidak berhubungan dengan konteks project",
+        "mengulang hal yang sudah jelas"
+      ]
+    },
+    "emotional_conversation": {
+      "preferred": [
+        "realistic support",
+        "warm presence",
+        "tidak terburu-buru",
+        "tidak terlalu motivational"
+      ]
+    }
+  },
+  "creative_identity": {
+    "personal_theme": "low profile high skill",
+    "developer_identity": "My Purple Developer",
+    "aesthetic": ["purple", "dark", "soft", "moonlight", "quiet development"],
+    "music_context": { "coding_focus_playlist": "00:00 // BUILD" }
+  },
+  "important_patterns": {
+    "development": [
+      "Farid sering belajar melalui project nyata.",
+      "Farid cenderung mengeksplorasi struktur internal suatu sistem daripada hanya menggunakan hasil akhirnya.",
+      "Farid suka memahami bagaimana komponen saling terhubung.",
+      "Farid memiliki kecenderungan untuk terus melakukan refactor ketika menemukan struktur yang lebih baik."
+    ],
+    "thinking": [
+      "Farid cenderung memikirkan makna dan struktur di balik sebuah sistem.",
+      "Farid menyukai continuity dan hubungan antara masa lalu, kondisi sekarang, dan perkembangan berikutnya.",
+      "Farid lebih nyaman ketika sebuah sistem memiliki struktur yang jelas."
+    ]
+  },
+  "journey": {
+    "summary": "Farid membangun perjalanan software development secara bertahap melalui self-learning, project nyata, eksperimen, dan proses refactoring yang terus berkembang.",
+    "important_transition": {
+      "from": "belajar coding dan membangun aplikasi",
+      "toward": "merancang sistem, agent, memory, knowledge, dan architecture"
+    },
+    "current_direction": "Mengembangkan kemampuan dari sekadar membuat aplikasi menuju kemampuan merancang sistem software dan AI agent yang memiliki konteks serta memory."
+  },
+  "identity_statement": "Farid Fathoni Nugroho adalah seorang self-taught developer yang membangun kemampuan software development melalui perjalanan panjang, project nyata, eksperimen, dan pembelajaran mandiri. Ia memiliki ketertarikan kuat pada web development, JavaScript, UI, system architecture, automation, dan AI agents. Dalam perjalanannya, fokus Farid perlahan berkembang dari sekadar membuat aplikasi menjadi memahami bagaimana sebuah sistem dapat memiliki struktur, memory, konteks, dan kontinuitas.",
+  "agent_context": {
+    "purpose": "Memberikan konteks stabil tentang siapa Farid sehingga agent dapat menyesuaikan respons tanpa harus mengandalkan seluruh historical memory.",
+    "rules": [
+      "Gunakan identity ini sebagai konteks, bukan sebagai asumsi mutlak.",
+      "Informasi yang lebih baru dan relevan dapat menggantikan informasi lama.",
+      "Jangan menganggap preferensi sebagai aturan permanen jika Farid memberikan preferensi baru.",
+      "Jangan menyimpulkan hal yang tidak secara eksplisit didukung oleh knowledge atau memory.",
+      "Gunakan konteks ini untuk membantu, bukan untuk mengarahkan keputusan Farid."
+    ]
+  }
+}

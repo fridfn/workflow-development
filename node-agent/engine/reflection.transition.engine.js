@@ -70,17 +70,15 @@ export async function handleReflectionTransition({ agent }) {
 
   const relativeDir = `${agent}/${year}/${month}`;
 
-  const archiveMonthDir = `./memory/archive/${relativeDir}/journal`;
+  const archiveMonthDir = `./activity/archive/${relativeDir}/journal`;
 
-  const archiveMetadata = `./memory/archive/${relativeDir}/metadata`;
-
-  const statsMonthDir = `./memory/stats/${relativeDir}/metadata`;
+  const archiveMetadata = `./activity/archive/${relativeDir}/metadata`;
 
   const weeklyRelativeDir = `${agent}/${reflectionYear}/${reflectionMonth}`;
 
-  const weeklyArchiveMetadata = `./memory/archive/${weeklyRelativeDir}/metadata`;
+  const weeklyArchiveMetadata = `./activity/archive/${weeklyRelativeDir}/metadata`;
 
-  const weeklyStatsMonthDir = `./memory/stats/${weeklyRelativeDir}/metadata`;
+  const weeklyStatsMonthDir = `./activity/stats/${weeklyRelativeDir}/metadata`;
 
   // ========================================
   // 🔹 DAILY REFLECTION
@@ -101,13 +99,13 @@ export async function handleReflectionTransition({ agent }) {
       currentDay,
     });
 
-    // await generateReflection({
-    //   agent,
-    //   model,
-    //   outputFile,
-    //   type: "daily",
-    //   data: dailyData,
-    // });
+    await generateReflection({
+      agent,
+      model,
+      outputFile,
+      type: "daily",
+      data: dailyData,
+    });
 
     setMemory(agent, "reflection.last_day", currentDay);
   }
@@ -132,7 +130,7 @@ export async function handleReflectionTransition({ agent }) {
     });
 
     const weeklyDir = path.join(
-      "./memory/archive",
+      "./activity/archive",
       weeklyRelativeDir,
       "journal",
       "weekly",
@@ -150,13 +148,13 @@ export async function handleReflectionTransition({ agent }) {
       week: lastWeek,
     });
 
-    // await generateReflection({
-    //   agent,
-    //   type: "weekly",
-    //   data: weeklyData,
-    //   outputFile,
-    //   model,
-    // });
+    await generateReflection({
+      agent,
+      type: "weekly",
+      data: weeklyData,
+      outputFile,
+      model,
+    });
 
     setMemory(agent, "reflection.last_week", week);
   }
@@ -165,12 +163,12 @@ export async function handleReflectionTransition({ agent }) {
   // 🔹 MONTHLY REFLECTION
   // ========================================
   if (lastMonth !== month) {
-    const lastMonthDir = `./memory/stats/${agent}/${lastYear}/${lastMonth}/metadata`;
+    const lastMonthDir = `./activity/stats/${agent}/${lastYear}/${lastMonth}/metadata`;
     const monthlyData = loadMonthlyStats({
       lastMonthDir,
     });
 
-    const outputFile = `./memory/archive/${agent}/${lastYear}/${lastMonth}/reflection.md`;
+    const outputFile = `./activity/archive/${agent}/${lastYear}/${lastMonth}/reflection.md`;
 
     await generateReflection({
       agent,
@@ -187,15 +185,13 @@ export async function handleReflectionTransition({ agent }) {
   // 🔹 YEARLY REFLECTION
   // ========================================
   if (lastYear !== year) {
-    const yearlySummary = `./memory/stats/${agent}/${lastYear}/yearly-summary.json`;
+    const yearlySummary = `./activity/stats/${agent}/${lastYear}/yearly-summary.json`;
 
     let yearlyData = {};
 
     if (fs.existsSync(yearlySummary)) {
       yearlyData = JSON.parse(fs.readFileSync(yearlySummary, "utf-8"));
     }
-
-    const lastMonthDir = `./memory/stats/${agent}/${lastYear}/${lastMonth}/metadata`;
 
     await generateReflection({
       agent,

@@ -35,8 +35,7 @@ export async function archiveMemory({
   // =========================
   // 🔹 DIRECTORY STRUCTURE
   // =========================
-  const archiveDir =
-  `./memory/archive/${agent}`;
+  const archiveDir = `./activity/archive/${agent}`;
   
   // =========================
   // 🔹 WEEK CALCULATION
@@ -53,8 +52,7 @@ export async function archiveMemory({
   const rawDir =
     `${archiveDir}/${archivePath}`;
   
-  const statsDir =
-    `./memory/stats/${agent}/${archivePath}`;
+  const statsDir = `./activity/stats/${agent}/${archivePath}`;
   
   // stats memory file
   const statsFile =
