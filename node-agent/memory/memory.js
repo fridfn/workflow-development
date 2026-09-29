@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 // 🔹 BASE DIRECTORY
 // =========================
 const MEMORY_DIR = fileURLToPath(
-  new URL("./active", import.meta.url)
+  new URL("./activity/active", import.meta.url)
 );
 
 // =========================

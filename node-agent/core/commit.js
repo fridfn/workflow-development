@@ -1,81 +1,71 @@
 import "dotenv/config";
 
-import {
-  parseCommit
-} from "../utils/parser.js";
+import { createGitHubCommitEvent } from "../events/github/github.adapter.js";
+import { handleEvent } from "./event/event.handler.js";
+import { registerEventHandlers } from "./event/event.router.js";
 
-import {
-  resolveDailyMode
-} from "../utils/time.js";
+import { handleCommit } from "../engine/activity/commit.engine.js";
 
-import {
-  hasCommitToday
-} from "../utils/github.js";
-
-import {
-  runEngine
-} from "./run.engine.js";
-
-import {
-  logInfo,
-  logSection
-} from "../utils/logger.js";
-
-import { getRandomCommit } from "../utils/random.commit.js"
+import { logInfo, logSection } from "../utils/logger.js";
 
 logSection("COMMIT FLOW");
 
-const msg = getRandomCommit() ||
-  process.env.COMMIT_MESSAGE ||
-  "feat: migrate parser";
+// =========================
+// 🔹 REGISTER HANDLER
+// =========================
 
-logInfo("COMMIT", "Raw message", {
-  msg
+registerEventHandlers({
+  "activity.commit": handleCommit,
 });
 
 // =========================
-// 🔹 PARSE
+// 🔹 GITHUB PAYLOAD
 // =========================
-const parsed = parseCommit(msg);
 
-logInfo("COMMIT", "Parsed", parsed);
+// Payload ini nantinya berasal dari
+// GitHub webhook / GitHub workflow.
 
-// =========================
-// 🔹 CHECK ACTIVITY
-// =========================
-const { hasCommit, repo, commitTime } = await hasCommitToday({
-  username: "fridfn",
-  token: process.env.GITHUB_TOKEN
+const githubPayload = {
+  repository: {
+    full_name: process.env.GITHUB_REPOSITORY,
+  },
+
+  ref: process.env.GITHUB_REF,
+
+  sender: {
+    id: process.env.GITHUB_ACTOR_ID ?? null,
+    login: process.env.GITHUB_ACTOR ?? null,
+  },
+
+  head_commit: {
+    id: process.env.GITHUB_SHA,
+    message: process.env.COMMIT_MESSAGE,
+    timestamp: process.env.COMMIT_TIMESTAMP,
+  },
+};
+
+logInfo("GITHUB", "Commit payload received", {
+  repository: githubPayload.repository.full_name,
+  branch: githubPayload.ref,
+  commit: githubPayload.head_commit.id,
 });
 
 // =========================
-// 🔹 MODE
+// 🔹 CREATE EVENT
 // =========================
-const { mode, hour } = resolveDailyMode({
-  hasCommit
-});
 
-logInfo("TIME", "Resolved mode", {
-  mode,
-  hour
-});
+const event = createGitHubCommitEvent(githubPayload);
 
 // =========================
-// 🔹 RUN ENGINE
+// 🔹 HANDLE EVENT
 // =========================
-await runEngine({
 
-  source: "commit",
+const result = await handleEvent(event);
 
-  mode,
+// =========================
+// 🔹 RESULT
+// =========================
 
-  tag: parsed.actionTag,
-
-  context: {
-    repo,
-    commitTime,
-    commit: parsed
-  }
-});
+logInfo("COMMIT", "Event processed", result);
 
 logSection("COMMIT DONE");

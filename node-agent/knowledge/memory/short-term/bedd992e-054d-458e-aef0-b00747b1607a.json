@@ -1,0 +1,22 @@
+{
+  "id": "bedd992e-054d-458e-aef0-b00747b1607a",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "987654",
+      "type": "group"
+    },
+    "actor": {
+      "id": "987654",
+      "name": "Farid",
+      "username": "fridfn"
+    },
+    "message": {
+      "id": 123,
+      "text": "lanjut pembahasan event system yuk"
+    }
+  },
+  "createdAt": "2026-09-29T11:44:50.754Z",
+  "updatedAt": "2026-09-29T11:44:50.754Z",
+  "source": "telegram"
+}

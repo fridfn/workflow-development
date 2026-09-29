@@ -1,114 +1,80 @@
 import fs from "fs";
-import { composeReply } from "./compose.js";
+
 import { retryGenerate } from "./retry.js";
+import { sleep } from "../utils/delay.js";
+import { composeReply } from "./compose.js";
 import { validateResult } from "../utils/validator.js";
 import { archiveMemory } from "../memory/archive.js";
-import { hasCommitToday } from "../utils/github.js";
+import { weightedRandom } from "../utils/random/weighted.js";
+import { weightedDelay } from "../utils/random/weighted.delay.js";
 import { buildStoryLayer } from "../engine/enrichment/story.mapper.js";
+import { getMemory, setMemory, isInHistory } from "../memory/memory.js";
+import { logInfo, logWarn, logDebug, logSection } from "../utils/logger.js";
 
 import {
   updateAgentStats,
-  generateMonthSummary
+  generateMonthSummary,
 } from "../utils/stats/index.js";
-
-import {
-  getMemory,
-  setMemory,
-  isInHistory
-} from "../memory/memory.js";
-
-import {
-  logInfo,
-  logWarn,
-  logDebug,
-  logSection
-} from "../utils/logger.js";
 
 export async function runEngine({
   source = "system",
   mode,
   tag,
-  context = {}
+  context = {},
 }) {
-  logSection(`ENGINE RUN → ${source}`);
-  
-  // =========================
-  // 🔹 LOAD CONFIG
-  // =========================
-  const hasCommit = await hasCommitToday({
-    username: "fridfn",
-    token: process.env.GITHUB_TOKEN
-  });
-  
-  const repoContext = hasCommit.repoMetadata;
-  
-  // =========================
-  // 🔹 LOAD CONFIG
-  // =========================
-  const config = JSON.parse(
-    fs.readFileSync("./config/agent.config.json")
-  );
+  const config = JSON.parse(fs.readFileSync("./config/agent.config.json"));
 
   const agents = Object.keys(config);
 
-  logInfo("ENGINE", "Agents loaded", agents);
-
-  // =========================
-  // 🔹 LOOP AGENTS
-  // =========================
   for (const agent of agents) {
-
     logSection(`AGENT → ${agent}`);
-
     const seedGreet = Math.floor(Math.random() * 1000);
     const seedMsg = Math.floor(Math.random() * 1000);
 
-    logDebug(agent, "Seed generated", {
-      seedGreet,
-      seedMsg
+    const composeOverride = weightedRandom({
+      "message,greeting": 20,
+      greeting: 40,
+      message: 40,
     });
 
-    // =========================
-    // 🔹 COMPOSE
-    // =========================
+    const delay = weightedDelay(20, config[agent].delay);
+
     let result = composeReply(
       config[agent],
       mode,
       tag,
       seedGreet,
-      seedMsg
+      seedMsg,
+      composeOverride,
     );
 
-    logDebug(agent, "Initial compose", {
-      reply: result.reply,
-      meta: result.meta
-    });
-
-    // =========================
-    // 🔹 MEMORY
-    // =========================
     const last = getMemory(agent, "last_message");
     const lastGreeting = getMemory(agent, "last_greeting");
     const lastTone = getMemory(agent, "last_tone");
-
-    const validation = validateResult({
+    let validation = validateResult({
       result,
       last,
       lastGreeting,
       lastTone,
       isInHistory,
-      agent
+      agent,
+    });
+
+    logInfo("AGENT", "Weighted compose selected", {
+      agent,
+      composeOverride,
+    });
+
+    logInfo("AGENT", "Weighted delay calculated", {
+      agent,
+      delay,
     });
 
     let finalResult = result;
 
-    // =========================
-    // 🔹 RETRY
-    // =========================
     if (!validation.isValid) {
-
       logWarn(agent, "Rejected → retrying...", {
-        reasons: validation.reasons
+        reasons: validation.reasons,
       });
 
       const retry = await retryGenerate({
@@ -117,6 +83,8 @@ export async function runEngine({
         mode,
         tag,
         composeReply,
+        override: composeOverride,
+
         isDuplicate: (result) => {
           return !validateResult({
             result,
@@ -124,137 +92,129 @@ export async function runEngine({
             lastGreeting,
             lastTone,
             isInHistory,
-            agent
+            agent,
           }).isValid;
-        }
+        },
       });
 
       if (retry) {
-
         finalResult = retry;
 
-        logInfo(agent, "Retry success ✔", {
-          reply: retry.reply
+        validation = validateResult({
+          result: finalResult,
+          last,
+          lastGreeting,
+          lastTone,
+          isInHistory,
+          agent,
         });
 
+        logInfo(agent, "Retry success ✔", {
+          reply: retry.reply,
+        });
       } else {
-
         logWarn(agent, "Retry failed → skip");
 
         continue;
       }
     }
-    
+
     // =========================
     // 🔹 ENRICHED CONTEXT
     // =========================
+
     const enrichedContext = {
       ...context,
-    
+
       activity: {
-        hasCommit: hasCommit?.hasCommit || false,
-        commitTime: hasCommit?.commitTime || null
+        hasCommit: context.activity?.hasCommit ?? false,
+
+        commitTime: context.activity?.commitTime ?? null,
       },
-    
-      repository: repoContext,
-    
+
+      repository: context.repo ?? context.repository ?? null,
+
       semantic: {
-        type: context.commit?.type || null,
-        actionTag: context.commit?.actionTag || null
-      }
+        type: context.commit?.type ?? null,
+
+        actionTag: context.commit?.actionTag ?? null,
+      },
     };
-    
+
     const story = buildStoryLayer({
       context: enrichedContext,
       meta: finalResult.meta,
-      extra: context
+      extra: context,
     });
 
     // =========================
     // 🔹 FINAL PAYLOAD
     // =========================
+
     const payload = {
       source,
-    
+
       reply: finalResult.reply,
-    
+
       meta: finalResult.meta,
-    
+
       context: {
         mode,
         tag,
-        ...enrichedContext
+        ...enrichedContext,
       },
-    
+
       story,
-    
-      created_at: Date.now()
+
+      created_at: Date.now(),
     };
 
     // =========================
     // 🔹 SAVE MEMORY
     // =========================
-    setMemory(
-      agent,
-      `${agent}.last_message`,
-      payload.reply
-    );
-    
-    setMemory(
-      agent,
-      `${agent}.last_tone`,
-      payload.meta.tone
-    );
-    
-    setMemory(
-      agent,
-      `${agent}.last_greeting`,
-      payload.meta.greeting
-    );
+
+    setMemory(agent, `${agent}.last_message`, payload.reply);
+    setMemory(agent, `${agent}.last_tone`, payload.meta.tone);
+    setMemory(agent, `${agent}.last_greeting`, payload.meta.greeting);
 
     // =========================
     // 🔹 STATS
     // =========================
-    const stats = getMemory(
-      agent,
-      `${agent}.stats`
-    ) || {};
-    
+
+    const stats = getMemory(agent, `${agent}.stats`) || {};
+
     updateAgentStats({
       stats,
       context: {
         tag,
         mode,
-        commit: context.commit
+        commit: context.commit,
       },
       result: finalResult,
-      validation
+      validation,
     });
-    
+
     generateMonthSummary(stats);
-    
+
     // =========================
     // 🔹 ARCHIVE MEMORY
     // =========================
+
     await archiveMemory({
       source,
       agent,
       result: finalResult,
       context: payload.context,
       stats,
-      validation
+      validation,
     });
 
     // =========================
     // 🔹 OUTPUT
     // =========================
-    // logSection(`${agent} → FINAL`);
-// 
-//     logInfo(agent, "Reply ready");
-// 
-//     logDebug(agent, "Payload", payload);
-// 
+
     console.log("\n💜 FINAL REPLY:\n");
+
     console.log(payload.reply);
   }
 }

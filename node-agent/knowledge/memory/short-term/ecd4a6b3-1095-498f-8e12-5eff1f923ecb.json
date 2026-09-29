@@ -1,0 +1,22 @@
+{
+  "id": "ecd4a6b3-1095-498f-8e12-5eff1f923ecb",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "987654",
+      "type": "group"
+    },
+    "actor": {
+      "id": "987654",
+      "name": "Farid",
+      "username": "fridfn"
+    },
+    "message": {
+      "id": 123,
+      "text": "Aurielle, kita lanjut OpenStick yuk"
+    }
+  },
+  "createdAt": "2026-09-29T12:00:54.467Z",
+  "updatedAt": "2026-09-29T12:00:54.467Z",
+  "source": "telegram"
+}

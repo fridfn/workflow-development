@@ -3,9 +3,10 @@ export async function retryGenerate({
   config,
   mode,
   tag,
+  override,
   composeReply,
   isDuplicate,
-  maxRetry = 3
+  maxRetry = 5
 }) {
   let attempt = 0;
 
@@ -18,7 +19,8 @@ export async function retryGenerate({
       mode,
       tag,
       seedGreet,
-      seedMsg
+      seedMsg,
+      override
     );
     
     if (!result?.reply) {

@@ -3,34 +3,39 @@
     "chore": 3,
     "test": 1,
     "docs": 1,
-    "fix": 1
+    "fix": 1,
+    "feat": 7,
+    "update": 5
   },
   "mode_stats": {
     "last_warning": 1,
-    "persistent": 5
+    "persistent": 17
   },
   "tone_stats": {
     "warning_deadline": 1,
-    "persistent_calm": 1,
-    "persistent_respect": 2,
-    "persistent_admire": 2
+    "persistent_calm": 5,
+    "persistent_respect": 4,
+    "persistent_admire": 7,
+    "persistent_clingy": 1
   },
   "category_stats": {
     "reminder": 1,
-    "support": 5
+    "support": 17
   },
   "tag_stats": {
     "chore": 3,
     "test": 1,
     "docs": 1,
-    "fix": 1
+    "fix": 3,
+    "feat": 7,
+    "update": 3
   },
   "reply_source_stats": {
-    "initial": 6
+    "initial": 18
   },
   "active_hours": {
-    "20.51": 6
+    "20.51": 18
   },
-  "total_generated": 6,
-  "last_generated_at": 1790572400131
+  "total_generated": 18,
+  "last_generated_at": 1790680480689
 }

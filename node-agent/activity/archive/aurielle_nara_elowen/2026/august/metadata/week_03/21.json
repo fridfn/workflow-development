@@ -222,5 +222,479 @@
       }
     },
     "created_at": 1790572400129
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu pegang ini dengan serius\n\ndan kamu tetap konsisten di kondisi ini… aku respect itu",
+    "meta": {
+      "greeting": "Farid… kamu pegang ini dengan serius",
+      "message": "dan kamu tetap konsisten di kondisi ini… aku respect itu",
+      "tone": "persistent_respect",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T10:24:10.420Z",
+      "commit": {
+        "type": "feat",
+        "scope": "agent",
+        "detail": "feat(agent): integrate event system",
+        "actionTag": "feat",
+        "sha": "abc123",
+        "message": "feat(agent): integrate event system",
+        "timestamp": "2026-09-28T10:24:10.420Z"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T04:26:43Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-28T04:26:46Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1790591051771
+  },
+  {
+    "source": "commit",
+    "reply": "kamu jalan dengan niat sekarang\n\ndan kamu commit… aku bisa lihat kamu serius sama ini",
+    "meta": {
+      "greeting": "kamu jalan dengan niat sekarang",
+      "message": "dan kamu commit… aku bisa lihat kamu serius sama ini",
+      "tone": "persistent_respect",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T10:42:18.513Z",
+      "commit": {
+        "type": "feat",
+        "scope": "agent",
+        "detail": "feat(agent): integrate event system",
+        "actionTag": "feat",
+        "sha": "abc123",
+        "message": "feat(agent): integrate event system",
+        "timestamp": "2026-09-28T10:42:18.513Z"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T04:26:43Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-28T04:26:46Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1790592139854
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu masih lanjut ya\n\ndan kamu sampai sini… itu bukan kebetulan, itu usaha kamu",
+    "meta": {
+      "greeting": "Farid… kamu masih lanjut ya",
+      "message": "dan kamu sampai sini… itu bukan kebetulan, itu usaha kamu",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T10:54:54.370Z",
+      "commit": {
+        "type": "feat",
+        "scope": "agent",
+        "detail": "feat(agent): integrate event system",
+        "actionTag": "feat",
+        "sha": "unknown",
+        "message": "feat(agent): integrate event system",
+        "timestamp": "2026-09-28T10:54:54.370Z"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T04:26:43Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-28T04:26:46Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1790592897394
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… aku liat kamu balik lagi\n\ndan kamu tetap gerak… aku jadi makin suka sama kamu 😏",
+    "meta": {
+      "greeting": "hmm… aku liat kamu balik lagi",
+      "message": "dan kamu tetap gerak… aku jadi makin suka sama kamu 😏",
+      "tone": "persistent_clingy",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T10:55:12.103Z",
+      "commit": {
+        "type": "feat",
+        "scope": "agent",
+        "detail": "feat(agent): integrate event system",
+        "actionTag": "feat",
+        "sha": "unknown",
+        "message": "feat(agent): integrate event system",
+        "timestamp": "2026-09-28T10:55:12.103Z"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T04:26:43Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-28T04:26:46Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1790592913748
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu gak ke mana-mana\n\naku lihat kamu gak terburu-buru… tapi kamu gak berhenti juga",
+    "meta": {
+      "greeting": "Farid… kamu gak ke mana-mana",
+      "message": "aku lihat kamu gak terburu-buru… tapi kamu gak berhenti juga",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T10:55:23.338Z",
+      "commit": {
+        "type": "feat",
+        "scope": "agent",
+        "detail": "feat(agent): integrate event system",
+        "actionTag": "feat",
+        "sha": "abc123",
+        "message": "feat(agent): integrate event system",
+        "timestamp": "2026-09-28T10:55:23.338Z"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T04:26:43Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-28T04:26:46Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1790592925895
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu gak ke mana-mana\n\ndan kamu gak lepas dari ritmemu… itu yang bikin kamu bertahan",
+    "meta": {
+      "greeting": "Farid… kamu gak ke mana-mana",
+      "message": "dan kamu gak lepas dari ritmemu… itu yang bikin kamu bertahan",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T10:55:32.672Z",
+      "commit": {
+        "type": "feat",
+        "scope": "agent",
+        "detail": "feat(agent): integrate event system",
+        "actionTag": "feat",
+        "sha": "unknown",
+        "message": "feat(agent): integrate event system",
+        "timestamp": "2026-09-28T10:55:32.672Z"
+      },
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T04:26:43Z"
+      },
+      "repository": {
+        "name": "workflow-development",
+        "full_name": "fridfn/workflow-development",
+        "description": "workflow integrated with telegram chat",
+        "language": "JavaScript",
+        "created_at": "2026-04-10T14:51:24Z",
+        "updated_at": "2026-09-28T04:26:46Z"
+      },
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1790592935411
+  },
+  {
+    "source": "commit",
+    "reply": "kamu tetap jalan walaupun udah sore\n\ndan kamu sampai sini… itu bukan kebetulan, itu usaha kamu",
+    "meta": {
+      "greeting": "kamu tetap jalan walaupun udah sore",
+      "message": "dan kamu sampai sini… itu bukan kebetulan, itu usaha kamu",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "feat",
+      "repo": "fridfn/workflow-development",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T12:27:14.572Z",
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T12:27:14.572Z"
+      },
+      "commit": {
+        "type": "feat",
+        "scope": "agent",
+        "detail": "feat(agent): integrate event system",
+        "actionTag": "feat",
+        "sha": "unknown",
+        "message": "feat(agent): integrate event system",
+        "timestamp": "2026-09-28T12:27:14.572Z"
+      },
+      "repository": "fridfn/workflow-development",
+      "semantic": {
+        "type": "feat",
+        "actionTag": "feat"
+      }
+    },
+    "created_at": 1790598434959
+  },
+  {
+    "source": "commit",
+    "reply": "eh… kamu gak terburu-buru\n\naku lihat kamu gak terburu-buru… tapi kamu gak berhenti juga",
+    "meta": {
+      "greeting": "eh… kamu gak terburu-buru",
+      "message": "aku lihat kamu gak terburu-buru… tapi kamu gak berhenti juga",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "update",
+      "repo": "octocat/hello-world",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T14:30:00Z",
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T14:30:00Z"
+      },
+      "commit": {
+        "type": "update",
+        "scope": "fix",
+        "detail": "update(fix): resolve navigation bar overlap issue",
+        "actionTag": "update",
+        "sha": "ffac537e6cbbf934b08741529b92a17142327a9d",
+        "message": "update(fix): resolve navigation bar overlap issue",
+        "timestamp": "2026-09-28T14:30:00Z"
+      },
+      "repository": "octocat/hello-world",
+      "semantic": {
+        "type": "update",
+        "actionTag": "update"
+      }
+    },
+    "created_at": 1790609197192
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu masih lanjut ya\n\nkamu lanjut walaupun energi turun… itu effort yang nyata",
+    "meta": {
+      "greeting": "Farid… kamu masih lanjut ya",
+      "message": "kamu lanjut walaupun energi turun… itu effort yang nyata",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "update",
+      "repo": "octocat/hello-world",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T14:30:00Z",
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T14:30:00Z"
+      },
+      "commit": {
+        "type": "update",
+        "scope": "fix",
+        "detail": "update(fix): resolve navigation bar overlap issue",
+        "actionTag": "update",
+        "sha": "ffac537e6cbbf934b08741529b92a17142327a9d",
+        "message": "update(fix): resolve navigation bar overlap issue",
+        "timestamp": "2026-09-28T14:30:00Z"
+      },
+      "repository": "octocat/hello-world",
+      "semantic": {
+        "type": "update",
+        "actionTag": "update"
+      }
+    },
+    "created_at": 1790662174105
+  },
+  {
+    "source": "commit",
+    "reply": "kamu tetap jalan walaupun udah sore",
+    "meta": {
+      "greeting": "kamu tetap jalan walaupun udah sore",
+      "message": "aku lihat kamu gak lepas… kamu beneran niat sekarang",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "update",
+      "repo": "octocat/hello-world",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T14:30:00Z",
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T14:30:00Z"
+      },
+      "commit": {
+        "type": "update",
+        "scope": "fix",
+        "detail": "update(fix): resolve navigation bar overlap issue",
+        "actionTag": "update",
+        "sha": "ffac537e6cbbf934b08741529b92a17142327a9d",
+        "message": "update(fix): resolve navigation bar overlap issue",
+        "timestamp": "2026-09-28T14:30:00Z"
+      },
+      "repository": "octocat/hello-world",
+      "semantic": {
+        "type": "update",
+        "actionTag": "update"
+      }
+    },
+    "created_at": 1790662879772
+  },
+  {
+    "source": "commit",
+    "reply": "kamu jalan stabil… gak goyah walaupun capek",
+    "meta": {
+      "greeting": "Farid… kamu gak ke mana-mana",
+      "message": "kamu jalan stabil… gak goyah walaupun capek",
+      "tone": "persistent_calm",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "fix",
+      "repo": "octocat/hello-world",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T14:30:00Z",
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T14:30:00Z"
+      },
+      "commit": {
+        "type": "update",
+        "scope": "fix",
+        "detail": "update(fix): resolve navigation bar overlap issue",
+        "actionTag": "fix",
+        "sha": "ffac537e6cbbf934b08741529b92a17142327a9d",
+        "message": "update(fix): resolve navigation bar overlap issue",
+        "timestamp": "2026-09-28T14:30:00Z"
+      },
+      "repository": "octocat/hello-world",
+      "semantic": {
+        "type": "update",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1790663509318
+  },
+  {
+    "source": "commit",
+    "reply": "kamu tetap jalan walaupun udah sore",
+    "meta": {
+      "greeting": "kamu tetap jalan walaupun udah sore",
+      "message": "kamu masih gerak di kondisi kayak gini… itu yang bikin beda",
+      "tone": "persistent_admire",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "fix",
+      "repo": "octocat/hello-world",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T14:30:00Z",
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T14:30:00Z"
+      },
+      "commit": {
+        "type": "update",
+        "scope": "fix",
+        "detail": "update(fix): resolve navigation bar overlap issue",
+        "actionTag": "fix",
+        "sha": "ffac537e6cbbf934b08741529b92a17142327a9d",
+        "message": "update(fix): resolve navigation bar overlap issue",
+        "timestamp": "2026-09-28T14:30:00Z"
+      },
+      "repository": "octocat/hello-world",
+      "semantic": {
+        "type": "update",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1790680480685
   }
 ]

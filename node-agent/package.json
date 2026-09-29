@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "commit": "node core/commit"
+    "commit": "node core/commit",
+    "event": "node core/event/playground/event.test.js",
+    "github": "node core/event/playground/github.test.js",
+    "telegram": "node core/event/playground/telegram.test.js",
+    "scheduler": "node core/event/playground/scheduler.test.js",
+    "knowledge": "node core/event/playground/knowledge.test.js"
   },
   "keywords": [],
   "author": "",

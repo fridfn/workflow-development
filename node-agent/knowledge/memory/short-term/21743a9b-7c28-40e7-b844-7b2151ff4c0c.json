@@ -1,0 +1,22 @@
+{
+  "id": "21743a9b-7c28-40e7-b844-7b2151ff4c0c",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "987654",
+      "type": "group"
+    },
+    "actor": {
+      "id": "987654",
+      "name": "Farid",
+      "username": "fridfn"
+    },
+    "message": {
+      "id": 123,
+      "text": "Aurielle, kita mulai dari mana?"
+    }
+  },
+  "createdAt": "2026-09-29T11:52:09.837Z",
+  "updatedAt": "2026-09-29T11:52:09.837Z",
+  "source": "telegram"
+}

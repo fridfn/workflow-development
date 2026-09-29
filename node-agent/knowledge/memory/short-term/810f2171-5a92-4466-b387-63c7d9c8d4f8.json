@@ -1,0 +1,22 @@
+{
+  "id": "810f2171-5a92-4466-b387-63c7d9c8d4f8",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "987654",
+      "type": "group"
+    },
+    "actor": {
+      "id": "987654",
+      "name": "Farid",
+      "username": "fridfn"
+    },
+    "message": {
+      "id": 123,
+      "text": "Aurielle, kita bikin system ini hidup biar ksmu bisa nemenin aku ya?"
+    }
+  },
+  "createdAt": "2026-09-29T12:32:11.092Z",
+  "updatedAt": "2026-09-29T12:32:11.092Z",
+  "source": "telegram"
+}

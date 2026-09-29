@@ -1,0 +1,68 @@
+import { logInfo } from "../../utils/logger.js";
+import { buildMemoryContext } from "./memory.context.js";
+import { retrieveRelevantMemory } from "./memory.retriever.js";
+import { buildKnowledgeContext } from "./knowledge.context.js";
+import {
+  saveConversation,
+  loadShortTermMemory,
+} from "./conversation.memory.js";
+
+export async function handleMessage(event) {
+  const { chatId, chatType } = event.context;
+
+  const { messageId, text } = event.payload;
+
+  const actor = event.actor;
+
+  logInfo("CONVERSATION", "Message received", {
+    chatId,
+    chatType,
+    messageId,
+  });
+
+  const conversation = {
+    chat: {
+      id: chatId,
+      type: chatType,
+    },
+
+    actor: {
+      id: actor?.id ?? null,
+      name: actor?.name ?? null,
+      username: actor?.username ?? null,
+    },
+
+    message: {
+      id: messageId,
+      text: text ?? "",
+    },
+  };
+
+  const shortTerm = loadShortTermMemory();
+  
+  const relevantMemory = retrieveRelevantMemory({
+    memories: shortTerm,
+    query: text,
+  });
+
+  const knowledge = buildKnowledgeContext();
+  
+  const memory = saveConversation(conversation);
+
+  const context = buildMemoryContext({
+    conversation,
+
+    memory: {
+      shortTerm: relevantMemory,
+    },
+
+    knowledge,
+  });
+
+  return {
+    status: "processed",
+    eventId: event.id,
+    context,
+    memory,
+  };
+}
