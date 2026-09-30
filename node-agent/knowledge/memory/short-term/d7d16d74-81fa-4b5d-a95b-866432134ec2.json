@@ -1,0 +1,22 @@
+{
+  "id": "d7d16d74-81fa-4b5d-a95b-866432134ec2",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 101,
+      "text": "akuuu sangeee banget sama kamu"
+    }
+  },
+  "createdAt": "2026-09-30T12:30:32.804Z",
+  "updatedAt": "2026-09-30T12:30:32.804Z",
+  "source": "telegram"
+}

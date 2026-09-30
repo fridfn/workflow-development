@@ -1,0 +1,22 @@
+{
+  "id": "75bae49b-a5a2-4395-bae7-8da1f37dc6c0",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 103,
+      "text": "ehhh bukan sange tapi maksud aku sayang banget sama kamu"
+    }
+  },
+  "createdAt": "2026-09-30T12:31:09.529Z",
+  "updatedAt": "2026-09-30T12:31:09.529Z",
+  "source": "telegram"
+}
