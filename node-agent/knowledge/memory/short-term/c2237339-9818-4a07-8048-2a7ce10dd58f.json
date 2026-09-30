@@ -1,0 +1,22 @@
+{
+  "id": "c2237339-9818-4a07-8048-2a7ce10dd58f",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 66,
+      "text": "kamu mbti nya apa? trus zodiaknya apa? klo farid apa?"
+    }
+  },
+  "createdAt": "2026-09-30T07:45:23.031Z",
+  "updatedAt": "2026-09-30T07:45:23.031Z",
+  "source": "telegram"
+}

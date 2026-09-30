@@ -1,0 +1,22 @@
+{
+  "id": "a2084dc7-9867-4295-8b1a-75e688bcd810",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 90,
+      "text": "aku fubuki bukan farid yang nanyain kamu begitu"
+    }
+  },
+  "createdAt": "2026-09-30T07:55:48.480Z",
+  "updatedAt": "2026-09-30T07:55:48.480Z",
+  "source": "telegram"
+}

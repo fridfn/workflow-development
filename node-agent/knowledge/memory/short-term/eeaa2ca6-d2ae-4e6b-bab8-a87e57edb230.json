@@ -1,0 +1,22 @@
+{
+  "id": "eeaa2ca6-d2ae-4e6b-bab8-a87e57edb230",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 72,
+      "text": "siapa kamu aurielle atau apa?"
+    }
+  },
+  "createdAt": "2026-09-30T07:48:24.705Z",
+  "updatedAt": "2026-09-30T07:48:24.705Z",
+  "source": "telegram"
+}

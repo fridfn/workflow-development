@@ -1,0 +1,22 @@
+{
+  "id": "64281ae0-e95e-45a0-9d71-37f906e17165",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 78,
+      "text": "aurielle kasi tau aku siapa farid yang kamu kenal"
+    }
+  },
+  "createdAt": "2026-09-30T07:49:43.247Z",
+  "updatedAt": "2026-09-30T07:49:43.247Z",
+  "source": "telegram"
+}

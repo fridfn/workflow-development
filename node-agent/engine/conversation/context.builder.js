@@ -1,4 +1,8 @@
-export function buildMemoryContext({ conversation, memory = {}, knowledge = {} }) {
+export function buildAgentContext({
+  conversation,
+  memory = {},
+  knowledge = {},
+}) {
   return {
     current: {
       conversation,

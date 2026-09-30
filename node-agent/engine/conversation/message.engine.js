@@ -1,5 +1,5 @@
 import { logInfo } from "../../utils/logger.js";
-import { buildMemoryContext } from "./memory.context.js";
+import { buildAgentContext } from "./context.builder.js";
 import { retrieveRelevantMemory } from "./memory.retriever.js";
 import { buildKnowledgeContext } from "./knowledge.context.js";
 import {
@@ -49,7 +49,7 @@ export async function handleMessage(event) {
   
   const memory = saveConversation(conversation);
 
-  const context = buildMemoryContext({
+  const context = buildAgentContext({
     conversation,
 
     memory: {
