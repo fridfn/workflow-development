@@ -1,0 +1,22 @@
+{
+  "id": "ed317d04-04f4-4442-8e88-4dc002710224",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 109,
+      "text": "malem aurielle"
+    }
+  },
+  "createdAt": "2026-09-30T18:32:34.667Z",
+  "updatedAt": "2026-09-30T18:32:34.667Z",
+  "source": "telegram"
+}
