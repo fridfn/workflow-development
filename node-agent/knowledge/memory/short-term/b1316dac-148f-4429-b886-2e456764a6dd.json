@@ -1,0 +1,22 @@
+{
+  "id": "b1316dac-148f-4429-b886-2e456764a6dd",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 94,
+      "text": "darimana kamu tau nama aku?"
+    }
+  },
+  "createdAt": "2026-09-30T09:14:35.106Z",
+  "updatedAt": "2026-09-30T09:14:35.106Z",
+  "source": "telegram"
+}

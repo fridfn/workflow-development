@@ -13,7 +13,7 @@
     "llm-context": "node core/event/playground/llm-context.test.js",
     "system-context": "node core/event/playground/system-context.test.js",
     "conversation-context": "node core/event/playground/conversation-context.test.js",
-    "telegram": "nodemon --ignore telegram.offset --ignore knowledge/memory/short-term/** --env-file=.env core/event/playground/telegram.test.js"
+    "telegram": "nodemon --ignore telegram.offset --ignore knowledge/memory/short-term/** --env-file=.env runtime/telegram/telegram.runtime.js"
   },
   "keywords": [],
   "author": "",
