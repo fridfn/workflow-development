@@ -1,20 +1,16 @@
 export function buildLLMRequest({
   type,
   systemContext,
-  conversationContext,
   model,
+  prompt,
   temperature,
   max_tokens,
 }) {
   return {
     type,
-
     model,
-
     system: systemContext,
-
-    prompt: conversationContext,
-
+    prompt,
     temperature,
     max_tokens,
   };

@@ -1,0 +1,22 @@
+{
+  "id": "73cbdf1c-f6da-4e0c-886f-c5a735395618",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 107,
+      "text": "sekarang jam berapa dan tanggal berapa ya aurielle?"
+    }
+  },
+  "createdAt": "2026-09-30T18:03:02.117Z",
+  "updatedAt": "2026-09-30T18:03:02.117Z",
+  "source": "telegram"
+}

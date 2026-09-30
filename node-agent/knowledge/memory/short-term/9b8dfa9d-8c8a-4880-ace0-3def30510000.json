@@ -1,0 +1,22 @@
+{
+  "id": "9b8dfa9d-8c8a-4880-ace0-3def30510000",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 105,
+      "text": "hiii aurielle"
+    }
+  },
+  "createdAt": "2026-09-30T13:23:10.744Z",
+  "updatedAt": "2026-09-30T13:23:10.744Z",
+  "source": "telegram"
+}

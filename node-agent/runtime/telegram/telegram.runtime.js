@@ -7,6 +7,7 @@ import { generateLLM } from "../../llm/core/generate.js";
 import { buildLLMContext } from "../../llm/context/llm.context.js";
 import { buildLLMRequest } from "../../llm/core/request.builder.js";
 import { buildSystemContext } from "../../llm/context/system.context.js";
+import { buildConversationPrompt } from "../../llm/prompts/conversation.prompt.js";
 import { buildConversationContext } from "../../llm/context/conversation.context.js";
 
 import { pollTelegram, acknowledgeTelegram } from "./telegram.poller.js";
@@ -44,10 +45,14 @@ async function startTelegramRuntime() {
         llmContext,
       });
 
+      const prompt = buildConversationPrompt({
+        conversationContext,
+      });
+
       const request = buildLLMRequest({
         type: "conversation",
         systemContext,
-        conversationContext,
+        prompt,
         model: "qwen/qwen3.8-27b",
         temperature: 0.8,
         max_tokens: 1000,
@@ -61,25 +66,17 @@ async function startTelegramRuntime() {
           model: request.model,
           hasSystem:
             typeof request.system === "string" && request.system.length > 0,
-          hasCurrent: !!request.prompt?.current,
-          shortTermCount: request.prompt?.memory?.shortTerm?.length ?? 0,
+          hasPrompt:
+            typeof request.prompt === "string" && request.prompt.length > 0,
         },
         { depth: null },
       );
-
-      const prompt = `
-Current conversation:
-${JSON.stringify(request.prompt.current, null, 2)}
-
-Relevant short-term memory:
-${JSON.stringify(request.prompt.memory.shortTerm, null, 2)}
-`;
 
       const response = await generateLLM({
         provider: "groq",
         model: request.model,
         system: request.system,
-        prompt,
+        prompt: request.prompt,
         temperature: request.temperature,
         max_tokens: request.max_tokens,
       });
