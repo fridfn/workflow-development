@@ -1,8 +1,9 @@
 import { handleEvent } from "../../core/event/event.handler.js";
 import { registerEventHandlers } from "../../core/event/event.router.js";
-import { handleMessage } from "../../engine/conversation/message.engine.js";
-import { createTelegramMessageEvent } from "../../events/telegram/telegram.adapter.js";
 import { pollTelegram, acknowledgeTelegram } from "./telegram.poller.js";
+import { handleMessage } from "../../engine/conversation/message.engine.js";
+import { saveConversation } from "../../engine/conversation/conversation.memory.js";
+import { createTelegramMessageEvent } from "../../events/telegram/telegram.adapter.js";
 
 import { generateConversationResponse } from "../../llm/tasks/conversation.task.js";
 import { sendTelegramMessage } from "./telegram.sender.js";
@@ -28,6 +29,18 @@ async function startTelegramRuntime() {
       const response = await generateConversationResponse({
         agentContext: result.context,
       });
+
+      const conversationPair = {
+        user: {
+          messageId: event.payload.messageId,
+          text: event.payload.text,
+        },
+        assistant: {
+          text: response,
+        },
+      };
+      
+      const memory = saveConversation(conversationPair);
       
       const telegramResult = await sendTelegramMessage({
         chatId: event.context.chatId,

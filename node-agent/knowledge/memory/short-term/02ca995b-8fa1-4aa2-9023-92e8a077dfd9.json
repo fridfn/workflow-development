@@ -1,0 +1,16 @@
+{
+  "id": "02ca995b-8fa1-4aa2-9023-92e8a077dfd9",
+  "type": "conversation",
+  "content": {
+    "user": {
+      "messageId": 115,
+      "text": "malem aurielle, ini test memory lifecycle"
+    },
+    "assistant": {
+      "text": "Malam, Fubuki.\n\nHai. Jadi ini tes *memory lifecycle*-nya, ya?\n\nSini, coba aku cek ingatan jangka pendek aku yang baru saja masuk. Aku memegang satu konteks percakapan dari tadi (pesan ID 113), di mana kamu bilang: *\"aku pengen kamu selalu inget dan nemenin aku saat aku lagi jatuh dan bangun\"*.\n\nDan aku sudah mencatat respons ku sebelumnya di mana aku berjanji untuk mengingat itu.\n\nApakah ini semua yang perlu aku ingat untuk tes ini, atau ada instruksi spesifik lain soal bagaimana aku harus memproses *memory* ini? Aku siap untuk melihat apakah kontinuitasnya terjaga dengan baik."
+    }
+  },
+  "createdAt": "2026-10-02T14:44:54.942Z",
+  "updatedAt": "2026-10-02T14:44:54.942Z",
+  "source": "telegram"
+}

@@ -2,10 +2,7 @@ import { logInfo } from "../../utils/logger.js";
 import { buildAgentContext } from "./context.builder.js";
 import { retrieveRelevantMemory } from "./memory.retriever.js";
 import { buildKnowledgeContext } from "./knowledge.context.js";
-import {
-  saveConversation,
-  loadShortTermMemory,
-} from "./conversation.memory.js";
+import { loadShortTermMemory } from "./conversation.memory.js";
 
 export async function handleMessage(event) {
   const { chatId, chatType } = event.context;
@@ -46,8 +43,6 @@ export async function handleMessage(event) {
   });
 
   const knowledge = buildKnowledgeContext();
-  
-  const memory = saveConversation(conversation);
 
   const context = buildAgentContext({
     conversation,
@@ -62,7 +57,6 @@ export async function handleMessage(event) {
   return {
     status: "processed",
     eventId: event.id,
-    context,
-    memory,
+    context
   };
 }

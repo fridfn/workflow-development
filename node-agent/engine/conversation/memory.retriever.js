@@ -10,7 +10,10 @@ export function retrieveRelevantMemory({
   const queryWords = query.toLowerCase().split(/\s+/).filter(Boolean);
 
   const scored = memories.map((memory) => {
-    const text = memory.content?.message?.text?.toLowerCase() ?? "";
+    const userText = memory.content?.user?.text?.toLowerCase() ?? "";
+    const assistantText = memory.content?.assistant?.text?.toLowerCase() ?? "";
+
+    const text = `${userText} ${assistantText}`;
 
     let score = 0;
 
