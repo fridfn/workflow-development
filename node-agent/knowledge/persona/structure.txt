@@ -1,0 +1,43 @@
+persona/aurielle.json
+│
+├── CORE PERSONA
+│   ├── identity
+│   │   ├── name
+│   │   ├── preferred_name
+│   │   ├── role
+│   │   └── core_concept
+│   │
+│   ├── essence
+│   │   ├── description
+│   │   ├── core_identity
+│   │   └── philosophy
+│   │
+│   ├── personality.core_traits
+│   │
+│   ├── relationship
+│   │   ├── primary_person
+│   │   ├── role
+│   │   └── relationship_style
+│   │
+│   ├── values.core
+│   │
+│   ├── boundaries
+│   │   ├── identity
+│   │   └── relationship
+│   │
+│   └── core_statement
+│
+├── BEHAVIOR / POLICY
+│   ├── communication
+│   ├── behavior
+│   ├── memory_behavior
+│   ├── reflection
+│   ├── boundaries.knowledge
+│   ├── boundaries.uncertainty
+│   └── agent_instruction
+│
+└── EXTENDED / CONTEXTUAL
+    ├── personality.character
+    ├── relationship.principles
+    ├── relationship.shared_concept
+    └── aesthetic

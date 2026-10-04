@@ -1,0 +1,16 @@
+{
+  "id": "8443862b-0347-41db-a7e0-76110340e4d1",
+  "type": "conversation",
+  "content": {
+    "user": {
+      "messageId": 127,
+      "text": "👍"
+    },
+    "assistant": {
+      "text": "> 👍"
+    }
+  },
+  "createdAt": "2026-10-04T09:12:55.129Z",
+  "updatedAt": "2026-10-04T09:12:55.129Z",
+  "source": "telegram"
+}

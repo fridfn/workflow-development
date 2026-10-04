@@ -1,8 +1,13 @@
 import { logInfo } from "../../utils/logger.js";
 import { buildAgentContext } from "./context.builder.js";
 import { retrieveRelevantMemory } from "./memory.retriever.js";
-import { buildKnowledgeContext } from "./knowledge.context.js";
+import { retrieveRelevantKnowledge } from "./knowledge.retriever.js";
 import { loadShortTermMemory } from "./conversation.memory.js";
+import {
+  loadKnowledge,
+  buildCorePersona,
+  buildKnowledgeContext,
+} from "./knowledge.context.js";
 
 export async function handleMessage(event) {
   const { chatId, chatType } = event.context;
@@ -41,8 +46,26 @@ export async function handleMessage(event) {
     memories: shortTerm,
     query: text,
   });
+  
+  
+  const persona = loadKnowledge("persona/aurielle.json");
+  const identity = loadKnowledge("identity/farid.json");
 
-  const knowledge = buildKnowledgeContext();
+  const relevantKnowledge = retrieveRelevantKnowledge({
+    knowledge: {
+      persona,
+      identity,
+    },
+    query: text,
+  });
+
+  const corePersona = buildCorePersona(persona);
+
+  const knowledge = buildKnowledgeContext({
+    persona: corePersona,
+    identity,
+    relevant: relevantKnowledge,
+  });
 
   const context = buildAgentContext({
     conversation,

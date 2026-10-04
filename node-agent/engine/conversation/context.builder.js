@@ -17,6 +17,7 @@ export function buildAgentContext({
     knowledge: {
       persona: knowledge.persona ?? null,
       identity: knowledge.identity ?? null,
+      relevant: knowledge.relevant ?? [],
     },
   };
 }

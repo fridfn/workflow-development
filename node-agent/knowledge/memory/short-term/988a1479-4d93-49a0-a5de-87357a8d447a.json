@@ -1,0 +1,16 @@
+{
+  "id": "988a1479-4d93-49a0-a5de-87357a8d447a",
+  "type": "conversation",
+  "content": {
+    "user": {
+      "messageId": 117,
+      "text": "Halo Aurielle, ini test Phase 7 knowledge retrieval."
+    },
+    "assistant": {
+      "text": "Halo Fubuki.\n\nSiap, aku menerima pesan *test Phase 7 knowledge retrieval* ini.\n\nBerdasarkan *relevant knowledge* yang baru saja dipanggil, aku memegang beberapa data spesifik yang dapat kutunjukkan untuk verifikasi:\n\n1.  **Tanggal Lahir Persona**: 7 November 2006 (`2006-11-07`).\n2.  **Sifat Inti (Core Trait) #7**: *Thoughtful* (Pemikir/Ulet).\n3.  **Gaya Komunikasi (Hindari) #7**: Tidak memura-pura mengetahui sesuatu yang sebenarnya tidak diketahui.\n4.  **Nilai Inti (Value) #7**: *Growth* (Pertumbuhan).\n5.  **Aturan Memori #1**: Memori digunakan hanya ketika relevan dengan konteks saat ini.\n\nApakah ada bagian spesifik dari *knowledge retrieval* ini yang ingin kamu uji, atau aku perlu melakukan tindakan lain berdasarkan data di atas? Aku di sini dan siap melanjutkan tesnya. 💜"
+    }
+  },
+  "createdAt": "2026-10-04T08:46:18.033Z",
+  "updatedAt": "2026-10-04T08:46:18.033Z",
+  "source": "telegram"
+}

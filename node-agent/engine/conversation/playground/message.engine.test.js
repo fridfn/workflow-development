@@ -1,6 +1,10 @@
 import { createTelegramMessageEvent } from "../../../events/telegram/telegram.adapter.js";
 import { handleMessage } from "../message.engine.js";
 
+import { buildLLMContext } from "../../../llm/context/llm.context.js";
+import { buildConversationContext } from "../../../llm/context/conversation.context.js";
+import { buildConversationPrompt } from "../../../llm/prompts/conversation.prompt.js";
+
 const telegramUpdate = {
   message: {
     message_id: 123,
@@ -13,7 +17,7 @@ const telegramUpdate = {
       id: 987654,
       type: "private",
     },
-    text: "Halo Aurielle, ini test message engine.",
+    text: "Halo Aurielle, masih inget sama pesan yang aku bilang ke kamu?",
   },
 };
 
@@ -21,17 +25,65 @@ const event = createTelegramMessageEvent(telegramUpdate);
 
 const result = await handleMessage(event);
 
-console.log("\nMESSAGE ENGINE RESULT:\n");
-console.dir(result, { depth: null });
+console.log("\nAGENT CONTEXT:\n");
+console.dir(result.context, { depth: null });
 
-console.log("\nSTATUS:\n");
-console.log(result.status);
+const llmContext = buildLLMContext({
+  agentContext: result.context,
+});
 
-console.log("\nCONVERSATION:\n");
-console.dir(result.context.current.conversation, { depth: null });
+console.log("\nLLM CONTEXT:\n");
+console.dir(llmContext, { depth: null });
 
-console.log("\nMEMORY:\n");
-console.dir(result.context.memory, { depth: null });
+const conversationContext = buildConversationContext({
+  llmContext,
+});
 
-console.log("\nKNOWLEDGE:\n");
-console.dir(result.context.knowledge, { depth: null });
+console.log("\nCONVERSATION CONTEXT:\n");
+console.dir(conversationContext, { depth: null });
+
+const prompt = buildConversationPrompt({
+  conversationContext,
+});
+
+console.log("\nCONVERSATION PROMPT:\n");
+console.log(JSON.stringify(prompt, null, 2));
+
+console.log("\nPROMPT ASSERTIONS:\n");
+
+console.log(
+  "Has current conversation:",
+  prompt.includes("Current conversation:"),
+);
+
+console.log("Has relevant knowledge:", prompt.includes("Relevant knowledge:"));
+
+console.log(
+  "Has relevant short-term memory:",
+  prompt.includes("Relevant short-term memory:"),
+);
+
+console.log("\n7.9 TEST:\n");
+
+console.log("Agent Context exists:", Boolean(result.context));
+
+console.log("LLM Context has persona:", Boolean(llmContext.persona));
+
+console.log(
+  "LLM Context has relevant knowledge:",
+  Array.isArray(llmContext.knowledge?.relevant),
+);
+
+console.log(
+  "Conversation Context has current:",
+  Boolean(conversationContext.current),
+);
+
+console.log(
+  "Conversation Context has memory:",
+  Array.isArray(conversationContext.memory?.shortTerm),
+);
+
+console.log("Prompt is string:", typeof prompt === "string");
+
+console.log("Prompt is not empty:", prompt.length > 0);
