@@ -1,0 +1,16 @@
+{
+  "id": "5b944457-5857-4d2a-8993-5a6f9f3831d9",
+  "type": "conversation",
+  "content": {
+    "user": {
+      "messageId": 159,
+      "text": "bisa ga jawabnya simpel aja jangan panjang panjang?"
+    },
+    "assistant": {
+      "text": "Bisa. Maaf ya."
+    }
+  },
+  "createdAt": "2026-10-04T12:50:39.407Z",
+  "updatedAt": "2026-10-04T12:50:39.407Z",
+  "source": "telegram"
+}

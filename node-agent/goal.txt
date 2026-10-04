@@ -1,0 +1,21 @@
+1. Reflection menerima Context, bukan Storage.
+
+2. Reflection punya 4 level:
+   daily / weekly / monthly / yearly.
+
+3. Activity adalah material utama.
+
+4. Conversation dan Memory harus sudah selective/relevant.
+
+5. Knowledge adalah supporting context.
+
+6. Persona adalah writing behavior,
+   bukan reflection material.
+
+7. Identity bukan material utama.
+
+8. Reflection Engine tidak mengurus persistence.
+
+9. Reflection Result dipisahkan dari file/archive.
+
+10. Belum ada perubahan kode.

@@ -6,8 +6,6 @@ import { buildWeeklyPrompt } from "./prompts/weekly.prompt.js";
 import { buildMonthlyPrompt } from "./prompts/monthly.prompt.js";
 import { buildYearlyPrompt } from "./prompts/yearly.prompt.js";
 
-import { buildEntry } from "../engine/enrichment/entry.builder.js";
-
 const PROMPTS = {
   daily: buildDailyPrompt,
   weekly: buildWeeklyPrompt,
@@ -21,116 +19,84 @@ const config = JSON.parse(
 
 export async function generateReflection({
   agent,
-  type,
-  data,
+  reflectionContext,
   outputFile,
   provider = "groq",
   model,
 }) {
-  // ========================================
-  // 🔹 LOAD AGENT
-  // ========================================
-
-  const agents = config[agent];
-
-  if (!agents) {
-    throw new Error(`Unknown agent: ${agent}`);
-  }
-
-  const agentSource = agents.system;
-
-  const systemParts = {
-    persona: agentSource.partner,
-
-    behavior: agentSource.gaya_bicara,
-  };
-
-  const agentPersona = JSON.stringify(systemParts);
-
-  // ========================================
-  // 🔹 RESOLVE PROMPT
-  // ========================================
-
-  const buildPrompt = PROMPTS[type];
-
-  if (!buildPrompt) {
-    throw new Error(`Unknown reflection type: ${type}`);
-  }
-
-  // ========================================
-  // 🔹 ENRICHMENT
-  // ========================================
-
-  let reflectionData;
-
-  // ----------------------------------------
-  // ARRAY DATA
-  // Daily
-  // ----------------------------------------
-
-  if (Array.isArray(data)) {
-    reflectionData = data.slice(-12).map((item) => item);
-  }
-
-  // ----------------------------------------
-  // OBJECT DATA
-  // Weekly / Monthly / Yearly
-  // ----------------------------------------
-  else if (data && typeof data === "object") {
-    reflectionData = [
-      {
-        source: `reflection:${type}`,
-        context: data,
-      },
-    ];
-  } else {
-    reflectionData = [];
-  }
-
-  // ========================================
-  // 🔹 DEBUG
-  // ========================================
-
-  // console.log(`[REFLECTION] ${type.toUpperCase()}`);
-
-  // console.log(JSON.stringify(reflectionData, null, 2));
-
-  // ========================================
-  // 🔹 GENERATE LLM
-  // ========================================
-
-    const prompt = buildPrompt({
-      data: reflectionData,
-    });
-
-    const raw = await generateLLM({
-      provider,
-      model,
-
-      system: agentPersona,
-
-      prompt,
-
-      temperature: 0.8,
-
-      max_tokens: 2000,
-    });
-
-    // ========================================
-    // 🔹 SAVE REFLECTION
-    // ========================================
-
-    if (outputFile) {
-
-      fs.writeFileSync(
-        outputFile,
-          raw,
-          null,
-          2,
-        "utf-8"
-      );
-
+    if (!reflectionContext) {
+      throw new Error("ReflectionContext is required");
     }
 
-    return raw;
+    const type = reflectionContext.type;
+
+    const agents = config[agent];
+
+    if (!agents) {
+      throw new Error(`Unknown agent: ${agent}`);
+    }
+
+    const agentSource = agents.system;
+
+    const systemParts = {
+      persona: agentSource.partner,
+      behavior: agentSource.gaya_bicara,
+    };
+
+    const agentPersona = JSON.stringify(systemParts);
+
+    const buildPrompt = PROMPTS[type];
+
+    if (!buildPrompt) {
+      throw new Error(`Unknown reflection type: ${type}`);
+    }
+
+    const reflectionLLMContext = buildReflectionLLMContext({
+      reflectionContext,
+    });
+
+    const prompt = buildPrompt({
+      context: reflectionLLMContext,
+    });
+
+  const raw = await generateLLM({
+    provider,
+    model,
+
+    system: agentPersona,
+
+    prompt,
+
+    temperature: 0.8,
+
+    max_tokens: 2000,
+  });
+
+  // ========================================
+  // 🔹 SAVE REFLECTION
+  // ========================================
+
+  if (outputFile) {
+    fs.writeFileSync(outputFile, raw, null, 2, "utf-8");
+  }
+
+   return raw;
+}
+
+export function buildReflectionLLMContext({ reflectionContext }) {
+  return {
+    type: reflectionContext?.type ?? null,
+
+    period: reflectionContext?.period ?? null,
+
+    material: {
+      activity: reflectionContext?.sources?.activity ?? [],
+      conversation: reflectionContext?.sources?.conversation ?? [],
+      memory: reflectionContext?.sources?.memory ?? [],
+    },
+
+    writing: {
+      persona: reflectionContext?.context?.persona ?? null,
+    },
+  };
 }

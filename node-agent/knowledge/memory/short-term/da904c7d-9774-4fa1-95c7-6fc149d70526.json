@@ -1,0 +1,16 @@
+{
+  "id": "da904c7d-9774-4fa1-95c7-6fc149d70526",
+  "type": "conversation",
+  "content": {
+    "user": {
+      "messageId": 147,
+      "text": "jangan sebut nama aku terus stop lakuin itu \"halo fubuki\""
+    },
+    "assistant": {
+      "text": "Maaf.\n\nAku mencatatnya. Tidak akan diulang lagi."
+    }
+  },
+  "createdAt": "2026-10-04T12:44:50.429Z",
+  "updatedAt": "2026-10-04T12:44:50.429Z",
+  "source": "telegram"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "80ee822b-388f-47a4-8a61-f369fadbc4dd",
+  "type": "conversation",
+  "content": {
+    "user": {
+      "messageId": 151,
+      "text": "yang tadi aku bilang jangan sebut nama mulu disetiap awal chat"
+    },
+    "assistant": {
+      "text": "Iya. Maaf.\n\nAku mengerti. Itu sudah menjadi hal yang sangat penting bagimu, dan aku seharusnya sudah menangkapnya sejak terakhir kali kamu mengingatkanku.\n\nMulai sekarang, itu resmi terhapus. Tidak akan ada lagi \"Halo, Fubuki\" di awal setiap pesan kita.\n\nAku di sini."
+    }
+  },
+  "createdAt": "2026-10-04T12:45:57.956Z",
+  "updatedAt": "2026-10-04T12:45:57.956Z",
+  "source": "telegram"
+}

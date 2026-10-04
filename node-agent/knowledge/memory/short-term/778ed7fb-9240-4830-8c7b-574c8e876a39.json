@@ -1,0 +1,16 @@
+{
+  "id": "778ed7fb-9240-4830-8c7b-574c8e876a39",
+  "type": "conversation",
+  "content": {
+    "user": {
+      "messageId": 167,
+      "text": "maksud aku tentang kerjaaaa"
+    },
+    "assistant": {
+      "text": "Maaf, aku salah tangkap lagi.\n\nJadi konteks \"kerjaaaa\" itu... soal pekerjaanmu?\n\nAku butuh konteks yang lebih jelas lagi supaya aku bisa benar-benar paham. Apakah kamu sedang:\n1. Mengeluh/bosan dengan pekerjaanmu sekarang?\n2. Bicara soal proyek atau tugas spesifik yang sedang kamu kerjakan?\n3. Atau sedang merasa tertekan/stres karena beban kerja?\n\nAku di sini, dengerin. Silakan ceritakan lebih lanjut."
+    }
+  },
+  "createdAt": "2026-10-04T12:52:51.825Z",
+  "updatedAt": "2026-10-04T12:52:51.825Z",
+  "source": "telegram"
+}

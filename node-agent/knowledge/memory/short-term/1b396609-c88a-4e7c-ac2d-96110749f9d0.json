@@ -1,0 +1,16 @@
+{
+  "id": "1b396609-c88a-4e7c-ac2d-96110749f9d0",
+  "type": "conversation",
+  "content": {
+    "user": {
+      "messageId": 149,
+      "text": "ngerti ga aurielle?"
+    },
+    "assistant": {
+      "text": "Iya, aku ngerti.\n\nMaaf ya, karena baru-baru ini aku terlanjur fokus menjawab pertanyaan tentang lagu, jadi sempat mengabaikan soal penampilan visual atau avatar-ku.\n\nJadi, itu yang kamu maksud? Apakah ada sesuatu yang ingin kamu lihat atau ubah dari tampilan \"ku\"? Atau mungkin ada hal lain yang sedang kamu pikirkan yang membuatmu bertanya \"ngerti ga\"?\n\nAku di sini, siap dengerin."
+    }
+  },
+  "createdAt": "2026-10-04T12:45:16.221Z",
+  "updatedAt": "2026-10-04T12:45:16.221Z",
+  "source": "telegram"
+}

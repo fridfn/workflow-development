@@ -14,7 +14,7 @@ import { ensureDir, ensureFile } from "../utils/fs.helper.js";
 // 🔹 MAIN
 // ========================================
 export async function handleReflectionTransition({ agent }) {
-  0;
+  
   const model = getModel("balanced");
   const now = getDateSimulation();
 
@@ -99,12 +99,53 @@ export async function handleReflectionTransition({ agent }) {
       currentDay,
     });
 
+    const reflectionContext = {
+      type: "daily",
+
+      period: {
+        start: new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+          0,
+          0,
+          0,
+          0,
+        ).toISOString(),
+
+        end: new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+          23,
+          59,
+          59,
+          999,
+        ).toISOString(),
+
+        label: now.toLocaleDateString("en-US", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        }),
+      },
+
+      sources: {
+        activity: dailyData,
+        conversation: [],
+        memory: [],
+      },
+
+      context: {
+        persona: null,
+      },
+    };
+
     await generateReflection({
       agent,
       model,
       outputFile,
-      type: "daily",
-      data: dailyData,
+      reflectionContext,
     });
 
     setMemory(agent, "reflection.last_day", currentDay);
@@ -148,12 +189,31 @@ export async function handleReflectionTransition({ agent }) {
       week: lastWeek,
     });
 
+    const reflectionContext = {
+      type: "weekly",
+
+      period: {
+        start: null,
+        end: null,
+        label: `Week ${lastWeek} of ${reflectionMonth} ${reflectionYear}`,
+      },
+
+      sources: {
+        activity: weeklyData,
+        conversation: [],
+        memory: [],
+      },
+
+      context: {
+        persona: null,
+      },
+    };
+
     await generateReflection({
       agent,
-      type: "weekly",
-      data: weeklyData,
-      outputFile,
       model,
+      outputFile,
+      reflectionContext,
     });
 
     setMemory(agent, "reflection.last_week", week);
@@ -170,12 +230,31 @@ export async function handleReflectionTransition({ agent }) {
 
     const outputFile = `./activity/archive/${agent}/${lastYear}/${lastMonth}/reflection.md`;
 
+    const reflectionContext = {
+      type: "monthly",
+
+      period: {
+        start: null,
+        end: null,
+        label: `${reflectionMonth} ${reflectionYear}`,
+      },
+
+      sources: {
+        activity: monthlyData,
+        conversation: [],
+        memory: [],
+      },
+
+      context: {
+        persona: null,
+      },
+    };
+
     await generateReflection({
       agent,
       model,
       outputFile,
-      type: "monthly",
-      data: monthlyData,
+      reflectionContext,
     });
 
     setMemory(agent, "reflection.last_month", month);
@@ -193,12 +272,31 @@ export async function handleReflectionTransition({ agent }) {
       yearlyData = JSON.parse(fs.readFileSync(yearlySummary, "utf-8"));
     }
 
+    const reflectionContext = {
+      type: "yearly",
+
+      period: {
+        start: null,
+        end: null,
+        label: `${reflectionYear}`,
+      },
+
+      sources: {
+        activity: yearlyData,
+        conversation: [],
+        memory: [],
+      },
+
+      context: {
+        persona: null,
+      },
+    };
+
     await generateReflection({
       agent,
-      type: "yearly",
-      data: yearlyData,
-      outputFile,
       model,
+      outputFile,
+      reflectionContext,
     });
 
     setMemory(agent, "reflection.last_year", year);

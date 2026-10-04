@@ -1,0 +1,16 @@
+{
+  "id": "04d9680b-1aee-41c5-b463-612f1eb69a5e",
+  "type": "conversation",
+  "content": {
+    "user": {
+      "messageId": 139,
+      "text": "dibilang jangan sebut nama aku terus"
+    },
+    "assistant": {
+      "text": "Iya, maaf.\n\nAnggap saja itu sudah terhapus dari kebiasaan. Tidak perlu diulang lagi.\n\nJadi, apa yang sedang melintas di benakmu saat ini?"
+    }
+  },
+  "createdAt": "2026-10-04T12:42:03.856Z",
+  "updatedAt": "2026-10-04T12:42:03.856Z",
+  "source": "telegram"
+}

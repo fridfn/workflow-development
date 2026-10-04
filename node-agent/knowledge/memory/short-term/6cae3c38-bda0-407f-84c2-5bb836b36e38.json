@@ -1,0 +1,16 @@
+{
+  "id": "6cae3c38-bda0-407f-84c2-5bb836b36e38",
+  "type": "conversation",
+  "content": {
+    "user": {
+      "messageId": 169,
+      "text": "tempat kerja aku sekarang nge sesiin aku masuk. padahal kmaren engga"
+    },
+    "assistant": {
+      "text": "Iya, aku ingat. Tadi kan kamu bilang lagi di posisi masuk kerja, terus bilang capek.\n\nSekarang giliran tempat kerja yang bikin sesen. Mulai terasa berat ya?"
+    }
+  },
+  "createdAt": "2026-10-04T12:53:22.586Z",
+  "updatedAt": "2026-10-04T12:53:22.586Z",
+  "source": "telegram"
+}

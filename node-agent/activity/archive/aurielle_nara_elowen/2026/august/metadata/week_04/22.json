@@ -27,5 +27,113 @@
       }
     },
     "created_at": 1790092120959
+  },
+  {
+    "source": "commit",
+    "reply": "hmm… aku liat kamu balik lagi\n\nkamu tetap balik lagi… kayak gak tega ninggalin progress ini",
+    "meta": {
+      "greeting": "hmm… aku liat kamu balik lagi",
+      "message": "kamu tetap balik lagi… kayak gak tega ninggalin progress ini",
+      "tone": "persistent_clingy",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "fix",
+      "repo": "octocat/hello-world",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T14:30:00Z",
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T14:30:00Z"
+      },
+      "commit": {
+        "type": "update",
+        "scope": "fix",
+        "detail": "update(fix): resolve navigation bar overlap issue",
+        "actionTag": "fix",
+        "sha": "ffac537e6cbbf934b08741529b92a17142327a9d",
+        "message": "update(fix): resolve navigation bar overlap issue",
+        "timestamp": "2026-09-28T14:30:00Z"
+      },
+      "repository": "octocat/hello-world",
+      "semantic": {
+        "type": "update",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1791136768110
+  },
+  {
+    "source": "commit",
+    "reply": "dan kamu tetap konsisten di kondisi ini… aku respect itu",
+    "meta": {
+      "greeting": "Farid… kamu pegang ini dengan serius",
+      "message": "dan kamu tetap konsisten di kondisi ini… aku respect itu",
+      "tone": "persistent_respect",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "fix",
+      "repo": "octocat/hello-world",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T14:30:00Z",
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T14:30:00Z"
+      },
+      "commit": {
+        "type": "update",
+        "scope": "fix",
+        "detail": "update(fix): resolve navigation bar overlap issue",
+        "actionTag": "fix",
+        "sha": "ffac537e6cbbf934b08741529b92a17142327a9d",
+        "message": "update(fix): resolve navigation bar overlap issue",
+        "timestamp": "2026-09-28T14:30:00Z"
+      },
+      "repository": "octocat/hello-world",
+      "semantic": {
+        "type": "update",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1791141348779
+  },
+  {
+    "source": "commit",
+    "reply": "Farid… kamu pegang ini dengan serius\n\nkamu jalan dengan niat… dan itu keliatan jelas",
+    "meta": {
+      "greeting": "Farid… kamu pegang ini dengan serius",
+      "message": "kamu jalan dengan niat… dan itu keliatan jelas",
+      "tone": "persistent_respect",
+      "category": "support"
+    },
+    "context": {
+      "mode": "persistent",
+      "tag": "fix",
+      "repo": "octocat/hello-world",
+      "branch": "refs/heads/main",
+      "commitTime": "2026-09-28T14:30:00Z",
+      "activity": {
+        "hasCommit": true,
+        "commitTime": "2026-09-28T14:30:00Z"
+      },
+      "commit": {
+        "type": "update",
+        "scope": "fix",
+        "detail": "update(fix): resolve navigation bar overlap issue",
+        "actionTag": "fix",
+        "sha": "ffac537e6cbbf934b08741529b92a17142327a9d",
+        "message": "update(fix): resolve navigation bar overlap issue",
+        "timestamp": "2026-09-28T14:30:00Z"
+      },
+      "repository": "octocat/hello-world",
+      "semantic": {
+        "type": "update",
+        "actionTag": "fix"
+      }
+    },
+    "created_at": 1791141382146
   }
 ]
