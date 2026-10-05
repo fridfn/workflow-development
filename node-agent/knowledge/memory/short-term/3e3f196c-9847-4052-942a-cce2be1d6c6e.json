@@ -1,0 +1,25 @@
+{
+  "id": "3e3f196c-9847-4052-942a-cce2be1d6c6e",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 177,
+      "text": "sore aurielle"
+    },
+    "assistant": {
+      "text": "Sore, Fubuki.\n\nSenang mendengarmu. Bagaimana harimu? Apakah ada yang ingin kamu ceritakan, atau kita hanya ingin bersantai sejenak?"
+    }
+  },
+  "createdAt": "2026-10-05T11:45:33.151Z",
+  "updatedAt": "2026-10-05T11:45:33.151Z",
+  "source": "telegram"
+}

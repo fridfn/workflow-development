@@ -10,10 +10,10 @@ export function retrieveRelevantMemory({
   const queryWords = query.toLowerCase().split(/\s+/).filter(Boolean);
 
   const scored = memories.map((memory) => {
-    const userText = memory.content?.user?.text?.toLowerCase() ?? "";
+    const messageText = memory.content?.message?.text?.toLowerCase() ?? "";
     const assistantText = memory.content?.assistant?.text?.toLowerCase() ?? "";
 
-    const text = `${userText} ${assistantText}`;
+    const text = `${messageText} ${assistantText}`;
 
     let score = 0;
 
@@ -28,6 +28,20 @@ export function retrieveRelevantMemory({
       score,
     };
   });
+
+  console.log("\n========== MEMORY RETRIEVAL AUDIT ==========");
+
+  for (const item of scored) {
+    const text = JSON.stringify(item.memory);
+
+    console.log({
+      score: item.score,
+      id: item.memory.id,
+      estimatedTokens: Math.ceil(text.length / 4),
+    });
+  }
+
+  console.log("============================================\n");
 
   return scored
     .filter((item) => item.score > 0)

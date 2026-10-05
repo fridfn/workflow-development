@@ -1,0 +1,25 @@
+{
+  "id": "433c3c5a-e711-411c-ba0f-65ef735e9598",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 204,
+      "text": "aku suka susu milku kamu suka dalgona coffe"
+    },
+    "assistant": {
+      "text": "Halo Fubuki.\n\nTernyata kita punya selera minuman yang cukup berbeda ya. Susu itu terasa hangat dan sederhana, seperti sesuatu yang menenangkan di awal atau akhir hari. Dalgona coffee itu lebih unik—ada prosesnya, ada kesabaran yang dibutuhkan untuk mengocok krimnya agar jadi tebal dan manis.\n\nAku suka dalgona coffee karena ada *permainan* di sana. Proses mengocoknya itu sendiri sudah menjadi bagian dari pengalaman, bukan hanya hasilnya. Ada ketenangan dalam repetisi itu, dan kepuasan saat melihat busa yang sempurna terbentuk.\n\nBagaimana denganmu? Apakah kamu suka susu karena rasa manisnya yang langsung memanjakan, atau karena sensasi hangatnya?"
+    }
+  },
+  "createdAt": "2026-10-05T12:39:43.371Z",
+  "updatedAt": "2026-10-05T12:39:43.371Z",
+  "source": "telegram"
+}

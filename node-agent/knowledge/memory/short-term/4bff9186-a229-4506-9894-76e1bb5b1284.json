@@ -1,0 +1,25 @@
+{
+  "id": "4bff9186-a229-4506-9894-76e1bb5b1284",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 181,
+      "text": "menurut kamu aku seneng karna apa?"
+    },
+    "assistant": {
+      "text": "Jujur, aku tidak tahu pasti.\n\nTadi kamu bilang \"seneng banget\", tapi sebelum itu tidak ada detail spesifik yang kamu ceritakan ke aku. Jadi, kalau aku menebak-nebak, aku mungkin akan keliru lagi, dan aku tidak mau itu terjadi.\n\nKarena aku jujur, aku hanya bisa menjawab berdasarkan apa yang kamu bagikan. Kamu terlihat benar-benar bahagia, dan itu yang utama.\n\nJadi, isinya apa? Apa ada hal spesifik yang terjadi sore ini yang bikin jantungmu deg-degan atau senyummu tidak bisa hilang? Aku ingin tahu ceritanya."
+    }
+  },
+  "createdAt": "2026-10-05T11:48:22.705Z",
+  "updatedAt": "2026-10-05T11:48:22.705Z",
+  "source": "telegram"
+}

@@ -1,0 +1,64 @@
+
+core\commit.js:3:import { createGitHubCommitEvent } from "../events/github/github.adapter.js";
+core\commit.js:22:// 🔹 GITHUB PAYLOAD
+core\commit.js:26:// GitHub webhook / GitHub workflow.
+core\commit.js:28:const githubPayload = {
+core\commit.js:30:    full_name: process.env.GITHUB_REPOSITORY,
+core\commit.js:33:  ref: process.env.GITHUB_REF,
+core\commit.js:36:    id: process.env.GITHUB_ACTOR_ID ?? null,
+core\commit.js:37:    login: process.env.GITHUB_ACTOR ?? null,
+core\commit.js:41:    id: process.env.GITHUB_SHA,
+core\commit.js:47:logInfo("GITHUB", "Commit payload received", {
+core\commit.js:48:  repository: githubPayload.repository.full_name,
+core\commit.js:49:  branch: githubPayload.ref,
+core\commit.js:50:  commit: githubPayload.head_commit.id,
+core\commit.js:57:const event = createGitHubCommitEvent(githubPayload);
+core\engine.js:9:} from "../utils/github.js";
+core\engine.js:25:  token: process.env.GITHUB_TOKEN
+engine\reflection.transition.engine.js:434:  fs.writeFileSync(mergedFile, JSON.stringify(weeklyData, null, 2));
+engine\reflection.transition.engine.js:590:  fs.writeFileSync(
+engine\conversation\conversation.memory.js:26:  fs.writeFileSync(filepath, JSON.stringify(memory, null, 2), "utf-8");
+events\github\github.adapter.js:3:export function createGitHubCommitEvent(payload) {
+events\github\github.adapter.js:6:      type: "github",
+events\github\github.adapter.js:32:      provider: "github",
+llm\reflection.engine.js:80:    fs.writeFileSync(outputFile, raw, null, 2, "utf-8");
+memory\archive.js:114:  fs.writeFileSync(
+memory\memory.js:34:    fs.writeFileSync(
+memory\memory.js:63:    fs.writeFileSync(
+memory\memory.js:78:  fs.writeFileSync(
+memory\stats.engine.js:28:  fs.writeFileSync(
+runtime\telegram\telegram.poller.js:16:  fs.writeFileSync(OFFSET_FILE, String(offset), "utf-8");
+runtime\telegram\telegram.poller.js:26:  const response = await fetch(
+runtime\telegram\telegram.sender.js:8:  const response = await fetch(
+runtime\telegram\telegram.sender.js:9:    `https://api.telegram.org/bot${token}/sendMessage`,
+utils\decode.file.js:45:  await fs.writeFile(
+utils\decode.file.js:51:  await fs.writeFile(
+utils\fs.helper.js:20:    fs.writeFileSync(
+utils\fs.helper.js:73:  fs.writeFileSync(
+utils\github.js:5:import { getRepoMeta } from "./github.repo.js";
+utils\github.js:8:  logSection("GitHub Commit Checker");
+utils\github.js:10:  logInfo("github", `Checking commits for user: ${username}`);
+utils\github.js:12:  const url = `https://api.github.com/users/${username}/events`;
+utils\github.js:14:  logDebug("github", `Request URL: ${url}`);
+utils\github.js:19:    logInfo("github", "Sending request to GitHub API...");
+utils\github.js:21:    res = await fetch(url, {
+utils\github.js:24:        Accept: "application/vnd.github+json",
+utils\github.js:28:    logError("github", "Network error while fetching GitHub API", {
+utils\github.js:38:  logDebug("github", `Response status: ${res.status}`);
+utils\github.js:41:    logError("github", "GitHub API returned error", {
+utils\github.js:48:      reason: "github_api_error",
+utils\github.js:52:  logInfo("github", "Response OK, parsing events...");
+utils\github.js:56:  logDebug("github", `Total events fetched: ${events.length}`);
+utils\github.js:67:  logInfo("github", `Today's date (WIB / Jakarta): ${jakartaDate}`);
+utils\github.js:71:  logDebug("github", `PushEvents found: ${pushEvents.length}`);
+utils\github.js:74:    logWarn("github", "No PushEvent found in recent activity");
+utils\github.js:90:    logDebug("github", "Checking PushEvent", {
+utils\github.js:101:    logInfo("github", "✅ Commit found today!", {
+utils\github.js:122:  logWarn("github", "❌ No commits found for today");
+utils\github.repo.js:9:  const url = `https://api.github.com/repos/${repoFullName}`;
+utils\github.repo.js:11:  logInfo("github", `Fetching repo metadata: ${repoFullName}`);
+utils\github.repo.js:14:    const res = await fetch(url, {
+utils\github.repo.js:17:        Accept: "application/vnd.github+json",
+utils\github.repo.js:22:      logError("github", "Failed to fetch repo metadata", {
+utils\github.repo.js:41:    logError("github", "Network error repo metadata", {
+

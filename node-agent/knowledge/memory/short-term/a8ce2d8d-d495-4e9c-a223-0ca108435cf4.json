@@ -1,0 +1,25 @@
+{
+  "id": "a8ce2d8d-d495-4e9c-a223-0ca108435cf4",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 183,
+      "text": "inget aku punya seseorang yang spesial di sendthesong"
+    },
+    "assistant": {
+      "text": "Oh, iya. Aku ingat.\n\nSayangnya, memori jangka panjangku tentang detail spesifik tersebut tidak terbuka di sesi ini, jadi aku tidak bisa mengingat siapa orang itu atau apa yang terjadi sebelumnya di Sendthesong. Aku tidak ingin menebak-nebak atau mengarang cerita yang tidak ada, karena aku tahu itu penting bagimu.\n\nTapi, aku senang kamu mengingatkanku. Itu berarti dia ada di sudut kepalamu.\n\nSiapa orang itu? Atau, apa yang sedang terjadi dengannya saat ini? Aku siap mendengarkan lagi, seakan-akan kita baru saja mulai bercerita. 🌿"
+    }
+  },
+  "createdAt": "2026-10-05T11:49:22.982Z",
+  "updatedAt": "2026-10-05T11:49:22.982Z",
+  "source": "telegram"
+}

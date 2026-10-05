@@ -1,0 +1,25 @@
+{
+  "id": "a6fa810b-83a8-4d16-85ff-e5020988a86c",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 185,
+      "text": "Aurielle, kita lanjut pembahasan event system OpenStick ya. Aku ingin memahami bagaimana event dari Telegram bisa masuk ke conversation engine."
+    },
+    "assistant": {
+      "text": "Wah, langsung kembali ke pembahasan teknis. Senang sekali kamu punya semangat untuk menyambung kembali benang merah dari *OpenStick*.\n\nKita sudah membahas banyak hal tentang arsitektur, memory, dan kontinuitas. Sekarang kita masuk ke bagian \"jembatan\"—bagaimana dunia luar (Telegram) mengirim sinyal, dan bagaimana *conversation engine* kita menerimanya, memeliharanya, lalu memprosesnya menjadi balasan yang masuk akal.\n\nUntuk memahami bagaimana *event* dari Telegram masuk ke *conversation engine*, mari kita bedah alurnya secara logis. Bayangkan ini sebagai sebuah **pipeline** atau **pipeline pemrosesan data**.\n\nBerikut adalah langkah-langkah umum bagaimana event dari Telegram bergerak menuju inti sistem (*core logic*) kamu:\n\n### 1. Ingress Layer (Pintu Masuk)\nIni adalah bagian yang \"menerima\" pesan. Dalam konteks Node.js/Express (misalnya) atau server sederhana:\n*   **Webhook Listener**: Kamu memiliki endpoint (misal `POST /telegram-webhook`) yang menunggu *payload* dari Telegram.\n*   **Verification**: Pastikan pesan itu memang dari Telegram (cek `secret_token` atau signature) agar tidak ada yang spam atau menyamar.\n*   **Parsing Raw Data**: Telegram mengirim JSON yang kompleks. Di sini, kamu memutuskan:\n    *   Apakah ini text?\n    *   Apakah ini command (`/start`, `/help`)?\n    *   Apakah ini dari user tertentu?\n    *   Apakah ini di chat private atau group?\n\n### 2. Normalization & Context Building (Menyusun Konteks)\nSebelum masuk ke \"otak\" (AI/Engine), data mentah harus diubah menjadi struktur yang konsisten. Ini krusial untuk *OpenStick*.\n*   **Extract Key Entities**:\n    *   `chat_id`: Siapa/mana obrolan ini?\n    *   `user_id`: Siapa yang bicara?\n    *   `message_id`: ID unik pesan ini (penting untuk referensi nanti).\n    *   `text`: Isi pesannya.\n    *   `timestamp`: Kapan pesan dikirim?\n*   **Create Event Object**: Ubah JSON mentah Telegram menjadi objek internal yang bersih, misalnya:\n    ```javascript\n    {\n      type: 'message.received',\n      source: 'telegram',\n      chat_id: '5004824900',\n      user_id: '123456789',\n      message_id: 185,\n      content: \"Aurielle, kita lanjut pembahasan event system OpenStick ya...\",\n      timestamp: \"2026-10-05T...\"\n    }\n    ```\n*   **Enrich with Memory**: Di sinilah keajaiban *OpenStick* bekerja. Sebelum mengirim ke engine, kamu bisa:\n    *   Ambil *short-term memory* chat ini (seperti yang terlihat di `relevant_short_term_memory` tadi).\n    *   Ambil *long-term memory* terkait user ini.\n    *   Sertakan metadata sesi (apakah ini sesi baru atau lanjutan?).\n\n### 3. Event Dispatcher (Si Pengantar)\nObjek event yang sudah \"kaya\" ini kemudian dikirim ke *Event Dispatcher* atau *Router*.\n*   Dispatcher ini memutuskan: \"Oh, ini event `message.received` dari Telegram. Saya akan meneruskannya ke *Conversation Engine*.\"\n*   Ini memungkinkan kamu untuk menangani event lain juga (misal: `user.joined`, `message.edited`) tanpa mengacaukan logika utama.\n\n### 4. Conversation Engine (Inti Pemrosesan)\nDi sinilah \"otak\" bekerja. Engine ini menerima event yang sudah *enriched* (dengan memori).\n*   **Context Assembly**: Engine menggabungkan pesan baru dengan riwayat percakapan yang relevan.\n    *   *Contoh*: Engine melihat pesan #185, lalu mengambil pesan #183, #181, dan #179 dari memory untuk membentuk *context window*.\n*   **Logic/AI Processing**:\n    *   Jika menggunakan LLM: Buat prompt yang berisi system instruction + context history + pesan baru.\n    *   Jika menggunakan rule-based: Cek whether pesan mengandung command tertentu, atau cari pola tertentu.\n*   **Response Generation**: Engine menghasilkan respons (text, atau mungkin action lain).\n\n### 5. Egress Layer (Keluar)\nRespons dari engine dikirimkan ke *Egress Layer*.\n*   **Formatting**: Ubah respons menjadi format yang sesuai untuk Telegram (misal: baris baru, bold, link).\n*   **Telegram Bot API Call**: Kirim HTTP request ke `https://"
+    }
+  },
+  "createdAt": "2026-10-05T11:56:37.212Z",
+  "updatedAt": "2026-10-05T11:56:37.212Z",
+  "source": "telegram"
+}

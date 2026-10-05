@@ -1,14 +1,13 @@
 import { generateLLM } from "../core/generate.js";
-
 import { buildLLMContext } from "../context/llm.context.js";
-
 import { buildLLMRequest } from "../core/request.builder.js";
-
 import { buildSystemContext } from "../context/system.context.js";
-
 import { buildConversationContext } from "../context/conversation.context.js";
-
 import { buildConversationPrompt } from "../prompts/conversation.prompt.js";
+
+import { parseLLMOutput } from "../../core/action/llm.output.parser.js";
+import { normalizeLLMResponse } from "../../core/action/llm.response.normalizer.js";
+import { validateLLMResponse } from "../../core/action/llm.response.validator.js";
 
 export async function generateConversationResponse({ agentContext }) {
   const llmContext = buildLLMContext({
@@ -36,7 +35,7 @@ export async function generateConversationResponse({ agentContext }) {
     max_tokens: 1000,
   });
 
-  return generateLLM({
+  const rawOutput = await generateLLM({
     provider: "groq",
     model: request.model,
     system: request.system,
@@ -44,4 +43,12 @@ export async function generateConversationResponse({ agentContext }) {
     temperature: request.temperature,
     max_tokens: request.max_tokens,
   });
+
+  const parsedOutput = parseLLMOutput(rawOutput);
+
+  const response = normalizeLLMResponse(parsedOutput);
+
+  validateLLMResponse(response);
+
+  return response;
 }

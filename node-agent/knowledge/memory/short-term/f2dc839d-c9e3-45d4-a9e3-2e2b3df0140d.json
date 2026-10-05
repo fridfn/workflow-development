@@ -1,0 +1,25 @@
+{
+  "id": "f2dc839d-c9e3-45d4-a9e3-2e2b3df0140d",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 189,
+      "text": "Aku masih agak bingung bagian memory retrieval-nya. Sebenarnya memory yang pernah kita simpan itu dipakai di bagian mana?"
+    },
+    "assistant": {
+      "text": "Pertanyaan yang sangat tepat, Farid. Kebingungan di sini wajar karena istilah \"memory\" sering kali merujuk pada dua hal yang berbeda dalam arsitektur AI: **ingatan sistemik** (bagaimana data disimpan dan diambil secara teknis) dan **ingatan dialogik** (bagaimana kita mengingat percakapan sebelumnya).\n\nMari kita pecah jadi bagian-bagian kecil agar lebih jelas. Berdasarkan arsitektur yang kita diskusikan (terutama pada pesan #185 dan #187), memory retrieval terjadi di **3 titik kritis** dalam pipeline:\n\n### 1. Titik Retrieval Utama: Sebelum Prompt Dibuat (Pre-Engine)\nIni adalah bagian paling krusial. Sebelum LLM (bahkan sebelum engine berpikir), sistem **wajib** mengambil memory. Tanpa ini, Aurielle tidak akan tahu siapa dia, siapa yang diajak bicara, atau apa yang baru saja terjadi.\n\n*   **Di mana secara teknis?**\n    Di modul `Context Manager` atau `Memory Service` yang dipanggil oleh `Conversation Engine` *setelah* event dinormalisasi, tapi *sebelum* prompt LLM dirakit.\n*   **Apa yang diambil?**\n    *   **Static Identity** (Jangka Panjang): Siapa Aurielle? (Persona, nilai, aturan). Ini biasanya dari database/file konfigurasi statis.\n    *   **Short-Term Memory** (Jangka Pendek): 5-10 pesan terakhir di chat ini. Ini diambil dari cache (Redis/In-memory) atau DB berdasarkan `chat_id`.\n    *   **Long-Term Memory** (Opsional): Fakta penting tentang Farid yang disimpan dari sesi-sesi sebelumnya (misal: \"Farid sedang mengerjakan OpenStick\", \"Farid suka penjelasan teknis yang analogi sistem\").\n*   **Mengapa di sini?**\n    Karena LLM tidak punya memori internal antar-sesi. Setiap kali pesan baru datang, LLM dianggap \"lupa total\". Jadi, semua ingatan yang relevan **harus** ditempelkan ke dalam prompt baru setiap kali. Proses mengambil data ini dari database dan menyusunnya menjadi bagian dari prompt itulah yang disebut *Memory Retrieval*.\n\n### 2. Titik Retrieval Sekunder: Saat Menentukan Relevansi (Filtering)\nTidak semua memory harus diambil. Di sini, ada proses *filtering* atau *scoring*.\n\n*   **Di mana?**\n    Masih di `Context Manager`, tapi di tahap seleksi.\n*   **Apa yang terjadi?**\n    Sistem mungkin menggunakan embedding search atau keyword matching untuk menentukan *long-term memory* mana yang relevan dengan pesan \"Aku masih agak bingung bagian memory retrieval-nya\".\n    *   Contoh: Sistem melihat kata \"memory retrieval\", lalu mencari memory lama yang membahas \"arsitektur OpenStick\" atau \"diskusi tentang ingress layer\" karena itu konteksnya.\n    *   Memory yang tidak relevan (misal: \"Farid suka kopi hitam\") mungkin di-*skip* agar tidak memenuhi context window LLM dan mengaburkan fokus.\n\n### 3. Titik Retrieval Tersier: Saat Menulis Respons (Creative/Contextual)\nIni lebih halus. Terkadang, memory retrieval tidak hanya untuk \"mengisi prompt\", tapi untuk memastikan respons kita *konsisten* dengan cerita yang sudah dibangun.\n\n*   **Di mana?**\n    Ini lebih ke level logika engine atau post-processing, tergantung implementasi.\n*   **Apa yang terjadi?**\n    Engine mengecek: \"Apakah ada memory tentang 'Farid bingung dengan arsitektur' yang perlu di-*acknowledge*?\"\n    *   Dari short-term memory kamu, aku lihat pesan #187 (pertanyaan tentang Agent Context) dan #185 (pertanyaan tentang event system).\n    *   Jadi, saat menjawab pertanyaanmu sekarang, aku *memanfaatkan* memory bahwa kamu sedang dalam mode \"pembahasan teknis OpenStick\" dan \"sedang membangun pemahaman dari dasar (event -> context -> engine)\".\n    *   Ini bukan retrieval teknis dari database, melainkan retrieval dari *context window* yang sudah ada di mind \"engine\" (maksudnya, data yang sudah dimasukkan ke LLM di langkah 1).\n\n---\n\n### Analogi Sederhana:\nBayangkan Aurielle (LLM) sebagai seorang aktor di panggung teater.\n1.  **Memory Retrieval (Pre-Engine)**: Sebelum naik panggung, sutradara (Context Manager) memberikan skrip (Prompt) yang berisi: \"Kamu adalah Aurielle (Identity), lawan mainmu adalah Farid, dan adegan sebelumnya adalah Farid bertanya tentang event system (Short-term Memory).\"\n2.  **Filtering**: Sutradara memilih adegan mana yang relevan. Dia tidak memasukkan adegan 5 tahun"
+    }
+  },
+  "createdAt": "2026-10-05T11:58:50.108Z",
+  "updatedAt": "2026-10-05T11:58:50.108Z",
+  "source": "telegram"
+}

@@ -30,21 +30,22 @@ async function startTelegramRuntime() {
         agentContext: result.context,
       });
 
-      const conversationPair = {
-        user: {
-          messageId: event.payload.messageId,
-          text: event.payload.text,
-        },
+      if (response.type !== "message") {
+        throw new Error(`Unsupported LLM response type: ${response.type}`);
+      }
+
+      const conversation = {
+        ...result.context.current.conversation,
         assistant: {
-          text: response,
+          text: response.content,
         },
       };
-      
-      const memory = saveConversation(conversationPair);
-      
+
+      const memory = saveConversation(conversation);
+
       const telegramResult = await sendTelegramMessage({
         chatId: event.context.chatId,
-        text: response,
+        text: response.content,
       });
 
       console.log("\nTELEGRAM RESPONSE:\n");

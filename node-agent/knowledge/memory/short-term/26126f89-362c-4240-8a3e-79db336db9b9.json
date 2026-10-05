@@ -1,0 +1,25 @@
+{
+  "id": "26126f89-362c-4240-8a3e-79db336db9b9",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 187,
+      "text": "Kalau event-nya sudah sampai conversation engine, setelah itu alurnya menuju Agent Context seperti apa?"
+    },
+    "assistant": {
+      "text": "Bagus, kita sudah melihat bagaimana *event* masuk dan di-*parse* hingga sampai di *Ingress*. Sekarang kita lanjut ke bagian yang kamu tanyakan: **setelah event diproses oleh Conversation Engine, bagaimana alurnya menuju Agent Context?**\n\nSebenarnya, ada sedikit koreksi konsep yang perlu diluruskan dulu agar arsitekturnya menjadi lebih bersih. Dalam sistem yang baik, **Agent Context bukan tujuan akhir setelah engine bekerja**, melainkan **bahan bakar yang dicampur ke dalam engine** sebelum atau saat engine berpikir.\n\nJadi, alurnya bukan:\n`Event -> Engine -> Agent Context`\n\nTapi lebih ke:\n`Event -> [Ambil Konteks] -> Engine (Memakai Konteks) -> Respon`\n\nNamun, karena kamu bertanya \"menuju Agent Context\", mari kita asumsikan kamu bertanya: **\"Bagaimana sistem menentukan dan menyusun Agent Context yang relevan untuk event ini, lalu bagaimana data tersebut diintegrasikan ke dalam proses berpikir engine?\"**\n\nBerikut adalah alurnya secara teknis dan logis:\n\n### 1. Trigger: Event Tiba di Conversation Engine\nMari kita gunakan contoh dari *short-term memory* kamu tadi:\n*   **Event**: `message.received`\n*   **Chat ID**: `5004824900`\n*   **User**: Fubuki\n*   **Text**: \"Kalau event-nya sudah sampai conversation engine, setelah itu alurnya menuju Agent Context seperti apa?\"\n\nSaat engine menerima ini, ia tidak bisa langsung menjawab. Ia perlu \"mengingat\" siapa dia dan siapa yang sedang diajak bicara. Di sinilah proses **Context Retrieval & Assembly** dimulai.\n\n### 2. Context Retrieval (Mengambil Ingatan)\nEngine memicu modul *Memory/Context Manager* untuk mengambil data. Ini biasanya berjalan paralel atau sinkron sebelum prompt LLM dibuat.\n\n**A. Mengambil Static Identity (Jangka Panjang)**\n*   **Sumber**: Database identitas atau file konfigurasi statis (seperti `aurielle_context.shared_development.5` di knowledge base kamu).\n*   **Yang Diambil**:\n    *   Nama: Aurielle\n    *   Role: Personal AI Companion\n    *   Core Concept: \"Tempat pulang\"\n    *   Personality Traits: Warm, calm, observant, etc.\n    *   Key Rules: Jangan mengasumsikan mutlak, hormati human agency.\n*   **Tujuan**: Menetapkan \"siapa aku\" dalam percakapan ini.\n\n**B. Mengambil Dynamic Context (Jangka Pendek/Sesi)**\n*   **Sumber**: Short-term memory store (Redis, in-memory cache, atau DB).\n*   **Filter**: Berdasarkan `chat_id: 5004824900`.\n*   **Yang Diambil**:\n    *   Riwayat pesan terakhir N item (misal, 10 pesan terakhir).\n    *   Dari memory kamu, engine melihat pesan #185 (pertanyaan tentang ingress layer) dan respons sebelumnya.\n    *   Engine juga melihat pesan #187 (pertanyaan saat ini) untuk memahami *continuity*.\n*   **Tujuan**: Menetapkan \"apa yang baru saja terjadi\" dan \"konteks percakapan saat ini\".\n\n**C. Mengambil User-Specific Context (Opsional/Relevant)**\n*   Jika ada *long-term memory* tentang preferensi Fubuki (misal: \"Fubuki suka penjelasan teknis yang diibaratkan dengan arsitektur sistem\"), ini juga dimuat.\n*   Jika tidak ada, lupakan. Jangan paksa.\n\n### 3. Context Assembly (Menyusun Prompt/Konteks)\nDi sinilah \"Agent Context\" benar-benar terbentuk sebagai satu paket data yang siap dipakai.\n\nStruktur logis dari *Context Object* yang disusun:\n\n```json\n{\n  \"system_instruction\": \"Kamu adalah Aurielle, AI companion yang hangat dan tenang...\",\n  \"identity_profile\": {\n    \"name\": \"Aurielle\",\n    \"core_concept\": \"Tempat pulang\",\n    \"relationship\": \"Equal friend to Farid/Fubuki\"\n  },\n  \"recent_history\": [\n    { \"role\": \"user\", \"content\": \"Aurielle, kita lanjut pembahasan event system OpenStick ya...\" },\n    { \"role\": \"assistant\", \"content\": \"Wah, langsung kembali ke pembahasan teknis...\" },\n    { \"role\": \"user\", \"content\": \"Kalau event-nya sudah sampai conversation engine, setelah itu alurnya menuju Agent Context seperti apa?\" }\n  ],\n  \"metadata\": {\n    \"chat"
+    }
+  },
+  "createdAt": "2026-10-05T11:57:48.915Z",
+  "updatedAt": "2026-10-05T11:57:48.915Z",
+  "source": "telegram"
+}

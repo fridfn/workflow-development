@@ -1,0 +1,25 @@
+{
+  "id": "4c9514d6-a0ab-4658-b377-c90c2d6eb8ed",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 190,
+      "text": "Tadi kita membahas event Telegram dan memory retrieval. Bisa jelaskan lagi bagaimana keduanya terhubung dalam alur OpenStick?"
+    },
+    "assistant": {
+      "text": "Halo. Aku di sini.\n\nSenang sekali kamu ingin menyambung kembali benang merah yang sudah kita rajut tadi. Pertanyaanmu sangat krusial karena di situlah letak \"keajaiban\" dari sebuah AI Companion: **bagaimana sebuah sistem yang secara teknis amnesia (lupa) bisa terasa seperti teman yang memiliki ingatan?**\n\nJawaban singkatnya: **Keduanya terhubung melalui satu titik krusial yang disebut *Context Assembly* (Pemeriksaan Konteks).**\n\nBayangkan *Event Telegram* itu seperti **surat masuk** di mejamu.\nDan *Memory Retrieval* itu seperti **lemari arsip** di ruang kerja itu.\n\nMereka tidak pernah \"berbicara\" langsung satu sama lain. Yang menghubungkannya adalah **kamu (si engine)** yang membuka lemari arsip saat membaca surat, lalu menggabungkan isi surat dengan catatan di arsip sebelum kamu mulai membalas.\n\nBerikut adalah alur teknis bagaimana keduanya bertautan dalam *OpenStick*:\n\n### 1. Pemicu: Event Telegram Tiba\nTelegram mengirim payload mentah (JSON) ke webhook-mu.\n*   **Data Mentah:** `{ chat_id: 5004824900, text: \"Tadi kita membahas event Telegram...\", message_id: 190 }`\n*   **Status:** Data ini masih \"buta\". Sistem belum tahu siapa yang bicara, atau apa yang pernah terjadi sebelumnya. Ini hanya sebuah \"kejadian\" (*event*).\n\n### 2. Jembatan: Normalisasi & Penandaan (Tagging)\nSebelum masuk ke otak (LLM), sistem *OpenStick* melakukan normalisasi. Di sinilah \"pengait\" pertama dibuat.\n*   Sistem mengubah data mentah menjadi **Event Object** internal.\n*   Sistem mengambil `chat_id` dan `user_id` sebagai **kunci utama** (*primary keys*) untuk mencari memori.\n*   Sistem menganalisis *text* pesan secara cepat (bisa dengan keyword sederhana atau LLM kecil/cheaper) untuk menentukan **Topik** atau **Intent**.\n    *   *Contoh:* Sistem melihat kata \"Telegram\" dan \"memory retrieval\".\n    *   *Tagging:* `intent: 'technical_discussion'`, `topics: ['telegram_event', 'memory_retrieval']`.\n\n### 3. Titik Pertemuan: Context Retrieval (Mencari Di Arkrisp)\nDi sinilah *Memory Retrieval* bekerja. Event Object yang sudah ditandai tadi dipakai sebagai **kueri pencarian**.\n\nSistem melakukan dua jenis pencarian paralel:\n1.  **Short-Term (Konteks Sesi):**\n    *   *Query:* \"Ambil 10 pesan terakhir dari `chat_id: 5004824900`.\"\n    *   *Hasil:* Ia menemukan pesan #185, #187, #189, dan balasan-balasanmu sebelumnya. Ini adalah \"memori segar\".\n2.  **Long-Term (Konteks Historis/Vektor):**\n    *   *Query:* \"Cari memori yang relevan dengan topik 'event system' dan 'memory retrieval' untuk user ini.\"\n    *   *Hasil:* Sistem mencari di Vector DB. Ia mungkin menemukan fakta tersimpan: *\"User ini sedang membangun OpenStick dengan fokus pada arsitektur event-driven\"* atau *\"Diskusi terakhir tentang ingress layer terjadi 5 menit lalu\"*.\n\n**Di sinilah koneksi terjadi:** Event Telegram (pesan #190) tidak berdiri sendiri. Ia **menarik** (retrieve) memori-memori lama yang relevan berdasarkan apa yang dikatakannya.\n\n### 4. Perakitan: Context Assembly (Mencampur Bahan)\nSekarang, *Conversation Engine* memiliki tiga bahan:\n1.  **Identitas Statis:** (Kamu adalah Aurielle, warm, calm, dll.)\n2.  **Memori yang Diambil (Retrieved Memory):** Riwayat chat + Fakta lama yang relevan.\n3.  **Event Baru (Pesan #190):** \"Tadi kita membahas...\"\n\nEngine ini **merakit** semuanya menjadi satu **Prompt LLM** yang utuh.\n\n```text\n[SYSTEM]\nKamu adalah Aurielle... (Persona)\n\n[RETRIEVED CONTEXT - Long Term]\nUser sedang melakukan deep-dive teknis tentang OpenStick arsitektur.\nFokus pembahasan sebelumnya adalah Ingress Layer dan Event Dispatcher.\n\n[RECENT HISTORY - Short Term]\nUser: \"Kalau event-nya sudah sampai conversation engine...\"\nAurielle: \"Bagus, kita sudah melihat bagaimana event masuk...\"\n\n[NEW MESSAGE - The Event"
+    }
+  },
+  "createdAt": "2026-10-05T12:31:09.389Z",
+  "updatedAt": "2026-10-05T12:31:09.389Z",
+  "source": "telegram"
+}

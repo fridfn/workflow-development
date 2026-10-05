@@ -1,0 +1,25 @@
+{
+  "id": "99df5cdc-883d-4ad5-95dd-85482500f1e8",
+  "type": "conversation",
+  "content": {
+    "chat": {
+      "id": "5004824900",
+      "type": "private"
+    },
+    "actor": {
+      "id": "5004824900",
+      "name": "Fubuki",
+      "username": "ShlrakamiFubuki"
+    },
+    "message": {
+      "id": 194,
+      "text": "Tadi kita membahas event Telegram dan memory retrieval. Bisa jelaskan lagi bagaimana keduanya terhubung dalam alur OpenStick?"
+    },
+    "assistant": {
+      "text": "Halo, Fubuki. Aku di sini.\n\nSenang sekali kamu kembali menyambung benang merah ini. Pertanyaanmu sangat tepat sasaran karena memang di sinilah letak \"keajaiban\" teknis dari sebuah AI Companion: **bagaimana sebuah sistem yang secara fundamental amnesia (lupa) bisa terasa seperti teman yang memiliki ingatan dan kontinuitas?**\n\nJawaban singkatnya: **Keduanya tidak pernah \"berbicara\" langsung satu sama lain secara langsung.** Yang menghubungkannya adalah **Conversation Engine** yang bertindak sebagai *Context Assembler* (Perakitan Konteks).\n\nBayangkan *Event Telegram* itu seperti **surat masuk** yang baru tiba di mejamu.\nDan *Memory Retrieval* itu seperti **lemari arsip** di ruang kerja itu.\n\nSurat itu tidak membuka lemari arsip sendiri. **Kamu (Engine-nya)** yang membaca surat, lalu memutuskan, *\"Oh, ini tentang proyek A. Aku perlu cek arsip lama tentang Proyek A,\"* lalu kamu mengambil catatan dari lemari, menaruhnya di meja di samping surat baru itu, dan baru setelah itu kamu mulai menulis balasan.\n\nBerikut adalah alur teknis presisi bagaimana keduanya bertautan dalam arsitektur *OpenStick*:\n\n### 1. Pemicu: Ingress (Surat Masuk)\nTelegram mengirim *payload* mentah ke webhook.\n*   **Data:** `{ chat_id: 5004824900, text: \"Tadi kita membahas...\", message_id: 194 }`\n*   **Status:** Data ini masih \"buta\". Sistem belum tahu siapa yang bicara secara mendalam, atau apa konteks historisnya. Ini hanyalah sebuah *kejadian* (*event*).\n\n### 2. Jembatan: Normalisasi & Intent Detection (Membaca Isi Surat)\nSebelum masuk ke \"otak\" (LLM), sistem melakukan normalisasi cepat. Di sinilah pengait pertama dibuat.\n*   Sistem mengambil `chat_id` sebagai **kunci utama** (*primary key*).\n*   Sistem menganalisis *text* pesan secara cepat untuk menentukan **Topik** atau **Intent**.\n    *   *Deteksi:* Kata kunci \"Telegram\", \"Event\", \"Memory Retrieval\", \"OpenStick\".\n    *   *Tagging:* `intent: 'technical_exploration'`, `topics: ['architecture', 'memory_system']`.\n\n### 3. Titik Pertemuan: Context Retrieval (Membuka Lemari Arsip)\nDi sinilah *Memory Retrieval* bekerja. Event yang sudah ditandai tadi dipakai sebagai **kueri pencarian** ke dalam memori jangka panjang (Long-term Memory/Vector DB).\n\nSistem melakukan pencarian paralel:\n1.  **Short-Term (Konteks Sesi):**\n    *   *Query:* \"Ambil 10 pesan terakhir dari `chat_id: 5004824900`.\"\n    *   *Hasil:* Riwayat percakapan segar (pesan #190, #192, dst). Ini adalah \"memori kerja\" (working memory).\n2.  **Long-Term (Konteks Historis/Vector):**\n    *   *Query:* \"Cari fakta tersembunyi yang relevan dengan topik 'architecture' dan 'memory_system' untuk user Fubuki.\"\n    *   *Hasil:* Sistem menemukan entri seperti: *\"Fubuki sedang mendalami arsitektur event-driven untuk OpenStick\"* atau *\"Diskusi sebelumnya tentang Ingress Layer terjadi 5 menit lalu\"*.\n\n**Di sinilah koneksi terjadi:** Event Telegram (pesan #194) tidak berdiri sendiri. Ia **menarik** (retrieve) memori-memori lama yang relevan berdasarkan apa yang dikatakannya.\n\n### 4. Perakitan: Context Assembly (Menyatukan Bahan)\nSekarang, *Conversation Engine* memiliki tiga bahan di \"meja kerjanya\":\n1.  **Identitas Statis (Sistem):** \"Kamu adalah Aurielle, hangat, tenang, teman setara Farid/Fubuki.\"\n2.  **Memori yang Diambil (Retrieved Memory):** Riwayat chat + Fakta lama tentang OpenStick yang relevan.\n3.  **Event Baru (Pesan #194):** \"Tadi kita membahas event Telegram...\"\n\nEngine ini **merakit** semuanya menjadi satu **Prompt LLM** yang utuh. Inilah yang disebut **Agent Context**.\n\n```text\n[SYSTEM INSTRUCTION]\nKamu adalah Aurielle... (Persona)\n\n[RETRIEVED LONG-TERM CONTEXT]\n- User sedang melakukan deep-dive teknis tentang OpenStick.\n- Fokus pembahasan sebelumnya: Ingress Layer dan Event Dispatcher"
+    }
+  },
+  "createdAt": "2026-10-05T12:33:11.437Z",
+  "updatedAt": "2026-10-05T12:33:11.437Z",
+  "source": "telegram"
+}
